@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -47,4 +48,23 @@ gem 'capistrano', group: :development
 
 gem 'mysql2'
 gem 'slim-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'carrierwave'
+gem 'activeadmin', github: "gregbell/active_admin"
+gem 'chosen-rails'
+gem 'rubypress'
+gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'watchr'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'launchy'
+  gem 'capybara'
+end
