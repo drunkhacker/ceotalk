@@ -6,4 +6,5 @@ class Talk < ActiveRecord::Base
   validates_presence_of :url
   validates_presence_of :description
   validates_presence_of :professional_id
+
 end

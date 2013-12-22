@@ -28,6 +28,30 @@ ActiveAdmin.register Post do
     column :created_at
     default_actions
   end
+
+  show :title => :title do |post|
+    attributes_table do
+      row :id
+      row :url do
+        link_to post.url, post.url, :target => "_blank"
+      end
+
+      row :excerpt do
+        post.excerpt.html_safe
+      end
+
+      row :professional
+      row :category do
+        post.category.aa_breadcrumb if post.category
+      end
+
+      row :created_at
+      row :view_count
+      row :thumbnail do
+        image_tag post.thumb_url, :style => "max-width: 200px"
+      end
+    end
+  end
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

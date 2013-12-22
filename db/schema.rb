@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131216050754) do
+ActiveRecord::Schema.define(version: 20131218132601) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,13 +55,16 @@ ActiveRecord::Schema.define(version: 20131216050754) do
   end
 
   create_table "comments", force: true do |t|
-    t.text     "content",          null: false
-    t.integer  "user_id",          null: false
-    t.integer  "commentable_id",   null: false
+    t.text     "content",                      null: false
+    t.integer  "user_id",                      null: false
+    t.integer  "commentable_id",               null: false
     t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
+    t.string   "type"
+    t.boolean  "picked"
+    t.integer  "like_count",       default: 0, null: false
   end
 
   create_table "companies", force: true do |t|
@@ -70,6 +73,15 @@ ActiveRecord::Schema.define(version: 20131216050754) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "likes", id: false, force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "comment_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["user_id", "comment_id"], name: "index_likes_on_user_id_and_comment_id", unique: true, using: :btree
 
   create_table "open_questions", force: true do |t|
     t.string   "title"
@@ -99,11 +111,15 @@ ActiveRecord::Schema.define(version: 20131216050754) do
   end
 
   create_table "problems", force: true do |t|
-    t.string   "url",             null: false
-    t.text     "content",         null: false
-    t.integer  "professional_id", null: false
+    t.string   "url",                         null: false
+    t.text     "content",                     null: false
+    t.integer  "professional_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title",                       null: false
+    t.integer  "phase",           default: 0, null: false
+    t.datetime "phase1_deadline"
+    t.datetime "phase2_deadline"
   end
 
   create_table "talks", force: true do |t|
@@ -136,6 +152,7 @@ ActiveRecord::Schema.define(version: 20131216050754) do
     t.integer  "company_id"
     t.string   "provider"
     t.string   "uid"
+    t.string   "profile_photo"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

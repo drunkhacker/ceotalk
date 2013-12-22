@@ -6,4 +6,17 @@ class Category < ActiveRecord::Base
   def self.roots
     Category.where(:parent_id => nil)
   end
+
+  def aa_breadcrumb
+    r = []
+    o = self
+    while !o.nil? do
+      r.unshift "<a href=\"#{Rails.application.routes.url_helpers.admin_category_path(o)}\">#{o.name}</a>"
+      o = o.parent
+    end
+
+    Rails.logger.debug "r = #{r}"
+    r.join(" &gt; ").html_safe
+  end
+
 end

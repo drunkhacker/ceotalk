@@ -118,13 +118,13 @@ ActiveAdmin.setup do |config|
   # This allows your users to comment on any resource registered with Active Admin.
   #
   # You can completely disable comments:
-  # config.allow_comments = false
+  config.allow_comments = false
   #
   # You can disable the menu item for the comments index page:
-  # config.show_comments_in_menu = false
+  config.show_comments_in_menu = false
   #
   # You can change the name under which comments are registered:
-  # config.comments_registration_name = 'AdminComment'
+  config.comments_registration_name = 'AdminComment'
 
 
   # == Batch Actions
@@ -231,6 +231,8 @@ ActiveAdmin.setup do |config|
   # hand side with a filter for each attribute of the registered model.
   # You can enable or disable them for all resources here.
   #
-  # config.filters = true
+  #TODO : filters = true로 놓으면 ProblemComment 쪽에서 에러가 남.
+  # searchable한 field들을 다 수동으로 지정해줄것. 
+  config.filters = false
 
 end
