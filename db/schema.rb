@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218132601) do
+ActiveRecord::Schema.define(version: 20140102120125) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -68,8 +68,21 @@ ActiveRecord::Schema.define(version: 20131218132601) do
   end
 
   create_table "companies", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",                null: false
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "company_category_id"
+  end
+
+  create_table "company_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "expert_categories", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -104,10 +117,13 @@ ActiveRecord::Schema.define(version: 20131218132601) do
   end
 
   create_table "presentations", force: true do |t|
-    t.string   "url",         null: false
+    t.string   "url",                     null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "problem_id",              null: false
+    t.integer  "user_id"
+    t.integer  "vote_count",  default: 0, null: false
   end
 
   create_table "problems", force: true do |t|
@@ -153,19 +169,24 @@ ActiveRecord::Schema.define(version: 20131218132601) do
     t.string   "provider"
     t.string   "uid"
     t.string   "profile_photo"
+    t.string   "position"
+    t.integer  "expert_category_id"
+    t.string   "short_description"
+    t.text     "description"
+    t.string   "quote"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "votes", force: true do |t|
+  create_table "votes", id: false, force: true do |t|
     t.integer  "user_id",         null: false
-    t.integer  "comment_id",      null: false
     t.integer  "presentation_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["user_id", "comment_id"], name: "index_votes_on_user_id_and_comment_id", unique: true, using: :btree
+  add_index "votes", ["user_id", "presentation_id"], name: "index_votes_on_user_id_and_presentation_id", unique: true, using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id_and_comment_id", unique: true, using: :btree
 
 end

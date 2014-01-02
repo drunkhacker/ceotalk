@@ -1,0 +1,22 @@
+h1.user-name = @user.name 
+
+.excerpt
+  =image_tag(@user.profile_photo.url, :class => "photo")
+  .short-desc
+    =@user.short_description || "N/A"
+
+.quote
+  =@user.quote || "진인사대천명"
+
+.description
+  =@user.description || "설명이 없습니다."
+
+.activities
+  .related-contents
+    - @user.contents.each do |content|
+      .publish
+        = image_tag(content.thumb_url, :class => "thumbnail")
+        = content.title
+
+  .external-info
+

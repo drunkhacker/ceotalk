@@ -277,6 +277,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   activeadmin-sortable-tree!
+  bourbon
   capistrano
   capybara
   carrierwave

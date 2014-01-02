@@ -9,6 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require 'reset'
  *= stub active_admin
  */
+
+@import "bourbon";
+@import "users";
+
+/*@include box-sizing(border-box);*/
+

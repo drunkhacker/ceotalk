@@ -5,7 +5,7 @@ ActiveAdmin.register ProblemComment do
     f.inputs do
       f.input :user, :as => :select, :label => "사용자"
       f.input :content, :as => :text
-      f.input :parent
+      f.input :parent, :collection => ProblemComment.where(:commentable_id => f.object.commentable_id).where.not(:id => f.object.id)
       f.input :picked
       f.input :commentable, :collection => Problem.all
 
@@ -19,7 +19,12 @@ ActiveAdmin.register ProblemComment do
     selectable_column
     column :id
     column :user
+    column :content
+    column :picked
     column :commentable
+    column :parent
+    column :created_at
+    default_actions
   end
 
   # See permitted parameters documentation:

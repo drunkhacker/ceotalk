@@ -1,6 +1,6 @@
 ActiveAdmin.register Company do
 
-  permit_params :name, :url
+  permit_params :name, :url, :company_category_id
 
   index do
     selectable_column
@@ -12,6 +12,7 @@ ActiveAdmin.register Company do
     column :members do |company|
       company.members.count
     end
+    column :company_category
     column :created_at
     default_actions
   end

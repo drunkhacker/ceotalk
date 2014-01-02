@@ -21,9 +21,14 @@ ActiveAdmin.register Problem do
       link_to problem.title, admin_problem_path(problem)
     end
     column :phase do |problem|
+      Problem::PHASE_TO_WORD[problem.phase]
     end
     column :phase1_deadline
     column :phase2_deadline
+    column :comment_count do |problem|
+      problem.comments.count
+    end
+
     default_actions
   end
 
@@ -48,6 +53,17 @@ ActiveAdmin.register Problem do
       end
       row "답글 갯수" do
         problem.comments.count
+      end
+
+      row "결선 PT" do
+        ul do 
+          problem.presentations.each do |pt|
+            li do 
+              (link_to "Presentation #{pt.id}", admin_presentation_path(pt) ) + " - " +
+              (link_to pt.user.name, admin_user_path(pt.user)) + " #{pt.created_at}"
+            end
+          end
+        end
       end
     end
   end
