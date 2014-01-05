@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  permit_params :name, :type, :company_id, :expert_category_id
+  permit_params :name, :type, :company_id, :expert_category_id, :featured
 
   form do |f|
     f.inputs do
@@ -8,6 +8,7 @@ ActiveAdmin.register User do
       f.input :type, :as => :boolean, :checked_value => "Professional", :unchecked_value => "User", :label => "전문가"
       f.input :company
       f.input :expert_category
+      f.input :featured
     end
     f.actions
   end

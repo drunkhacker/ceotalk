@@ -1,0 +1,16 @@
+ul.categories
+  - @categories.each do |category|
+    li =link_to(category.name, "#")
+
+ul.name-indexes
+  - @indexes.each do |index|
+    li =link_to(index, "#")
+
+.professionals-container
+  - @professionals.each do |professional|
+    .professional
+      =image_tag(professional.profile_photo.url)
+      h3.name =professional.name 
+      h4.company =professional.company.name
+      small =professional.category_name
+

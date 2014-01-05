@@ -1,8 +1,9 @@
 $ () ->
-  if ($("body").hasClass("new") or $("body").hasClass("edit")) and $("body").hasClass("admin_talks")
+  if ($("body").hasClass("new") or $("body").hasClass("edit")) and ($("body").hasClass("admin_talks") or $("body").hasClass("admin_problems"))
     # add watcher for url field
-    $("#talk_url").change () ->
-      url = $("#talk_url").val()
+    url_selector = "#talk_url, #problem_url"
+    $(url_selector).change () ->
+      url = $(url_selector).val()
       console.log "url = #{url}"
 
       # check this is youtube url
@@ -16,12 +17,13 @@ $ () ->
         $.getJSON "http://gdata.youtube.com/feeds/api/videos/#{vid}?v=2&alt=jsonc", (data) ->
           data = data.data
 
-          $("#talk_title").val data.title
+          $("[id$='_title']").val data.title
 
           $("#talk_description").val data.description
+          $("#problem_content").val data.description
 
           # update thumbnail img
-          $dom = $ "#talk_thumb_url"
+          $dom = $ "[id$='_thumb_url']"
           console.log "about to set val"
           $dom.val data.thumbnail.hqDefault
           $dom.trigger "change"
@@ -40,9 +42,10 @@ $ () ->
             data = data[0]
 
             $("#talk_description").val data.description
-            $("#talk_title").val data.title
+            $("#problem_content").val data.description
+            $("[id$='_title']").val data.title
 
-            $dom = $ "#talk_thumb_url"
+            $dom = $ "[id$='_thumb_url']"
             $dom.val data.thumbnail_large
             return $dom.trigger "change"
 

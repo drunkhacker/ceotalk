@@ -47,3 +47,23 @@ table {
 	border-spacing: 0;
 }
 
+
+/* Assuming this HTML structure:
+
+	<div class="clear">
+		<div class="floated"></div>
+		<div class="floated"></div>
+		<div class="floated"></div>
+	</div>
+*/
+
+.clear:before,
+.clear:after {
+    content: " ";
+    display: table;
+}
+
+.clear:after {
+    clear: both;
+}
+

@@ -14,7 +14,25 @@
  */
 
 @import "bourbon";
+@import "home";
 @import "users";
+@import "gnb";
+@import "utils";
 
-/*@include box-sizing(border-box);*/
+//for overall layout
+*, html, body {
+  @include box-sizing(border-box);
+}
+
+body {
+  width: 1200px;
+  margin: 0 auto !important;
+}
+
+//pseudo-grid?
+.row {
+  .column {
+    float: left;
+  }
+}
 

@@ -1,0 +1,164 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.section-title {
+  /*text-transform: uppercase;*/
+  @include size(100% 40px);
+  line-height: 40px;
+  small {
+    margin-left: 15px;
+    font-size: small;
+    color: #aaa;
+  }
+
+  .more {
+    width: 200px;
+    float: right;
+    display: block;
+    background-color: #aaa;
+  }
+}
+
+#selected-contents {
+  margin-top: 10px;
+  .categories {
+    @include size(175px 100%);
+
+    background-color: #eee;
+
+    margin-right: 12px;
+  }
+
+  .contents {
+    background-color: #eee;
+    /*display: flex;*/
+    /*-webkit-flex-flow: row wrap;*/
+    /*flex-direction: row;*/
+    /*-webkit-justify-content: flex-start;*/
+    /*-webkit-align-content: flex-start;*/
+
+    @include size(100% 100%);
+    .item {
+      img {
+        @include size(100% 100%);
+      }
+      float: left;
+      @include size(240px 120px);
+      overflow: hidden;
+      &:first-child {
+        @include size(240px*2 120px*2);
+      }
+    }
+  }
+
+  @include size(100% 240px);
+  /*border: 1px solid black;*/
+}
+
+#crowd-sourcing {
+  .item {
+    position: relative;
+    display: block;
+    @include size(240px 120px);
+
+    @mixin state-tag($w, $fg_color, $bg_color) {
+      color: $fg_color;
+      @include size(0 0);
+      border-right: $w solid $bg_color;
+      border-top: $w solid $bg_color;
+      border-bottom: $w solid transparent;
+      border-left: $w solid transparent;
+      position: absolute;
+      top: 0; right: 0;
+      span {
+        font-size: small;
+        margin-top: -$w/2;
+        width: $w;
+        position: absolute;
+      }
+    }
+
+    .state-tag.small {
+      @include state-tag(20px, white, #444);
+      span {
+        font-size: 10px;
+      }
+    }
+
+    &:first-child {
+      @include size(720px 240px);
+
+      .thumbnail {
+        @include size(33.333% 100%);
+        /*background: url(http://placekitten.com/240/240);*/
+        float: left;
+      }
+
+
+      .state-tag {
+        @include state-tag(30px, white, #444);
+      }
+
+      .excerpt {
+        @include size(66.666% 100%);
+        float: left;
+
+        .answer-item {
+          span { line-height: 50px; }
+          .rank {
+            &:after { content: "위"; }
+          }
+          .profile {
+            @include size(50px 50px);
+          }
+          .like-count {
+            &:after { content: "표"; }
+            float: right;
+          }
+        }
+      }
+    }
+    float: left;
+    border: 1px solid #aaa;
+
+  }
+
+  @include size(100% 240px);
+}
+
+#experts-corporation {
+  .item {
+    border: 1px solid #aaa;
+    @include size(50% 300px);
+  }
+}
+
+//common item hover overlay effect
+.item {
+  .overlay {
+    position: absolute;
+    top: -100%;
+    transition: top 0.3s ease-out;
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    @include size(100% 100%);
+    overflow: hidden;
+  }
+  &:hover {
+    .overlay {
+      top: 0;
+    }
+  }
+
+  .bg {
+    display: block;
+    position: absolute;
+    top: 0;
+    @include size(100% 100%);
+  }
+  overflow: hidden;
+  position: relative;
+}
+
+

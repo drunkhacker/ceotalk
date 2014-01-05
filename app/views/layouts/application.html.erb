@@ -8,6 +8,18 @@
 </head>
 <body>
 
+<div id="gnb" class="">
+  <h1 id="site-logo" class="hide-text"> <%= link_to 'Logo', root_path %> </h1>
+  <ul class="menu">
+    <li class="menu-item"><%= link_to "CEO TALK", '#' %></li>
+    <li class="menu-item"><%= link_to "C'League", "#" %></li>
+    <li class="menu-item"><%= link_to "CLASS", "#" %></li>
+    <li class="menu-item"><%= link_to "Experts & Corporations", "#"%></li>
+  </ul>
+  <div id="login-status">
+    <span>Login/Sign up</span>
+  </div>
+</div>
 <%= yield %>
 
 </body>

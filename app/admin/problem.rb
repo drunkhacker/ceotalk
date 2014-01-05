@@ -1,10 +1,11 @@
 ActiveAdmin.register Problem do
-  permit_params :url, :title, :professional_id, :content, :phase, :phase1_deadline, :phase2_deadline
+  permit_params :url, :title, :professional_id, :content, :phase, :phase1_deadline, :phase2_deadline, :thumb_url
 
   form do |f|
     f.inputs do
       f.input :title, :label => "제목"
       f.input :url, :label => "URL" 
+      f.input :thumb_url, :as => :image_preview, :label => "썸네일" 
       f.input :professional, :as => :select, :label => "전문가"
       f.input :content, :as => :text
       f.input :phase, :as => :select, :collection => Problem::PHASE_TO_WORD.to_a.map {|a| a.reverse}

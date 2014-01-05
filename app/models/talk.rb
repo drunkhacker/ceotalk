@@ -1,4 +1,6 @@
-class Talk < ActiveRecord::Base
+class Talk < Content
+  self.table_name = "talks"
+
   belongs_to :professional
   belongs_to :category
   has_many :comments, :as => :commentable

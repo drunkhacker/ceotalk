@@ -1,6 +1,6 @@
 ActiveAdmin.register Talk do
 
-  permit_params :url, :description, :professional_id, :thumb_url, :created_at, :title, :category_id
+  permit_params :url, :description, :professional_id, :thumb_url, :created_at, :title, :category_id, :featured
 
   form do |f|
     f.inputs do
@@ -11,6 +11,7 @@ ActiveAdmin.register Talk do
       f.input :professional, :as => :select, :label => "전문가"
       f.input :category
       f.input :created_at, :label => "생성시각", :as => :date_picker
+      f.input :featured
     end
     f.actions
   end

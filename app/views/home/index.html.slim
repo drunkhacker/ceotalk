@@ -1,0 +1,71 @@
+h3.section-title  
+  | ceo talk
+  small 당신을 위한 CEO들의 노하우 톡!톡!톡!
+  a.more href="#" 전체보기
+#selected-contents.row.clear
+  .contents.column
+    /.item
+      /= image_tag("http://placekitten.com/480/240")
+    /- (1...7).each do |i|
+      /.item
+        /=image_tag("http://placekitten.com/240/#{120+i}")
+    - @selected_contents.each do |content|
+      = link_to(content, :class => "item") do
+        =image_tag(content.thumb_url)
+    - (0...7-@selected_contents.count).each do |i|
+      .item
+        =image_tag("http://placekitten.com/240/#{120+i}")
+
+h3.section-title 
+  | crowd solution
+  small CEO여러분의 고민해결을 위한 해결 방안 공모전
+  = link_to "목록", problems_path, class: "more"
+#crowd-sourcing.row.clear
+  .item
+    .thumbnail
+      - problem = @problems[0]
+      = link_to(problem) do 
+        = image_tag(problem.thumb_url)
+    .excerpt
+      h5.title = problem.title
+      p = problem.content
+
+      h6 Best 답변
+      ul.best-answers
+        - @cleague_best_answers.each_with_index do |answer, i|
+          li.answer-item
+            span.rank = i+1
+            = image_tag(answer.user.profile_photo.url, :class => "profile")
+            span = answer.content
+            span.like-count = answer.like_count
+    .state-tag 
+      span = Problem::PHASE_TO_WORD[problem.phase]
+  - @problems[1..-1].each do |problem|
+    =link_to(problem, :class => "item") do 
+      =image_tag(problem.thumb_url, :class => "bg")
+
+      .overlay
+        h5.title = problem.title
+        p = problem.content
+        .state-tag.small
+          span = Problem::PHASE_TO_WORD[problem.phase]
+
+
+.row.clear
+  .column style="width: 50%"
+    h3.section-title 
+      | c3eo class
+      small C3EO MBA만의 특별한 교육과정
+      a.more href="#" onclick="alert('not yet'); return false;" 목록
+  .column style="width: 50%"
+    h3.section-title 
+      | Experts & Corporation
+      =link_to("목록", professionals_path, class: "more")
+    #experts-corporation.row
+      - @featured_experts.each do |professional|
+        .item.column
+          =image_tag(professional.profile_photo.url, :class => "bg")
+          .overlay
+            h5.title = professional.name
+
+

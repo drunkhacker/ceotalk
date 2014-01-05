@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102120125) do
+ActiveRecord::Schema.define(version: 20140105101651) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -68,11 +68,12 @@ ActiveRecord::Schema.define(version: 20140102120125) do
   end
 
   create_table "companies", force: true do |t|
-    t.string   "name",                null: false
+    t.string   "name",                                null: false
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_category_id"
+    t.boolean  "featured",            default: false
   end
 
   create_table "company_categories", force: true do |t|
@@ -105,15 +106,17 @@ ActiveRecord::Schema.define(version: 20140102120125) do
   end
 
   create_table "posts", force: true do |t|
-    t.string   "url",                         null: false
-    t.integer  "professional_id",             null: false
-    t.integer  "view_count",      default: 0, null: false
+    t.string   "url",                             null: false
+    t.integer  "professional_id",                 null: false
+    t.integer  "view_count",      default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",                       null: false
+    t.string   "title",                           null: false
     t.text     "excerpt"
     t.string   "thumb_url"
-    t.integer  "category_id",                 null: false
+    t.integer  "category_id",                     null: false
+    t.boolean  "featured",        default: false
+    t.integer  "order",           default: 0
   end
 
   create_table "presentations", force: true do |t|
@@ -136,34 +139,37 @@ ActiveRecord::Schema.define(version: 20140102120125) do
     t.integer  "phase",           default: 0, null: false
     t.datetime "phase1_deadline"
     t.datetime "phase2_deadline"
+    t.string   "thumb_url"
   end
 
   create_table "talks", force: true do |t|
-    t.string   "url",                         null: false
+    t.string   "url",                             null: false
     t.text     "description"
-    t.integer  "professional_id",             null: false
-    t.integer  "view_count",      default: 0, null: false
+    t.integer  "professional_id",                 null: false
+    t.integer  "view_count",      default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "thumb_url",                   null: false
+    t.string   "thumb_url",                       null: false
     t.string   "title"
-    t.integer  "category_id",                 null: false
+    t.integer  "category_id",                     null: false
+    t.boolean  "featured",        default: false
+    t.integer  "order",           default: 0
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                                null: false
+    t.string   "name",                                   null: false
     t.string   "type"
     t.integer  "company_id"
     t.string   "provider"
@@ -174,6 +180,7 @@ ActiveRecord::Schema.define(version: 20140102120125) do
     t.string   "short_description"
     t.text     "description"
     t.string   "quote"
+    t.boolean  "featured",               default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
