@@ -1,0 +1,19 @@
+- case problem.phase
+- when Problem::PHASE_PRE
+  - if problem.comments.count > 10
+    h6 Best 답변
+    ul.best-answers
+      - problem.comments.each_with_index do |answer, i|
+        li.answer-item
+          span.rank = i+1
+          = image_tag(answer.user.profile_photo.url, :class => "profile")
+          span = answer.content
+          span.like-count = answer.like_count
+  - else
+    = link_to "댓글달러가기", "#"
+
+- when Problem::PHASE_FINAL
+  p final
+
+- when Problem::PHASE_CLOSE
+  p close

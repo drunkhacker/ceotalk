@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140105101651) do
+ActiveRecord::Schema.define(version: 20140109120604) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20140105101651) do
     t.datetime "updated_at"
     t.integer  "company_category_id"
     t.boolean  "featured",            default: false
+    t.string   "logo"
   end
 
   create_table "company_categories", force: true do |t|
@@ -84,6 +85,14 @@ ActiveRecord::Schema.define(version: 20140105101651) do
 
   create_table "expert_categories", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "featured_experts", force: true do |t|
+    t.integer  "professional_id", null: false
+    t.string   "featured_photo",  null: false
+    t.text     "excerpt",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

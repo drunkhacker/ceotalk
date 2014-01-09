@@ -4,11 +4,6 @@ h3.section-title
   a.more href="#" 전체보기
 #selected-contents.row.clear
   .contents.column
-    /.item
-      /= image_tag("http://placekitten.com/480/240")
-    /- (1...7).each do |i|
-      /.item
-        /=image_tag("http://placekitten.com/240/#{120+i}")
     - @selected_contents.each do |content|
       = link_to(content, :class => "item") do
         =image_tag(content.thumb_url)
@@ -30,14 +25,7 @@ h3.section-title
       h5.title = problem.title
       p = problem.content
 
-      h6 Best 답변
-      ul.best-answers
-        - @cleague_best_answers.each_with_index do |answer, i|
-          li.answer-item
-            span.rank = i+1
-            = image_tag(answer.user.profile_photo.url, :class => "profile")
-            span = answer.content
-            span.like-count = answer.like_count
+      = render :partial => "problem_comments", locals: {problem: problem}
     .state-tag 
       span = Problem::PHASE_TO_WORD[problem.phase]
   - @problems[1..-1].each do |problem|
@@ -62,10 +50,13 @@ h3.section-title
       | Experts & Corporation
       =link_to("목록", professionals_path, class: "more")
     #experts-corporation.row
-      - @featured_experts.each do |professional|
-        .item.column
-          =image_tag(professional.profile_photo.url, :class => "bg")
-          .overlay
-            h5.title = professional.name
-
+      a.item.column href=professional_path(@featured_expert.professional)
+        =image_tag(@featured_expert.featured_photo.url, :class => "bg")
+        .overlay
+          h5.title = @featured_expert.professional.name
+          p = @featured_expert.excerpt
+      a.item.column href=company_path(@featured_company)
+        =image_tag(@featured_company.logo.url, :class => "bg")
+        .overlay
+          h5.title = @featured_company.name
 

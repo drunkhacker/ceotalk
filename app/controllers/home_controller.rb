@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     @cleague_best_answers = @problems.first.comments
 
     # experts & Corporation part
-    @featured_experts = Professional.where(:featured => true).limit(2)
+    @featured_expert = FeaturedExpert.last
+    @featured_company = Company.where(:featured => true).first
   end
 end

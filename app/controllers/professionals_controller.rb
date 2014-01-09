@@ -4,4 +4,8 @@ class ProfessionalsController < ApplicationController
     @professionals = Professional.all
     @indexes = %w(ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ)
   end
+
+  def show
+    @professional = Professional.find(params[:id])
+  end
 end

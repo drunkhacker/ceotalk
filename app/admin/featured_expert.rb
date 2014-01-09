@@ -1,21 +1,6 @@
-ActiveAdmin.register ExpertCategory do
+ActiveAdmin.register FeaturedExpert do
 
-  permit_params :name
-
-  show :title => :name do |category|
-    attributes_table do
-      row :id
-      row :name
-
-      row :experts do 
-        ul do
-          category.professionals.each do |professional|
-            li link_to professional.name, admin_user_path(professional)
-          end
-        end
-      end
-    end
-  end
+  permit_params :professional_id, :featured_photo, :excerpt
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
