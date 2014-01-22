@@ -1,20 +1,27 @@
 h3.section-title  
   | ceo talk
   small 당신을 위한 CEO들의 노하우 톡!톡!톡!
-  a.more href="#" 전체보기
+  a.more href="#" more
+= render '/categories'
 #selected-contents.row.clear
   .contents.column
-    - @selected_contents.each do |content|
-      = link_to(content, :class => "item") do
+    - @selected_contents.each_with_index do |content, i|
+      .item
         =image_tag(content.thumb_url)
+        .overlay
+          .category = content.category.name
+          h6.name = content.professional.name
+          h5.title = truncate(content.title, length: 30,  omission: "...#{content.title.last(10)}")
+          p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
+          = link_to "more", (content.class == Talk ? talks_path : posts_path)+ "/##{content.id}", :class => "more" 
     - (0...7-@selected_contents.count).each do |i|
       .item
         =image_tag("http://placekitten.com/240/#{120+i}")
 
 h3.section-title 
-  | crowd solution
-  small CEO여러분의 고민해결을 위한 해결 방안 공모전
-  = link_to "목록", problems_path, class: "more"
+  | C'league
+  small CEO 여러분의 고민해결을 위한 솔루션 아카이브
+  = link_to "more", problems_path, class: "more"
 #crowd-sourcing.row.clear
   .item
     .thumbnail
@@ -22,6 +29,7 @@ h3.section-title
       = link_to(problem) do 
         = image_tag(problem.thumb_url)
     .excerpt
+      .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
       h5.title = problem.title
       p = problem.content
 
@@ -29,8 +37,10 @@ h3.section-title
     .state-tag 
       span = Problem::PHASE_TO_WORD[problem.phase]
   - @problems[1..-1].each do |problem|
-    =link_to(problem, :class => "item") do 
-      =image_tag(problem.thumb_url, :class => "bg")
+    .item
+      .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
+      =image_tag(problem.thumb_url, :class => "thumbnail")
+      p.description = problem.content
 
       .overlay
         h5.title = problem.title
@@ -42,13 +52,13 @@ h3.section-title
 .row.clear
   .column style="width: 50%"
     h3.section-title 
-      | c3eo class
+      | ceo class
       small C3EO MBA만의 특별한 교육과정
-      a.more href="#" onclick="alert('not yet'); return false;" 목록
+      a.more href="#" onclick="alert('not yet'); return false;" more
   .column style="width: 50%"
     h3.section-title 
       | Experts & Corporation
-      =link_to("목록", professionals_path, class: "more")
+      =link_to("more", professionals_path, class: "more")
     #experts-corporation.row
       a.item.column href=professional_path(@featured_expert.professional)
         =image_tag(@featured_expert.featured_photo.url, :class => "bg")

@@ -8,4 +8,8 @@ class Post < Content
   validates_presence_of :url
   validates_presence_of :professional_id
 
+  def description
+    excerpt
+  end
+
 end

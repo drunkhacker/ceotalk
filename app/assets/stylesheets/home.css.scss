@@ -3,20 +3,40 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .section-title {
-  /*text-transform: uppercase;*/
-  @include size(100% 40px);
-  line-height: 40px;
+  text-transform: uppercase;
+  @include size(100% 30px);
+  line-height: 30px;
+  color: $color-green;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 90px;
+  margin-bottom: 50px;
   small {
-    margin-left: 15px;
-    font-size: small;
-    color: #aaa;
+    margin-left: 26px;
+    font-size: 11px;
+    color: $color-gray-1;
+    font-weight: normal;
   }
 
   .more {
-    width: 200px;
+    @include size(64px 23px);
+    line-height: 23px;
+
     float: right;
     display: block;
-    background-color: #aaa;
+    color: white;
+    text-decoration: none;
+    background: url(/assets/bg-more.png) no-repeat;
+    /*background-color: #E7E7E8;*/
+    text-transform: uppercase;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
   }
 }
 
@@ -31,7 +51,7 @@
   }
 
   .contents {
-    background-color: #eee;
+    /*background-color: #eee;*/
     /*display: flex;*/
     /*-webkit-flex-flow: row wrap;*/
     /*flex-direction: row;*/
@@ -39,20 +59,59 @@
     /*-webkit-align-content: flex-start;*/
 
     @include size(100% 100%);
+    $gap: 10px;
+    $w: (1200px - 4*$gap) / 5;
     .item {
       img {
         @include size(100% 100%);
       }
       float: left;
-      @include size(240px 120px);
+      @include size($w 132px);
+      /*border: 1px solid red;*/
+      margin-right: 10px;
+      margin-bottom: 10px;
+
+      &:nth-child(4) {
+        margin-right: 0px;
+      }
+      &:nth-child(7) {
+        margin-right: 0px;
+      }
+
+
       overflow: hidden;
       &:first-child {
-        @include size(240px*2 120px*2);
+        @include size((2*$w + $gap) (132px*2 + 10px));
+
+        //첫번째에 오는것들은 죄다 크다.
+        .overlay {
+          padding-left: 25px;
+          /*padding-right: 12px;*/
+          top: calc(100% - 65px);
+          .name {
+            font-size: 13px;
+            margin-bottom: 10px;
+          }
+
+          .title {
+            font-size: 24px;
+            margin-bottom: 45px;
+          }
+
+          .category {
+            margin-bottom: 50px;
+            font-size: 12px;
+          }
+
+          .description {
+            font-size: 12px;
+          }
+        }
       }
     }
   }
 
-  @include size(100% 240px);
+  @include size(100% (132px*2 + 10px));
   /*border: 1px solid black;*/
 }
 
@@ -60,47 +119,106 @@
   .item {
     position: relative;
     display: block;
-    @include size(240px 120px);
 
-    @mixin state-tag($w, $fg_color, $bg_color) {
-      color: $fg_color;
-      @include size(0 0);
-      border-right: $w solid $bg_color;
-      border-top: $w solid $bg_color;
-      border-bottom: $w solid transparent;
-      border-left: $w solid transparent;
-      position: absolute;
-      top: 0; right: 0;
-      span {
-        font-size: small;
-        margin-top: -$w/2;
-        width: $w;
-        position: absolute;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    /*padding-left: 8px;*/
+    /*padding-top: 8px;*/
+
+    &:nth-child(3), &:nth-child(5) {
+      margin-right: 0;
+    }
+
+    background-color: #eee;
+
+    $item-height: 134px;
+    $item-width: 226px;
+    $gap : 10px;
+
+    @include size($item-width $item-height);
+
+    /*@mixin state-tag($w, $fg_color, $bg_color) {*/
+      /*color: $fg_color;*/
+      /*@include size(0 0);*/
+      /*border-right: $w solid $bg_color;*/
+      /*border-top: $w solid $bg_color;*/
+      /*border-bottom: $w solid transparent;*/
+      /*border-left: $w solid transparent;*/
+      /*position: absolute;*/
+      /*top: 0; right: 0;*/
+      /*span {*/
+        /*font-size: small;*/
+        /*margin-top: -$w/2;*/
+        /*width: $w;*/
+        /*position: absolute;*/
+      /*}*/
+    /*}*/
+
+    .q-number {
+      font-size: 20px;
+      color: $color-green;
+      margin-left: 8px;
+      margin-top: 8px;
+      .dot {
+        color: $color-red;
+        content: ".";
       }
     }
 
+    .overlay {
+      top: 100%;
+    }
+
     .state-tag.small {
-      @include state-tag(20px, white, #444);
+      /*@include state-tag(20px, white, #444);*/
       span {
         font-size: 10px;
       }
     }
 
+    .thumbnail {
+      @include size(72px 92px);
+      margin-left: 8px;
+    }
+
+    .description {
+      float: left;
+    }
+
     &:first-child {
-      @include size(720px 240px);
+      background: transparent;
+      @include size((1200px - $gap*2 - $item-width*2) ($item-height*2 + $gap));
+      padding-right: 10px;
+      /*padding-left: 0;*/
+      /*padding-top: 0;*/
 
       .thumbnail {
-        @include size(33.333% 100%);
-        /*background: url(http://placekitten.com/240/240);*/
+        @include size(214px 100%);
+        /*background: url(http://placekitten.com/214/284);*/
         float: left;
+        margin-right: 20px;
       }
 
+      .q-number {
+        font-size: 40px;
+        margin: 0;
+      }
 
       .state-tag {
-        @include state-tag(30px, white, #444);
+        /*@include state-tag(30px, white, #444);*/
+        @include size(31px 28px);
+        background: url(/assets/icn-hexagon.png) no-repeat;
+        position: absolute;
+        top: 20px; right: 10px;
+        font-size: 11px;
+        color: white;
+        text-align: center;
+        padding-top: 9px;
       }
 
       .excerpt {
+        padding-top: 20px;
         @include size(66.666% 100%);
         float: left;
 
@@ -117,10 +235,17 @@
             float: right;
           }
         }
+
+        .title {
+          font-size: 14px;
+          line-height: 130%;
+          text-align: center;
+          padding: 15px 120px;
+        }
       }
     }
     float: left;
-    border: 1px solid #aaa;
+    /*border: 1px solid #aaa;*/
 
   }
 
@@ -136,18 +261,59 @@
 
 //common item hover overlay effect
 .item {
+  text-decoration: none;
   .overlay {
     position: absolute;
-    top: -100%;
+    top: calc(100% - 48px);
     transition: top 0.3s ease-out;
-    background-color: rgba(0,0,0,0.3);
+    background-color: $color-black-80;
     color: white;
     @include size(100% 100%);
     overflow: hidden;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    .name {
+      margin-top:12px;
+      margin-bottom:3px;
+      font-size: 12px;
+    }
+    .title {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .description {
+      font-size: 10px;
+      line-height: 120%;
+    }
+
+    .category {
+      margin-top: 7px;
+      margin-right: -7px;
+      text-align: right;
+      font-size: 10px;
+      display: none;
+      color: $color-blue;
+    }
+
+    .more {
+      color: $color-blue;
+      font-weight: bold;
+      font-size: 12px;
+      position: absolute;
+      right: 7px;
+      bottom: 5px;
+      text-decoration: none;
+    }
   }
   &:hover {
     .overlay {
-      top: 0;
+      top: 0 !important;
+    }
+
+    .category {
+      display: block;
     }
   }
 
@@ -159,6 +325,43 @@
   }
   overflow: hidden;
   position: relative;
+}
+
+//category section
+.categories {
+  padding-top: 30px;
+  padding-bottom: 64px;
+
+  ul {
+    li {
+      font-size: 12px;
+      float: left;
+      color: #828283;
+      label {
+        display: inline-block;
+        width: 70px;
+        cursor: pointer;
+        cursor: hand; 
+        /*text-align: center;*/
+        &:hover {
+          color: #3F7E88;
+        }
+      }
+      &:last-child:after {
+        content: '';
+      }
+      &:after {
+        content: '/';
+        margin-right: 20px;
+      }
+
+      input[type='checkbox'] {
+        display: none;
+      }
+    }
+
+    margin-bottom: 15px;
+  }
 }
 
 

@@ -7,7 +7,7 @@ $ () ->
       console.log "url = #{url}"
 
       # check this is youtube url
-      pattern_youtube = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9]+)/i
+      pattern_youtube = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/i
       captures = pattern_youtube.exec url
 
       if captures? and captures[1]?

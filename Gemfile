@@ -57,11 +57,16 @@ gem 'rubypress'
 gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
 gem 'slim-rails'
 gem 'bourbon'
+gem 'kaminari'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'watchr'
   gem 'factory_girl_rails'
+  gem 'guard', '>= 2.2.2',       :require => false
+  gem 'guard-livereload',        :require => false
+  gem 'rack-livereload'
+  gem 'rb-fsevent',              :require => false
 end
 
 group :test do

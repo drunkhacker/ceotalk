@@ -1,13 +1,15 @@
 #gnb {
   width: 100%;
-  height: 75px;
-  background-color: #eee;
+  /*height: 75px;*/
+  /*background-color: #eee;*/
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 #site-logo {
-  background: url(http://placekitten.com/150/75) no-repeat;
+  background: url(/assets/site-logo.png) no-repeat;
   @include size(150px 75px);
-  float: left;
+  /*float: left;*/
   a {
     @include size(100% 100%);
     display: block;
@@ -15,21 +17,36 @@
 }
 
 .menu {
-  float: left;
+  float: right;
   height: 100%;
   .menu-item {
     float: left;
-    width: 150px;
+    width: 136px;
     height: 100%;
+    border-right: 1px solid #bdbfc1;
     a {
       @include size(100% 100%);
       display: block;
+      text-decoration: none;
+      text-align: center;
+      color: #444;
+      font-size: 12px;
+      text-transform: uppercase;
     }
   }
 }
 
 #login-status {
-  @include size(200px 100%);
-  background-color: #aaa;
-  float: right;
+  @include size(100% 24px);
+  /*background-color: #aaa;*/
+  /*float: right;*/
+  text-align: right;
+  font-size: 10px;
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-red;
+    margin-left: 14px;
+  }
+  
 }

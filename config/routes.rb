@@ -8,7 +8,9 @@ Ceotalk::Application.routes.draw do
   end
   resources :professionals do
   end
-  resources :talks
+  resources :talks do
+    resources :comments
+  end
   resources :problems
   resources :posts
   resources :companies

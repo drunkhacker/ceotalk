@@ -8,16 +8,19 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require 'reset'
+ *= require_self
  *= stub active_admin
+ *= require 'reveal'
  */
 
 @import "bourbon";
+@import "variables";
 @import "home";
 @import "users";
 @import "gnb";
 @import "utils";
+@import "talks";
 
 //for overall layout
 *, html, body {
@@ -27,6 +30,8 @@
 body {
   width: 1200px;
   margin: 0 auto !important;
+  font-family: Myriad Pro, Lucida Sans, Segoe UI, Calibri, sans serif;
+  
 }
 
 //pseudo-grid?
@@ -36,3 +41,11 @@ body {
   }
 }
 
+.shadow-line {
+  box-shadow:  100px 0px 50px -40px #ffffff inset, -100px 0px 50px -40px #ffffff inset,  0px 5px 10px -5px rgba(0,0,0,0.5) inset;
+  background-color: transparent;
+  border:none;
+  height: 10px;
+  width: 1300px;
+  margin-left: -50px;
+}
