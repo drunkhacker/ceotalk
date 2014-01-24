@@ -13,7 +13,7 @@ h3.section-title
           h6.name = content.professional.name
           h5.title = truncate(content.title, length: 30,  omission: "...#{content.title.last(10)}")
           p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
-          = link_to "more", (content.class == Talk ? talks_path : posts_path)+ "/##{content.id}", :class => "more" 
+          = link_to "more", "#{talks_path}/##{content.id}", :class => "more" 
     - (0...7-@selected_contents.count).each do |i|
       .item
         =image_tag("http://placekitten.com/240/#{120+i}")
