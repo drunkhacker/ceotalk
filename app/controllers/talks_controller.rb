@@ -12,7 +12,7 @@ class TalksController < ApplicationController
     @comment = Comment.new
     @other_talks = @talk.professional.talks.where("id != ?", @talk.id).order("created_at DESC").limit(5)
 
-    logger.debug "@talk.comments.count = #{@talk.comments.count}"
+    #logger.debug "@talk.comments.count = #{@talk.comments.count}"
 
     respond_with(@talk) do |format|
       format.html { render :layout => !request.xhr?}

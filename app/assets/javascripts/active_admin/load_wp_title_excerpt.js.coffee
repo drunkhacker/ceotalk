@@ -39,8 +39,8 @@ $ () ->
 
         setField = (response) ->
           $("#post_title").val $("<div/>").html(response["title"]).text()
-          $("#post_excerpt").val response["excerpt"]
-          $("#post_excerpt").trigger "change"
+          $("#post_description").val response["excerpt"]
+          $("#post_description").trigger "change"
 
           # find image
           featured_image = response["featured_image"]

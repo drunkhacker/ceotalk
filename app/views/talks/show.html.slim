@@ -4,8 +4,8 @@
       h1 = @talk.title
       h3 = @talk.category.name
 
-    .video
-      iframe width="420" height="315" src="#{@talk.embed_url}" frameborder="0" allowfullscreen
+    = render @talk
+
     .share-actions
       = link_to "like", "javascript: return false;", :class => "like"
       = link_to "favorite", "javascript: return false;", :class => "favorite"
@@ -15,7 +15,7 @@
         = image_tag(@current_user.profile_photo.url, :class => "profile-photo")
         h5.name = @current_user.name
         h6.company = @current_user.company.name
-      = form_for [@talk, @comment], :remote => true do |f| 
+      = form_for [@talk.becomes(Talk), @comment], :remote => true do |f| 
         = f.text_area(:content, :placeholder => "Add a comment")
         = f.submit "등록"
     .comment-count 
@@ -48,7 +48,8 @@
       hgroup.title
         h3 = truncate(@talk.title, :length => 25)
         h5.small = "Recorded: #{@talk.created_at.strftime "%Y. %B %d"}"
-      = simple_format @talk.description, :class => "description"
+      .description
+        = simple_format @talk.description
       ul.category-list.clear
         li.category = @talk.category.name
 

@@ -1,5 +1,4 @@
-class Talk < Content
-  self.table_name = "talks"
+class Talk < ActiveRecord::Base
 
   belongs_to :professional
   belongs_to :category
@@ -8,7 +7,6 @@ class Talk < Content
   validates_presence_of :url
   validates_presence_of :description
   validates_presence_of :professional_id
-
 
   def embed_url
     pattern_youtube = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9]+)/i

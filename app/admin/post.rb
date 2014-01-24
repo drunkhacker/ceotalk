@@ -1,12 +1,11 @@
 ActiveAdmin.register Post do
-
-  permit_params :url, :professional_id, :title, :excerpt, :thumb_url, :created_at, :category_id, :featured, :category_id
+  permit_params :url, :professional_id, :title, :description, :thumb_url, :created_at, :category_id, :featured, :category_id
 
   form do |f|
     f.inputs do
       f.input :url, :label => "URL"
       f.input :title, :placeholder => "URL을 입력하면 자동생성", :label => "제목"
-      f.input :excerpt, :placeholder => "URL을 입력하면 자동생성", :as => :html_preview, :label => "요약"
+      f.input :description, :placeholder => "URL을 입력하면 자동생성", :as => :html_preview, :label => "요약"
       f.input :thumb_url, :label => "썸네일", :as => :image_preview
       f.input :professional, :as => :select, :label => "전문가"
       f.input :category, :as => :select
@@ -38,8 +37,8 @@ ActiveAdmin.register Post do
         link_to post.url, post.url, :target => "_blank"
       end
 
-      row :excerpt do
-        post.excerpt.html_safe
+      row :description do
+        post.description.html_safe
       end
 
       row :professional
@@ -54,18 +53,4 @@ ActiveAdmin.register Post do
       end
     end
   end
-  
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #  permitted = [:permitted, :attributes]
-  #  permitted << :other if resource.something?
-  #  permitted
-  # end
-  
 end

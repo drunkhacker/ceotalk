@@ -1,4 +1,4 @@
-#videos.clear
+#talks.clear
   - @talks.each_with_index do |talk, i|
     .item class="#{i == 15 || i == 0 ? 'big' : ''}"
       = image_tag(talk.thumb_url)
@@ -7,7 +7,7 @@
         h6.name = talk.professional.name
         h5.title = truncate(talk.title, length: 20,  omission: "...#{talk.title.last(5)}")
         p.description = truncate(strip_tags(talk.description), length:  (i == 0 || i == 15)? 300 : 120) 
-        = link_to "more", (talk.class == Talk ? talks_path : posts_path)+ "/##{talk.id}", :class => "more" 
+        = link_to "more", "#{talks_path}/##{talk.id}", :class => "more" 
 
 
 .reveal-modal

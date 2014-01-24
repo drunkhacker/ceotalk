@@ -43,6 +43,19 @@
     }
   }
 
+  .post-wrapper {
+    background-color: $color-gray-3;
+    .post {
+      background-color: white;
+      padding: 20px 48px;
+      p {
+        font-size: 11pt;
+        line-height: 130%;
+      }
+    }
+    padding: 0 48px;
+  }
+
   .share-actions {
     @include size(100% 52px);
     background-color: $color-gray-3;
@@ -381,7 +394,7 @@
 //// talk index page
 ////
 
-#videos {
+#talks {
   /*width: 1200px - 40px + 10px;*/
   /*margin-left: 40px;*/
   .item {

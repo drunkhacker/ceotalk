@@ -1,0 +1,44 @@
+.post-wrapper
+  .post
+javascript:
+  $(function() {
+    var pattern_wp_com = /^(?:https?:\/\/)?(?:www\.)?(?:[\w\d]+\.)wordpress.com/;
+    var captures = pattern_wp_com.exec("#{@talk.url}");
+
+    if (captures) {
+      console.log("got captures");
+      var parser = document.createElement("a");
+      parser.href = "#{@talk.url}";
+
+      var id = null;
+      var slug = null;
+
+      var post_id_pattern = /p=([0-9]+)/;
+      var slug_pattern = /(?:[0-9]{4}\/)?(?:[0-9]+\/)?(?:[0-9]+\/)?([가-힣0-9a-z-]+)/;
+      var archive_pattern = /archives\/([0-9]+)/;
+
+      // case 1) check 
+      captures = null
+      if (captures = post_id_pattern.exec(parser.search), !!captures && !!captures[1])
+        id = captures[1];
+      // case 2,3,4) check 
+      else if (captures = slug_pattern.exec(parser.pathname), !!captures && !!captures[1])
+        slug = captures[1];
+      // case 5) check 
+      else if (captures = archive_pattern.exec(parser.pathname), !!captures && !!captures[1])
+        id = captures[1];
+
+      if (!!slug) {
+        console.log("get slug = " + slug);
+        $.getJSON("https://public-api.wordpress.com/rest/v1/sites/" + parser.host + "/posts/slug:" + slug + "?callback=?", function(response) {
+          $(".post").html(response.content);
+        });
+      } else if (!!id) {
+        console.log("get id = "+id);
+        $.getJSON("https://public-api.wordpress.com/rest/v1/sites/" + parser.host + "/posts/" + id + "?callback=?", function(response) {
+          $(".post").html(response.content);
+        });
+      }
+    }
+  });
+
