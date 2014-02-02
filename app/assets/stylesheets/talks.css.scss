@@ -14,11 +14,11 @@
   .column {
     float: left;
 
-    &:first-child {
+    &.left {
       width: 750px;
       margin-right: 24px;
     }
-    &:last-child {
+    &.right {
       width: 250px;
     }
   }
@@ -179,7 +179,7 @@
     padding-left: 16px;
     padding-top: 16px;
   }
-  #comments {
+  .comments {
     background-color: $color-gray-3;
     .comment {
       border-bottom: 1px solid $color-gray-1;

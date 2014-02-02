@@ -1,3 +1,4 @@
+require 'video_embed'
 class Problem < ActiveRecord::Base
   PHASE_PRE = 0
   PHASE_FINAL = 1
@@ -11,4 +12,6 @@ class Problem < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :content
   validates_presence_of :professional_id
+
+  include ::VideoEmbeddable
 end

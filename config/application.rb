@@ -34,5 +34,8 @@ module Ceotalk
       g.helper_specs false
     end
 
+    config.autoload_paths += %W(#{config.root}/lib)
+    
+
   end
 end

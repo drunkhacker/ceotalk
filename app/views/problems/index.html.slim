@@ -1,0 +1,21 @@
+#problems.clear
+  h1 C'league
+
+.reveal-modal
+
+javascript:
+  $(function() {
+    hash_changed = function() {
+      if (window.location.hash.length == 0)
+        return;
+      var problem_id = window.location.hash.substring(1);
+      $modal_dom = $(".reveal-modal");
+      $.get("#{problems_path}/"+problem_id, function(r) {
+        $modal_dom.html(r);
+        $modal_dom.reveal({animation: "fade", animationspeed: 150});
+      });
+    }
+    $(window).on('hashchange', hash_changed);
+    hash_changed();
+  
+  });

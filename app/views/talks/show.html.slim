@@ -1,5 +1,5 @@
 .content-layer.clear
-  .column
+  .column.left
     hgroup.content-header
       h1 = @talk.title
       h3 = @talk.category.name
@@ -21,12 +21,12 @@
     .comment-count 
       | 댓글 
       = @talk.comments.count
-    ul#comments
+    ul.comments
       - @talk.comments.each do |comment|
         = render comment
     .tail
       = link_to("MORE", "javascript: return false;", :class => "more")
-  .column
+  .column.right
     .professional
       = image_tag(@talk.professional.profile_photo.url, :class => "profile-photo")
       h3.name 

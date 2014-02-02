@@ -1,0 +1,54 @@
+.content-layer.clear
+  = render partial: 'phase_bar', :locals => {problem: @problem}
+  hgroup.content-header
+    h1 = @problem.title
+    /h3 = @problem.category.name
+
+  .problem.clear
+    div style="width: calc(50% - 4px); margin-right: 4px; float: left;"
+      iframe width="100%" height="334" src="#{@problem.embed_url}" frameborder="0" allowfullscreen
+    div style="width: calc(50% - 4px); margin-left: 4px; float: left;"
+      = simple_format @problem.content, :style => "background-color: white; height: 334px; overflow-y: auto; padding: 20px"
+
+  .share-actions
+    = link_to "like", "javascript: return false;", :class => "like"
+    = link_to "favorite", "javascript: return false;", :class => "favorite"
+    = link_to "share", "javascript: return false;", :class => "share"
+
+  .column.left
+    .new-comment.clear
+      .comment-author-info
+        = image_tag(@current_user.profile_photo.url, :class => "profile-photo")
+        h5.name = @current_user.name
+        h6.company = @current_user.company.name
+      = form_for [@problem, @comment.becomes(Comment)], :remote => true do |f| 
+        = f.text_area(:content, :placeholder => "Add a comment")
+        = f.submit "등록"
+    h5.comment-section-title 베스트 답변
+    ul#best-comments.comments
+      - @top_comments.each do |comment|
+        = render partial: 'comments/comment', :locals => {comment: comment}
+    h5.comment-section-title 최신순
+    ul.comments
+      - @problem.comments.each do |comment|
+        = render partial: 'comments/comment', :locals => {comment: comment}
+    .tail
+      = link_to("MORE", "javascript: return false;", :class => "more")
+  .column.right
+    .ceo-class-ad style="padding: 10px"
+      h3 쩌는 CEO class 광고
+      img src="http://images.kaneva.com/filestore8/4368225/5523026/retroU3_ad.jpg" style="width: 200px"
+    .other-videos
+      h3.section-header 지난 컨텐츠
+
+      ul.videos
+        - @other_problems.each do |problem|
+          li.clear
+            h5.talk-title= truncate(problem.title, :length => 25)
+            .excerpt
+              = image_tag(problem.thumb_url, :class => "thumbnail")
+              = simple_format truncate(problem.content, :length => 150), :class => "description"
+
+    .tail
+
+

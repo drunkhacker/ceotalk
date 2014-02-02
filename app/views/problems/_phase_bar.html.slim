@@ -1,0 +1,13 @@
+ul.phase-bar.clear
+  li.phase(class="#{problem.phase == 0 ? 'active' : ''}") 
+    span 
+      |예선
+      small 질문 - 댓글참여
+  li.phase(class="#{problem.phase == 1 ? 'active' : ''}") 
+    span 
+      |결선
+      small 방송 - 투표
+  li.phase(class="#{problem.phase == 2 ? 'active' : ''}") 
+    span
+      |완료
+      small 코멘트 - 현장스케치

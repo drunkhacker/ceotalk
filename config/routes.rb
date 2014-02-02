@@ -11,7 +11,9 @@ Ceotalk::Application.routes.draw do
   resources :talks do
     resources :comments
   end
-  resources :problems
+  resources :problems do
+    resources :comments
+  end
   resources :posts
   resources :companies
   # The priority is based upon order of creation: first created -> highest priority.
