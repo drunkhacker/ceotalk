@@ -1,8 +1,14 @@
 .content-layer.clear
   = render partial: 'phase_bar', :locals => {problem: @problem}
   hgroup.content-header
-    h1 = @problem.title
     /h3 = @problem.category.name
+    .professional style="float:right; width: 275px"
+      = image_tag(@problem.professional.profile_photo.url, :class => "profile-photo")
+      h3.name 
+        = @problem.professional.name
+        small = @problem.professional.company.name
+      h5.jobs 경영.기획 / 인사교육 / 자기계발
+    h1 = @problem.title
 
   .problem.clear
     div style="width: calc(50% - 4px); margin-right: 4px; float: left;"
