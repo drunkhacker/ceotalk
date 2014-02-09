@@ -1,8 +1,12 @@
+h3.section-title  
+  | ceo talk
+  small 당신을 위한 CEO들의 노하우 톡!톡!톡!
+
 #talks.clear
   - @talks.each_with_index do |talk, i|
     .item class="#{i == 15 || i == 0 ? 'big' : ''}"
       = image_tag(talk.thumb_url)
-      .overlay
+      a.overlay href="#{talks_path}/##{talk.id}" style="text-decoration: none;"
         .category = talk.category.name
         h6.name = talk.professional.name
         h5.title = truncate(talk.title, length: 20,  omission: "...#{talk.title.last(5)}")

@@ -1,1 +1,43 @@
-h1=@professional.name
+.content-layer.clear
+  .content-header
+    h1=@professional.tagline
+  .professional-intro.clear
+    .column.left
+      .detail-wrapper
+        = simple_format @professional.introduction
+    .column.right
+      h3.section-header 
+        | PROFILE
+      .section-content
+        .profile.clear
+          = image_tag(@professional.profile_photo.url, :class => "profile-image")
+          h4.name-company-position
+            = @professional.name
+            small = @professional.company.name
+
+          .clear.info style="margin-top: 45px;"
+            .title Career
+            .detail
+              = simple_format @professional.career
+
+          .clear.info
+            .title Interests
+            .detail
+              | 경영.기획 / 인사.교육 / 자기계발
+
+          .clear.info
+            .title Contact
+            .detail
+              = simple_format @professional.contact
+
+      h3.section-header 
+        | RELATED CONTENTS
+      .section-content
+        | not implemented yet
+
+  .share-actions
+    = link_to "like", "javascript: return false;", :class => "like"
+    = link_to "favorite", "javascript: return false;", :class => "favorite"
+    = link_to "share", "javascript: return false;", :class => "share"
+      
+

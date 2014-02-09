@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .phase-bar {
+  margin-bottom: 20px;
   .phase {
     float: left;
     @include size(33.3333% 45px);

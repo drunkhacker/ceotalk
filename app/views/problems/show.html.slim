@@ -14,7 +14,8 @@
     div style="width: calc(50% - 4px); margin-right: 4px; float: left;"
       iframe width="100%" height="334" src="#{@problem.embed_url}" frameborder="0" allowfullscreen
     div style="width: calc(50% - 4px); margin-left: 4px; float: left;"
-      = simple_format @problem.content, :style => "background-color: white; height: 334px; overflow-y: auto; padding: 20px"
+      div style="background-color: white; height: 334px; overflow-y: auto; padding: 20px"
+        = simple_format @problem.content, :style => "line-height:130%; margin-bottom: 15px;"
 
   .share-actions
     = link_to "like", "javascript: return false;", :class => "like"

@@ -2,7 +2,7 @@ class ProblemsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @problems = Problem.all
+    @problems = Problem.order("created_at DESC").page(params[:page]).per(19)
   end
 
   def show

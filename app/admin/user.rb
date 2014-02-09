@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  permit_params :name, :type, :company_id, :expert_category_id, :featured
+  permit_params :name, :type, :company_id, :expert_category_id, :featured, :tagline, :introduction, :career, :contact
 
   form do |f|
     f.inputs do
@@ -9,6 +9,10 @@ ActiveAdmin.register User do
       f.input :company
       f.input :expert_category
       f.input :featured
+      f.input :tagline
+      f.input :introduction
+      f.input :career, :as => :text
+      f.input :contact, :as => :text
     end
     f.actions
   end
