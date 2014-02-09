@@ -1,3 +1,18 @@
 // Place all the styles related to the Companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.company-intro {
+  .section-content {
+    .detail {
+      margin-bottom: 5px;
+    }
+  }
+
+  .company-logo {
+    max-width: 175px;
+    margin:0 auto;
+    display: block;
+    margin-bottom: 50px;
+  }
+}

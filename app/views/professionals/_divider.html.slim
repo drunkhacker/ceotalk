@@ -1,0 +1,9 @@
+.divider
+  = link_to 'EXPERTS', professionals_path, :class => controller_name == 'professionals' ? "active" : ""
+  ||
+  = link_to 'CORPORATIONS', companies_path, :class => controller_name == 'companies' ? "active" : ""
+
+ul.name-indexes.clear
+  - @indexes.each do |index|
+    li = link_to(index, "#")
+

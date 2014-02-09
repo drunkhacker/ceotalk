@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .name-indexes {
+  font-size: 10pt;
   li {
     float: left;
     margin-right: 10px;
@@ -10,6 +11,7 @@
       text-decoration: none;
     }
   }
+  margin-bottom: 60px;
 }
 
 .professional {
@@ -46,7 +48,7 @@
   }
 }
 
-.professional-intro {
+.professional-intro, .company-intro {
   background-color: $color-gray-3;
   padding: 40px 30px;
   padding-bottom: 0;
@@ -116,4 +118,22 @@
       line-height: 120%;
     }
   }
+}
+
+.divider {
+  font-size: 10pt;
+  a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: $color-black;
+    &.active {
+      /*font-weight: bold;*/
+      color: $color-green;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  margin-bottom: 20px;
 }

@@ -1,2 +1,37 @@
-h1= @company.name
-= image_tag(@company.logo.url)
+.content-layer.clear
+  .content-header
+    h1=@company.tagline
+  .company-intro.clear
+    .column.left
+      .detail-wrapper
+        = image_tag(@company.logo.url, :class => "company-logo")
+        = simple_format @company.introduction
+    .column.right
+      h3.section-header 
+        | CONTACT
+      .section-content
+        .profile.clear
+          .clear.info
+            .title Email
+            .detail
+              = @company.email || "&nbsp;".html_safe
+
+          .clear.info
+            .title Web
+            .detail
+              = @company.url
+
+          .clear.info
+            .title Address
+            .detail
+              = @company.address || "&nbsp;".html_safe
+
+      h3.section-header 
+        | MEMBERS
+      .section-content
+        | not implemented yet
+
+  .share-actions
+    = link_to "like", "javascript: return false;", :class => "like"
+    = link_to "favorite", "javascript: return false;", :class => "favorite"
+    = link_to "share", "javascript: return false;", :class => "share"

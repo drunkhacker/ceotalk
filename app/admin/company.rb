@@ -1,6 +1,6 @@
 ActiveAdmin.register Company do
 
-  permit_params :name, :url, :company_category_id, :logo, :featured
+  permit_params :name, :url, :company_category_id, :logo, :featured, :tagline, :email, :address, :introduction
 
   index do
     selectable_column

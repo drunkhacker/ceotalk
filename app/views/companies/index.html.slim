@@ -5,15 +5,13 @@ h3.section-title
 = render '/professionals/divider'
 
 .professionals-container.clear
-  - @professionals.each do |professional|
-    = link_to "#{professionals_path}/##{professional.id}", :class => "professional" do
-      =image_tag(professional.profile_photo.url)
+  - @companies.each do |company|
+    = link_to "#{companies_path}/##{company.id}", :class => "professional" do
+      =image_tag(company.logo.url)
       .overlay
         h6.company 
-          =professional.company.name
-          br
-          =professional.category_name
-        h5.name =professional.name 
+          =company.tagline
+        h5.name =company.name 
 
 .reveal-modal
 
@@ -22,9 +20,9 @@ javascript:
     hash_changed = function() {
       if (window.location.hash.length == 0)
         return;
-      var professional_id = window.location.hash.substring(1);
+      var company_id = window.location.hash.substring(1);
       $modal_dom = $(".reveal-modal");
-      $.get("#{professionals_path}/"+professional_id, function(r) {
+      $.get("#{companies_path}/"+company_id, function(r) {
         $modal_dom.html(r);
         $modal_dom.reveal({animation: "fade", animationspeed: 150});
       });
