@@ -8,7 +8,7 @@ h3.section-title
     - @selected_contents.each_with_index do |content, i|
       .item
         =image_tag(content.thumb_url)
-        .overlay
+        a.overlay href="#{talks_path}/##{content.id}" style="text-decoration: none"
           .category = content.category.name
           h6.name = content.professional.name
           h5.title = truncate(content.title, length: 30,  omission: "...#{content.title.last(10)}")

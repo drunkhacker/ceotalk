@@ -329,8 +329,8 @@
 
 //category section
 .categories {
-  padding-top: 30px;
-  padding-bottom: 64px;
+  /*padding-top: 10px;*/
+  padding-bottom: 20px;
 
   ul {
     li {
@@ -339,12 +339,23 @@
       color: #828283;
       label {
         display: inline-block;
-        width: 70px;
+        padding: 4px;
+        width: 60px;
+        text-align: center;
+        margin-right: 10px;
         cursor: pointer;
         cursor: hand; 
         /*text-align: center;*/
         &:hover {
-          color: #3F7E88;
+          color: white;
+          background-color: $color-gray-1;
+          border-radius: 3px;
+        }
+
+        &.active {
+          color: white;
+          background-color: $color-green;
+          border-radius: 3px;
         }
       }
       &:last-child:after {
@@ -352,7 +363,7 @@
       }
       &:after {
         content: '/';
-        margin-right: 20px;
+        margin-right: 10px;
       }
 
       input[type='checkbox'] {
