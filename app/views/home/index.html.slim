@@ -37,7 +37,7 @@ h3.section-title
     .state-tag 
       span = Problem::PHASE_TO_WORD[problem.phase]
   - @problems[1..-1].each do |problem|
-    .item
+    .item style="border-radius: 5px;"
       .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
       =image_tag(problem.thumb_url, :class => "thumbnail")
       p.description = problem.content
@@ -45,19 +45,20 @@ h3.section-title
       .overlay
         h5.title = problem.title
         p = problem.content
-        .state-tag.small
-          span = Problem::PHASE_TO_WORD[problem.phase]
+      .state-tag.small
+        span = Problem::PHASE_TO_WORD[problem.phase]
 
 
 .row.clear
   .column style="width: 50%"
     h3.section-title 
-      | ceo class
-      small C3EO MBA만의 특별한 교육과정
+      | c'class
+      small CEO MBA만의 특별한 교육과정
       a.more href="#" onclick="alert('not yet'); return false;" more
   .column style="width: 50%"
     h3.section-title 
-      | Experts & Corporation
+      | C'MEMBERS
+      small CEO MBA의 전문가와 기업들
       =link_to("more", professionals_path, class: "more")
     #experts-corporation.row
       a.item.column href=professional_path(@featured_expert.professional)

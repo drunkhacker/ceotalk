@@ -179,11 +179,30 @@
 
     .thumbnail {
       @include size(72px 92px);
-      margin-left: 8px;
+      margin: 0 8px;
+      display: block;
+      float: left;
     }
 
     .description {
+      width: $item-width - 72px - 8px*2;
+      margin-top: 30px;
+      height: $item-height - 90px;
+      overflow: hidden;
       float: left;
+      font-size: 9pt;
+      line-height: 120%;
+      color: $color-gray-2;
+      /*margin-top: 30px;*/
+      padding-right: 8px;
+    }
+
+    .state-tag {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      color: $color-red;
+      font-weight: bold;
     }
 
     &:first-child {
@@ -194,10 +213,11 @@
       /*padding-top: 0;*/
 
       .thumbnail {
-        @include size(214px 100%);
+        @include size((214px - 20px) 100%);
         /*background: url(http://placekitten.com/214/284);*/
         float: left;
         margin-right: 20px;
+        overflow: hidden;
       }
 
       .q-number {
@@ -209,7 +229,6 @@
         /*@include state-tag(30px, white, #444);*/
         @include size(31px 28px);
         background: url(/assets/icn-hexagon.png) no-repeat;
-        position: absolute;
         top: 20px; right: 10px;
         font-size: 11px;
         color: white;
