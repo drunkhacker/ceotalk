@@ -13,7 +13,7 @@
           = image_tag(@professional.profile_photo.url, :class => "profile-image")
           h4.name-company-position
             = @professional.name
-            small = @professional.company.name
+            small = @professional.company.name + " " + @professional.position
 
           .clear.info style="margin-top: 45px;"
             .title Career
