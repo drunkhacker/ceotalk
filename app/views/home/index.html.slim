@@ -10,7 +10,7 @@ h3.section-title
         =image_tag(content.thumb_url)
         =image_tag(if content.type == 'Video' then "/assets/icn-talk.png" else "/assets/icn-column.png" end, :class => "talk-tag")
         a.overlay href="#{talks_path}/##{content.id}" style="text-decoration: none"
-          .category = content.category.name
+          .category = content.category
           h6.name = content.professional.name
           h5.title = truncate(content.title, length: 30,  omission: "...#{content.title.last(10)}")
           p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
