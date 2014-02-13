@@ -1,0 +1,10 @@
+$left-width: 245px;
+.devise-left-menu {
+  width: $left-width;
+  float: left;
+}
+
+.devise-content {
+  width: 1200px - $left-width;
+  float: left;
+}

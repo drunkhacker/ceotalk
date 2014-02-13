@@ -1,0 +1,68 @@
+// Place all the styles related to the open_questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#questions {
+  .item {
+    h5.title {
+      padding-top: 10px;
+    }
+
+    &:first-child {
+      .meta {
+        font-size: 14px;
+        .like-count {
+          padding-left: 25px;
+          background-size: 18px 19px;
+          line-height: 24px;
+        }
+        .comment-count {
+          padding-left: 30px;
+          background-size: 22px 16px;
+          line-height: 24px;
+        }
+      }
+    }
+
+    .meta {
+      font-size: 12px;
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      bottom: 5px;
+      color: white;
+      padding-right: 10px;
+      .like-count {
+        float: right;
+        padding-left: 20px;
+        line-height: 20px;
+        background: url(/assets/icn-like-count-2.png) no-repeat;
+        background-size: 14px;
+        margin-right: 10px;
+      }
+
+      .comment-count {
+        float: right;
+        padding-left: 25px;
+        line-height: 20px;
+        background: url(/assets/icn-comment-count-2.png) 0 1px no-repeat;
+        background-size: 18px;
+      }
+    }
+  }
+
+  margin-bottom: 50px;
+}
+
+.section-sub-title {
+  color: $color-red;
+  font-weight: bold;
+  font-size: 12pt;
+  margin-bottom: 30px;
+}
+
+.ceo-class-ad {
+  @include size(100% 800px);
+  background-color: $color-gray-3;
+}
+

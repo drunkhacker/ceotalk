@@ -1,6 +1,6 @@
 ActiveAdmin.register Video do
 
-  permit_params :url, :description, :professional_id, :thumb_url, :created_at, :title, :category_id, :featured
+  permit_params :url, :description, :professional_id, :thumb_url, :created_at, :title, :featured, category_ids: []
  
   form do |f|
     f.inputs do
@@ -9,7 +9,7 @@ ActiveAdmin.register Video do
       f.input :thumb_url, :as => :image_preview, :label => "썸네일"
       f.input :description, :label => "설명"
       f.input :professional, :as => :select, :label => "전문가"
-      f.input :category
+      f.input :categories
       f.input :created_at, :label => "생성시각", :as => :date_picker
       f.input :featured
     end

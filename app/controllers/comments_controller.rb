@@ -4,12 +4,14 @@ class CommentsController < ApplicationController
 
   def create
     #logger.debug "#{params[:comment].inspect}"
-    commentable_id = params[:talk_id] || params[:problem_id]
+    commentable_id = params[:talk_id] || params[:problem_id] || params[:open_question_id]
     commentable =
       if params[:talk_id] then 
         Talk
       elsif params[:problem_id] then
         Problem
+      elsif params[:open_question_id] then
+        OpenQuestion
       end
 
     collection_path = 
@@ -17,6 +19,8 @@ class CommentsController < ApplicationController
         talks_path
       elsif params[:problem_id] then
         problems_path
+      elsif params[:open_qusetion_id] then
+        open_questions_path
       end
 
     @commentable = commentable.find(commentable_id)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209104200) do
+ActiveRecord::Schema.define(version: 20140213182931) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -101,6 +101,13 @@ ActiveRecord::Schema.define(version: 20140209104200) do
     t.datetime "updated_at"
   end
 
+  create_table "interests", force: true do |t|
+    t.integer  "user_id",            null: false
+    t.integer  "expert_category_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "likes", id: false, force: true do |t|
     t.integer  "user_id",    null: false
     t.integer  "comment_id", null: false
@@ -113,9 +120,12 @@ ActiveRecord::Schema.define(version: 20140209104200) do
   create_table "open_questions", force: true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "view_count", default: 0, null: false
+    t.integer  "view_count",      default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumbnail"
+    t.integer  "like_count",      default: 0
+    t.integer  "professional_id"
   end
 
   create_table "posts", force: true do |t|
@@ -155,6 +165,14 @@ ActiveRecord::Schema.define(version: 20140209104200) do
     t.string   "thumb_url"
   end
 
+  create_table "tags", force: true do |t|
+    t.integer  "category_id",   null: false
+    t.integer  "taggable_id",   null: false
+    t.string   "taggable_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "talks", force: true do |t|
     t.string   "url",                             null: false
     t.text     "description"
@@ -164,7 +182,6 @@ ActiveRecord::Schema.define(version: 20140209104200) do
     t.datetime "updated_at"
     t.string   "thumb_url",                       null: false
     t.string   "title"
-    t.integer  "category_id",                     null: false
     t.boolean  "featured",        default: false
     t.integer  "order",           default: 0
     t.string   "type"
@@ -190,7 +207,6 @@ ActiveRecord::Schema.define(version: 20140209104200) do
     t.string   "uid"
     t.string   "profile_photo"
     t.string   "position"
-    t.integer  "expert_category_id"
     t.string   "short_description"
     t.text     "description"
     t.string   "quote"

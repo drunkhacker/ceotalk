@@ -1,8 +1,8 @@
 .content-layer.clear
   .column.left
-    hgroup.content-header
-      h1 = @talk.title
-      h3 = @talk.category.name
+    hgroup.content-header class="#{if @talk.is_a?(Video) then "video" else "post" end}"
+      h1.title = @talk.title
+      h3.category = @talk.category
 
     = render @talk
 
@@ -27,12 +27,7 @@
     .tail
       = link_to("MORE", "javascript: return false;", :class => "more")
   .column.right
-    .professional
-      = image_tag(@talk.professional.profile_photo.url, :class => "profile-photo")
-      h3.name 
-        = @talk.professional.name
-        small = @talk.professional.company.name
-      h5.jobs 경영.기획 / 인사교육 / 자기계발
+    = render partial: "/users/pro_short_side", locals: {professional: @talk.professional }
     .meta
       dl
         dt View
@@ -51,7 +46,7 @@
       .description
         = simple_format @talk.description
       ul.category-list.clear
-        li.category = @talk.category.name
+        li.category = @talk.category
 
     .ceo-class-ad style="padding: 10px"
       h3 쩌는 CEO class 광고

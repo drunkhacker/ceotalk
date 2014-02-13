@@ -31,12 +31,12 @@ javascript:
       if (!!slug) {
         console.log("get slug = " + slug);
         $.getJSON("https://public-api.wordpress.com/rest/v1/sites/" + parser.host + "/posts/slug:" + slug + "?callback=?", function(response) {
-          $(".post").html(response.content);
+          $(".post-wrapper .post").html(response.content);
         });
       } else if (!!id) {
         console.log("get id = "+id);
         $.getJSON("https://public-api.wordpress.com/rest/v1/sites/" + parser.host + "/posts/" + id + "?callback=?", function(response) {
-          $(".post").html(response.content);
+          $(".post-wrapper .post").html(response.content);
         });
       }
     }

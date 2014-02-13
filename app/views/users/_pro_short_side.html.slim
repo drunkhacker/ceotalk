@@ -1,0 +1,6 @@
+.professional-short-side
+  = image_tag(professional.profile_photo.url, :class => "profile-photo")
+  h3.name 
+    = professional.name
+  h5.jobs = professional.company.name
+  h5.jobs = professional.expert_categories.map {|c| c.name}.join " / "

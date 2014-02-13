@@ -24,6 +24,8 @@
 @import "problems";
 @import "professionals";
 @import "companies";
+@import "devise";
+@import "open_questions";
 
 //for overall layout
 *, html, body {
@@ -51,4 +53,33 @@ body {
   height: 10px;
   width: 1300px;
   margin-left: -50px;
+}
+
+.professional-short-side {
+  padding-top: 13px;
+  padding-left: 13px;
+
+  @include size(100% 78px);
+  background-color: $color-green;
+  .profile-photo {
+    display: block;
+    float: left;
+    @include size(52px 52px);
+    margin-right: 15px;
+  }
+
+  .name {
+    padding-top: 5px;
+    color: white !important;
+    font-size: 20px;
+    small {
+      font-size: 10pt;
+    }
+  }
+
+  .jobs {
+    color: $color-gray-1;
+    font-size: 9pt;
+  }
+
 }

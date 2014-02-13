@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   has_many :comments
   belongs_to :company
   has_many :presentations
-  #XXX : 원래 expert_category는professional에만 할당된 속성인데, 귀찮아지는게 너무 많아서 일단 여기에 둔다
-  belongs_to :expert_category
+  has_many :interests
+  has_many :expert_categories, :through => :interests
 
   validates_presence_of :name
 

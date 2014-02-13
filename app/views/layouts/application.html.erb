@@ -10,25 +10,36 @@
 
     <div id="gnb" class="clear">
       <div id="login-status">
-        <% if signed_in? %>
+        <% if signed_in? -%>
           <%= current_user.name %>님 환영합니다! 
-          <%= link_to '마이페이지', edit_user_path(current_user) %>
-          <%= link_to '로그아웃', destroy_user_session_path %>
-        <% else %>
+          <%= link_to '마이페이지', edit_user_registration_path %>
+          <%= link_to '로그아웃', destroy_user_session_path, :method => :delete %>
+        <% else -%>
            <%= link_to "login", new_user_session_path %>
           <%= link_to "join", new_user_registration_path %>
-       <% end %>
+       <% end -%>
       </div>
       <h1 id="site-logo" class="hide-text"> <%= link_to 'Logo', root_path %> </h1>
       <ul class="menu">
         <li class="menu-item"><%= link_to "CEO TALK", talks_path %></li>
         <li class="menu-item"><%= link_to "C'League", problems_path %></li>
-        <li class="menu-item"><%= link_to "C'CLASS", "#" %></li>
+        <li class="menu-item"><%= link_to "C'CLASS", open_questions_path %></li>
         <li class="menu-item"><%= link_to "C'MEMBERS", professionals_path%></li>
       </ul>
     </div>
     <hr class="shadow-line">
-    <%= yield %>
+    <% if devise_controller? %>
+      <div class="clear">
+        <div class="devise-left-menu">
+          <%= render "/devise/left_menus"%>
+        </div>
+        <div class="devise-content">
+          <%= yield %>
+        </div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
 
   </body>
 </html>

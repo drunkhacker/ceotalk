@@ -7,7 +7,7 @@ h3.section-title
     .item class="#{i == 15 || i == 0 ? 'big' : ''}"
       = image_tag(talk.thumb_url)
       = link_to(talk.becomes(Talk), :class => "overlay modal-popup", :style => "text-decoration: none;") do
-        .category = talk.category.name
+        .category = talk.category
         h6.name = talk.professional.name
         h5.title = truncate(talk.title, length: 20,  omission: "...#{talk.title.last(5)}")
         p.description = truncate(strip_tags(talk.description), length:  (i == 0 || i == 15)? 300 : 120) 

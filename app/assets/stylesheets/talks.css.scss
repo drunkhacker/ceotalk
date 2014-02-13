@@ -29,8 +29,7 @@
     @include size(100% 78px);
     padding-left: 16px;
 
-    h1 {color: white; font-size: 18pt; padding: 16px 0;}
-    h3 {color: $color-gray-1; font-size: 12pt;}
+    /*h3 {color: $color-gray-1; font-size: 12pt;}*/
     background-color: $color-green;
   }
 
@@ -213,7 +212,7 @@
 
     .comment-content {
       color: $color-gray-2;
-      font-size: 12pt;
+      font-size: 14px;
       padding: 10px 0 20px 0;
       line-height: 120%;
       float: left;
@@ -252,30 +251,6 @@
   //right column contents
 
   .professional {
-    padding-top: 13px;
-    padding-left: 13px;
-
-    @include size(100% 78px);
-    background-color: $color-green;
-    .profile-photo {
-      display: block;
-      float: left;
-      @include size(52px 52px);
-      margin-right: 15px;
-    }
-
-    .name {
-      color: white;
-      font-size: 21pt;
-      small {
-        font-size: 10pt;
-      }
-    }
-
-    .jobs {
-      color: $color-gray-1;
-      font-size: 9pt;
-    }
   }
 
   .meta {
@@ -394,7 +369,7 @@
 //// talk index page
 ////
 
-#talks, #problems {
+#talks, #problems, #questions {
   /*width: 1200px - 40px + 10px;*/
   /*margin-left: 40px;*/
   .item {
@@ -405,6 +380,7 @@
     @include size(224px 168px);
     img {
       width: 100%;
+      position: absolute;
     }
 
     &.big{
@@ -460,4 +436,29 @@
       font-size: 16px;
     }
   }
+}
+
+.content-layer {
+  .content-header {
+    width: 100%;
+    &.post { background: url(/assets/icn-column-big.png) 15px 15px no-repeat; }
+    &.video { background: url(/assets/icn-talk-big.png) 15px 15px no-repeat; }
+    &.question { background: url(/assets/icn-question.png) 15px 15px no-repeat; }
+    &.problem { background: url(/assets/icn-problem.png) 15px 15px no-repeat; }
+    background-color:$color-green !important;
+  }
+}
+.content-layer h1.title {
+  color: white; 
+  font-size: 18pt; 
+  padding: 16px 0;
+  padding-bottom: 0;
+  height: 45px;
+  background-color: transparent !important;
+  padding-left: 80px;
+}
+
+.content-layer h3.category {
+  color: #BBBDC0;
+  padding-left: 80px;
 }

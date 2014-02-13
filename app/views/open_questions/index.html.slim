@@ -1,0 +1,28 @@
+h3.section-title  
+  | C'CLASS
+  small CEO MBA만의 특별한 고민들
+  = link_to("more", talks_path, :class => "more")
+
+h4.section-sub-title C'QUESTION
+
+#questions.clear
+  - @questions.each_with_index do |question, i|
+    .item class="#{i == 0 ? 'big' : ''}"
+      = image_tag(question.thumbnail.url)
+      = link_to(question, :class => "overlay modal-popup", :style => "text-decoration: none;") do
+        /.category = talk.category.name
+        h5.title = truncate(question.title, length: 20,  omission: "...#{question.title.last(5)}")
+        p.description = truncate(strip_tags(question.content), length:  (i == 0 || i == 15)? 300 : 120) 
+      .meta
+        span.comment-count.count = question.comments.count
+        span.like-count.count = question.like_count
+
+= paginate @questions
+
+
+h4.section-sub-title CEO MBA CLASS
+
+.ceo-class-ad
+
+.reveal-modal
+= render '/install_modal_trigger'

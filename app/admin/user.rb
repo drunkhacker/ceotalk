@@ -1,13 +1,13 @@
 ActiveAdmin.register User do
 
-  permit_params :name, :type, :company_id, :expert_category_id, :featured, :tagline, :introduction, :career, :contact, :position
+  permit_params :name, :type, :company_id, :featured, :tagline, :introduction, :career, :contact, :position, :interests, expert_category_ids: []
 
   form do |f|
     f.inputs do
       f.input :name
       f.input :type, :as => :boolean, :checked_value => "Professional", :unchecked_value => "User", :label => "전문가"
       f.input :company
-      f.input :expert_category
+      f.input :expert_categories
       f.input :featured
       f.input :tagline
       f.input :position
@@ -28,7 +28,7 @@ ActiveAdmin.register User do
     column :sign_in_count
     column :last_sign_in_at
     column :type
-    column :expert_category
+    column :interests
     column :facebook do |user|
       if user.provider == "facebook"
         link_to user.uid, "https://facebook.com/#{user.uid}", :target => "_blank"

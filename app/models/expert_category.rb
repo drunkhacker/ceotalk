@@ -1,3 +1,4 @@
 class ExpertCategory < ActiveRecord::Base
-  has_many :professionals
+  has_many :interests
+  has_many :users, :through => :interests
 end
