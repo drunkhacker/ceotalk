@@ -83,22 +83,25 @@
     background-color: $color-gray-3;
     padding: 10px;
     .profile-image {
-      /*float: left;*/
+      float: left;
       @include size(60px 60px);
+      margin-right: 20px;
     }
+    background: url(/assets/icn-expert-badge.png) 100% 0 no-repeat;
 
-    .name-company-position {
-      display: inline;
-      font-size: 20px;
-      font-weight: bold;
+    .name {
+      font-size: 25px;
+      /*font-weight: bold;*/
       color: $color-black;
       margin-left: 20px;
-      small {
-        font-weight: normal;
-        font-size: 12px;
-        color: $color-gray-7;
-        margin-left: 12px;
-      }
+      padding-top: 10px;
+      padding-bottom: 7px;
+    }
+    .company-position {
+      font-weight: normal;
+      font-size: 14px;
+      color: $color-gray-7;
+      margin-left: 12px;
     }
   }
 
@@ -136,4 +139,9 @@
   }
 
   margin-bottom: 20px;
+}
+
+.content-header h1.professional {
+  background: url(/assets/icn-expert.png) 15px 15px no-repeat;
+  padding-left: 75px;
 }

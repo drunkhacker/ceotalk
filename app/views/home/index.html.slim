@@ -1,7 +1,7 @@
 h3.section-title  
   | ceo talk
   small 당신을 위한 CEO들의 노하우 톡!톡!톡!
-  a.more href="#" more
+  = link_to("more", talks_path, :class => "more")
 = render '/categories'
 #selected-contents.row.clear
   .contents.column

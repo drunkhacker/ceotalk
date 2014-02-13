@@ -6,7 +6,7 @@ h3.section-title
 
 .professionals-container.clear
   - @companies.each do |company|
-    = link_to "#{companies_path}/##{company.id}", :class => "professional" do
+    = link_to(company, :class => "professional modal-popup") do
       =image_tag(company.logo.url)
       .overlay
         h6.company 
@@ -14,20 +14,4 @@ h3.section-title
         h5.name =company.name 
 
 .reveal-modal
-
-javascript:
-  $(function() {
-    hash_changed = function() {
-      if (window.location.hash.length == 0)
-        return;
-      var company_id = window.location.hash.substring(1);
-      $modal_dom = $(".reveal-modal");
-      $.get("#{companies_path}/"+company_id, function(r) {
-        $modal_dom.html(r);
-        $modal_dom.reveal({animation: "fade", animationspeed: 150});
-      });
-    }
-    $(window).on('hashchange', hash_changed);
-    hash_changed();
-  
-  });
+= render '/install_modal_trigger'

@@ -1,6 +1,6 @@
 .content-layer.clear
   .content-header
-    h1=@professional.tagline
+    h1.professional=@professional.tagline
   .professional-intro.clear
     .column.left
       .detail-wrapper
@@ -11,9 +11,9 @@
       .section-content
         .profile.clear
           = image_tag(@professional.profile_photo.url, :class => "profile-image")
-          h4.name-company-position
+          h4.name
             = @professional.name
-            small = "#{@professional.company.name} #{@professional.position}"
+          h5.company-position = "#{@professional.company.name} #{@professional.position}"
 
           .clear.info style="margin-top: 45px;"
             .title Career

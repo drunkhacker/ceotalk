@@ -6,7 +6,7 @@ h3.section-title
   - @problems.each_with_index do |problem, i|
     .item class="#{i == 15 || i == 0 ? 'big' : ''}"
       = image_tag(problem.thumb_url)
-      a.overlay href="#{problems_path}/##{problem.id}" style="text-decoration: none;"
+      = link_to(problem, :class => "overlay modal-popup", :style => "text-decoration: none;") do
         /.category = talk.category.name
         h6.name = problem.professional.name
         h5.title = truncate(problem.title, length: 20,  omission: "...#{problem.title.last(5)}")
@@ -14,20 +14,4 @@ h3.section-title
         = link_to "more", "#{problems_path}/##{problem.id}", :class => "more" 
 
 .reveal-modal
-
-javascript:
-  $(function() {
-    hash_changed = function() {
-      if (window.location.hash.length == 0)
-        return;
-      var problem_id = window.location.hash.substring(1);
-      $modal_dom = $(".reveal-modal");
-      $.get("#{problems_path}/"+problem_id, function(r) {
-        $modal_dom.html(r);
-        $modal_dom.reveal({animation: "fade", animationspeed: 150});
-      });
-    }
-    $(window).on('hashchange', hash_changed);
-    hash_changed();
-  
-  });
+= render '/install_modal_trigger'

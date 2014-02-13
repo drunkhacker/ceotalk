@@ -1,0 +1,22 @@
+javascript:
+  $(function() {
+    $modal_dom = $(".reveal-modal");
+    function show_modal(url) {
+      $.get(url, function(r) {
+        $modal_dom.html(r);
+        $modal_dom.reveal({animation: "fade", animationspeed: 150});
+      });
+    }
+    $("a.modal-popup").click(function(e) {
+      show_modal($(this).attr("href"));
+      e.stopPropagation();
+      e.preventDefault();
+    });
+
+    //detect hash 
+    if (window.location.hash.length == 0)
+      return;
+    var rid = window.location.hash.substring(1);
+    url = window.location.pathname + rid;
+    show_modal(url);
+  });
