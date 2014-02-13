@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @selected_contents = Talk.where(:featured => true).sort {|x, y| y.created_at <=> x.created_at}
+    @selected_contents = Talk.where(:featured => true).order("created_at DESC").limit(12)
     logger.debug "@selected_contents.count = #{@selected_contents.count}"
 
     # c'league 관련

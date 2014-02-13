@@ -8,13 +8,14 @@ h3.section-title
     - @selected_contents.each_with_index do |content, i|
       .item
         =image_tag(content.thumb_url)
+        =image_tag(if content.type == 'Video' then "/assets/icn-talk.png" else "/assets/icn-column.png" end, :class => "talk-tag")
         a.overlay href="#{talks_path}/##{content.id}" style="text-decoration: none"
           .category = content.category.name
           h6.name = content.professional.name
           h5.title = truncate(content.title, length: 30,  omission: "...#{content.title.last(10)}")
           p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
           = link_to "more", "#{talks_path}/##{content.id}", :class => "more" 
-    - (0...7-@selected_contents.count).each do |i|
+    - (0...12-@selected_contents.count).each do |i|
       .item
         =image_tag("http://placekitten.com/240/#{120+i}")
 
@@ -50,24 +51,26 @@ h3.section-title
 
 
 .row.clear
-  .column style="width: 50%"
+  .column style="width: 580px; margin-right: 40px;"
     h3.section-title 
       | c'class
       small CEO MBA만의 특별한 교육과정
       a.more href="#" onclick="alert('not yet'); return false;" more
-  .column style="width: 50%"
+  .column style="width: 580px"
     h3.section-title 
       | C'MEMBERS
       small CEO MBA의 전문가와 기업들
       =link_to("more", professionals_path, class: "more")
-    #experts-corporation.row
+    #experts-corporation.row.clear
       a.item.column href=professional_path(@featured_expert.professional)
         =image_tag(@featured_expert.featured_photo.url, :class => "bg")
+        h6 EXPERT
         .overlay
           h5.title = @featured_expert.professional.name
           p = @featured_expert.excerpt
       a.item.column href=company_path(@featured_company)
         =image_tag(@featured_company.logo.url, :class => "bg")
+        h6 CORPORATION
         .overlay
           h5.title = @featured_company.name
 

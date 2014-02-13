@@ -1,9 +1,10 @@
 - case problem.phase
 - when Problem::PHASE_PRE
-  - if problem.comments.count > 10
-    h6 Best 답변
+  /- if problem.comments.count > 10
+  - if true
+    h6 BEST
     ul.best-answers
-      - problem.comments.each_with_index do |answer, i|
+      - problem.comments.order("like_count DESC").limit(3).each_with_index do |answer, i|
         li.answer-item
           span.rank = i+1
           = image_tag(answer.user.profile_photo.url, :class => "profile")

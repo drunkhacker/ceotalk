@@ -13,6 +13,7 @@ h3.section-title
         p.description = truncate(strip_tags(talk.description), length:  (i == 0 || i == 15)? 300 : 120) 
         = link_to "more", "#{talks_path}/##{talk.id}", :class => "more" 
 
+= paginate @talks
 
 .reveal-modal
 

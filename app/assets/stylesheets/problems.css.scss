@@ -10,7 +10,7 @@
     span {
       display: block;
       float: left;
-      width: calc(100% - 20px);
+      width: 321px;
       height: 45px;
       background-color: $color-gray-1;
       padding-top: 12px;
@@ -93,6 +93,10 @@
     margin-right: 2px;
     .name, .company{
       margin-left: 40px + 34px + 14px;
+    }
+
+    .profile-photo {
+      left: 48px;
     }
 
     @include size((138px + 18px + 34px) 100%);
