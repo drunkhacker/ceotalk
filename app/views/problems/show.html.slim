@@ -36,7 +36,7 @@
       - @top_comments.each do |comment|
         = render partial: 'comments/comment', :locals => {comment: comment}
     h5.comment-section-title 최신순
-    ul.comments
+    ul#comments.comments
       - @problem.comments.each do |comment|
         = render partial: 'comments/comment', :locals => {comment: comment}
     .tail

@@ -141,7 +141,7 @@
       margin-right: 0;
     }
 
-    background-color: #eee;
+    background-color: $color-gray-4;
 
     $item-height: 134px;
     $item-width: 226px;
@@ -224,15 +224,16 @@
       /*padding-top: 0;*/
 
       .thumbnail {
-        @include size((214px - 20px) 100%);
+        @include size((728px - 480px - 20px - 10px) 100%);
         /*background: url(http://placekitten.com/214/284);*/
         float: left;
+        margin-left: 0;
         margin-right: 20px;
         overflow: hidden;
       }
 
       .q-number {
-        font-size: 40px;
+        font-size: 30px;
         margin: 0;
       }
 
@@ -249,20 +250,53 @@
 
       .excerpt {
         padding-top: 20px;
-        @include size(66.666% 100%);
+        @include size(480px 100%);
         float: left;
 
+        .best-answers {
+          margin-top: 15px;
+        }
         .answer-item {
-          span { line-height: 50px; }
+          padding: 32px 20px 10px 20px;
+          width: 160px - 10px;
+          margin-left: 10px;
+          background-color: $color-gray-4;
+          float: left;
+          display: block;
+          border-radius: 5px;
+          position: relative;
+          font-size: 14px;
           .rank {
-            &:after { content: "위"; }
+            display: block;
+            position: absolute;
+            left: -10px;
+            top: -5px;
+            background: url(/assets/bg-rank.png) 0 0px no-repeat;
+            @include size(34px 30px);
+            line-height: 30px;
+            color: $color-red;
+            font-weight: bold;
+            text-align: center;
           }
           .profile {
             @include size(50px 50px);
           }
-          .like-count {
-            &:after { content: "표"; }
-            float: right;
+          .meta {
+            margin-top: 20px;
+            padding: 0 10px;
+            color: $color-gray-7;
+            .count {
+              padding-left: 20px;
+              padding-top: 2px;
+              float: left;
+            }
+            .like-count {
+              background: url(/assets/icn-like-count.png) no-repeat;
+            }
+            .comment-count {
+              background: url(/assets/icn-comment-count.png) 0 1px no-repeat;
+              float: right;
+            }
           }
         }
 
@@ -283,10 +317,6 @@
     }
     float: left;
     /*border: 1px solid #aaa;*/
-
-  }
-
-  .best-answers {
 
   }
 

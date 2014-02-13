@@ -3,18 +3,33 @@ class CommentsController < ApplicationController
   respond_to :html, :js
 
   def create
-    logger.debug "#{params[:comment].inspect}"
-    @talk = Talk.find(params[:talk_id])
-    @comment = @talk.comments.build(comment_params)
+    #logger.debug "#{params[:comment].inspect}"
+    commentable_id = params[:talk_id] || params[:problem_id]
+    commentable =
+      if params[:talk_id] then 
+        Talk
+      elsif params[:problem_id] then
+        Problem
+      end
+
+    collection_path = 
+      if params[:talk_id] then 
+        talks_path
+      elsif params[:problem_id] then
+        problems_path
+      end
+
+    @commentable = commentable.find(commentable_id)
+    @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to talks_path + "/##{@talk.id}" }
+        format.html { redirect_to collection_path + "/##{@commentable.id}" }
         format.js {}
       else
         logger.error @comment.errors.inspect
-        format.html { redirect_to talks_path + "/##{@talk.id}", error: "comment can't be created"}
+        format.html { redirect_to collection_path + "/##{@commentable.id}", error: "comment can't be created"}
         #format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

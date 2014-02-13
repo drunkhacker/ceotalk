@@ -7,9 +7,10 @@
       - problem.comments.order("like_count DESC").limit(3).each_with_index do |answer, i|
         li.answer-item
           span.rank = i+1
-          = image_tag(answer.user.profile_photo.url, :class => "profile")
           span = answer.content
-          span.like-count = answer.like_count
+          .meta
+            span.like-count.count = answer.like_count
+            span.comment-count.count = answer.comments.count
   - else
     = link_to "댓글달러가기", "#"
 

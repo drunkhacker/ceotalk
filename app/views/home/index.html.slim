@@ -27,7 +27,7 @@ h3.section-title
   .item
     .thumbnail
       - problem = @problems[0]
-      = link_to(problem) do 
+      = link_to(problems_path + "/##{problem.id}") do 
         = image_tag(problem.thumb_url)
     .excerpt
       .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
