@@ -1,19 +1,35 @@
-<h2>Sign in</h2>
+<hgroup class="session-page-header">
+  <h2 class="header-large">로그인</h2>
+  <h3 class="header-small">CEO MBA에서 가치를 공유해보세요.</h3>
+</hgroup>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<hr>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+<div style="padding: 30px 0;">
+  <%= link_to '페이스북으로 로그인', user_omniauth_authorize_path(:facebook), :class => "facebook-auth" %>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div class="clear" style="margin-top: 20px;">
+      <div style="float: left;">
+        <div class="field-wrapper">
+          <%= f.label :email, "이메일", :class => "form-label-inline" %>
+          <%= f.email_field :email, :autofocus => true, :style => "width: 180px" %>
+        </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+        <div class="field-wrapper">
+          <%= f.label :password, "비밀번호", :class => "form-label-inline" %>
+          <%= f.password_field :password, :style => "width: 180px" %>
+        </div>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
 
-<%= link_to 'Sign in with Facebook', user_omniauth_authorize_path(:facebook) %>
+      </div>
 
-<%= render "devise/shared/links" %>
+      <div style="float: left; margin-left: 15px; height: 100%;"><%= f.submit "로그인", :class => "btn-login" %></div>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
+<div style="padding-top: 25px;">
+  <%= render "devise/shared/links" %>
+</div>

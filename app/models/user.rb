@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :interests
   has_many :expert_categories, :through => :interests
 
+  accepts_nested_attributes_for :expert_categories
+  accepts_nested_attributes_for :interests, allow_destroy: true
+
   validates_presence_of :name
 
   def self.with_omniauth(auth, signed_in_resource = nil) 

@@ -7,13 +7,6 @@ ActiveAdmin.register ExpertCategory do
       row :id
       row :name
 
-      row :experts do 
-        ul do
-          category.professionals.each do |professional|
-            li link_to professional.name, admin_user_path(professional)
-          end
-        end
-      end
     end
   end
   
