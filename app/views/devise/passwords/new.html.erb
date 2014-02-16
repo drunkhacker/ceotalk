@@ -1,12 +1,24 @@
-<h2>Forgot your password?</h2>
+<hgroup class="session-page-header">
+  <h2 class="header-large">비밀번호 찾기</h2>
+  <h3 class="header-small">CEO MBA에서 가치를 공유해보세요.</h3>
+</hgroup>
+
+<hr>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div class="field-wrapper clear" style="padding: 30px 0; padding-top: 40px;">
+    <%= f.label :email, "가입한 이메일 주소", :class => "form-label-inline", :style => "width: 200px;" %>
+    <%= f.email_field :email, :autofocus => true, :style => "width: 230px; display: block; float:left;" %>
+    <div style="float: left; margin-left: -100px;"> <%= devise_error_messages! %> </div>
+  </div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
+  <hr>
+
+  <div style="position: relative; padding-top: 20px;">
+    <div class="btn-signup" style="position: absolute; right: 10px;">
+      <%= f.submit "확인"%>
+    </div>
+  </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
