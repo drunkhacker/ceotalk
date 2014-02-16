@@ -1,6 +1,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters
 
+  def edit
+    ExpertCategory.all.each do |cat|
+      self.resource.interests.build(expert_category: cat) unless self.resource.has_interest? cat.id
+    end
+    render :edit
+  end
+
   def new
     build_resource({})
     ExpertCategory.all.each do |cat|

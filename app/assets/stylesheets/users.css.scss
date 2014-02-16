@@ -12,3 +12,30 @@
     }
   }
 }
+
+//my profile
+.profile-info {
+  color: $color-gray-2;
+  dt {
+    float: left;
+    width: 150px;
+  }
+  dd {
+    float: left;
+    width: 805px;
+    margin-bottom: 25px;
+    p {
+      line-height: 150%;
+      padding-right: 10px;
+    }
+  }
+
+}
+
+.profile-section-header {
+  color: #008585;
+  font-size: 13pt;
+  font-weight: bold;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}

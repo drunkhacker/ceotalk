@@ -1,23 +1,60 @@
 .content-layer.clear
   = render partial: 'phase_bar', :locals => {problem: @problem}
   hgroup.content-header.problem
-    /h3 = @problem.category.name
     div style="width: 275px ; float: right; "
       = render partial: '/users/pro_short_side', :locals => {:professional => @problem.professional }
     h1.title = @problem.title
     h3.category = @problem.category
 
   .problem-content.clear
-    div style="width: 478px; margin-right: 4px; float: left;"
-      iframe width="100%" height="334" src="#{@problem.embed_url}" frameborder="0" allowfullscreen
-    div style="width: 478px; margin-left: 4px; float: left;"
-      .question-text
-        = simple_format @problem.content
+    - if @problem.phase == Problem::PHASE_PRE # 예선
+      div style="width: 478px; margin-right: 4px; float: left;"
+        iframe width="100%" height="334" src="#{@problem.embed_url(:url_question)}" frameborder="0" allowfullscreen
+      div style="width: 478px; margin-left: 4px; float: left;"
+        .question-text
+          = simple_format @problem.content
+    - elsif @problem.phase == Problem::PHASE_FINAL # 결선
+      div style="width: 478px; margin-right: 4px; float: left;"
+        iframe width="100%" height="334" src="#{@problem.embed_url(:url_final)}" frameborder="0" allowfullscreen
+      div style="width: 478px; margin-left: 4px; float: left;"
+        .question-text
+          = simple_format @problem.content
+    - elsif @problem.phase == Problem::PHASE_CLOSE # 완료
+      .clear
+        div style="width: 367px; margin-right: 15px; float: left;"
+          = image_tag "/assets/img-dummy2.png"
+        div style="width: 582px; float: left;"
+          .question-text style="height: 367px;"
+            div.after-comments
+              .comment-header
+                span.label Q
+                | 질문자 한마디 
+              = simple_format @problem.after_comment_1
+            div.after-comments
+              .comment-header 
+                span.label  A
+                | 답변자 한마디 
+              = simple_format @problem.after_comment_2
+
+      h4.sketch-header  현장스케치
+      .sketch
+        = image_tag @problem.sketch_photo.url, :style => "width: 100%; margin-bottom: 20px;"
+        = simple_format @problem.sketch_content
+
+
 
   .share-actions
     = link_to "like", "javascript: return false;", :class => "like"
     = link_to "favorite", "javascript: return false;", :class => "favorite"
     = link_to "share", "javascript: return false;", :class => "share"
+
+  /presenations
+  - if @problem.phase == Problem::PHASE_FINAL
+    .presenations.clear
+      - @problem.presentations.each_with_index do |pt, i|
+        = render :partial => "/presentations/presentation", :locals => {presentation: pt, index: i}
+
+  / 코멘트 부분
 
   .column.left
     .new-comment.clear

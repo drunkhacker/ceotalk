@@ -1,29 +1,85 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<hgroup class="session-page-header">
+  <h2 class="header-large">프로필 수정</h2>
+  <h3 class="header-small">CEO MBA에서 가치를 공유해보세요.</h3>
+</hgroup>
+
+<hr>
+
+<h3 class="profile-section-header">* 기본정보</h3>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div class="field-wrapper">
+    <%= f.label :email, "이메일", :class => "form-label-inline", :style => "width: 130px" %>
+    <span style="font-size: 15px; color: #58585b;"><%= resource.email%></span>
+  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+  <div class="field-wrapper">
+    <%= f.label :current_password, "기존 비밀번호", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.password_field :current_password %>
+  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div class="field-wrapper">
+    <%= f.label :password, "새 비밀번호", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.password_field :password, :autocomplete => "off" %>
+  </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <div class="field-wrapper">
+    <%= f.label :password_confirmation, "비밀번호 확인", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="field-wrapper">
+    <%= f.label :name, "이름", :class => "form-label-inline", :style => "width: 130px" %>
+    <span style="font-size: 15px; color: #58585b;"><%= resource.name%></span>
+  </div>
+
+  <div class="field-wrapper clear">
+    <%= f.label :name, "전문분야", :class => "form-label-inline", :style => "width: 130px;" %>
+
+    <div style="float: left; width: 825px;">
+      <%= render partial: "/professionals/expert_categories", locals: {f: f}%>
+    </div>
+  </div>
+
+  <hr>
+
+  <h3 class="profile-section-header">* 추가정보</h3>
+
+  <div class="field-wrapper">
+    <%= f.label :profile_photo, "사진", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.file_field :profile_photo %>
+  </div>
+
+  <div class="field-wrapper">
+    <%= f.label :company_id, "소속", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.text_field :company_id %>
+  </div>
+
+  <div class="field-wrapper">
+    <%= f.label :position, "직책", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.text_field :position %>
+  </div>
+
+  <div class="field-wrapper">
+    <%= f.label :contact, "연락처", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.text_area :contact %>
+  </div>
+
+  <div class="field-wrapper">
+    <%= f.label :career, "커리어", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.text_area :career %>
+  </div>
+
+  <div class="field-wrapper">
+    <%= f.label :introduction, "자기소개", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.text_area :introduction %>
+  </div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>

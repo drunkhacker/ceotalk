@@ -12,3 +12,29 @@ $color-gray-6: #A7A9AC;
 $color-gray-7: #8E9092;
 $color-black: #231F20; //까만색
 
+@mixin hexagon($color, $width, $height, $radius, $ew) {
+  &:before {
+    content: "";
+    width: 0; height: 0;
+    border-right: $ew solid $color;
+    border-top: $height/2 solid transparent;
+    border-bottom: $height/2 solid transparent;
+    position: absolute;
+    left: -$ew;
+  }
+
+  width: $width - 2*$ew ;
+  height: $height;
+  background-color: $color;
+  position: relative;
+  &:after {
+    content: "";
+    width: 0;
+    position: absolute;
+    right: -$ew;
+    border-left: $ew solid $color;
+    border-top: $height/2 solid transparent;
+    border-bottom: $height/2 solid transparent;
+  }
+}
+

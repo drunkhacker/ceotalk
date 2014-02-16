@@ -1,0 +1,20 @@
+.presentation
+  .clear style="margin-bottom: 35px;"
+    .candidate-badge = "후보 #{index + 1}"
+    = image_tag(presentation.user.profile_photo.url, :class => 'profile-photo')
+    h3.name = presentation.user.name
+    h5.company-interests = if presentation.user.company.nil? then "소속없음" else presentation.user.company.name end
+    h5.company-interests = presentation.user.expert_categories.map {|c| c.name}.join(" / ")
+
+  .pt-content
+    = simple_format presentation.description
+
+  - if !signed_in?
+    .vote-button 
+      p.not-login 로그인 후 <br> 투표하실 수 있습니다.
+  - elsif presentation.has_vote? current_user
+    .like-count
+      = presentation.vote_count
+  - else
+    .vote-button
+      = link_to "투표하기", "#"

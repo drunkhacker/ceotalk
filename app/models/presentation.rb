@@ -7,6 +7,10 @@ class Presentation < ActiveRecord::Base
   validates_presence_of :problem_id
   validates_presence_of :user_id
 
+  def has_vote?(user)
+    Vote.where(user_id: user.id, presentation_id: self.id).any?
+  end
+
   def vote(user)
     created = true
     begin

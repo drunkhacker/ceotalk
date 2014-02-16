@@ -4,7 +4,7 @@ Ceotalk::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :users do
-    get 'me', on: :collection
+    get 'me', on: :collection, :as => "profile"
   end
   resources :professionals do
   end

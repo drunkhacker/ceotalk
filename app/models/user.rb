@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def has_interest?(cat_id)
+    expert_categories.any? {|c| c.id == cat_id}
+  end
+
 end

@@ -12,7 +12,7 @@
       <div id="login-status">
         <% if signed_in? -%>
           <%= current_user.name %>님 환영합니다! 
-          <%= link_to '마이페이지', edit_user_registration_path %>
+          <%= link_to '마이페이지', profile_users_path %>
           <%= link_to '로그아웃', destroy_user_session_path, :method => :delete %>
         <% else -%>
            <%= link_to "login", new_user_session_path %>
@@ -28,7 +28,7 @@
       </ul>
     </div>
     <hr class="shadow-line">
-    <% if devise_controller? %>
+    <% if devise_controller? || request.path == profile_users_path %>
       <div class="clear">
         <div class="devise-left-menu">
           <%= render "/devise/left_menus"%>

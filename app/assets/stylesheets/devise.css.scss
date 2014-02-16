@@ -155,32 +155,6 @@ hr {
   }
 }
 
-@mixin hexagon($color, $width, $height, $radius, $ew) {
-  &:before {
-    content: "";
-    width: 0; height: 0;
-    border-right: $ew solid $color;
-    border-top: $height/2 solid transparent;
-    border-bottom: $height/2 solid transparent;
-    position: absolute;
-    left: -$ew;
-  }
-
-  width: $width - 2*$ew ;
-  height: $height;
-  background-color: $color;
-  position: relative;
-  &:after {
-    content: "";
-    width: 0;
-    position: absolute;
-    right: -$ew;
-    border-left: $ew solid $color;
-    border-top: $height/2 solid transparent;
-    border-bottom: $height/2 solid transparent;
-  }
-}
-
 .hex {
   @include hexagon($color-green, 70px, 60px, 0, 18px);
 }

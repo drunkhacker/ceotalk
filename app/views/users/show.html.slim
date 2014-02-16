@@ -1,22 +1,65 @@
-h1.user-name = @user.name 
+hgroup class="session-page-header"
+  h2 class="header-large" 프로필
+  h4 class="header-small" CEO MBA에서 가치를 공유해보세요.
 
-.excerpt
-  =image_tag(@user.profile_photo.url, :class => "photo")
-  .short-desc
-    =@user.short_description || "N/A"
+hr
 
-.quote
-  =@user.quote || "진인사대천명"
+h3.profile-section-header * 기본정보
+dl.profile-info.clear
+  dt 이메일
+  dd = @user.email
 
-.description
-  =@user.description || "설명이 없습니다."
+  .clear
 
-.activities
-  .related-contents
-    - @user.contents.each do |content|
-      .publish
-        = image_tag(content.thumb_url, :class => "thumbnail")
-        = content.title
+  dt 비밀번호
+  dd
+    | *******
 
-  .external-info
+  .clear
+
+  dt 이름
+  dd = @user.name
+
+  .clear
+
+  dt 전문분야
+  dd = @user.expert_categories.map {|cat| cat.name}.join(" / ")
+
+hr
+
+h3.profile-section-header * 추가정보
+
+dl.profile-info.clear
+  dt 사진
+  dd = image_tag(@user.profile_photo.url, :class => "photo", :style => "width: 120px;")
+
+  .clear
+
+  dt 소속
+  dd = @user.company.name
+
+  .clear
+
+  dt 직책
+  dd = @user.position
+
+  .clear
+
+  dt 커리어
+  dd = simple_format @user.career
+
+  .clear
+
+  dt 연락처
+  dd = simple_format @user.contact
+
+  .clear
+
+  dt 자기소개
+  dd = simple_format @user.introduction
+
+hr
+div style="position: relative; padding: 20px 0;"
+  .btn-signup style="position: absolute; right: 10px;"
+    = link_to "수정하기", edit_user_registration_path, :style => "text-decoration: none; font-size: 14px; color: white; display: block; text-align: center; position: absolute; z-index: 20; width: 100%; padding-top: 7px;"
 

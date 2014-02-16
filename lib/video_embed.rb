@@ -1,7 +1,7 @@
 module VideoEmbeddable
-  def embed_url
+  def embed_url(field=:url)
     pattern_youtube = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9]+)/i
-    r = url.scan pattern_youtube
+    r = self.send(field).scan pattern_youtube
 
     unless r.empty?
       vid = r[0][0]
@@ -9,7 +9,7 @@ module VideoEmbeddable
     end
 
     pattern_vimeo = /(?:https?:\/\/)?(?:www\.)?vimeo\.com\/([a-zA-Z0-9]+)/i
-    r = url.scan pattern_vimeo
+    r = self.send(field).scan pattern_vimeo
 
     unless r.empty?
       vid = r[0][0]

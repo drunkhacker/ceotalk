@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ProfilePhotoUploader < CarrierWave::Uploader::Base
+class FinalSketchUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -38,18 +38,9 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-   def extension_white_list
-     %w(jpg jpeg gif png)
-   end
-
-   def default_url
-     if model.provider == "facebook" and !model.uid.nil?
-       Rails.logger.debug "facebook, uid = #{model.uid}"
-       "http://graph.facebook.com/#{model.uid}/picture?width=150"
-     else
-       "http://placekitten.com/150"
-     end
-   end
+  # def extension_white_list
+  #   %w(jpg jpeg gif png)
+  # end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

@@ -1,16 +1,22 @@
 ActiveAdmin.register Problem do
-  permit_params :url, :title, :professional_id, :content, :phase, :phase1_deadline, :phase2_deadline, :thumb_url
+  permit_params :url_question, :title, :professional_id, :content, :phase, :phase1_deadline, :phase2_deadline, :thumb_url, :url_final, :sketch_photo,
+    :after_comment_1, :after_comment_2, :sketch_content
 
   form do |f|
     f.inputs do
       f.input :title, :label => "제목"
-      f.input :url, :label => "URL" 
+      f.input :url_question, :label => "질문동영상 주소" 
+      f.input :url_final, :label => "결선동영상 주소" 
       f.input :thumb_url, :as => :image_preview, :label => "썸네일" 
       f.input :professional, :as => :select, :label => "전문가"
       f.input :content, :as => :text
       f.input :phase, :as => :select, :collection => Problem::PHASE_TO_WORD.to_a.map {|a| a.reverse}
       f.input :phase1_deadline, :as => :date_picker
       f.input :phase2_deadline, :as => :date_picker
+      f.input :sketch_photo
+      f.input :after_comment_1
+      f.input :after_comment_2
+      f.input :sketch_content
     end
     f.actions
   end
@@ -36,9 +42,14 @@ ActiveAdmin.register Problem do
   show :title => :title do |problem|
     attributes_table do
       row :id
-      row :url do
-        link_to problem.url, problem.url, :target => "_blank"
+      row :url_question do
+        link_to problem.url_question, problem.url_question, :target => "_blank"
       end
+
+      row :url_final do
+        link_to problem.url_final, problem.url_final, :target => "_blank"
+      end
+
       row :content do
         simple_format problem.content
       end

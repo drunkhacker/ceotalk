@@ -11,12 +11,15 @@ class Problem < ActiveRecord::Base
   has_many :tags, :as => :taggable
   has_many :categories, :through => :tags
 
-  validates_presence_of :url
+  validates_presence_of :url_question
   validates_presence_of :title
   validates_presence_of :content
   validates_presence_of :professional_id
 
   include ::VideoEmbeddable
+
+  # carrierwave
+  mount_uploader :sketch_photo, FinalSketchUploader
 
   def category
     self.categories.map {|c| c.name}.join(" / ")
