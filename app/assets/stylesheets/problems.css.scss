@@ -4,20 +4,23 @@
 
 .phase-bar {
   margin-bottom: 20px;
+  /*background-color: #DCDDDD;*/
   .phase {
-    float: left;
-    @include size(33.3333% 45px);
+    float: right;
+    margin-left: -28px;
+    &:last-child { margin-left: 0; }
+    @include size(360px 45px);
     .btn {
       display: block;
       float: left;
       width: 321px;
       height: 45px;
-      background-color: $color-gray-1;
-      padding-top: 12px;
-      padding-left: 20px;
+      /*background-color: $color-gray-1;*/
+      /*padding-top: 12px;*/
+      /*padding-left: 20px;*/
 
     }
-    background-position: 100%;
+    /*background-position: 0 0px;*/
     color: $color-gray-6;
     font-size: 20px;
     small {
@@ -25,22 +28,13 @@
       margin-left: 15px;
     }
     &.active {
-      &:after {
-        background-image: url(/assets/bg-phase-arrow-active.png);
-      }
-      .btn { background-color: $color-red; }
+      background-image: url(/assets/bg-phase-arrow-active.png);
+      /*.btn { background-color: $color-red; }*/
       color: white;
     }
 
-    &:after {
-      display: block;
-      float: right;
-      @include size(20px 100%);
-      content: '';
-      background-color: $color-gray-1;
-      background-image: url(/assets/bg-phase-arrow.png);
-      background-repeat: no-repeat;
-    }
+    background-image: url(/assets/bg-phase-arrow.png);
+    background-repeat: no-repeat;
 
     &:last-child:after{
       background-color: transparent;
@@ -49,6 +43,30 @@
     a.btn {
       color: inherit;
       text-decoration: none;
+    }
+
+    .btn {
+        &::before {
+        content: '';
+        display: inline-block;
+        @include size(50px 50px);
+        margin-left: 25px;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+    }
+
+    &.final {
+      .btn:before { background: url(/assets/icn-league-final.png); }
+      &.active .btn:before { background: url(/assets/icn-league-final-active.png); }
+    }
+    &.close {
+      .btn:before { background: url(/assets/icn-league-close.png); }
+      &.active .btn:before { background: url(/assets/icn-league-close-active.png); }
+    }
+    &.pre {
+      .btn:before { background: url(/assets/icn-league-pre.png); }
+      &.active .btn:before { background: url(/assets/icn-league-pre-active.png); }
     }
   }
 }

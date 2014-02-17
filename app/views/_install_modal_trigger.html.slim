@@ -8,7 +8,7 @@ javascript:
         $modal_dom.reveal({animation: "fade", animationspeed: 150});
       });
     }
-    $(".reveal-modal").on('click', 'a.modal-popup', function(e) {
+    $(".reveal-modal, body").on('click', 'a.modal-popup', function(e) {
       console.log("modal-popup onclick");
       show_modal($(this).attr("href"));
       e.stopPropagation();

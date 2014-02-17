@@ -111,6 +111,7 @@
 							"opacity" : 0
 						}, options.animationspeed, function() {
 							modal.css({'opacity' : 1, 'display' : 'none', 'top' : topMeasure});
+              modal.html("");
 							unlockModal();
 						});					
 					}  	
