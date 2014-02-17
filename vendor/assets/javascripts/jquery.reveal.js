@@ -76,7 +76,7 @@
 						}, options.animationspeed,unlockModal());					
 					}
 					if(options.animation == "fade") {
-						modal.css({'opacity' : 0, 'visibility' : 'visible', 'display':'block', 'top': $(document).scrollTop()+topMeasure});
+						modal.css({'opacity' : 0, 'visibility' : 'visible', 'display':'block', 'top': "250px"});
 						modalBG.fadeIn(options.animationspeed/2);
 						modal.delay(options.animationspeed/2).animate({
 							"opacity" : 1
@@ -110,7 +110,7 @@
 						modal.animate({
 							"opacity" : 0
 						}, options.animationspeed, function() {
-							modal.css({'opacity' : 1, 'display' : 'none', 'top' : topMeasure});
+							modal.css({'opacity' : 1, 'display' : 'none', 'top' : "250px"});
               modal.html("");
 							unlockModal();
 						});					
