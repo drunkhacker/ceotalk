@@ -239,13 +239,22 @@
 
       .state-tag {
         /*@include state-tag(30px, white, #444);*/
-        @include size(31px 28px);
-        background: url(/assets/icn-hexagon.png) no-repeat;
+        @include size(20px 20px);
         top: 20px; right: 10px;
         font-size: 11px;
-        color: white;
+        color: #148786;
         text-align: center;
-        padding-top: 9px;
+        padding-top: 20px;
+        background-repeat: no-repeat;
+        &.pre {
+          background: url(/assets/icn-league-pre-small.png);
+        }
+        &.final {
+          background: url(/assets/icn-league-final-small.png);
+        }
+        &.close {
+          background: url(/assets/icn-league-close-small.png);
+        }
       }
 
       .excerpt {
@@ -305,7 +314,12 @@
           line-height: 130%;
           text-align: center;
           padding: 15px 120px;
-          color: $color-green;
+          color: #148786;
+        }
+
+        .tagline {
+          text-align: center;
+          color: $color-gray-2;
         }
       }
 

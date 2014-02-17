@@ -32,10 +32,10 @@ h3.section-title
     .excerpt
       .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
       h5.title = problem.title
-      p = problem.content
+
 
       = render :partial => "problem_comments", locals: {problem: problem}
-    .state-tag 
+    .state-tag class="#{if problem.phase == 0 then 'pre' elsif problem.phase == 1 then 'final' else 'close' end }"
       span = Problem::PHASE_TO_WORD[problem.phase]
   - @problems[1..-1].each do |problem|
     .item style="border-radius: 5px;"
@@ -46,8 +46,7 @@ h3.section-title
       .overlay
         h5.title = problem.title
         p = problem.content
-      .state-tag.small
-        span = Problem::PHASE_TO_WORD[problem.phase]
+      .state-tag.small = Problem::PHASE_TO_WORD[problem.phase]
 
 
 .row.clear

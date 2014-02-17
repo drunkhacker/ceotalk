@@ -1,6 +1,7 @@
 - case problem.phase
 - when Problem::PHASE_PRE
   /- if problem.comments.count > 10
+  p.tagline 여러분의 비법을 알려주세요!
   - if true
     h6 BEST
     ul.best-answers
@@ -18,4 +19,4 @@
   p final
 
 - when Problem::PHASE_CLOSE
-  p close
+  p.tagline 특별한 비법을 알고싶다면?
