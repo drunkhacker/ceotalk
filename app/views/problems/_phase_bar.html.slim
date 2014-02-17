@@ -1,13 +1,23 @@
 ul.phase-bar.clear
-  li.phase(class="#{problem.phase == 0 ? 'active' : ''}") 
-    span 
+  li.phase(class="#{@phase == Problem::PHASE_PRE ? 'active' : ''}") 
+    a.btn.modal-popup href="#{problem_path(problem.id, phase: Problem::PHASE_PRE)}"
       |예선
       small 질문 - 댓글참여
-  li.phase(class="#{problem.phase == 1 ? 'active' : ''}") 
-    span 
-      |결선
-      small 방송 - 투표
-  li.phase(class="#{problem.phase == 2 ? 'active' : ''}") 
-    span
-      |완료
-      small 코멘트 - 현장스케치
+  li.phase(class="#{@phase == Problem::PHASE_FINAL ? 'active' : ''}") 
+    - if problem.phase >= Problem::PHASE_FINAL
+      a.btn.modal-popup href="#{problem_path(problem.id, phase: Problem::PHASE_FINAL)}"
+        |결선
+        small 방송 - 투표
+    - else
+      span.btn
+        |결선
+        small 방송 - 투표
+  li.phase(class="#{@phase == Problem::PHASE_CLOSE ? 'active' : ''}") 
+    - if problem.phase == Problem::PHASE_CLOSE
+      a.btn.modal-popup href="#{problem_path(problem.id, phase: Problem::PHASE_CLOSE)}"
+        |완료
+        small 코멘트 - 현장스케치
+    - else
+      span.btn
+        |완료
+        small 코멘트 - 현장스케치

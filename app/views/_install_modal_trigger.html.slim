@@ -2,15 +2,18 @@ javascript:
   $(function() {
     $modal_dom = $(".reveal-modal");
     function show_modal(url) {
+      console.log("show_modal, url=" + url);
       $.get(url, function(r) {
         $modal_dom.html(r);
         $modal_dom.reveal({animation: "fade", animationspeed: 150});
       });
     }
-    $("a.modal-popup").click(function(e) {
+    $(".reveal-modal").on('click', 'a.modal-popup', function(e) {
+      console.log("modal-popup onclick");
       show_modal($(this).attr("href"));
       e.stopPropagation();
       e.preventDefault();
+      return false;
     });
 
     //detect hash 

@@ -7,6 +7,7 @@ class ProblemsController < ApplicationController
 
   def show
     @problem = Problem.find(params[:id])
+    @phase = (params[:phase] || @problem.phase).to_i
     @comment = ProblemComment.new
     @top_comments = @problem.comments.order("like_count DESC").limit(3)
 

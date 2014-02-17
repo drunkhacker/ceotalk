@@ -7,7 +7,7 @@
   .phase {
     float: left;
     @include size(33.3333% 45px);
-    span {
+    .btn {
       display: block;
       float: left;
       width: 321px;
@@ -28,7 +28,7 @@
       &:after {
         background-image: url(/assets/bg-phase-arrow-active.png);
       }
-      span { background-color: $color-red; }
+      .btn { background-color: $color-red; }
       color: white;
     }
 
@@ -44,6 +44,11 @@
 
     &:last-child:after{
       background-color: transparent;
+    }
+
+    a.btn {
+      color: inherit;
+      text-decoration: none;
     }
   }
 }

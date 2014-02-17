@@ -7,19 +7,19 @@
     h3.category = @problem.category
 
   .problem-content.clear
-    - if @problem.phase == Problem::PHASE_PRE # 예선
+    - if @phase == Problem::PHASE_PRE # 예선
       div style="width: 478px; margin-right: 4px; float: left;"
         iframe width="100%" height="334" src="#{@problem.embed_url(:url_question)}" frameborder="0" allowfullscreen
       div style="width: 478px; margin-left: 4px; float: left;"
         .question-text
           = simple_format @problem.content
-    - elsif @problem.phase == Problem::PHASE_FINAL # 결선
+    - elsif @phase == Problem::PHASE_FINAL # 결선
       div style="width: 478px; margin-right: 4px; float: left;"
         iframe width="100%" height="334" src="#{@problem.embed_url(:url_final)}" frameborder="0" allowfullscreen
       div style="width: 478px; margin-left: 4px; float: left;"
         .question-text
           = simple_format @problem.content
-    - elsif @problem.phase == Problem::PHASE_CLOSE # 완료
+    - elsif @phase == Problem::PHASE_CLOSE # 완료
       .clear
         div style="width: 367px; margin-right: 15px; float: left;"
           = image_tag "/assets/img-dummy2.png"
@@ -49,7 +49,7 @@
     = link_to "share", "javascript: return false;", :class => "share"
 
   /presenations
-  - if @problem.phase == Problem::PHASE_FINAL
+  - if @phase == Problem::PHASE_FINAL
     .presenations.clear
       - @problem.presentations.each_with_index do |pt, i|
         = render :partial => "/presentations/presentation", :locals => {presentation: pt, index: i}
