@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-  permit_params :url, :professional_id, :title, :description, :thumb_url, :created_at, :category_id, :featured, :category_id
+  permit_params :url, :professional_id, :title, :description, :thumb_url, :created_at, :category_id, :featured, tag_ids:[]
 
   form do |f|
     f.inputs do
@@ -8,7 +8,7 @@ ActiveAdmin.register Post do
       f.input :description, :placeholder => "URL을 입력하면 자동생성", :as => :html_preview, :label => "요약"
       f.input :thumb_url, :label => "썸네일", :as => :image_preview
       f.input :professional, :as => :select, :label => "전문가"
-      f.input :category, :as => :select
+      f.input :categories
       f.input :created_at, :label => "생성시각", :as => :date_picker
       f.input :featured
     end

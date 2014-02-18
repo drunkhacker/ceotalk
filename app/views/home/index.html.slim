@@ -25,19 +25,20 @@ h3.section-title
   = link_to "more", problems_path, class: "more"
 #crowd-sourcing.row.clear
   .item
-    .thumbnail
-      - problem = @problems[0]
-      = link_to(problems_path + "/##{problem.id}") do 
-        = image_tag(problem.thumb_url)
-    .excerpt
-      .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
-      h5.title = problem.title
-
-
-      = render :partial => "problem_comments", locals: {problem: problem}
-    .state-tag class="#{if problem.phase == 0 then 'pre' elsif problem.phase == 1 then 'final' else 'close' end }"
-      span = Problem::PHASE_TO_WORD[problem.phase]
-  - @problems[1..-1].each do |problem|
+    -if @problems.any?
+      .thumbnail
+        - problem = @problems[0]
+        = link_to(problems_path + "/##{problem.id}") do 
+          = image_tag(problem.thumb_url)
+      .excerpt
+        .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
+        h5.title = problem.title
+  
+  
+        = render :partial => "problem_comments", locals: {problem: problem}
+      .state-tag class="#{if problem.phase == 0 then 'pre' elsif problem.phase == 1 then 'final' else 'close' end }"
+        span = Problem::PHASE_TO_WORD[problem.phase]
+  - (@problems[1..-1] || []).each do |problem|
     .item style="border-radius: 5px;"
       .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
       =image_tag(problem.thumb_url, :class => "thumbnail")
@@ -61,15 +62,17 @@ h3.section-title
       small CEO MBA의 전문가와 기업들
       =link_to("more", professionals_path, class: "more")
     #experts-corporation.row.clear
-      a.item.column href=professional_path(@featured_expert.professional)
-        =image_tag(@featured_expert.featured_photo.url, :class => "bg")
-        h6 EXPERT
-        .overlay
-          h5.title = @featured_expert.professional.name
-          p = @featured_expert.excerpt
-      a.item.column href=company_path(@featured_company)
-        =image_tag(@featured_company.logo.url, :class => "bg")
-        h6 CORPORATION
-        .overlay
-          h5.title = @featured_company.name
+      - if @featured_expert
+        a.item.column href=professional_path(@featured_expert.professional)
+          =image_tag(@featured_expert.featured_photo.url, :class => "bg")
+          h6 EXPERT
+          .overlay
+            h5.title = @featured_expert.professional.name
+            p = @featured_expert.excerpt
+      - if @featured_company
+        a.item.column href=company_path(@featured_company)
+          =image_tag(@featured_company.logo.url, :class => "bg")
+          h6 CORPORATION
+          .overlay
+            h5.title = @featured_company.name
 

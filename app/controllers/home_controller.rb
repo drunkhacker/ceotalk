@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
     # c'league 관련
     @problems = Problem.all.limit(5)
-    @cleague_best_answers = @problems.first.comments
+#    @cleague_best_answers = @problems.first.comments
 
     # experts & Corporation part
     @featured_expert = FeaturedExpert.last
