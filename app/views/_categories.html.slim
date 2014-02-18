@@ -11,24 +11,7 @@
       input id="sort-like" type="checkbox"
 
   ul.job.clear
-    li 
-      label for="cat-job-1" 경영.기획
-      input id="cat-job-1" type="checkbox"
-    li 
-      label for="cat-job-2" 회계자료
-      input id="cat-job-2" type="checkbox"
-    li 
-      label for="cat-job-3" 마케팅.영업
-      input id="cat-job-3" type="checkbox"
-    li 
-      label for="cat-job-4" 생산기술
-      input id="cat-job-4" type="checkbox"
-    li 
-      label for="cat-job-5" 인사.교육
-      input id="cat-job-5" type="checkbox"
-    li 
-      label for="cat-job-6" 자기계발
-      input id="cat-job-6" type="checkbox"
-    li 
-      label for="cat-job-7" 인문교양
-      input id="cat-job-7" type="checkbox"
+    - Category.all.each do |cat|
+      li 
+        label for="cat-#{cat.id}" = cat.name
+        input id="cat-#{cat.id}" type="checkbox"

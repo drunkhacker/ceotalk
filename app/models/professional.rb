@@ -8,6 +8,6 @@ class Professional < User
   end
 
   def category_name
-    if self.expert_category then self.expert_category.name else nil end
+    if self.category then self.category.name else nil end
   end
 end

@@ -13,9 +13,9 @@ class User < ActiveRecord::Base
   belongs_to :company
   has_many :presentations
   has_many :interests
-  has_many :expert_categories, :through => :interests
+  has_many :categories, :through => :interests
 
-  accepts_nested_attributes_for :expert_categories
+  accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :interests, allow_destroy: true
 
   validates_presence_of :name
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def has_interest?(cat_id)
-    expert_categories.any? {|c| c.id == cat_id}
+    categories.any? {|c| c.id == cat_id}
   end
 
 end
