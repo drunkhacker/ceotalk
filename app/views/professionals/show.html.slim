@@ -1,6 +1,6 @@
 .content-layer.clear
   .content-header
-    h1.professional=@professional.tagline
+    h1.title-professional=@professional.tagline
   .professional-intro.clear
     .column.left
       .detail-wrapper
@@ -9,7 +9,7 @@
       h3.section-header 
         | PROFILE
       .section-content
-        .profile.clear
+        .profile.clear.badge
           = image_tag(@professional.profile_photo.url, :class => "profile-image")
           h4.name
             = @professional.name

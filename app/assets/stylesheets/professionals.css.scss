@@ -87,7 +87,9 @@
       @include size(60px 60px);
       margin-right: 20px;
     }
-    background: url(/assets/icn-expert-badge.png) 100% 0 no-repeat;
+    &.badge {
+      background: url(/assets/icn-expert-badge.png) 100% 0 no-repeat;
+    }
 
     .name {
       font-size: 25px;
@@ -141,7 +143,11 @@
   margin-bottom: 20px;
 }
 
-.content-header h1.professional {
+.content-header h1.title-professional {
+  @include size(100% 100%);
   background: url(/assets/icn-expert.png) 15px 15px no-repeat;
+  color: white;
+  font-size: 18pt;
+  padding: 25px 0;
   padding-left: 75px;
 }
