@@ -47,7 +47,6 @@ gem 'capistrano', group: :development
 
 
 gem 'mysql2'
-gem 'slim-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'carrierwave'
@@ -58,6 +57,7 @@ gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree"
 gem 'slim-rails'
 gem 'bourbon'
 gem 'kaminari'
+gem 'thin'
 
 group :development, :test do
   gem 'rspec-rails'
