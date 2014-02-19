@@ -433,8 +433,9 @@
     li {
       font-size: 12px;
       float: left;
-      color: #828283;
-      label {
+      a.button {
+        color: #828283;
+        text-decoration: none;
         display: inline-block;
         padding: 4px;
         width: 60px;
@@ -461,10 +462,6 @@
       &:after {
         content: '/';
         margin-right: 10px;
-      }
-
-      input[type='checkbox'] {
-        display: none;
       }
     }
 

@@ -42,7 +42,7 @@ ActiveAdmin.register Video do
       end
       row :professional
       row :category do
-        talk.category.aa_breadcrumb if talk.category
+        talk.categories.map {|c| c.name}.join(" / ")
       end
       row :created_at
       row :view_count

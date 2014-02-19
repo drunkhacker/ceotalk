@@ -1,8 +1,18 @@
 class TalksController < ApplicationController
   respond_to :html, :js
-  
+
+  before_filter :set_sort_categories
+
   def index
-    #@current_user = current_user || User.first
+    #Talk.where(
+      #if @current_categories.empty?
+        #true
+      #else 
+        #true
+      #end
+    #)
+    #if @current_sort == 'recent'
+
     @talks = Talk.order("created_at DESC").page(params[:page]).per(19)
   end
 
@@ -17,5 +27,10 @@ class TalksController < ApplicationController
     respond_with(@talk) do |format|
       format.html { render :layout => !request.xhr?}
     end
+  end
+
+  def set_sort_categories
+    @current_categories = if params[:cat] then params[:cat].split(",").map {|cid| Category.find(cid)} else [] end
+    @current_sort = params[:sort]
   end
 end

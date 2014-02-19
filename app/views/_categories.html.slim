@@ -1,17 +1,13 @@
 .categories
   ul.meta.clear
     li 
-      label for="sort-recent" 최신순
-      input id="sort-recent" name="recent" type="checkbox"
+      = link_to '최신순', talks_path(:sort => 'recent', :cat => @current_categories.map {|c| c.id}.join(",")), :class => "button #{if @current_sort == 'recent' then "active" end}"
     li 
-      label for="sort-comment" 댓글순
-      input id="sort-comment" type="checkbox"
+      = link_to '댓글순', talks_path(:sort => "comment", :cat => @current_categories.map {|c| c.id}.join(",")), :class => "button #{if @current_sort == 'comment' then 'active' end}"
     li 
-      label for="sort-like" 좋아요순
-      input id="sort-like" type="checkbox"
+      = link_to "좋아요순", talks_path(:sort => "like", :cat => @current_categories.map {|c| c.id}.join(",")), :class => "button #{if @current_sort == 'like' then 'active' end}"
 
   ul.job.clear
     - Category.all.each do |cat|
       li 
-        label for="cat-#{cat.id}" = cat.name
-        input id="cat-#{cat.id}" type="checkbox"
+        = link_to cat.name, talks_path(:sort => @current_sort, :cat => (if @current_categories.include? cat then @current_categories - [cat] else @current_categories + [cat] end).map {|c| c.id}.join(",")), :class => "button #{if @current_categories.include? cat then 'active' end} "
