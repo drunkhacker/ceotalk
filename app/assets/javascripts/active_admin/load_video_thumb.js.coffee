@@ -1,7 +1,7 @@
 $ () ->
-  if ($("body").hasClass("new") or $("body").hasClass("edit")) and ($("body").hasClass("admin_talks") or $("body").hasClass("admin_problems"))
+  if ($("body").hasClass("new") or $("body").hasClass("edit")) and ($("body").hasClass("admin_talks") or $("body").hasClass("admin_problems") or $("body").hasClass("admin_videos"))
     # add watcher for url field
-    url_selector = "#talk_url, #problem_url"
+    url_selector = "#talk_url, #problem_url, #video_url"
     $(url_selector).change () ->
       url = $(url_selector).val()
       console.log "url = #{url}"
@@ -19,7 +19,7 @@ $ () ->
 
           $("[id$='_title']").val data.title
 
-          $("#talk_description").val data.description
+          $("#talk_description, #video_description").val data.description
           $("#problem_content").val data.description
 
           # update thumbnail img
@@ -41,7 +41,7 @@ $ () ->
           if data? and data[0]?
             data = data[0]
 
-            $("#talk_description").val data.description
+            $("#talk_description, #video_description").val data.description
             $("#problem_content").val data.description
             $("[id$='_title']").val data.title
 
