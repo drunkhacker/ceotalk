@@ -1,7 +1,7 @@
 .content-layer.clear
   .column.left
-    hgroup.content-header class="#{if @talk.is_a?(Video) then "video" else "post" end}"
-      h1.title = @talk.title
+    .content-header 
+      h1.title class="#{if @talk.is_a?(Video) then "video" else "post" end}" = @talk.title
       h3.category = @talk.category
 
     = render @talk
@@ -14,7 +14,7 @@
       .comment-author-info
         = image_tag(@current_user.profile_photo.url, :class => "profile-photo")
         h5.name = @current_user.name
-        h6.company = @current_user.company.name
+        h6.company = if @current_user.company then @current_user.company.name else "소속없음" end
       = form_for [@talk.becomes(Talk), @comment], :remote => true do |f| 
         = f.text_area(:content, :placeholder => "Add a comment")
         = f.submit "등록"

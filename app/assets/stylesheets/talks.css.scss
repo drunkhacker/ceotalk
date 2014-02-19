@@ -441,10 +441,10 @@
 .content-layer {
   .content-header {
     width: 100%;
-    &.post { background: url(/assets/icn-column-big.png) 15px 15px no-repeat; }
-    &.video { background: url(/assets/icn-talk-big.png) 15px 15px no-repeat; }
-    &.question { background: url(/assets/icn-question.png) 15px 15px no-repeat; }
-    &.problem { background: url(/assets/icn-problem.png) 15px 15px no-repeat; }
+    h1.post { background: url(/assets/icn-column-big.png) 15px 15px no-repeat; }
+    h1.video { background: url(/assets/icn-talk-big.png) 15px 15px no-repeat; }
+    h1.question { background: url(/assets/icn-question.png) 15px 15px no-repeat; }
+    h1.problem { background: url(/assets/icn-problem.png) 15px 15px no-repeat; }
     background-color:$color-green !important;
   }
 }
