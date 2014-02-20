@@ -4,16 +4,23 @@ class TalksController < ApplicationController
   before_filter :set_sort_categories
 
   def index
-    #Talk.where(
-      #if @current_categories.empty?
-        #true
-      #else 
-        #true
-      #end
-    #)
-    #if @current_sort == 'recent'
+    ar = 
+      if @current_categories.any?
+        Talk.joins(:tags).where("tags.category_id IN (?)", @current_categories.map {|cat| cat.id})
+      else
+        Talk.all
+      end
 
-    @talks = Talk.order("created_at DESC").page(params[:page]).per(19)
+    ar = 
+      if @current_sort == 'comment'
+        ar.order("like_count DESC")
+      elsif @current_sort == 'comment'
+        ar.order("comment_count DESC")
+      else
+        ar.order("created_at DESC")
+      end
+
+    @talks = ar.page(params[:page]).per(19)
   end
 
   def show
