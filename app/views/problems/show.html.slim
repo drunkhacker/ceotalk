@@ -61,7 +61,7 @@
       .comment-author-info
         = image_tag(@current_user.profile_photo.url, :class => "profile-photo")
         h5.name = @current_user.name
-        h6.company = if @current_user.company then @current_user.company.name else "소속없음" end
+        h6.company = @current_user.company_name
       = form_for [@problem, @comment.becomes(Comment)], :remote => true do |f| 
         = f.text_area(:content, :placeholder => "Add a comment")
         = f.submit "등록"

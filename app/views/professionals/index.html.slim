@@ -10,7 +10,7 @@ h3.section-title
       =image_tag(professional.profile_photo.url)
       .overlay
         h6.company 
-          = if professional.company then professional.company.name else "소속없음" end
+          = professional.company_name
           br
           =professional.position
         h5.name =professional.name 

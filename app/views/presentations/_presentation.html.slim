@@ -3,7 +3,7 @@
     .candidate-badge = "후보 #{index + 1}"
     = image_tag(presentation.user.profile_photo.url, :class => 'profile-photo')
     h3.name = presentation.user.name
-    h5.company-interests = if presentation.user.company.nil? then "소속없음" else presentation.user.company.name end
+    h5.company-interests = presentation.user.company_name
     h5.company-interests = presentation.user.categories.map {|c| c.name}.join(" / ")
 
   .pt-content

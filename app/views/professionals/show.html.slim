@@ -13,10 +13,7 @@
           = image_tag(@professional.profile_photo.url, :class => "profile-image")
           h4.name
             = @professional.name
-          - if @professional.company
-            h5.company-position = "#{@professional.company.name} #{@professional.position}"
-          - else
-            h5.company-position 소속없음
+            h5.company-position = "#{@professional.company_name} #{@professional.position}"
 
           .clear.info style="margin-top: 45px;"
             .title Career

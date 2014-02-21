@@ -45,4 +45,8 @@ class User < ActiveRecord::Base
     categories.any? {|c| c.id == cat_id}
   end
 
+  def company_name
+    if self.company then self.company.name else "소속없음" end
+  end
+
 end
