@@ -63,7 +63,7 @@ h3.section-title
       =link_to("more", professionals_path, class: "more")
     #experts-corporation.row.clear
       - if @featured_expert
-        a.item.column href=professional_path(@featured_expert.professional)
+        a.item.column href="#{professionals_path}/##{@featured_expert.professional.id}"
           =image_tag(@featured_expert.featured_photo.url, :class => "bg")
           h6 EXPERT
           .overlay

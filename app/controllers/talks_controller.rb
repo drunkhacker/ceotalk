@@ -24,15 +24,20 @@ class TalksController < ApplicationController
   end
 
   def show
+    if !request.xhr?
+      redirect_to talks_path + "/##{params[:id]}"
+      return
+    end
+
+    is_facebook = request.env["HTTP_USER_AGENT"].scan(/facebookexternalhit\/1\.1/) != [] # is facebook?
+
     @talk = Talk.find(params[:id])
     @current_user = current_user || User.first
     @comment = Comment.new
     @other_talks = @talk.professional.talks.where("id != ?", @talk.id).order("created_at DESC").limit(5)
 
-    #logger.debug "@talk.comments.count = #{@talk.comments.count}"
-
     respond_with(@talk) do |format|
-      format.html { render :layout => !request.xhr?}
+      format.html { render :layout => !is_facebook && !request.xhr?}
     end
   end
 
