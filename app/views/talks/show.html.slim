@@ -46,7 +46,8 @@
       .description
         = simple_format @talk.description
       ul.category-list.clear
-        li.category = @talk.category
+        - @talk.categories.each do |cat|
+          li.category = cat.name
 
     .ceo-class-ad style="padding: 10px"
       h3 쩌는 CEO class 광고

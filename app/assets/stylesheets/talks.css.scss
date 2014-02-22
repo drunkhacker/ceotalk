@@ -45,6 +45,10 @@
   .post-wrapper {
     background-color: $color-gray-3;
     .post {
+      img {
+        width: 100% !important;
+        height: auto !important;
+      }
       background-color: white;
       padding: 20px 48px;
       p {

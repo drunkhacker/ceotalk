@@ -14,7 +14,9 @@ Ceotalk::Application.routes.draw do
   resources :problems do
     resources :comments
   end
-  resources :posts
+
+  get 'posts/wordpress/:id', :as => "wordpress_post", action: :wordpress, controller: :posts
+
   resources :companies
   resources :open_questions do
     resources :comments

@@ -5,8 +5,8 @@ $ () ->
       url = $("#post_url").val()
 
       #check if it's from wordpress.com
-      pattern_wp_com = /^(?:https?:\/\/)?(?:www\.)?(?:[\w\d]+\.)wordpress.com/
-      captures = pattern_wp_com.exec url
+      pattern_ceomba_com = /^(?:https?:\/\/)?blog.ceomba.co.kr/
+      captures = pattern_ceomba_com.exec url
 
       if captures?
         console.log "got captures"
@@ -30,41 +30,24 @@ $ () ->
         captures = null
         if (captures = post_id_pattern.exec(parser.search); captures? and captures[1]?)
           id = captures[1]
-        # case 2,3,4) check 
-        else if (captures = slug_pattern.exec(parser.pathname); captures? and captures[1]?)
-          slug = captures[1]
         # case 5) check 
         else if (captures = archive_pattern.exec(parser.pathname); captures? and captures[1]?)
           id = captures[1]
 
         setField = (response) ->
-          $("#post_title").val $("<div/>").html(response["title"]).text()
-          $("#post_description").val response["excerpt"]
+          console.log response
+          $("#post_title").val response.post.post_title
+          $("#post_description").val $("<div/>").html(response.post.post_content).text()
           $("#post_description").trigger "change"
 
           # find image
-          featured_image = response["featured_image"]
-          if featured_image? and featured_image.length > 0
-            $("#post_thumb_url").val featured_image
+          featured_image = response.post.post_thumbnail
+          if featured_image? and featured_image != []
+            $("#post_thumb_url").val featured_image.thumbnail
             return $("#post_thumb_url").trigger "change"
-          else 
-            # get first image attachment
-            attachments = response["attachments"]
-            if attachments?
-              for id, obj of attachments
-                console.log "id = #{id}"
-                if obj.mime_type.substring(0,5) == "image"
-                  $("#post_thumb_url").val obj["URL"]
-                  return $("#post_thumb_url").trigger "change"
 
-
-
-        if slug?
-          console.log "get slug = #{slug}"
-          $.getJSON "https://public-api.wordpress.com/rest/v1/sites/#{parser.host}/posts/slug:#{slug}?callback=?", (response) ->
-            setField response
-
-        else if id?
+        if id?
           console.log "get id = #{id}"
-          $.getJSON "https://public-api.wordpress.com/rest/v1/sites/#{parser.host}/posts/#{id}?callback=?", (response) ->
+          $.getJSON "/posts/wordpress/#{id}", (response) ->
+            console.dir response
             setField response
