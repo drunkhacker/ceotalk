@@ -24,12 +24,11 @@ class TalksController < ApplicationController
   end
 
   def show
-    if !request.xhr?
+    is_facebook = request.env["HTTP_USER_AGENT"].scan(/facebookexternalhit\/1\.1/) != [] # is facebook?
+    if !is_facebook && !request.xhr?
       redirect_to talks_path + "/##{params[:id]}"
       return
     end
-
-    is_facebook = request.env["HTTP_USER_AGENT"].scan(/facebookexternalhit\/1\.1/) != [] # is facebook?
 
     @talk = Talk.find(params[:id])
     @current_user = current_user || User.first
