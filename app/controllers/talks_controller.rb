@@ -36,7 +36,7 @@ class TalksController < ApplicationController
     @other_talks = @talk.professional.talks.where("id != ?", @talk.id).order("created_at DESC").limit(5)
 
     respond_with(@talk) do |format|
-      format.html { render :layout => !is_facebook && !request.xhr?}
+      format.html { render :layout => (is_facebook ? "opengraph" : !request.xhr?)}
     end
   end
 
