@@ -383,21 +383,27 @@
 #talks, #problems, #questions {
   /*width: 1200px - 40px + 10px;*/
   /*margin-left: 40px;*/
+  $w: 224px;
+  $h: 126px;
+  $g: 10px;
+
+
   .item {
     float: left;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-right: $g;
+    margin-bottom: $g;
     background-color: black;
-    @include size(224px 168px);
+    @include size($w $h);
     img {
       width: 100%;
       position: absolute;
+      margin-top: -(($w*3/4) - $h)/2;
     }
 
     &.big{
-      @include size(458px 346px);
+      @include size(($w*2 + $g) ($h*2 + $g));
       .overlay { 
-        top: 256px; 
+        top: ($h*2 + $g) - 80px;
         .name {
           font-size: 16px;
           margin-bottom: 12px;
@@ -426,19 +432,19 @@
     &:nth-child(17),
     &:nth-child(18),
     &:nth-child(19) {
-      margin-top: -178px;
+      margin-top: -($h + $g);
     }
 
     &:nth-child(17) {
-      margin-left: 234px;
+      margin-left: $w + $g;
     }
     &:nth-child(18) {
-      margin-left: 468px;
+      margin-left: ($w*2 + $g*2);
     }
   }
 
   .overlay {
-    top: 108px;
+    top: $h - 50px;
     .name {
       font-size: 10pt;
     }

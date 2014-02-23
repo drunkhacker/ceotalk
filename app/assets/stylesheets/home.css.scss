@@ -65,7 +65,8 @@
     $w: (1200px - 4*$gap) / 5;
     .item {
       img {
-        @include size(100% 100%);
+        width: 100%;
+        margin-top: -22px;
       }
       img.talk-tag {
         display: block;
@@ -76,7 +77,7 @@
       }
 
       float: left;
-      @include size($w 132px);
+      @include size($w 130px);
       /*border: 1px solid red;*/
       margin-right: 10px;
       margin-bottom: 10px;
@@ -94,7 +95,7 @@
 
       overflow: hidden;
       &:first-child {
-        @include size((2*$w + $gap) (132px*2 + 10px));
+        @include size((2*$w + $gap) (130px*2 + 10px));
 
         //첫번째에 오는것들은 죄다 크다.
         .overlay {
