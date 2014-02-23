@@ -7,8 +7,8 @@
 }
 
 #site-logo {
-  background: url(/assets/site-logo.png) no-repeat;
-  @include size(150px 75px);
+  background: url(/assets/site-logo.gif) no-repeat;
+  @include size(200px 100px);
   /*float: left;*/
   a {
     @include size(100% 100%);
