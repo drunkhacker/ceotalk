@@ -4,7 +4,7 @@ hgroup class="session-page-header"
 
 hr
 
-h3.favorites.section-header CEO TALK
+h3.favorites.section-header C3 Talk
 .favorite-items.clear
   - @talks.each do |talk|
     .item
@@ -18,7 +18,7 @@ h3.favorites.section-header CEO TALK
 hr.section-divider
 
 
-h3.favorites.section-header C'LEAGUE
+h3.favorites.section-header C3 Idea
 .favorite-items.clear
   - @problems.each do |problem|
     .item
@@ -32,7 +32,7 @@ h3.favorites.section-header C'LEAGUE
 hr.section-divider
 
 
-h3.favorites.section-header C'MEMBERS
+h3.favorites.section-header C3 Members
 .favorite-items.clear
   - members = @members_favorite.map {|f| f.favorable_type.constantize.find(f.favorable_id)}
   - members.each do |member|
