@@ -14,7 +14,7 @@ h3.favorites.section-header C3 Talk
         h6.name= talk.professional.name
         h5.title= truncate(talk.title, length: 30,  omission: "...#{talk.title.last(10)}")
         p.description = truncate(strip_tags(talk.description), length: 120) 
-  = paginate @talks
+  = paginate @talks, left: 1, param_name: :talk_page
 hr.section-divider
 
 
@@ -28,7 +28,7 @@ h3.favorites.section-header C3 Idea
         h5.title= truncate(problem.title, length: 30,  omission: "...#{problem.title.last(10)}")
         p.description = truncate(strip_tags(problem.content), length: 120) 
 
-  = paginate @problems
+  = paginate @problems, param_name: :problem_page
 hr.section-divider
 
 
@@ -38,6 +38,6 @@ h3.favorites.section-header C3 Members
   - members.each do |member|
     .item
       = member.name
-  = paginate @members_favorite
+  = paginate @members_favorite, param_name: :member_page
 hr.section-divider
 

@@ -34,9 +34,9 @@ class LikesController < ApplicationController
 
   def list_favorites
     @talks = current_user.favorite_talks.page(params[:talk_page]).per(3)
-    @problems = current_user.favorite_problems.page(params[:talk_page]).per(3)
+    @problems = current_user.favorite_problems.page(params[:problem_page]).per(3)
     #@classes = current_user.favorite_talks.page(params[:talk_page]).per(3)
-    @members_favorite = current_user.favorite_members.page(params[:talk_page]).per(3)
+    @members_favorite = current_user.favorite_members.page(params[:member_page]).per(3)
 
     render '/users/favorites'
   end

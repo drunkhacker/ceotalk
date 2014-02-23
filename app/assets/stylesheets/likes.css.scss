@@ -21,19 +21,35 @@
 }
 
 .favorite-items {
-  padding: 0 30px;
+
   padding-bottom: 20px;
+  text-align: center;
+
   .item {
     display: inline-block;
-    @include size(226px 170px);
+    @include size(232px 130px);
     background-color: $color-gray-1;
     margin-left: 12px;
     img {
       width: 100%;
+      margin-top: -22px;
     }
     &:first-child {
       margin-left: 0;
     }
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
-    .overlay { display: block; text-decoration: none;}
+  .overlay { display: block; text-decoration: none;}
+}
+
+nav.pagination {
+  text-align: center;
+  .page {
+    a { text-decoration: none; color: $color-light-green; }
+    margin: 0 5px
+  }
+  .current {
+    color: $color-red;
+  }
 }
