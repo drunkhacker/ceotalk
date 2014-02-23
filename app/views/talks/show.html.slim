@@ -12,10 +12,7 @@
 
     = render @talk
 
-    .share-actions
-      = link_to "like", "javascript: return false;", :class => "like"
-      = link_to "favorite", "javascript: return false;", :class => "favorite"
-      = link_to "share", "javascript: return false;", :class => "share"
+    = render partial: '/share_actions', locals: {resource: @talk.becomes(Talk), title: @talk.title}
     .new-comment.clear
       .comment-author-info
         = image_tag(@current_user.profile_photo.url, :class => "profile-photo")
@@ -40,7 +37,7 @@
         dd 2048 
 
         dt Like
-        dd 30
+        dd = @talk.like_count
 
         dt Comments
         dd = @talk.comments.count

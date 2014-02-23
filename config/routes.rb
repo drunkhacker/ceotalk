@@ -6,8 +6,7 @@ Ceotalk::Application.routes.draw do
   resources :users do
     get 'me', on: :collection, :as => "profile"
   end
-  resources :professionals do
-  end
+  resources :professionals
   resources :talks do
     resources :comments
   end
@@ -17,10 +16,30 @@ Ceotalk::Application.routes.draw do
 
   get 'posts/wordpress/:id', :as => "wordpress_post", action: :wordpress, controller: :posts
 
-  resources :companies
+  resources :companies do
+  end
+
   resources :open_questions do
     resources :comments
   end
+
+  post "open_questions/:id/like", :as => "like_open_question", action: :like, controller: :likes, class: "OpenQuestion"
+  post "open_questions/:id/favorite", :as => "favorite_open_question", action: :favorite, controller: :likes, class: "OpenQuestion"
+
+  post "companies/:id/like", :as => "like_company", action: :like, controller: :likes, class: "Company"
+  post "companies/:id/favorite", :as => "favorite_company", action: :favorite, controller: :likes, class: "Company"
+
+  post "problems/:id/like", :as => "like_problem", action: :like, controller: :likes, class: "Problem"
+  post "problems/:id/favorite", :as => "favorite_problem", action: :favorite, controller: :likes, class: "Problem"
+
+  post "talks/:id/like", :as => "like_talk", action: :like, controller: :likes, class: "Talk"
+  post "talks/:id/favorite", :as => "favorite_talk", action: :favorite, controller: :likes, class: "Talk"
+
+  post "users/:id/like", :as => "like_user", action: :like, controller: :likes, class: "User"
+  post "users/:id/favorite", :as => "favorite_user", action: :favorite, controller: :likes, class: "User"
+
+  post "comments/:id/like", :as => "like_commnet", action: :like, controller: :likes, class: "Comment"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

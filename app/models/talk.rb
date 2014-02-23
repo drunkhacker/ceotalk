@@ -1,4 +1,5 @@
 require 'video_embed'
+require 'likeable'
 class Talk < ActiveRecord::Base
 
   belongs_to :professional
@@ -12,6 +13,8 @@ class Talk < ActiveRecord::Base
   validates_presence_of :professional_id
 
   include ::VideoEmbeddable
+  include ::Likeable
+  include ::Favorable
 
   def category
     self.categories.map {|c| c.name}.join(" / ")

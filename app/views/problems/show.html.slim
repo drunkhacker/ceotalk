@@ -43,10 +43,7 @@
 
 
 
-  .share-actions
-    = link_to "like", "javascript: return false;", :class => "like"
-    = link_to "favorite", "javascript: return false;", :class => "favorite"
-    = link_to "share", "javascript: return false;", :class => "share"
+  = render partial: '/share_actions', locals: {resource: @problem, title: @problem.title}
 
   /presenations
   - if @phase == Problem::PHASE_FINAL

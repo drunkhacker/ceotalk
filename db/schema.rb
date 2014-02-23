@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220170514) do
+ActiveRecord::Schema.define(version: 20140222163721) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140220170514) do
     t.string   "address"
     t.string   "tagline"
     t.text     "introduction"
+    t.integer  "like_count",          default: 0,     null: false
   end
 
   create_table "company_categories", force: true do |t|
@@ -92,6 +93,16 @@ ActiveRecord::Schema.define(version: 20140220170514) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "favorites", id: false, force: true do |t|
+    t.integer  "favorable_id",   null: false
+    t.string   "favorable_type", null: false
+    t.integer  "user_id",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["user_id", "favorable_id", "favorable_type"], name: "index_favorites_on_user_id_and_favorable_id_and_favorable_type", unique: true, using: :btree
 
   create_table "featured_experts", force: true do |t|
     t.integer  "professional_id", null: false
@@ -109,13 +120,14 @@ ActiveRecord::Schema.define(version: 20140220170514) do
   end
 
   create_table "likes", id: false, force: true do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "comment_id", null: false
+    t.integer  "user_id",       null: false
+    t.integer  "likeable_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "likeable_type", null: false
   end
 
-  add_index "likes", ["user_id", "comment_id"], name: "index_likes_on_user_id_and_comment_id", unique: true, using: :btree
+  add_index "likes", ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true, using: :btree
 
   create_table "open_questions", force: true do |t|
     t.string   "title"
@@ -168,6 +180,7 @@ ActiveRecord::Schema.define(version: 20140220170514) do
     t.text     "after_comment_1"
     t.text     "after_comment_2"
     t.text     "sketch_content"
+    t.integer  "like_count",      default: 0, null: false
   end
 
   create_table "tags", force: true do |t|
@@ -222,6 +235,7 @@ ActiveRecord::Schema.define(version: 20140220170514) do
     t.text     "introduction"
     t.string   "career"
     t.string   "contact"
+    t.integer  "like_count",             default: 0,     null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

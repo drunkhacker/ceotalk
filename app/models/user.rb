@@ -49,4 +49,13 @@ class User < ActiveRecord::Base
     if self.company then self.company.name else "소속없음" end
   end
 
+  include ::Likeable
+  include ::Favorable
+
+  # dynamic method creation for user's favorite_xxx
+  [:talk, :problem, :company, :user].each do |resource|
+    define_method "favorite_#{resource.to_s.pluralize}" do
+      resource.to_s.camelize.constantize.joins(:favorites).where("favorites.user_id" => self.id)
+    end
+  end
 end

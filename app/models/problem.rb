@@ -1,4 +1,5 @@
 require 'video_embed'
+require 'likeable'
 class Problem < ActiveRecord::Base
   PHASE_PRE = 0
   PHASE_FINAL = 1
@@ -17,6 +18,8 @@ class Problem < ActiveRecord::Base
   validates_presence_of :professional_id
 
   include ::VideoEmbeddable
+  include ::Likeable
+  include ::Favorable
 
   # carrierwave
   mount_uploader :sketch_photo, FinalSketchUploader

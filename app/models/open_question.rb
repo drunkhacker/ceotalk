@@ -10,8 +10,10 @@ class OpenQuestion < ActiveRecord::Base
 
   mount_uploader :thumbnail, QuestionThumbnailUploader
 
+  include ::Likeable
+  include ::Favorable
+
   def category
     self.categories.map {|c| c.name}.join(" / ")
   end
-
 end
