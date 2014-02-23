@@ -383,8 +383,8 @@
 #talks, #problems, #questions {
   /*width: 1200px - 40px + 10px;*/
   /*margin-left: 40px;*/
-  $w: 224px;
-  $h: 126px;
+  $w: 232px;
+  $h: 130px;
   $g: 10px;
 
 
@@ -428,6 +428,11 @@
         font-size: 14px;
       }
     }
+
+    &:nth-child(4) { margin-right: 0; }
+    &:nth-child(7) { margin-right: 0; }
+    &:nth-child(12) { margin-right: 0; }
+    &:nth-child(16) { margin-right: 0; }
 
     &:nth-child(17),
     &:nth-child(18),
