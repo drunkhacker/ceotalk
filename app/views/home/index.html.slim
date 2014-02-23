@@ -1,6 +1,9 @@
 h3.section-title  
   | C3 Talk
-  small CEO와 전문가의 실전적 노하우
+  small 
+    | CEO와 전문가의 실전적 노하우
+    br
+    | 문제를 해결할 수 있는 노하우를 알고 싶어요!
   = link_to("more", talks_path, :class => "more")
 = render '/categories'
 #selected-contents.row.clear
@@ -21,7 +24,10 @@ h3.section-title
 
 h3.section-title 
   | C3 Idea
-  small CEO 고민해결을 위한 크라우드 소싱
+  small 
+    | CEO 고민해결을 위한 크라우드 소싱
+    br 
+    | 다함께 실전 문제해결을 고민해보고 싶어요!
   = link_to "more", problems_path, class: "more"
 #crowd-sourcing.row.clear
   .item
@@ -54,12 +60,18 @@ h3.section-title
   .column style="width: 580px; margin-right: 40px;"
     h3.section-title 
       | C3 Academy
-      small 실전적 참여형 미래 CEO 양성과정
+      small 
+        | 실전적 참여형 미래 CEO 양성과정
+        br
+        | 미래 CEO가 되기 위해서는 무엇을 배우면 될까요?
       a.more href="#" onclick="alert('not yet'); return false;" more
   .column style="width: 580px"
     h3.section-title 
       | C3 MEMBERS
-      small CEO MBA의 전문가와 기업들
+      small 
+        | CEO MBA의 전문가와 기업들
+        br
+        | CEO와 전문가와 소통하고 싶어요!
       =link_to("more", professionals_path, class: "more")
     #experts-corporation.row.clear
       - if @featured_expert
