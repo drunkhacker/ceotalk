@@ -29,7 +29,7 @@
       </ul>
     </div>
     <hr class="shadow-line">
-    <% if devise_controller? || request.path == profile_users_path %>
+    <% if devise_controller? || request.path == profile_users_path || request.path == favorites_users_path %>
       <div class="clear">
         <div class="devise-left-menu">
           <%= render "/devise/left_menus"%>

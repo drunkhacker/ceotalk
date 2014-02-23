@@ -1,12 +1,17 @@
 .share-actions
-  = link_to "like", "javascript: like();", :class => "like"
-  = link_to "favorite", "javascript: favorite();", :class => "favorite"
+  = link_to "like", "javascript: like();", :class => "like #{(current_user && current_user.liked?(resource)) ? "selected" : "" }"
+  = link_to "favorite", "javascript: favorite();", :class => "favorite #{(current_user && current_user.favorite?(resource)) ? "selected" : "" }"
   = link_to "share", "javascript: share_popup()", :class => "share"
 
 javascript:
   function favorite() {
     $.post("#{send("favorite_#{resource.class.name.downcase}_url", resource)}", function (data) {
       if (data.ok) {
+        if (data.favorite) {
+          $(".share-actions a.favorite").addClass("selected");
+        } else {
+          $(".share-actions a.favorite").removeClass("selected");
+        }
       } else {
         alert(data.error);
       }
@@ -17,8 +22,10 @@ javascript:
   function like() {
     $.post("#{send("like_#{resource.class.name.downcase}_url", resource)}", function(data) {
       if (data.ok) {
-        if (data.like === -1) {
-          alert("이미 좋아요를 눌렀습니다.");
+        if (data.liked) {
+          $(".share-actions a.like").addClass("selected");
+        } else {
+          $(".share-actions a.like").removeClass("selected");
         }
       } else {
         alert(data.error);

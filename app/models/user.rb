@@ -53,9 +53,21 @@ class User < ActiveRecord::Base
   include ::Favorable
 
   # dynamic method creation for user's favorite_xxx
-  [:talk, :problem, :company, :user].each do |resource|
+  [:talk, :problem].each do |resource|
     define_method "favorite_#{resource.to_s.pluralize}" do
       resource.to_s.camelize.constantize.joins(:favorites).where("favorites.user_id" => self.id)
     end
+  end
+
+  def favorite?(resource)
+    Favorite.where(:favorable_type => resource.class.name, :user_id => self.id, :favorable_id => resource.id).count > 0
+  end
+
+  def liked?(resource)
+    Like.where(:likeable_type => resource.class.name, :user_id => self.id, :likeable_id => resource.id).count > 0
+  end
+
+  def favorite_members #여기는 컴퍼니와 유저를 한꺼번에 ..
+    Favorite.where(:user_id => self.id).where(:favorable_type => ['Company','Professional'])
   end
 end

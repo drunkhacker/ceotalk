@@ -1,6 +1,6 @@
-meta property="og:title" content="#{@talk.title}"
-meta property="og:url" content="#{talk_url(@talk)}"
-meta property="og:description" content="#{@talk.description}"
-meta property="og:image" content="#{@talk.thumb_url}"
+meta property="og:title" content="#{@resource.title}"
+meta property="og:url" content="#{send("#{@resource.class.name.downcase}_url", @resource)}"
+meta property="og:description" content="#{@resource.send([:description, :content].find {|x| @resource.respond_to? x})}"
+meta property="og:image" content="#{@resource.thumb_url}"
 
 = yield

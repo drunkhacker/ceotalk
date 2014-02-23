@@ -19,4 +19,8 @@ class Talk < ActiveRecord::Base
   def category
     self.categories.map {|c| c.name}.join(" / ")
   end
+
+  def class_name
+    "Talk"
+  end
 end

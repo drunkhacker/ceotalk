@@ -5,6 +5,7 @@ Ceotalk::Application.routes.draw do
 
   resources :users do
     get 'me', on: :collection, :as => "profile"
+    get 'me/favorites', on: :collection, :as => "favorites", controller: :likes, action: :list_favorites
   end
   resources :professionals
   resources :talks do
@@ -35,8 +36,8 @@ Ceotalk::Application.routes.draw do
   post "talks/:id/like", :as => "like_talk", action: :like, controller: :likes, class: "Talk"
   post "talks/:id/favorite", :as => "favorite_talk", action: :favorite, controller: :likes, class: "Talk"
 
-  post "users/:id/like", :as => "like_user", action: :like, controller: :likes, class: "User"
-  post "users/:id/favorite", :as => "favorite_user", action: :favorite, controller: :likes, class: "User"
+  post "professionals/:id/like", :as => "like_professional", action: :like, controller: :likes, class: "Professional"
+  post "professionals/:id/favorite", :as => "favorite_professional", action: :favorite, controller: :likes, class: "Professional"
 
   post "comments/:id/like", :as => "like_commnet", action: :like, controller: :likes, class: "Comment"
 

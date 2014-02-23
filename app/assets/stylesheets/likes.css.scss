@@ -1,3 +1,39 @@
 // Place all the styles related to the likes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//favorite page styles
+
+.favorites.section-header {
+  color: $color-light-green;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 25px 0 10px 0;
+  &:before {
+    content: "* ";
+  }
+}
+
+.section-divider {
+  height: 1px;
+  background-color: $color-gray-4;
+  border: 0;
+}
+
+.favorite-items {
+  padding: 0 30px;
+  padding-bottom: 20px;
+  .item {
+    display: inline-block;
+    @include size(226px 170px);
+    background-color: $color-gray-1;
+    margin-left: 12px;
+    img {
+      width: 100%;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+    .overlay { display: block; text-decoration: none;}
+}

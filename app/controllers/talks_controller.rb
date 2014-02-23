@@ -30,7 +30,7 @@ class TalksController < ApplicationController
       return
     end
 
-    @talk = Talk.find(params[:id])
+    @resource = @talk = Talk.find(params[:id])
     @current_user = current_user || User.first
     @comment = Comment.new
     @other_talks = @talk.professional.talks.where("id != ?", @talk.id).order("created_at DESC").limit(5)
