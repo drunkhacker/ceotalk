@@ -25,6 +25,7 @@ class TalksController < ApplicationController
 
   def show
     is_facebook = request.env["HTTP_USER_AGENT"].scan(/facebookexternalhit\/1\.1/) != [] # is facebook?
+    is_facebook = true
     if !is_facebook && !request.xhr?
       redirect_to talks_path + "/##{params[:id]}"
       return
