@@ -17,6 +17,7 @@ class ProblemsController < ApplicationController
     @phase = (params[:phase] || @problem.phase).to_i
     @comment = ProblemComment.new
     @top_comments = @problem.comments.order("like_count DESC").limit(3)
+    @comments = @problem.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 
     @current_user = current_user || User.first
 

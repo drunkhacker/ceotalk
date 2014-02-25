@@ -82,6 +82,12 @@ $left-width: 245px;
     color: $color-black;
     margin: 0;
   }
+
+  textarea {
+    width: 300px;
+    border: 1px solid $color-gray-1;
+    /*min-height: 200px;*/
+  }
 }
 
 hr {

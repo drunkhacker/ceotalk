@@ -1,9 +1,15 @@
+= content_for :header do
+  meta property="og:title" content="#{@problem.title}"
+  meta property="og:url" content="#{problem_url(@problem)}"
+  meta property="og:description" content="#{@problem.content}"
+  meta property="og:image" content="#{@problem.thumb_url}"
+
 .content-layer.clear
   = render partial: 'phase_bar', :locals => {problem: @problem}
   hgroup.content-header.problem
     div style="width: 275px ; float: right; "
       = render partial: '/users/pro_short_side', :locals => {:professional => @problem.professional }
-    h1.title = @problem.title
+    h1.problem.title = @problem.title
     h3.category = @problem.category
 
   .problem-content.clear
@@ -54,24 +60,7 @@
   / 코멘트 부분
 
   .column.left
-    .new-comment.clear
-      .comment-author-info
-        = image_tag(@current_user.profile_photo.url, :class => "profile-photo")
-        h5.name = @current_user.name
-        h6.company = @current_user.company_name
-      = form_for [@problem, @comment.becomes(Comment)], :remote => true do |f| 
-        = f.text_area(:content, :placeholder => "Add a comment")
-        = f.submit "등록"
-    h5.comment-section-title 베스트 답변
-    ul#best-comments.comments
-      - @top_comments.each do |comment|
-        = render partial: 'comments/comment', :locals => {comment: comment}
-    h5.comment-section-title 최신순
-    ul#comments.comments
-      - @problem.comments.each do |comment|
-        = render partial: 'comments/comment', :locals => {comment: comment}
-    .tail
-      = link_to("MORE", "javascript: return false;", :class => "more")
+    = render partial: "/comments/list", locals: {commentable: @problem, new_comment: @comment, top_comments: @top_comments, comments: @comments}
   .column.right
     .ceo-class-ad style="padding: 10px"
       h3 쩌는 CEO class 광고

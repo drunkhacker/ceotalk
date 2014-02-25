@@ -53,12 +53,34 @@
 
   <div class="field-wrapper">
     <%= f.label :profile_photo, "사진", :class => "form-label-inline", :style => "width: 130px;" %>
+    <img id="user_profile_photo_preview" src="" style="border:1px solid #ddd; width: 120px; height: 120px;">
     <%= f.file_field :profile_photo %>
   </div>
 
+  <script>
+    $(function() {
+      var $preview = $("#user_profile_photo_preview");
+      $("#user_profile_photo").change(function(event) {
+        var input = $(event.currentTarget);
+        var file = input[0].files[0];
+        var reader = new FileReader();
+        reader.onload = function(event) {
+          $preview.attr("src", event.target.result);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+  </script>
+
   <div class="field-wrapper">
     <%= f.label :company_id, "소속", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.text_field :company_id %>
+    <%= f.select :company_id, Company.all.map {|c| [c.name, c.id]}, { include_blank: false}, {class: 'chosen-select'} %>
+
+    <script>
+      $(function() {
+//        $("#");
+      });
+    </script>
   </div>
 
   <div class="field-wrapper">
@@ -68,17 +90,17 @@
 
   <div class="field-wrapper">
     <%= f.label :contact, "연락처", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.text_area :contact %>
+    <%= f.text_area :contact, :style => "height: 100px;" %>
   </div>
 
   <div class="field-wrapper">
     <%= f.label :career, "커리어", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.text_area :career %>
+    <%= f.text_area :career, :style => "height: 100px;" %>
   </div>
 
   <div class="field-wrapper">
     <%= f.label :introduction, "자기소개", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.text_area :introduction %>
+    <%= f.text_area :introduction, :style => "height: 200px;" %>
   </div>
 
   <div><%= f.submit "Update" %></div>

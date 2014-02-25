@@ -12,7 +12,7 @@ ActiveAdmin.register Company do
     column :members do |company|
       company.members.count
     end
-    column :company_category
+    #column :company_category
     column :created_at
     default_actions
   end

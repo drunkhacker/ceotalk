@@ -5,7 +5,7 @@
 
 javascript:
   function favorite() {
-    $.post("#{send("favorite_#{resource.class.name.downcase}_url", resource)}", function (data) {
+    $.post("#{send("favorite_#{resource.class.name.underscore}_url", resource)}", function (data) {
       if (data.ok) {
         if (data.favorite) {
           $(".share-actions a.favorite").addClass("selected");
@@ -20,7 +20,7 @@ javascript:
     return false;
   }
   function like() {
-    $.post("#{send("like_#{resource.class.name.downcase}_url", resource)}", function(data) {
+    $.post("#{send("like_#{resource.class.name.underscore}_url", resource)}", function(data) {
       if (data.ok) {
         if (data.liked) {
           $(".share-actions a.like").addClass("selected");
@@ -34,7 +34,7 @@ javascript:
     return false;
   }
   function share_popup() {
-    var url = "#{send("#{resource.class.name.downcase}_url", resource)}";
+    var url = "#{send("#{resource.class.name.underscore}_url", resource)}";
     url = "http://www.facebook.com/sharer/sharer.php?u={URL}&t={TITLE}"
       .replace("{URL}", encodeURIComponent(url))
       .replace("{TITLE}", encodeURIComponent("#{title}"));

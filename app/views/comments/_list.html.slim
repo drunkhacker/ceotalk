@@ -1,0 +1,29 @@
+.new-comment.clear
+  .comment-author-info
+    - if signed_in?
+      = image_tag(current_user.profile_photo.url, :class => "profile-photo")
+      h5.name = current_user.name
+      h6.company = current_user.company_name
+    - else
+      = image_tag("/assets/icn-anonymous.png", :class => "profile-photo")
+      h5.name —
+      h6.company —
+
+  = form_for [commentable, new_comment.becomes(Comment)], :remote => true do |f| 
+    - if signed_in?
+      = f.text_area(:content, :placeholder => "Add a comment")
+      = f.submit "등록"
+    - else
+      = f.text_area(:content, :placeholder => "로그인 후 이용하실 수 있습니다.", :disabled => true)
+      = f.submit "등록"
+
+h5.comment-section-title 베스트 답변
+ul#best-comments.comments
+  - top_comments.each do |comment|
+    = render partial: 'comments/comment', :locals => {comment: comment}
+h5.comment-section-title 최신순
+ul#comments.comments
+  - comments.each do |comment|
+    = render partial: 'comments/comment', :locals => {comment: comment}
+.tail
+  = link_to("MORE", "javascript: return false;", :class => "more")

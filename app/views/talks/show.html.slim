@@ -13,22 +13,7 @@
     = render @talk
 
     = render partial: '/share_actions', locals: {resource: @talk.becomes(Talk), title: @talk.title}
-    .new-comment.clear
-      .comment-author-info
-        = image_tag(@current_user.profile_photo.url, :class => "profile-photo")
-        h5.name = @current_user.name
-        h6.company = @current_user.company_name
-      = form_for [@talk.becomes(Talk), @comment], :remote => true do |f| 
-        = f.text_area(:content, :placeholder => "Add a comment")
-        = f.submit "등록"
-    .comment-count 
-      | 댓글 
-      = @talk.comments.count
-    ul.comments
-      - @talk.comments.each do |comment|
-        = render comment
-    .tail
-      = link_to("MORE", "javascript: return false;", :class => "more")
+    = render partial: '/comments/list', locals: {commentable: @commentable, new_comment: @comment, top_comments: @top_comments, comments: @comments }
   .column.right
     = render partial: "/users/pro_short_side", locals: {professional: @talk.professional }
     .meta

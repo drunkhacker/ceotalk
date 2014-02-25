@@ -1,8 +1,14 @@
+= content_for :header do
+  meta property="og:title" content="#{@question.title}"
+  meta property="og:url" content="#{open_question_url(@question)}"
+  meta property="og:description" content="#{@question.content}"
+  meta property="og:image" content="#{@question.thumbnail.url}"
+
 .content-layer.clear
   hgroup.content-header.question
     div style="width: 275px ; float: right; "
       = render partial: '/users/pro_short_side', :locals => {:professional => @question.professional }
-    h1.title = @question.title
+    h1.question.title = @question.title
     h3.category = @question.category
 
   .problem-content.clear
@@ -15,24 +21,8 @@
   = render partial: '/share_actions', locals: {resource: @question, title: @question.title}
 
   .column.left
-    .new-comment.clear
-      .comment-author-info
-        = image_tag(@current_user.profile_photo.url, :class => "profile-photo")
-        h5.name = @current_user.name
-        h6.company = @current_user.company_name
-      = form_for [@question, @comment.becomes(Comment)], :remote => true do |f| 
-        = f.text_area(:content, :placeholder => "Add a comment")
-        = f.submit "등록"
-    h5.comment-section-title 베스트 답변
-    ul#best-comments.comments
-      - @top_comments.each do |comment|
-        = render partial: 'comments/comment', :locals => {comment: comment}
-    h5.comment-section-title 최신순
-    ul#comments.comments
-      - @question.comments.each do |comment|
-        = render partial: 'comments/comment', :locals => {comment: comment}
-    .tail
-      = link_to("MORE", "javascript: return false;", :class => "more")
+    = render partial: "/comments/list", locals: {commentable: @question, new_comment: @comment, top_comments: @top_comments, comments: @comments}
+
   .column.right
     .other-videos
       h3.section-header 지난 컨텐츠

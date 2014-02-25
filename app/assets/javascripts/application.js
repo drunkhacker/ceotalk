@@ -16,3 +16,4 @@
 //= require turbolinks
 //= require application
 //= require jquery.reveal
+//= require chosen-jquery

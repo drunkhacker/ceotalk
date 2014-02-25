@@ -9,6 +9,7 @@ class OpenQuestionsController < ApplicationController
     @current_user = current_user || User.first
     @comment = Comment.new
     @top_comments = @question.comments.order("like_count DESC").limit(3)
+    @comments = @question.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 
     respond_with(@question) do |format|
       format.html { render :layout => !request.xhr?}

@@ -1,10 +1,13 @@
 ActiveAdmin.register User do
 
-  permit_params :name, :type, :company_id, :featured, :tagline, :introduction, :career, :contact, :position, :interests, category_ids: []
+  permit_params :name, :email, :type, :company_id, :featured, :tagline, :introduction, :profile_photo, :password, :password_confirmation, :career, :contact, :position, :interests, category_ids: []
 
   form do |f|
     f.inputs do
       f.input :name
+      f.input :email
+      f.input :password
+      f.input :password_confirmation
       f.input :type, :as => :boolean, :checked_value => "Professional", :unchecked_value => "User", :label => "전문가"
       f.input :company
       f.input :categories
@@ -14,6 +17,7 @@ ActiveAdmin.register User do
       f.input :introduction
       f.input :career, :as => :text
       f.input :contact, :as => :text
+      f.input :profile_photo
     end
     f.actions
   end
