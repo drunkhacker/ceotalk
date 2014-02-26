@@ -18,5 +18,7 @@ h3.section-title
           =professional.position
         h5.name =professional.name 
 
+= paginate @professionals, params: {name_filter: @name_filter}
+
 .reveal-modal
 = render '/install_modal_trigger'
