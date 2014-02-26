@@ -1,7 +1,7 @@
 class ProfessionalsController < ApplicationController
   respond_to :html, :js
   def index
-    @professionals = Professional.all
+    @professionals = Professional.page(params[:page]).per(20)
     @indexes = %w(ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ)
   end
 

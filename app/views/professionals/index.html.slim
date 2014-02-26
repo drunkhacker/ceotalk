@@ -10,7 +10,7 @@ h3.section-title
 .professionals-container.clear
   - @professionals.each do |professional|
     = link_to professional, :class => "professional modal-popup" do
-      =image_tag(professional.profile_photo.url)
+      =image_tag(professional.profile_photo.square300.url)
       .overlay
         h6.company 
           = professional.company_name

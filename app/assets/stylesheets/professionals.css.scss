@@ -20,13 +20,16 @@
   @include size($w $w);
   margin-left: 10px;
   margin-bottom: 10px;
-  &:first-child {
-    margin-left: 0;
-  }
+  &:first-child { margin-left: 0; }
+  &:nth-child(6) { margin-left: 0; }
+  &:nth-child(11) { margin-left: 0; }
+  &:nth-child(16) { margin-left: 0; }
+
   float: left;
   img {
     width: 100%;
   }
+  overflow: hidden;
 
   .overlay {
     @include size(100% 75px);

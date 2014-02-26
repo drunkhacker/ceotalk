@@ -58,6 +58,7 @@ gem 'slim-rails'
 gem 'bourbon'
 gem 'kaminari'
 gem 'thin'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'rspec-rails'

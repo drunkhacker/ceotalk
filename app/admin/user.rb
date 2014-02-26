@@ -43,9 +43,11 @@ ActiveAdmin.register User do
   end
 
   show :title => :name do
-    div :style => "float :right; margin-top: 40px; margin-right: 20px; padding:10px; background:white;" do
-      if user.profile_photo.url
-        image_tag user.profile_photo.url
+    div :style => "width: 200px; height: 200px; overflow: hidden; float :right; margin-top: 40px; margin-right: 20px; padding:10px; background:white;" do
+      if user.profile_photo.square300.url
+        image_tag user.profile_photo.square300.url, style: "width: 200px; height: 200px;"
+      elsif user.profile_photo.url
+        image_tag user.profile_photo.url, style: "width: 200px; height: 200px;"
       end
     end
     attributes_table do
@@ -73,6 +75,13 @@ ActiveAdmin.register User do
           user.talks.count
         end
       end
+    end
+  end
+
+  controller do
+    def update_resource(object, attributes)
+      update_method = attributes.first[:password].present? ? :update_attributes : :update_without_password
+      object.send(update_method, *attributes)
     end
   end
  
