@@ -6,7 +6,6 @@ class OpenQuestionsController < ApplicationController
 
   def show
     @question = OpenQuestion.find(params[:id])
-    @current_user = current_user || User.first
     @comment = Comment.new
     @top_comments = @question.comments.order("like_count DESC").limit(3)
     @comments = @question.comments.order("created_at DESC").page(params[:comment_page]).per(5)

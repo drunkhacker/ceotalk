@@ -7,7 +7,6 @@ class ColumnsController < ApplicationController
 
   def show
     @talk = Post.find(params[:id])
-    @current_user = current_user || User.first
     @comment = Comment.new
     @other_talks = @talk.professional.posts.where("id != ?", @talk.id).order("created_at DESC").limit(5)
 

@@ -19,8 +19,6 @@ class ProblemsController < ApplicationController
     @top_comments = @problem.comments.order("like_count DESC").limit(3)
     @comments = @problem.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 
-    @current_user = current_user || User.first
-
     @other_problems = @problem.professional.problems.where("id != ?", @problem.id).order("created_at DESC").limit(5)
 
     respond_with(@problem) do |format|

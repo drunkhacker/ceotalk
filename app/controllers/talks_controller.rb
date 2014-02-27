@@ -33,7 +33,6 @@ class TalksController < ApplicationController
     @resource = @talk = Talk.find(params[:id])
     @commentable = @talk.becomes(Talk)
 
-    @current_user = current_user || User.first
     @comment = Comment.new
     @top_comments = @talk.comments.order("like_count DESC").limit(3)
     @comments = @talk.comments.order("created_at DESC").page(params[:comment_page]).per(5)
