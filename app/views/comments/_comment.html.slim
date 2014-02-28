@@ -1,4 +1,4 @@
-li.comment.clear
+li.comment.clear id="comment#{comment.id}"
   .comment-author-info
     = image_tag(comment.user.profile_photo.url, :class => "profile-photo")
     h5.name = comment.user.name
@@ -6,5 +6,9 @@ li.comment.clear
   .comment-time = comment.created_at.strftime("%y.%m.%d. %H:%M%P")
   .comment-content
     = simple_format comment.content
+
+  .comment-meta
+    = link_to comment.like_count, "#", onclick: "like(#{comment.id}, event)", class: "like-count"
+    = link_to comment.comments.count, "#", class: "comment-count"
 
 

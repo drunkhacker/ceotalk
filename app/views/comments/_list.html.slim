@@ -26,4 +26,16 @@ ul#comments.comments
   - comments.each do |comment|
     = render partial: 'comments/comment', :locals => {comment: comment}
 .tail
-  = link_to("MORE", "javascript: return false;", :class => "more")
+  = paginate @comments, remote: true, params: {controller: 'comments', action: 'index', resource_class: commentable.class.name, resource_id: commentable.id}
+
+javascript:
+  function like(id, e) {
+    $.post("/comments/" + id + "/like", function(obj) {
+      $dom = $("#comment" + obj.id + " a.like-count");
+      console.log("$dom.length = " + $dom.length);
+      $dom.text("" + obj.like);
+    });
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  

@@ -7,9 +7,9 @@ class LikesController < ApplicationController
 
     if likeable_resource
       if likeable_resource.like(current_user)
-        render :json => {ok: true, like: likeable_resource.like_count, liked: true}
+        render :json => {ok: true, like: likeable_resource.like_count, liked: true, id: likeable_resource.id}
       else
-        render :json => {ok: true, like: likeable_resource.like_count, liked: false}
+        render :json => {ok: true, like: likeable_resource.like_count, liked: false, id: likeable_resource.id}
       end
     else
       render :json => {ok: false, error: "resource not found"}

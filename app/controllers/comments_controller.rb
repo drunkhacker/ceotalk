@@ -2,6 +2,12 @@ class CommentsController < ApplicationController
   before_filter :authenticate_user!
   respond_to :html, :js
 
+  def index
+    @rid = params[:resource_id].to_i
+    @rtype = params[:resource_class]
+    @comments = params[:resource_class].constantize.find(params[:resource_id].to_i).comments.order("created_at DESC").page(params[:page]).per(5)
+  end
+
   def create
     #logger.debug "#{params[:comment].inspect}"
     commentable_id = params[:talk_id] || params[:problem_id] || params[:open_question_id]
@@ -42,6 +48,7 @@ class CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])
   end
+
 
   private
   def comment_params

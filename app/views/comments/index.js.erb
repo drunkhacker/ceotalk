@@ -1,0 +1,4 @@
+$('#comments').html('<%= escape_javascript render(@comments) %>');
+ 
+$('.content-layer .tail').html('<%= escape_javascript(paginate(@comments, remote: true, params: {controller: 'comments', action: 'index', resource_class: @rtype, resource_id: @rid}).to_s) %>');
+

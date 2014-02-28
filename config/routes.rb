@@ -39,7 +39,8 @@ Ceotalk::Application.routes.draw do
   post "professionals/:id/like", :as => "like_professional", action: :like, controller: :likes, class: "Professional"
   post "professionals/:id/favorite", :as => "favorite_professional", action: :favorite, controller: :likes, class: "Professional"
 
-  post "comments/:id/like", :as => "like_commnet", action: :like, controller: :likes, class: "Comment"
+  post "comments/:id/like", :as => "like_comment", action: :like, controller: :likes, class: "Comment"
+  get "comments", action: :index, controller: :comments
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
