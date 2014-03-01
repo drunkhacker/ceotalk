@@ -34,6 +34,7 @@ class TalksController < ApplicationController
     @commentable = @talk.becomes(Talk)
 
     @comment = Comment.new
+    @comment2 = Comment.new
     @top_comments = @talk.comments.order("like_count DESC").limit(3)
     @comments = @talk.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 

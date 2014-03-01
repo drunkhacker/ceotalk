@@ -1,4 +1,5 @@
-li.comment.clear id="comment#{comment.id}"
+- r = (rand()*10000).to_i
+li.comment.clear class="id#{r}" id="comment#{comment.id}"
   .comment-author-info
     = image_tag(comment.user.profile_photo.url, :class => "profile-photo")
     h5.name = comment.user.name
@@ -9,6 +10,5 @@ li.comment.clear id="comment#{comment.id}"
 
   .comment-meta
     = link_to comment.like_count, "#", onclick: "like(#{comment.id}, event)", class: "like-count"
-    = link_to comment.comments.count, "#", class: "comment-count"
-
+    = link_to comment.comments.count, comment_comments_path(comment_id: comment.id, r:r), remote: true, class: "comment-count"
 

@@ -9,7 +9,6 @@
   padding: 20px;
   padding-left: 34px;
 
-
   textarea {
     float: left;
     display: block;
@@ -23,19 +22,6 @@
     position: relative;
   }
 
-  input[type="submit"] {
-    background-color: transparent;
-    color: white;
-    font-size: 9pt;
-    background-image: url(/assets/icn-hexagon-green.png);
-    @include size(44px 38px);
-    border: 0;
-    position: absolute;
-    right: 10px;
-    top: 35px;
-    padding: 0; 
-    margin-top: -19px;
-  }
 
   .comment-author-info {
     .name {
@@ -46,6 +32,20 @@
       color: $color-gray-1;
     }
   }
+}
+
+.submit-hexagon {
+  background-color: transparent;
+  color: white;
+  font-size: 9pt;
+  background-image: url(/assets/icn-hexagon-green.png);
+  @include size(44px 38px);
+  border: 0;
+  position: absolute;
+  right: 10px;
+  top: 35px;
+  padding: 0; 
+  margin-top: -19px;
 }
 
 .comment-author-info {
@@ -151,6 +151,40 @@
         padding-left: 18px;
         padding-top: 1px;
         background: url(/assets/icn-comment-count.png) no-repeat;
+      }
+    }
+  }
+
+  //2-depth comment
+  .comment2 {
+    textarea {
+      float: left;
+      display: block;
+      border: 0;
+      padding: 10px;
+      padding-right: 60px;
+      margin-top: 10px;
+      @include size(500px 55px);
+    }
+
+    .submit-hexagon {
+      top: 37px;
+      right: 35px; 
+    }
+
+    .comment-author-info {
+      width: 138px + 22px + 10px;
+      &:before {
+        display: block;
+        content: '';
+        float: left;
+        @include size(22px 22px);
+        background: url(/assets/icn-depth2-comment.png) no-repeat;
+        margin-right: 10px;
+      }
+
+      .name, .company {
+        margin-left: 40px + 22px + 10px;
       }
     }
   }

@@ -1,0 +1,20 @@
+li.comment.comment2.clear style="background-color: #E2E4E3; margin:0 ;padding: 0 16px; border: 1px solid #989A99;"
+  .comment-author-info style="width: 160px;"
+    - if signed_in?
+      = image_tag(current_user.profile_photo.url, :class => "profile-photo")
+      h5.name = comment.user.name
+      h6.company = comment.user.company_name
+    - else
+      = image_tag('/assets/icn-anonymous.png', :class => "profile-photo")
+      h5.name —
+      h6.company —
+  = form_for [comment, comment2.becomes(Comment)], remote: true do |f|
+    - if signed_in?
+      = f.text_area(:content, placeholder: "Add a comment")
+    - else
+      = f.text_area(:content, placeholder: "로그인 후 이용하실 수 있습니다.", disabled: "disabled")
+    = f.submit "등록", class: "submit-hexagon"
+
+
+- comment.comments.each do |comment2|
+  = render partial: '/comments/comment2', locals: {comment: comment2}

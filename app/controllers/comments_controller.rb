@@ -1,11 +1,19 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:create]
   respond_to :html, :js
 
   def index
-    @rid = params[:resource_id].to_i
-    @rtype = params[:resource_class]
-    @comments = params[:resource_class].constantize.find(params[:resource_id].to_i).comments.order("created_at DESC").page(params[:page]).per(5)
+    unless params[:comment_id].nil?
+      @comment = Comment.find(params[:comment_id])
+      @comment2 = Comment.new
+      @r = params[:r]
+      render 'index_comments'
+      return
+    else
+      @rid = params[:resource_id].to_i
+      @rtype = params[:resource_class]
+      @comments = params[:resource_class].constantize.find(params[:resource_id].to_i).comments.order("created_at DESC").page(params[:page]).per(5)
+    end
   end
 
   def create
