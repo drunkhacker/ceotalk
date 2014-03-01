@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222163721) do
+ActiveRecord::Schema.define(version: 20140301095126) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -112,12 +112,14 @@ ActiveRecord::Schema.define(version: 20140222163721) do
     t.datetime "updated_at"
   end
 
-  create_table "interests", force: true do |t|
+  create_table "interests", id: false, force: true do |t|
     t.integer  "user_id",     null: false
     t.integer  "category_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "interests", ["user_id", "category_id"], name: "index_interests_on_user_id_and_category_id", unique: true, using: :btree
 
   create_table "likes", id: false, force: true do |t|
     t.integer  "user_id",       null: false

@@ -20,11 +20,6 @@
   <% end %>
 
   <div class="field-wrapper">
-    <%= f.label :current_password, "기존 비밀번호", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.password_field :current_password %>
-  </div>
-
-  <div class="field-wrapper">
     <%= f.label :password, "새 비밀번호", :class => "form-label-inline", :style => "width: 130px;" %>
     <%= f.password_field :password, :autocomplete => "off" %>
   </div>

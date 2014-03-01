@@ -3,17 +3,14 @@
   - count = Category.count
   - per_row = 7
   - row_count = (count + per_row - 1)/per_row
-  = f.fields_for :interests do |f2|
-    span
-      = f2.check_box :_destroy, {checked: f2.object.persisted?, style: "display: none;"}, '0', '1'
-      = f2.label :_destroy, f2.object.category.name
-      = f2.hidden_field :category_id
-    - i = f2.options[:child_index]
-    - if i % 7 < 6 && i < Category.count - 1
-      span.divider &#47;
-    - if i % 7 == 6 && i / 7 < row_count - 1
-      div style="height: 15px;"
-
-
-
-
+  span
+    - user_categories = if @user_categories then @user_categories else @user.categories end
+    - Category.all.each_with_index do |cat, i|
+      /= hidden_field_tag "categories[#{i}][selected]", 0, {id: "hidden_categories_#{i}_selected"}
+      = check_box_tag "categories[#{i}][selected]", "1", user_categories.include?(cat), {style: "display: none;"}
+      = label_tag "categories[#{i}][selected]", cat.name
+      = hidden_field_tag "categories[#{i}][id]", cat.id
+      - if i % 7 < 6 && i < Category.count - 1
+        span.divider &#47;
+      - if i % 7 == 6 && i / 7 < row_count - 1
+        div style="height: 15px;"
