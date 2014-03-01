@@ -108,22 +108,8 @@
 }
 
 #best-comments {
-  .comment {
-    &:nth-child(1) {
-      .comment-author-info:before {
-        content: '1';
-      }
-    }
-    &:nth-child(2) {
-      .comment-author-info:before {
-        content: '2';
-      }
-    }
-    &:nth-child(3) {
-      .comment-author-info:before {
-        content: '3';
-      }
-    }
+  .comment.best {
+
     .comment-author-info {
       margin-left: 0;
       margin-right: 2px;
@@ -136,13 +122,13 @@
       }
 
       @include size((138px + 18px + 34px) 100%);
-      &:before {
+      .ranking {
         content: '';
         color: $color-red;
         text-align: center;
         padding-top: 7px;
         font-weight: bold;
-        @include size(34px 23px);
+        @include size(34px 30px);
         display: block;
         float: left;
         background: url(/assets/bg-rank.png) 0 0px no-repeat;

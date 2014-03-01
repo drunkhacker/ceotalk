@@ -18,12 +18,12 @@
 
 h5.comment-section-title 베스트 답변
 ul#best-comments.comments
-  - top_comments.each do |comment|
-    = render partial: 'comments/comment', :locals => {comment: comment}
+  - top_comments.each_with_index do |comment, i|
+    = render partial: 'comments/comment', :locals => {best: true, comment: comment, rank: i+1}
 h5.comment-section-title 최신순
 ul#comments.comments
   - comments.each do |comment|
-    = render partial: 'comments/comment', :locals => {comment: comment}
+    = render partial: 'comments/comment', :locals => {best: false, comment: comment}
 .tail
   = paginate @comments, remote: true, params: {controller: 'comments', action: 'index', resource_class: commentable.class.name, resource_id: commentable.id}
 
