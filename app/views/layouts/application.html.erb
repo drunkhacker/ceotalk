@@ -16,9 +16,10 @@
           <%= link_to '마이페이지', profile_users_path %>
           <%= link_to '로그아웃', destroy_user_session_path, :method => :delete %>
         <% else -%>
-           <%= link_to "login", new_user_session_path %>
+          <%= link_to "login", new_user_session_path %>
           <%= link_to "join", new_user_registration_path %>
-       <% end -%>
+        <% end -%>
+        <%= link_to "사이트소개", "#" %>
       </div>
       <h1 id="site-logo" class="hide-text"> <%= link_to 'Logo', root_path %> </h1>
       <ul class="menu">
@@ -41,6 +42,8 @@
     <% else %>
       <%= yield %>
     <% end %>
+
+    <%= render '/footer' %>
 
   </body>
 </html>

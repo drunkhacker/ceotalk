@@ -87,3 +87,48 @@ body {
 
 }
 
+#footer {
+  height: 100px; 
+  /*padding-top: 28px;*/
+  margin-top: 150px;
+
+  .footer-menu {
+    font-size: 11px;
+    text-align: center;
+    a {
+      padding: 0 40px;
+      text-decoration: none;
+      color: #595959;
+      border-left: 1px solid #aaa;
+    }
+    :last-child {
+      a {
+        border-right: 1px solid #aaa;
+      }
+    }
+  }
+
+  .wrapper {
+    padding-top: 28px;
+  }
+
+  .logo-footer {
+    display: block;
+    float: left;
+  }
+
+  .disclaimer {
+    color: #b6b6b6;
+    font-size: 11px;
+    line-height: 130%;
+    float: left;
+    margin-left: 100px;
+  }
+
+  .img-footer-right {
+    float: right;
+    margin-left: 20px;
+    margin-top: 3px;
+  }
+}
+
