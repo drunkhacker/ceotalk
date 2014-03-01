@@ -1,1 +1,9 @@
 $('.id<%= @r %>').after('<%= escape_javascript render(partial: '/comments/new_comment2', locals: {comment: @comment, comment2:@comment2, r:@r}) %>');
+//change behavior of depth2 comment link
+$selector = $(".id<%= @r %> .comment-meta a.comment-count");
+$selector.href = "#";
+$selector.click(function(e) {
+  $("#comment2-<%= @r %>").toggle();
+  e.stopPropagation();
+  e.preventDefault();
+});

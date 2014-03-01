@@ -1,7 +1,7 @@
 <% if @commentable.class == Comment -%>
   console.log(".comment.id<%= @r %>");
-  $selector = $(".comment.id<%= @r %>").next();
-  console.log("$selector.length = " + $selector.length);
+  $container = $(".comment.id<%= @r %>").next();
+  $selector = $("ul li:first-child", $container);
   $selector.after("<%= escape_javascript(render partial: '/comments/comment2', locals: {comment: @comment}) %>")
   $("textarea", $selector).val("");
 <% else -%>
