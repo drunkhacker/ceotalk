@@ -7,10 +7,24 @@
     - user_categories = if @user_categories then @user_categories else @user.categories end
     - Category.all.each_with_index do |cat, i|
       /= hidden_field_tag "categories[#{i}][selected]", 0, {id: "hidden_categories_#{i}_selected"}
-      = check_box_tag "categories[#{i}][selected]", "1", user_categories.include?(cat), {style: "display: none;"}
+      = check_box_tag "categories[#{i}][selected]", "1", user_categories.include?(cat), {style: "display: none;", class: "expert-category"}
       = label_tag "categories[#{i}][selected]", cat.name
       = hidden_field_tag "categories[#{i}][id]", cat.id
       - if i % 7 < 6 && i < Category.count - 1
         span.divider &#47;
       - if i % 7 == 6 && i / 7 < row_count - 1
         div style="height: 15px;"
+
+javascript:
+  $(".expert-category").click(function(e) {
+    console.log("hihi");
+    //check checked box length
+    console.log('$(".expert-category:checked").length = ' + $(".expert-category:checked").length);
+    if ($(".expert-category:checked").length > 3) {
+      //discard this selection
+      $this = $(this);
+      setTimeout(function() {
+        $this.attr("checked", false);
+      }, 300);
+    }
+  });
