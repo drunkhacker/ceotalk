@@ -4,8 +4,8 @@ li id="comment2-#{r}"
       .comment-author-info style="width: 160px;"
         - if signed_in?
           = image_tag(current_user.profile_photo.url, :class => "profile-photo")
-          h5.name = comment.user.name
-          h6.company = comment.user.company_name
+          h5.name = current_user.name
+          h6.company = current_user.company_name
         - else
           = image_tag('/assets/icn-anonymous.png', :class => "profile-photo")
           h5.name —
