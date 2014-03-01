@@ -124,33 +124,34 @@
         content: '3';
       }
     }
-  }
-  .comment-author-info {
-    margin-left: 0;
-    margin-right: 2px;
-    .name, .company{
-      margin-left: 40px + 34px + 14px;
-    }
+    .comment-author-info {
+      margin-left: 0;
+      margin-right: 2px;
+      .name, .company{
+        margin-left: 40px + 34px + 14px;
+      }
 
-    .profile-photo {
-      left: 48px;
-    }
+      .profile-photo {
+        left: 48px;
+      }
 
-    @include size((138px + 18px + 34px) 100%);
-    &:before {
-      content: '';
-      color: $color-red;
-      text-align: center;
-      padding-top: 7px;
-      font-weight: bold;
-      @include size(34px 23px);
-      display: block;
-      float: left;
-      background: url(/assets/bg-rank.png) 0 0px no-repeat;
-      margin-right: 14px;
+      @include size((138px + 18px + 34px) 100%);
+      &:before {
+        content: '';
+        color: $color-red;
+        text-align: center;
+        padding-top: 7px;
+        font-weight: bold;
+        @include size(34px 23px);
+        display: block;
+        float: left;
+        background: url(/assets/bg-rank.png) 0 0px no-repeat;
+        margin-right: 14px;
+      }
     }
   }
 }
+
 
 //final 프레젠테이션(?) 개별 스타일
 .presentation {

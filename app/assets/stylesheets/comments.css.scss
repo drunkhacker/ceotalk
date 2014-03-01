@@ -90,7 +90,7 @@
 }
 .comments {
   background-color: $color-gray-3;
-  .comment {
+  .comment, .comment2 {
     border-bottom: 1px solid $color-gray-1;
     margin: 0 16px;
     &:first-child {
