@@ -1,1 +1,1 @@
-$('.id<%= @r %>').after('<%= escape_javascript render(partial: '/comments/new_comment2', locals: {comment: @comment, comment2:@comment2}) %>');
+$('.id<%= @r %>').after('<%= escape_javascript render(partial: '/comments/new_comment2', locals: {comment: @comment, comment2:@comment2, r:@r}) %>');

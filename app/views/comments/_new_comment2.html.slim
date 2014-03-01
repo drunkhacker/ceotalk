@@ -9,6 +9,7 @@ li.comment.comment2.clear style="background-color: #E2E4E3; margin:0 ;padding: 0
       h5.name —
       h6.company —
   = form_for [comment, comment2.becomes(Comment)], remote: true do |f|
+    = hidden_field_tag 'r', r
     - if signed_in?
       = f.text_area(:content, placeholder: "Add a comment")
     - else
@@ -16,5 +17,5 @@ li.comment.comment2.clear style="background-color: #E2E4E3; margin:0 ;padding: 0
     = f.submit "등록", class: "submit-hexagon"
 
 
-- comment.comments.each do |comment2|
+- comment.comments.order("created_at DESC").each do |comment2|
   = render partial: '/comments/comment2', locals: {comment: comment2}
