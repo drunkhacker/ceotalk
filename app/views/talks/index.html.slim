@@ -9,7 +9,7 @@ h3.section-title
 
 
 = render '/categories'
-#talks.clear
+#talks.clear style="margin-bottom: 30px;"
   - @talks.each_with_index do |talk, i|
     .item class="#{i == 15 || i == 0 ? 'big' : ''}"
       = image_tag(talk.thumb_url)

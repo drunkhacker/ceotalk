@@ -8,15 +8,18 @@ h3.section-title
     | 다함께 실전 문제해결을 고민해보고 싶어요!
 
 #problems.clear
-  - @problems.each_with_index do |problem, i|
-    .item class="#{i == 15 || i == 0 ? 'big' : ''}"
-      = image_tag(problem.thumb_url)
-      = link_to(problem, :class => "overlay modal-popup", :style => "text-decoration: none;") do
-        /.category = talk.category.name
-        h6.name = problem.professional.name
-        h5.title = problem.title
-        p.description = truncate(strip_tags(problem.content), length:  (i == 0 || i == 15)? 300 : 120) 
-        = link_to "more", "#{problems_path}/##{problem.id}", :class => "more" 
+  =image_tag('/assets/img-league-preopen.png', style: "margin-top: -20px;")
+
+//나중에 오픈
+  /- @problems.each_with_index do |problem, i|
+    /.item class="#{i == 15 || i == 0 ? 'big' : ''}"
+      /= image_tag(problem.thumb_url)
+      /= link_to(problem, :class => "overlay modal-popup", :style => "text-decoration: none;") do
+        //.category = talk.category.name
+        /h6.name = problem.professional.name
+        /h5.title = problem.title
+        /p.description = truncate(strip_tags(problem.content), length:  (i == 0 || i == 15)? 300 : 120) 
+        /= link_to "more", "#{problems_path}/##{problem.id}", :class => "more" 
 
 .reveal-modal
 = render '/install_modal_trigger'

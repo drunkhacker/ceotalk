@@ -1,7 +1,7 @@
 .divider
-  = link_to 'EXPERTS', professionals_path, :class => controller_name == 'professionals' ? "active" : ""
+  = link_to '전문가', professionals_path, :class => controller_name == 'professionals' ? "active" : ""
   ||
-  = link_to 'CORPORATIONS', companies_path, :class => controller_name == 'companies' ? "active" : ""
+  = link_to '전문기업', companies_path, :class => controller_name == 'companies' ? "active" : ""
 
 ul.name-indexes.clear
   li = link_to("전체", "?name_filter=", class: @name_filter == -1 ? "active":"")
