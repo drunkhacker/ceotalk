@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
 
   # relations
-  has_many :comments
+  #has_many :comments
   belongs_to :company
   has_many :presentations
   has_many :interests

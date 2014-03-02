@@ -343,7 +343,10 @@
 }
 
 #experts-corporation {
-  .item {
+  .member {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
     /*border: 1px solid #aaa;*/
     /*@include size(50% 300px);*/
     width: 285px;
@@ -351,6 +354,25 @@
     &:first-child {
       margin-right: 10px;
     }
+    .bg {
+      display: block;
+      position: absolute;
+      top: 0;
+      @include size(100% 100%);
+    }
+    .overlay {
+      position: absolute;
+      top: calc(100% - 76px);
+      transition: top 0.3s ease-out;
+      background-color: $color-black-80;
+      color: white;
+      @include size(100% 100%);
+      overflow: hidden;
+      padding-left: 12px;
+      padding-right: 12px;
+
+    }
+
     h6 {
       position: absolute;
       top: 10px;
@@ -482,6 +504,7 @@
   text-overflow: ellipsis;
   overflow-x: hidden;
   font-weight: normal;
+  text-align: right;
 }
 
 .member-name {

@@ -3,6 +3,8 @@ class Professional < User
   has_many :problems
   has_many :posts
 
+  has_many :comments, :as => :commentable
+
   def contents
     (self.posts + self.talks).sort {|x,y| y.created_at <=> x.created_at}
   end

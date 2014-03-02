@@ -10,7 +10,9 @@ Ceotalk::Application.routes.draw do
     get 'me', on: :collection, :as => "profile"
     get 'me/favorites', on: :collection, :as => "favorites", controller: :likes, action: :list_favorites
   end
-  resources :professionals
+  resources :professionals do
+    resources :comments
+  end
   resources :talks do
     resources :comments
   end
@@ -26,6 +28,7 @@ Ceotalk::Application.routes.draw do
   get 'posts/wordpress/:id', :as => "wordpress_post", action: :wordpress, controller: :posts
 
   resources :companies do
+    resources :comments
   end
 
   resources :open_questions do

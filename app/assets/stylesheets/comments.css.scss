@@ -12,7 +12,9 @@
   textarea {
     float: left;
     display: block;
-    @include size(558px 70px);
+    @include calc(width, "100% - 138px");
+    height: 70px;
+    /*@include size("" 70px);*/
     border: 0;
     padding: 10px;
     padding-right: 60px;
@@ -127,7 +129,7 @@
     padding: 10px 0 20px 0;
     line-height: 120%;
     float: left;
-    width: 426px;
+    @include calc(width, "100% - 292px");
   }
 
   .comment-meta {
@@ -164,7 +166,8 @@
       padding: 10px;
       padding-right: 60px;
       margin-top: 10px;
-      @include size(500px 55px);
+      @include calc(width, "100% - 216px");
+      height: 55px;
     }
 
     .submit-hexagon {

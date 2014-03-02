@@ -32,3 +32,4 @@
         | not implemented yet
 
   = render partial: '/share_actions', locals: {resource: @company, title: @company.tagline}
+  = render partial: '/comments/list', locals: {commentable: @commentable, new_comment: @comment, top_comments: @top_comments, comments: @comments }

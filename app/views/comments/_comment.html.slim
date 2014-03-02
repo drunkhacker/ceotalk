@@ -1,7 +1,7 @@
 - r = (rand()*10000).to_i
-li.comment.clear class="id#{r} #{if best then "best" end}" id="comment#{comment.id}"
+li.comment.clear class="id#{r} #{if local_assigns[:best] && best then "best" end}" id="comment#{comment.id}"
   .comment-author-info
-    - if best
+    - if local_assigns[:best] && best
       .ranking = rank
     = image_tag(comment.user.profile_photo.url, :class => "profile-photo")
     h5.name = comment.user.name

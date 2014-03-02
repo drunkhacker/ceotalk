@@ -35,7 +35,7 @@ class TalksController < ApplicationController
 
     @comment = Comment.new
     @comment2 = Comment.new
-    @top_comments = @talk.comments.order("like_count DESC").limit(3)
+    @top_comments = @talk.comments.where("like_count >= 5").order("like_count DESC").limit(3)
     @comments = @talk.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 
     @other_talks = @talk.professional.talks.where("id != ?", @talk.id).order("created_at DESC").limit(5)
