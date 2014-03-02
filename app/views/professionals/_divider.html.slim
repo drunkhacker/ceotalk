@@ -4,6 +4,8 @@
   = link_to 'CORPORATIONS', companies_path, :class => controller_name == 'companies' ? "active" : ""
 
 ul.name-indexes.clear
+  li = link_to("전체", "?name_filter=", class: @name_filter == -1 ? "active":"")
   - @indexes.each_with_index do |index, i|
-    li = link_to(index, "?name_filter=#{i}")
+    li = link_to(index, "?name_filter=#{i}", class: @name_filter == i ? "active":"")
+  li = link_to("기타", "?name_filter=#{@indexes.length}", class: @name_filter == @indexes.length ? "active":"")
 

@@ -8,17 +8,17 @@ h3.section-title
 = render '/professionals/divider'
 
 .professionals-container.clear
-  - @professionals.each do |professional|
-    = link_to professional, :class => "professional modal-popup" do
-      =image_tag(professional.profile_photo.square300.url)
+  - @users.each do |user|
+    = link_to user, :class => "professional modal-popup" do
+      =image_tag(user.profile_photo.square300.url)
       .overlay
-        h6.company 
-          = professional.company_name
-          br
-          =professional.position
-        h5.name =professional.name 
+        h6.categories = user.categories.map {|c| c.name}.join "/"
+        h6.company = "#{user.company_name} #{user.position}"
+        h5.name =user.name 
+      - if user.type == "Professional"
+        = image_tag("/assets/icn-expert-badge.png", style: "position: absolute; top:5px; right: 5px; width: 64px; height: 64px;")
 
-= paginate @professionals, params: {name_filter: @name_filter}
+= paginate @users, params: {name_filter: @name_filter}
 
 .reveal-modal
 = render '/install_modal_trigger'
