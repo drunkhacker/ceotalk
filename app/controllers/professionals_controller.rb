@@ -17,7 +17,6 @@ class ProfessionalsController < ApplicationController
 
   def show
     is_facebook = request.env["HTTP_USER_AGENT"].scan(/facebookexternalhit\/1\.1/) != [] # is facebook?
-    is_facebook = true
     if !is_facebook && !request.xhr?
       redirect_to professionals_path + "/##{params[:id]}"
       return
