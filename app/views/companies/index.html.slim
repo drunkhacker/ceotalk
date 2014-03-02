@@ -12,7 +12,7 @@ h3.section-title
     = link_to(company, :class => "professional modal-popup") do
       =image_tag(company.logo.url)
       .overlay
-        - if company.tagline
+        - if company.tagline && company.tagline.length > 0
           h6.company-tagline = company.tagline 
         - else
           h6.company-tagline &nbsp;
