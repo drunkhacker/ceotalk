@@ -62,6 +62,7 @@ Ceotalk::Application.routes.draw do
   get 'info/privacy_policy' => 'home#privacy_policy'
   get 'info/email_deny' => 'home#email_deny'
   get 'info/map' => 'home#map'
+  get 'info/ceomba_intro' => 'home#ceomba_intro'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

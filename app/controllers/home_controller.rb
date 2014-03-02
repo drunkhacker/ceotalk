@@ -39,4 +39,7 @@ class HomeController < ApplicationController
     render layout: false
   end
 
+  def ceomba_intro
+    render layout: false
+  end
 end
