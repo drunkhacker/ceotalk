@@ -16,7 +16,7 @@
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <div class="other-action clear">
     <span class="instruction">인증 이메일을 못받았다면</span>
-    <%= link_to "인증이메일받기", new_confirmation_path(resource_name), :class => 'action' %>
+    <%= link_to "인증이메일받기", new_user_confirmation_path, :class => 'action' %>
   </div>
 <% end -%>
 
