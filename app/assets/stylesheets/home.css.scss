@@ -101,14 +101,15 @@
         .overlay {
           padding-left: 25px;
           /*padding-right: 12px;*/
-          top: calc(100% - 65px);
+          top: calc(100% - 90px);
           .name {
             font-size: 13px;
             margin-bottom: 10px;
+            margin-top: 20px;
           }
 
           .title {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 45px;
           }
 
@@ -382,6 +383,10 @@
       font-size: 14px;
       font-weight: bold;
       margin-bottom: 20px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      padding-top: 2px;
     }
     .description {
       font-size: 10px;

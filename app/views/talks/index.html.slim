@@ -14,7 +14,7 @@ h3.section-title
       = link_to(talk.becomes(Talk), :class => "overlay modal-popup", :style => "text-decoration: none;") do
         .category = talk.category
         h6.name = talk.professional.name
-        h5.title = truncate(talk.title, length: 20,  omission: "...#{talk.title.last(5)}")
+        h5.title = content.title
         p.description = truncate(strip_tags(talk.description), length:  (i == 0 || i == 15)? 300 : 120) 
         = link_to "more", "#{talks_path}/##{talk.id}", :class => "more" 
 

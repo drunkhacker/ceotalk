@@ -15,7 +15,7 @@ h3.section-title
         a.overlay href="#{talks_path}/##{content.id}" style="text-decoration: none"
           .category = content.category
           h6.name = content.professional.name
-          h5.title = truncate(content.title, length: 30,  omission: "...#{content.title.last(10)}")
+          h5.title = content.title
           p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
           = link_to "more", "#{talks_path}/##{content.id}", :class => "more" 
     - (0...12-@selected_contents.count).each do |i|
