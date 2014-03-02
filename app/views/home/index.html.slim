@@ -29,31 +29,34 @@ h3.section-title
     br 
     | 다함께 실전 문제해결을 고민해보고 싶어요!
   /= link_to "more", problems_path, class: "more"
-#crowd-sourcing.row.clear
-  .item
-    -if @problems.any?
-      .thumbnail
-        - problem = @problems[0]
-        = link_to(problems_path + "/##{problem.id}") do 
-          = image_tag(problem.thumb_url)
-      .excerpt
-        .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
-        h5.title = problem.title
-  
-  
-        = render :partial => "problem_comments", locals: {problem: problem}
-      .state-tag class="#{if problem.phase == 0 then 'pre' elsif problem.phase == 1 then 'final' else 'close' end }"
-        span = Problem::PHASE_TO_WORD[problem.phase]
-  - (@problems[1..-1] || []).each do |problem|
-    .item style="border-radius: 5px;"
-      .q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
-      =image_tag(problem.thumb_url, :class => "thumbnail")
-      p.description = problem.content
 
-      .overlay
-        h5.title = problem.title
-        p = problem.content
-      .state-tag.small = Problem::PHASE_TO_WORD[problem.phase]
+#crowd-sourcing.row.clear style="height:auto; margin-top: -30px;"
+  =image_tag('/assets/img-league-preopen.png')
+//지금은 오픈 안합니다!
+  /.item
+    /-if @problems.any?
+      /.thumbnail
+        /- problem = @problems[0]
+        /= link_to(problems_path + "/##{problem.id}") do 
+          /= image_tag(problem.thumb_url)
+      /.excerpt
+        /.q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
+        /h5.title = problem.title
+  
+  
+        /= render :partial => "problem_comments", locals: {problem: problem}
+      /.state-tag class="#{if problem.phase == 0 then 'pre' elsif problem.phase == 1 then 'final' else 'close' end }"
+        /span = Problem::PHASE_TO_WORD[problem.phase]
+  /- (@problems[1..-1] || []).each do |problem|
+    /.item style="border-radius: 5px;"
+      /.q-number = "Q<span class=\"dot\">. </span>#{problem.id}".html_safe
+      /=image_tag(problem.thumb_url, :class => "thumbnail")
+      /p.description = problem.content
+
+      /.overlay
+        /h5.title = problem.title
+        /p = problem.content
+      /.state-tag.small = Problem::PHASE_TO_WORD[problem.phase]
 
 
 .row.clear
