@@ -12,7 +12,7 @@ h3.section-title
       = link_to(problem, :class => "overlay modal-popup", :style => "text-decoration: none;") do
         /.category = talk.category.name
         h6.name = problem.professional.name
-        h5.title = truncate(problem.title, length: 20,  omission: "...#{problem.title.last(5)}")
+        h5.title = problem.title
         p.description = truncate(strip_tags(problem.content), length:  (i == 0 || i == 15)? 300 : 120) 
         = link_to "more", "#{problems_path}/##{problem.id}", :class => "more" 
 

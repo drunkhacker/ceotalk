@@ -12,8 +12,7 @@ h3.section-title
     = link_to(company, :class => "professional modal-popup") do
       =image_tag(company.logo.url)
       .overlay
-        h6.company 
-          =company.tagline
+        h6.company-tagline =company.tagline
         h5.name =company.name 
 
 = paginate @companies, params: {name_filter: @name_filter}

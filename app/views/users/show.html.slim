@@ -23,7 +23,7 @@ dl.profile-info.clear
   .clear
 
   dt 전문분야
-  dd = @user.categories.map {|cat| cat.name}.join(" / ")
+  dd = @user.category_names " / "
 
 hr
 

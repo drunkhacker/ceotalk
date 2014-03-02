@@ -45,8 +45,12 @@ class User < ActiveRecord::Base
     categories.any? {|c| c.id == cat_id}
   end
 
+  def category_names(separator="/")
+    categories.map {|c| c.name}.join separator
+  end
+
   def company_name
-    if self.company then self.company.name else "소속없음" end
+    if self.company then self.company.name else "&nbsp;" end
   end
 
   include ::Likeable

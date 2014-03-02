@@ -10,7 +10,7 @@ h3.favorites.section-header C3 Talk
     .item
       = image_tag(talk.thumb_url)
       a.overlay href="#{talk_path(talk)}"
-        .category = talk.category
+        .category = talk.category_names
         h6.name= talk.professional.name
         h5.title= truncate(talk.title, length: 30,  omission: "...#{talk.title.last(10)}")
         p.description = truncate(strip_tags(talk.description), length: 120) 

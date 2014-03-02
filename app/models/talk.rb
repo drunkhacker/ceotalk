@@ -16,8 +16,8 @@ class Talk < ActiveRecord::Base
   include ::Likeable
   include ::Favorable
 
-  def category
-    self.categories.map {|c| c.name}.join(" / ")
+  def category_names(separator=" / ")
+    categories.map {|c| c.name}.join separator
   end
 
   def class_name

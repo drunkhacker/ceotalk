@@ -12,8 +12,15 @@ h3.section-title
     = link_to user, :class => "professional modal-popup" do
       =image_tag(user.profile_photo.square300.url)
       .overlay
-        h6.categories = user.categories.map {|c| c.name}.join "/"
-        h6.company = "#{user.company_name} #{user.position}"
+        - if user.categories.any?
+          h6.categories = user.category_names
+        - else
+          h6.categories &nbsp;
+
+        - if user.company
+          h6.company = "#{raw(user.company_name)} #{user.position}"
+        - else
+          h6.company &nbsp;
         h5.name =user.name 
       - if user.type == "Professional"
         = image_tag("/assets/icn-expert-badge.png", style: "position: absolute; top:5px; right: 5px; width: 64px; height: 64px;")

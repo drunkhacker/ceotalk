@@ -8,7 +8,7 @@
   .column.left
     .content-header 
       h1.title class="#{if @talk.is_a?(Video) then "video" else "post" end}" = @talk.title
-      h3.category = @talk.category
+      h3.category = @talk.category_names
 
     = render @talk
 

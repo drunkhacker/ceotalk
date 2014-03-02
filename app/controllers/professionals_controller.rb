@@ -7,11 +7,11 @@ class ProfessionalsController < ApplicationController
     @name_filter = if params[:name_filter] && params[:name_filter].length > 0 then params[:name_filter].to_i else -1 end
     logger.debug "@name_filter = #{@name_filter}"
     if @name_filter >= 0 and @name_filter < @indexes.length
-      @users = User.where("name >= ? AND name <= ?", offsets[@name_filter*2], offsets[@name_filter*2+1]).page(params[:page]).per(20)
+      @users = User.order("created_at DESC").where("name >= ? AND name <= ?", offsets[@name_filter*2], offsets[@name_filter*2+1]).page(params[:page]).per(20)
     elsif @name_filter < 0
-      @users = User.page(params[:page]).per(20)
+      @users = User.order("created_at DESC").page(params[:page]).per(20)
     else #기타
-      @users = User.where("name < ? OR name > ?", offsets.first, offsets.last).page(params[:page]).per(20)
+      @users = User.order("created_at DESC").where("name < ? OR name > ?", offsets.first, offsets.last).page(params[:page]).per(20)
     end
   end
 
