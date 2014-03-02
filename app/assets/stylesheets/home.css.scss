@@ -22,7 +22,7 @@
 
   .more {
     @include size(64px 23px);
-    line-height: 23px;
+    line-height: 23px; //c30d23
 
     float: right;
     display: block;
@@ -109,7 +109,7 @@
           }
 
           .title {
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 45px;
           }
 

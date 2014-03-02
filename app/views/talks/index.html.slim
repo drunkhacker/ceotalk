@@ -1,5 +1,7 @@
 h3.section-title  
-  | C³ Talk
+  | C
+  span style="color: #c30d23" ³
+  |Talk
   small 
     | CEO와 전문가의 실전적 노하우
     br
@@ -14,7 +16,7 @@ h3.section-title
       = link_to(talk.becomes(Talk), :class => "overlay modal-popup", :style => "text-decoration: none;") do
         .category = talk.category_names " / "
         h6.name = talk.professional.name
-        h5.title = talk.title
+        h5.title = if talk.title.length > 16 then talk.title[0...14] + "..." else talk.title end
         p.description = truncate(strip_tags(talk.description), length:  (i == 0 || i == 15)? 300 : 120) 
         = link_to "more", "#{talks_path}/##{talk.id}", :class => "more" 
 
