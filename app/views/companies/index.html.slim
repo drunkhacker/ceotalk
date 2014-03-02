@@ -16,5 +16,7 @@ h3.section-title
           =company.tagline
         h5.name =company.name 
 
+= paginate @companies, params: {name_filter: @name_filter}
+
 .reveal-modal
 = render '/install_modal_trigger'
