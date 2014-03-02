@@ -1,6 +1,9 @@
 Ceotalk::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: "users/registrations" }
+  devise_scope :user do
+    get 'users/confirmation_sent', to: 'users/registrations#after_signup', as: :after_signup
+  end
   ActiveAdmin.routes(self)
 
   resources :users do
@@ -49,6 +52,13 @@ Ceotalk::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
+  # for footer
+  get 'info/company_intro' => 'home#company_intro'
+  get 'info/agreement' => 'home#agreement'
+  get 'info/privacy_policy' => 'home#privacy_policy'
+  get 'info/email_deny' => 'home#email_deny'
+  get 'info/map' => 'home#map'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
