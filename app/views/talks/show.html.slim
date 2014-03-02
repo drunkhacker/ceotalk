@@ -7,8 +7,8 @@
 .content-layer.clear
   .column.left
     .content-header 
-      h1.title class="#{if @talk.is_a?(Video) then "video" else "post" end}" = @talk.title
-      h3.category = @talk.category_names
+      h1.title style="height: 55px;" class="#{if @talk.is_a?(Video) then "video" else "post" end}" = @talk.title
+      h3.category style="margin-top: -10px;" = @talk.category_names
 
     = render @talk
 
@@ -38,8 +38,8 @@
           li.category = cat.name
 
     .ceo-class-ad style="padding: 10px"
-      h3 쩌는 CEO class 광고
-      img src="http://images.kaneva.com/filestore8/4368225/5523026/retroU3_ad.jpg" style="width: 200px"
+      h3 CEO MBA CLASS
+      = image_tag("/assets/img-class-banner1.png")
 
     .other-videos
       h3.section-header 관련 영상 
@@ -47,10 +47,10 @@
       ul.videos
         - @other_talks.each do |talk|
           li.clear
-            h5.talk-title= truncate(talk.title, :length => 25)
+            h5.talk-title= truncate(talk.title, :length => 16)
             .excerpt
               = image_tag(talk.thumb_url, :class => "thumbnail")
-              = simple_format truncate(talk.description, :length => 150), :class => "description"
+              /= simple_format truncate(talk.description, :length => 150), :class => "description"
     .tail
 
 

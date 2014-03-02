@@ -349,8 +349,7 @@
     overflow: hidden;
     /*border: 1px solid #aaa;*/
     /*@include size(50% 300px);*/
-    width: 285px;
-    height: 300px;
+    @include size(285px 285px);
     &:first-child {
       margin-right: 10px;
     }
@@ -413,7 +412,7 @@
       font-weight: bold;
       margin-bottom: 20px;
       white-space: nowrap;
-      text-overflow: ellipsis;
+      /*text-overflow: ellipsis;*/
       overflow-x: hidden;
       padding-top: 2px;
     }
@@ -501,7 +500,7 @@
   margin-top: 12px;
   margin-bottom: 8px;
   white-space: nowrap;
-  text-overflow: ellipsis;
+  /*text-overflow: ellipsis;*/
   overflow-x: hidden;
   font-weight: normal;
   text-align: right;

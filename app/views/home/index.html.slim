@@ -17,7 +17,7 @@ h3.section-title
         a.overlay href="#{talks_path}/##{content.id}" style="text-decoration: none"
           .category = content.category_names
           h6.name = content.professional.name
-          h5.title = content.title
+          h5.title = if content.title.length > 16 then content.title[0...14] + "..." else content.title end
           p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
           = link_to "more", "#{talks_path}/##{content.id}", :class => "more" 
     - (0...12-@selected_contents.count).each do |i|
@@ -73,7 +73,10 @@ h3.section-title
         | 실전적 참여형 미래 CEO 양성과정
         br
         | 미래 CEO가 되기 위해서는 무엇을 배우면 될까요?
-      a.more href="#" onclick="alert('not yet'); return false;" more
+      = link_to 'more', open_questions_path, class: "more"
+
+    = link_to image_tag("/assets/img-class-banner2.png"), open_questions_path
+
   .column style="width: 580px"
     h3.section-title 
       | C
@@ -89,12 +92,12 @@ h3.section-title
         a.member.column href="#{professionals_path}/##{@featured_expert.professional.id}"
           =image_tag(@featured_expert.featured_photo.url, :class => "bg")
           .overlay
-            h5.member-tagline = @featured_expert.professional.tagline
+            h5.member-tagline = if @featured_expert.professional.tagline.length > 16 then @featured_expert.professional.tagline[0...14] + "..." else @featured_expert.professional.tagline end
             h5.member-name = @featured_expert.professional.name
       - if @featured_company
         a.member.column href="#{companies_path}/##{@featured_company.id}"
           =image_tag(@featured_company.logo.url, :class => "bg")
           .overlay
-            h5.member-tagline = @featured_company.tagline
+            h5.member-tagline = if @featured_company.tagline.length > 16 then @featured_company.tagline[0...14] + "..." else @featured_company.tagline.length end
             h5.member-name = @featured_company.name
 

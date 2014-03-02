@@ -71,7 +71,7 @@
       text-align: right;
       padding-top: 2px;
       white-space: nowrap;
-      text-overflow: ellipsis;
+      /*text-overflow: ellipsis;*/
       overflow-x: hidden;
     }
 
@@ -82,7 +82,7 @@
       margin-bottom: 4px;
 
       white-space: nowrap;
-      text-overflow: ellipsis;
+      /*text-overflow: ellipsis;*/
       overflow-x: hidden;
     }
 
@@ -197,7 +197,7 @@
   @include size(100% 100%);
   background: url(/assets/icn-expert.png) 15px 15px no-repeat;
   color: white;
-  font-size: 18pt;
+  font-size: 15pt;
   padding: 25px 0;
   padding-left: 75px;
 }

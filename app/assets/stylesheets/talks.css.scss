@@ -230,9 +230,9 @@
       padding: 12px 8px;
 
       .thumbnail {
-        @include size(102px 86px);
+        width: 100%;
         display: block;
-        float: left;
+        /*float: left;*/
       }
 
       .description {
