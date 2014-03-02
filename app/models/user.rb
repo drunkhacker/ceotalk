@@ -74,4 +74,17 @@ class User < ActiveRecord::Base
   def favorite_members #여기는 컴퍼니와 유저를 한꺼번에 ..
     Favorite.where(:user_id => self.id).where(:favorable_type => ['Company','Professional'])
   end
+
+  #patch for og tags
+  def title
+    self.tagline
+  end
+
+  def thumb_url
+    self.profile_photo.square300.url
+  end
+
+  def content
+    self.introduction
+  end
 end
