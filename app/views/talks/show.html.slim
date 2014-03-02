@@ -38,8 +38,9 @@
           li.category = cat.name
 
     .ceo-class-ad style="padding: 10px"
-      h3 CEO MBA CLASS
-      = image_tag("/assets/img-class-banner1.png")
+      h3.section-header CEO MBA CLASS
+      .description
+        = link_to image_tag("/assets/img-class-banner1.png"), open_questions_path
 
     .other-videos
       h3.section-header 관련 영상 

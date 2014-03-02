@@ -176,6 +176,7 @@
     }
 
     .description {
+      word-wrap: break-word;
       background-color: white;
       font-size: 9pt;
       padding: 10px 10px 20px 15px;
@@ -189,10 +190,12 @@
         float: left;
         background-color: $color-gray-5;
         color: white;
-        @include size(68px 22px);
+        /*@include size(68px 22px);*/
         text-align: center;
         font-size: 10pt;
-        line-height: 22px;
+        /*line-height: 22px;*/
+        padding: 5px;
+        border-radius: 3px;
         margin-right: 10px;
         &:last-child {
           margin-right: 0;
