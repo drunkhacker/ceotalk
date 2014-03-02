@@ -1,10 +1,10 @@
 #footer
   nav.footer-menu
-    span = link_to "회사소개", "", onclick: "show_modal('/info/company_intro');window.scrollTo(0,0);return false"
-    span = link_to "이용약관", "", onclick: "show_modal('/info/agreement');window.scrollTo(0,0);return false"
-    span = link_to "개인정보취급방침", "", onclick: "show_modal('/info/privacy_policy');window.scrollTo(0,0);return false"
-    span = link_to "이메일무단수집거부", "", onclick: "show_modal('/info/email_deny');window.scrollTo(0,0);return false"
-    span = link_to "찾아오시는 길", "", onclick: "show_modal('/info/map');window.scrollTo(0,0);return false"
+    span = link_to "회사소개", "", onclick: "show_info_modal('/info/company_intro');window.scrollTo(0,0);return false"
+    span = link_to "이용약관", "", onclick: "show_info_modal('/info/agreement');window.scrollTo(0,0);return false"
+    span = link_to "개인정보취급방침", "", onclick: "show_info_modal('/info/privacy_policy');window.scrollTo(0,0);return false"
+    span = link_to "이메일무단수집거부", "", onclick: "show_info_modal('/info/email_deny');window.scrollTo(0,0);return false"
+    span = link_to "찾아오시는 길", "", onclick: "show_info_modal('/info/map');window.scrollTo(0,0);return false"
   .wrapper.clear
     = image_tag('/assets/site-logo-footer.png', class: "logo-footer")
     .disclaimer
@@ -17,10 +17,10 @@
     = image_tag('/assets/img-footer-2.png', class: 'img-footer-right')
 
 
-.reveal-modal style="width: 800px; margin-left: -400px;"
+.info-modal style="width: 800px; margin-left: -400px;"
 javascript:
-  function show_modal(url) {
-    $modal_dom = $(".reveal-modal");
+  function show_info_modal(url) {
+    $modal_dom = $(".info-modal");
     console.log("show_modal, url=" + url);
     $.get(url, function(r) {
       console.log("get content");

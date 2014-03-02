@@ -97,7 +97,7 @@ body {
   margin-top: 150px;
 
   .footer-menu {
-    font-size: 13px;
+    font-size: 15px;
     padding-left: 250px - 40px;
     /*text-align: center;*/
     a {
@@ -142,3 +142,23 @@ body {
   }
 }
 
+
+.info-modal {
+  visibility: hidden;
+  top: 100px; 
+  left: 50%;
+  margin-left: -512px;
+  width: 1024px;
+  /*background: #eee url(modal-gloss.png) no-repeat -200px -80px;*/
+  background: white;
+  position: absolute;
+  z-index: 101;
+  /*padding: 30px 40px 34px;*/
+  /*-moz-border-radius: 5px;*/
+  /*-webkit-border-radius: 5px;*/
+  /*border-radius: 5px;*/
+  /*-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);*/
+  /*-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);*/
+  /*-box-shadow: 0 0 10px rgba(0,0,0,.4);*/
+}
+  
