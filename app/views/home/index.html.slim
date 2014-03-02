@@ -82,7 +82,7 @@ h3.section-title
             h5.member-tagline = @featured_expert.professional.tagline
             h5.member-name = @featured_expert.professional.name
       - if @featured_company
-        a.member.item.column href=company_path(@featured_company)
+        a.member.item.column href="#{companies_path}/##{@featured_company.id}"
           =image_tag(@featured_company.logo.url, :class => "bg")
           h6 CORPORATIONS
           .overlay

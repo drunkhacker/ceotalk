@@ -14,11 +14,17 @@ class ProfessionalsController < ApplicationController
   end
 
   def show
-    @professional = Professional.find(params[:id])
+    is_facebook = request.env["HTTP_USER_AGENT"].scan(/facebookexternalhit\/1\.1/) != [] # is facebook?
+    if !is_facebook && !request.xhr?
+      redirect_to professionals_path + "/##{params[:id]}"
+      return
+    end
+
+    @resource = @professional = Professional.find(params[:id])
     @talks = @professional.talks.order("created_at DESC").limit(2)
 
     respond_with do |format|
-      format.html { render :layout => !request.xhr? }
+      format.html { render :layout => (is_facebook ? "opengraph" : !request.xhr?)}
     end
   end
 end

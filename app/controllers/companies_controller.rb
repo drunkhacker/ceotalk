@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
   def show
     is_facebook = request.env["HTTP_USER_AGENT"].scan(/facebookexternalhit\/1\.1/) != [] # is facebook?
     if !is_facebook && !request.xhr?
-      redirect_to talks_path + "/##{params[:id]}"
+      redirect_to companies_path + "/##{params[:id]}"
       return
     end
 
