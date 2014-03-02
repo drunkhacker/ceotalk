@@ -18,4 +18,25 @@ class HomeController < ApplicationController
     @current_sort = params[:sort]
   end
 
+  # for footer
+  def company_intro
+    render layout: false
+  end
+
+  def agreement
+    render layout: false
+  end
+
+  def privacy_policy
+    render layout: false
+  end
+
+  def email_deny
+    render layout: false
+  end
+
+  def map
+    render layout: false
+  end
+
 end

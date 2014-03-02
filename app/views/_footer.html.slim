@@ -1,10 +1,10 @@
 #footer
   nav.footer-menu
-    span = link_to "회사소개", "#"
-    span = link_to "이용약관", "#"
-    span = link_to "개인정보취급방침", "#"
-    span = link_to "이메일무단수집거부", "#"
-    span = link_to "찾아오시는 길", "#"
+    span = link_to "회사소개", "", onclick: "show_modal('/info/company_intro');return false"
+    span = link_to "이용약관", "", onclick: "show_modal('/info/agreement');return false"
+    span = link_to "개인정보취급방침", "", onclick: "show_modal('/info/privacy_policy');return false"
+    span = link_to "이메일무단수집거부", "", onclick: "show_modal('/info/email_deny');return false"
+    span = link_to "찾아오시는 길", "", onclick: "show_modal('/info/map');return false"
   .wrapper.clear
     = image_tag('/assets/site-logo-footer.png', class: "logo-footer")
     .disclaimer
@@ -17,3 +17,14 @@
     = image_tag('/assets/img-footer-2.png', class: 'img-footer-right')
 
 
+.reveal-modal style="width: 800px; margin-left: -400px;"
+javascript:
+  function show_modal(url) {
+    $modal_dom = $(".reveal-modal");
+    console.log("show_modal, url=" + url);
+    $.get(url, function(r) {
+      console.log("get content");
+      $modal_dom.html(r);
+      $modal_dom.reveal({animation: "fade", animationspeed: 150});
+    });
+  }

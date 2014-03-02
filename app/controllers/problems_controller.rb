@@ -16,7 +16,7 @@ class ProblemsController < ApplicationController
     @resource = @problem = Problem.find(params[:id])
     @phase = (params[:phase] || @problem.phase).to_i
     @comment = ProblemComment.new
-    @top_comments = @problem.comments.order("like_count DESC").limit(3)
+    @top_comments = @problem.comments.where("like_count >= %").order("like_count DESC").limit(3)
     @comments = @problem.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 
     @other_problems = @problem.professional.problems.where("id != ?", @problem.id).order("created_at DESC").limit(5)

@@ -69,6 +69,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def after_signup
+    @email = params[:email]
+    #logger.raise params.inspect
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -78,5 +83,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_update_path_for(resource)
     profile_users_path
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    logger.debug "resource.unconfirmed_email = #{resource.unconfirmed_email}"
+    "/users/confirmation_sent?email=#{params[:user][:email]}"
   end
 end
