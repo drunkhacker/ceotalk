@@ -4,28 +4,33 @@ h3.section-title
     | 실전적 참여형 미래 CEO 양성과정
     br
     | 미래 CEO가 되기 위해서는 무엇을 배우면 될까요?
-  = link_to("more", talks_path, :class => "more")
 
-h4.section-sub-title C'QUESTION
+/h4.section-sub-title C'QUESTION
 
-#questions.clear
-  - @questions.each_with_index do |question, i|
-    .item class="#{i == 0 ? 'big' : ''}"
-      = image_tag(question.thumbnail.url)
-      = link_to(question, :class => "overlay modal-popup", :style => "text-decoration: none;") do
-        /.category = talk.category.name
-        h5.title = truncate(question.title, length: 20,  omission: "...#{question.title.last(5)}")
-        p.description = truncate(strip_tags(question.content), length:  (i == 0 || i == 15)? 300 : 120) 
-      .meta
-        span.comment-count.count = question.comments.count
-        span.like-count.count = question.like_count
+/#questions.clear
+  /- @questions.each_with_index do |question, i|
+    /.item class="#{i == 0 ? 'big' : ''}"
+      /= image_tag(question.thumbnail.url)
+      /= link_to(question, :class => "overlay modal-popup", :style => "text-decoration: none;") do
+        //.category = talk.category.name
+        /h5.title = truncate(question.title, length: 20,  omission: "...#{question.title.last(5)}")
+        /p.description = truncate(strip_tags(question.content), length:  (i == 0 || i == 15)? 300 : 120) 
+      /.meta
+        /span.comment-count.count = question.comments.count
+        /span.like-count.count = question.like_count
 
-= paginate @questions
+/= paginate @questions
 
 
 h4.section-sub-title CEO MBA CLASS
 
-.ceo-class-ad
+= image_tag("/assets/class_intro/class1.png", style: "display: block; margin: 0 auto;")
+= image_tag("/assets/class_intro/class2.png", style: "display: block; margin: 0 auto;")
+= image_tag("/assets/class_intro/class3.png", style: "display: block; margin: 0 auto;")
+
+= image_tag("/assets/class_intro/book1.png", style: "display: block; margin: 0 auto; margin-top: 100px;")
+= image_tag("/assets/class_intro/book2.png", style: "display: block; margin: 0 auto;")
+
 
 .reveal-modal
 = render '/install_modal_trigger'
