@@ -5,6 +5,6 @@
   $selector.after("<%= escape_javascript(render partial: '/comments/comment2', locals: {comment: @comment}) %>")
   $("textarea", $selector).val("");
 <% else -%>
-  $("<%= escape_javascript(render @comment) %>").prependTo("#comments");
+    $("<%= escape_javascript(render partial: '/comments/comment', locals: {comment: @comment, best: false}) %>").prependTo("#comments");
   $("#comment_content").val("");
 <% end -%>

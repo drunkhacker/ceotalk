@@ -8,7 +8,7 @@ h3.section-title
 = render '/professionals/divider'
 
 .professionals-container.clear
-  - @users.each do |user|
+  - @professionals.each do |user|
     = link_to user, :class => "professional modal-popup" do
       =image_tag(user.profile_photo.square300.url)
       .overlay
@@ -22,10 +22,8 @@ h3.section-title
         - else
           h6.company &nbsp;
         h5.name =user.name 
-      - if user.type == "Professional"
-        = image_tag("/assets/icn-expert-badge.png", style: "position: absolute; top:5px; right: 5px; width: 64px; height: 64px;")
 
-= paginate @users, params: {name_filter: @name_filter}
+= paginate @professionals, params: {name_filter: @name_filter}
 
 .reveal-modal
 = render '/install_modal_trigger'

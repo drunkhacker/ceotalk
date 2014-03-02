@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def company_name
-    if self.company then self.company.name else "&nbsp;" end
+    if self.company then self.company.name else " " end
   end
 
   include ::Likeable

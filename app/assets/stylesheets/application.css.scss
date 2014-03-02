@@ -97,18 +97,21 @@ body {
   margin-top: 150px;
 
   .footer-menu {
-    font-size: 11px;
-    padding-left: 242px;
+    font-size: 13px;
+    padding-left: 250px - 40px;
     /*text-align: center;*/
     a {
       padding: 0 40px;
       text-decoration: none;
       color: #595959;
       border-left: 1px solid #aaa;
+      &:hover {
+        text-decoration: underline;
+      }
     }
-    :last-child {
+    :first-child {
       a {
-        border-right: 1px solid #aaa;
+        border-left: 0;
       }
     }
   }
@@ -120,6 +123,8 @@ body {
   .logo-footer {
     display: block;
     float: left;
+    height: 40px;
+    margin-left: 47px;
   }
 
   .disclaimer {
@@ -127,11 +132,11 @@ body {
     font-size: 11px;
     line-height: 130%;
     float: left;
-    margin-left: 100px;
+    margin-left: 100px - 25px;
   }
 
   .img-footer-right {
-    float: right;
+    float: left;
     margin-left: 20px;
     margin-top: 3px;
   }
