@@ -24,6 +24,7 @@ h3.section-title
         - else
           h6.company &nbsp;
         h5.name =user.name 
+      = image_tag("/assets/icn-expert-badge.png", style: "display: block; position: absolute; right: 5px; top: 5px; width: 64px; height: 64px;")
 
 = paginate @professionals, params: {name_filter: @name_filter}
 
