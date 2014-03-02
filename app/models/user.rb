@@ -81,7 +81,8 @@ class User < ActiveRecord::Base
   end
 
   def thumb_url
-    self.profile_photo.square300.url
+    # XXX fixme
+    "http://ceomba.co.kr" + self.profile_photo.square300.url
   end
 
   def content
