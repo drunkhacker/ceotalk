@@ -363,6 +363,12 @@
 //common item hover overlay effect
 .item {
   text-decoration: none;
+  &.member {
+    .overlay {
+      top: calc(100% - 76px);
+    }
+  }
+
   .overlay {
     position: absolute;
     top: calc(100% - 48px);
@@ -466,6 +472,22 @@
   }
 
   margin-bottom: 26px;
+}
+
+.member-tagline {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  font-weight: normal;
+}
+
+.member-name {
+  padding-top: 2px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: right;
 }
 
 

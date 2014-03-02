@@ -75,16 +75,17 @@ h3.section-title
       =link_to("more", professionals_path, class: "more")
     #experts-corporation.row.clear
       - if @featured_expert
-        a.item.column href="#{professionals_path}/##{@featured_expert.professional.id}"
+        a.member.item.column href="#{professionals_path}/##{@featured_expert.professional.id}"
           =image_tag(@featured_expert.featured_photo.url, :class => "bg")
-          h6 EXPERT
+          h6 EXPERTS
           .overlay
-            h5.title = @featured_expert.professional.name
-            p = @featured_expert.excerpt
+            h5.member-tagline = @featured_expert.professional.tagline
+            h5.member-name = @featured_expert.professional.name
       - if @featured_company
-        a.item.column href=company_path(@featured_company)
+        a.member.item.column href=company_path(@featured_company)
           =image_tag(@featured_company.logo.url, :class => "bg")
-          h6 CORPORATION
+          h6 CORPORATIONS
           .overlay
-            h5.title = @featured_company.name
+            h5.member-tagline = @featured_company.tagline
+            h5.member-name = @featured_company.name
 
