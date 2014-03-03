@@ -59,6 +59,7 @@ gem 'bourbon'
 gem 'kaminari'
 gem 'thin'
 gem 'mini_magick'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'rspec-rails'

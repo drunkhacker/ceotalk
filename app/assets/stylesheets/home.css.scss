@@ -13,11 +13,11 @@
   margin-bottom: 48px;
   small {
     margin-left: 26px;
-    font-size: 11px;
+    font-size: 12px;
     color: #898989;
     font-weight: normal;
     display: inline-block;
-    line-height: 110%;
+    line-height: 120%;
   }
 
   .more {
@@ -34,7 +34,7 @@
 
     text-align: center;
 
-    font-size: 10px;
+    font-size: 12px;
 
     margin-top: 5px;
     margin-bottom: 5px;
@@ -189,7 +189,7 @@
     .state-tag.small {
       /*@include state-tag(20px, white, #444);*/
       span {
-        font-size: 10px;
+        font-size: 12px;
       }
     }
 
@@ -246,7 +246,7 @@
         /*@include state-tag(30px, white, #444);*/
         @include size(20px 20px);
         top: 20px; right: 10px;
-        font-size: 11px;
+        font-size: 12px;
         color: #148786;
         text-align: center;
         padding-top: 20px;
@@ -417,7 +417,7 @@
       padding-top: 2px;
     }
     .description {
-      font-size: 10px;
+      font-size: 12px;
       line-height: 120%;
     }
 
@@ -425,7 +425,7 @@
       margin-top: 7px;
       margin-right: -7px;
       text-align: right;
-      font-size: 10px;
+      font-size: 12px;
       display: none;
       color: $color-blue;
     }

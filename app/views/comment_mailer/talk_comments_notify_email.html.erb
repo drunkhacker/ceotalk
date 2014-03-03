@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div style="height: 80px;">
+      <img src="http://ceomba.co.kr/assets/site-logo.gif" style="height: 45px; margin-left: 50px;">
+    </div>
+
+    <% @talks_and_comments.each do |talk, comments| -%>
+      <h2><%= link_to "[C3 TALK] #{talk.title}", "http://ceomba.co.kr/talks/#{talk.id}" %></h2>
+
+      <h4>새 댓글들</h4>
+      <ul>
+      <% comments.each do |comment| -%>
+        <li>
+          <%= comment.created_at.strftime("%m/%d %I:%M %p")  %><br>
+          <%= comment.user.name %><br>
+          <%= simple_format comment.content %>
+        </li>
+      <% end -%>
+      </ul>
+    <% end -%>
+  </body>
+</html>
