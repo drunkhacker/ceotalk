@@ -1,26 +1,123 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <div style="height: 80px;">
-      <img src="http://ceomba.co.kr/assets/site-logo.gif" style="height: 45px; margin-left: 50px;">
-    </div>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body style="margin:0; padding:0;">
+<div style="height: 60px; margin:0; padding: 0; border-bottom: 1px solid #005F6C; padding-top:15px;">
+  <img src="http://ceomba.co.kr/assets/site-logo.gif" style="display: block; height: 60px;margin:0; margin-left: 15px;padding:0;">
+</div>
 
-    <% @talks_and_comments.each do |talk, comments| -%>
-      <h2><%= link_to "[C3 TALK] #{talk.title}", "http://ceomba.co.kr/talks/#{talk.id}" %></h2>
+<div style="margin:0; padding:0; margin-left: 30px;">
+  <p style="margin:0; padding:0; line-height: 130%; font-size: 14px; margin-top: 20px;">
+  안녕하세요, <br>
+  기업 핵심인재를 위한 CEOMBA입니다. <br>
+  <%= @user.name%>님의 콘텐츠에 아래와 같이 댓글이 달려서 알려드리며, 클릭하시면 쉽게 댓글을 보고 답글을 달 수 있습니다. <br>
+  <%= @user.name%>님의 답글로, 새로운 소통과 공유의 문화가 만들어집니다.^^
+  </p>
+  <div style="margin:0; padding:0; margin-top: 30px; font-size:15px;font-weight:bold;border-bottom: 1px solid #005f6c; height: 30px; width: 850px;">
 
-      <h4>새 댓글들</h4>
-      <ul>
-      <% comments.each do |comment| -%>
-        <li>
-          <%= comment.created_at.strftime("%m/%d %I:%M %p")  %><br>
-          <%= comment.user.name %><br>
-          <%= simple_format comment.content %>
-        </li>
-      <% end -%>
-      </ul>
+    <% if @user_comments.any? -%>
+      <div style="text-align: center;background-color:#1a1a1a; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:left;">Members</div> 
+      <div style="float:left; line-height:30px;margin-left: 10px;">전문가 <%= @user.name %>님의 프로필 페이지에 달린 댓글입니다.</div>
+      <%= link_to "바로가기>>", professionals_path(@user), style: "text-align: center;background-color:#005f6c; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:right;" %>
+
+      <div style="clear:both; height:0"></div>
+
+      <!-- 댓글 컨테이너-->
+      <div style="margin:0; padding:0; padding-left: 50px;">
+
+        <!-- 댓글 엔트리 개별 -->
+        <% @user_comments.each do |comment| -%>
+          <div style="width:800px; height: 70px; border-bottom: 1px solid #005f6c; padding-top:15px;">
+            <div style="width:200px; height: 100%; line-height: 120%;float: left;">
+              <span style="font-size:14px"><%= comment.user.name %></span><br>
+              <span style="font-size:12px">
+                <%if comment.user.company -%>
+                  <%= "#{comment.user.company.name} #{comment.user.position}" %>
+                <% else -%>
+                  <%= comment.user.position %>
+                <% end -%>
+              </span><br>
+              <span style="font-size:12px"><%= comment.created_at.strftime("%y.%m.%d. %I:%M%p") %></span>
+            </div>
+            <div style="width:600px; height: 100%;float: left;"><%= truncate(comment.content, length:100) %></div>
+          </div>
+          <div style="clear:both; height:0"></div>
+        <% end -%>
+      </div>
     <% end -%>
-  </body>
+
+  <% @videos_and_comments.each do |talk, comments| -%>
+
+    <div style="margin:0; padding:0; margin-top: 30px; font-size:15px;font-weight:bold;border-bottom: 1px solid #005f6c; height: 30px; width: 850px;">
+      <div style="text-align: center;background-color:#1a1a1a; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:left;">영상</div> 
+      <div style="float:left; line-height:30px;margin-left: 10px;"><%= talk.title %></div>
+      <%= link_to "바로가기>>", talks_path(talk), style: "text-align: center;background-color:#005f6c; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:right;"%>
+
+      <div style="clear:both; height:0"></div>
+
+      <!-- 댓글 컨테이너-->
+      <div style="margin:0; padding:0; padding-left: 50px;">
+
+        <!-- 댓글 엔트리 개별 -->
+        <% comments.each do |comment| -%>
+          <div style="width:800px; height: 70px; border-bottom: 1px solid #005f6c; padding-top:15px;">
+            <div style="width:200px; height: 100%; line-height: 120%;float: left;">
+              <span style="font-size:14px"><%= comment.user.name %></span><br>
+              <span style="font-size:12px">
+                <%if comment.user.company -%>
+                  <%= "#{comment.user.company.name} #{comment.user.position}" %>
+                <% else -%>
+                  <%= comment.user.position %>
+                <% end -%>
+              </span><br>
+              <span style="font-size:12px"><%= comment.created_at.strftime("%y.%m.%d. %I:%M%p") %></span>
+            </div>
+            <div style="width:600px; height: 100%;float: left;"><%= truncate(comment.content, length:100)%></div>
+          </div>
+          <div style="clear:both; height:0"></div>
+        <% end -%>
+      </div>
+    </div>
+  <% end -%>
+
+
+  <% @posts_and_comments.each do |talk, comments| -%>
+
+    <div style="margin:0; padding:0; margin-top: 30px; font-size:15px;font-weight:bold;border-bottom: 1px solid #005f6c; height: 30px; width: 850px;">
+      <div style="text-align: center;background-color:#1a1a1a; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:left;">영상</div> 
+      <div style="float:left; line-height:30px;margin-left: 10px;"><%= talk.title %></div>
+      <%= link_to "바로가기>>", talks_path(talk), style: "text-align: center;background-color:#005f6c; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:right;"%>
+
+      <div style="clear:both; height:0"></div>
+
+      <!-- 댓글 컨테이너-->
+      <div style="margin:0; padding:0; padding-left: 50px;">
+
+        <!-- 댓글 엔트리 개별 -->
+        <% comments.each do |comment| -%>
+          <div style="width:800px; height: 70px; border-bottom: 1px solid #005f6c; padding-top:15px;">
+            <div style="width:200px; height: 100%; line-height: 120%;float: left;">
+              <span style="font-size:14px"><%= comment.user.name %></span><br>
+              <span style="font-size:12px">
+                <%if comment.user.company -%>
+                  <%= "#{comment.user.company.name} #{comment.user.position}" %>
+                <% else -%>
+                  <%= comment.user.position %>
+                <% end -%>
+              </span><br>
+              <span style="font-size:12px"><%= comment.created_at.strftime("%y.%m.%d. %I:%M%p") %></span>
+            </div>
+            <div style="width:600px; height: 100%;float: left;"><%= truncate(comment.content, length:100)%></div>
+          </div>
+          <div style="clear:both; height:0"></div>
+        <% end -%>
+      </div>
+    </div>
+  <% end -%>
+
+  <p style="margin:0;padding:0;font-size: 14px;line-height: 160%;"> 만약, 문제나 궁금한 사항이 있으시면 답신 메일로 알려주십시오.<br>바로 조치해 드리겠습니다.<br>CEO MBA 관리자<br>(tel) 02-512-0108<br>(web) <a href="http://www.ceomba.co.kr">www.CEOMBA.co.kr</a><br>(e-mail) ask@ceomba.co.kr</p>
+</div>
+</body>
 </html>

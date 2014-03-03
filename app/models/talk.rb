@@ -45,8 +45,13 @@ class Talk < ActiveRecord::Base
 
     comments.group_by(&:professional_id).each do |professional_id, all_comments|
       talks_and_comments = all_comments.group_by(&:commentable_id).to_a.map {|talk_id, talk_comments| [Talk.find(talk_id), talk_comments]}
+
+      videos_and_comments = talks_and_comments.select {|talk, talk_comment| talk.is_a?(Video)}
+      posts_and_comments = talks_and_comments.select {|talk, talk_comment| talk.is_a?(Post)}
       # send email
-      CommentMailer.talk_comments_notify_email(User.find(professional_id), talks_and_comments).deliver
+      user = User.find(professional_id)
+      user_comments = user.comments.where("created_at >= ? AND created_at < ?", t1, t2)
+      CommentMailer.talk_comments_notify_email(user, videos_and_comments, posts_and_comments, user_comments).deliver
     end
   end
 end
