@@ -18,9 +18,9 @@ en:
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "CEO MBA | 회원가입 인증 메일"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "CEO MBA | 비밀번호 안내 메일"
       unlock_instructions:
         subject: "Unlock Instructions"
     omniauth_callbacks:
