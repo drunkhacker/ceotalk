@@ -78,7 +78,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :name, :interests_attributes => [:category_id, :_destroy] ) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password, :name, :company_id, :position, :contact, :career, :introduction, :interests_attributes => [:category_id, :_destroy]) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :profile_photo, :password, :password_confirmation, :current_password, :name, :company_id, :position, :contact, :career, :introduction, :interests_attributes => [:category_id, :_destroy]) }
   end
 
   def after_update_path_for(resource)
