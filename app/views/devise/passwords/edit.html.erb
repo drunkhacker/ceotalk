@@ -1,29 +1,24 @@
 <hgroup class="session-page-header">
-  <h2 class="header-large">비밀번호 재설정</h2>
-  <h3 class="header-small">CEO MBA에서 가치를 공유해보세요.</h3>
+  <h2 class="header-large">비밀번호 재설정
+    <small>계정의 새로운 비밀번호를 입력하세요</small></h2>
 </hgroup>
 
-<hr>
 
+<div style="background-color: rgba(255,255,255,0.5); height:240px; margin-left:80px; padding:30px;">
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field-wrapper" style="padding-top: 40px;">
-    <%= f.label :password, "새 비밀번호", :class => "form-label-inline", :style => "width: 150px;" %>
-    <%= f.password_field :password, :autofocus => true, :style => "width: 230px;" %>
+  <div class="field-wrapper" style="padding-top: 40px; margin-left: 200px;">
+    <%= f.label :password, "새 비밀번호", :class => "form-label-inline design2", :style => "width: 150px;" %>
+    <%= f.password_field :password, :autofocus => true, :style => "width: 230px; height:30px;" %>
   </div>
 
-  <div class="field-wrapper" style="padding-bottom: 30px;">
-    <%= f.label :password_confirmation, "비밀번호 확인", :class => "form-label-inline", :style => "width: 150px;" %>
-    <%= f.password_field :password_confirmation, :style => 'width: 230px;' %>
+  <div class="field-wrapper" style="padding-bottom: 30px; margin-left: 200px;">
+    <%= f.label :password_confirmation, "비밀번호 확인", :class => "form-label-inline design2", :style => "width: 150px;" %>
+    <%= f.password_field :password_confirmation, :style => 'width: 230px; height:30px;' %>
   </div>
 
-  <hr>
-
-  <div style="position: relative; padding-top: 20px;">
-    <div class="btn-signup" style="position: absolute; right: 10px;">
-      <%= f.submit "확인"%>
-    </div>
-  </div>
+  <%= f.submit '확인', style: " border: 0;color: white; font-size: 18px; border-radius: 4px; background-color: #17575E; padding: 8px 25px; text-decoration: none; margin: 0 auto; display: block;" %>
 <% end %>
+</div>
