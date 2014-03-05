@@ -4,6 +4,7 @@ Ceotalk::Application.routes.draw do
   devise_scope :user do
     get 'users/confirmation_sent', to: 'users/registrations#after_signup', as: :after_signup
     get 'users/reset_password_sent', to: 'users/passwords#after_sent'
+    post "users/check_email", to: "users/registrations#check_email"
   end
   ActiveAdmin.routes(self)
 
