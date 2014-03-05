@@ -1,6 +1,6 @@
 Ceotalk::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations",  passwords: "users/passwords" }
+  devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations",  passwords: "users/passwords", confirmations: 'users/confirmations'}
   devise_scope :user do
     get 'users/confirmation_sent', to: 'users/registrations#after_signup', as: :after_signup
     get 'users/reset_password_sent', to: 'users/passwords#after_sent'
