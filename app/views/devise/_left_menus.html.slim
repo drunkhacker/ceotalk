@@ -2,7 +2,7 @@ ul.session-menus
   - unless signed_in? 
     li.session-menu-item = link_to "로그인", new_user_session_path, :class => "#{request.path == new_user_session_path ? "active" : ""}"
     li.session-menu-item = link_to "회원가입", new_user_registration_path, :class => "#{request.path == new_user_registration_path ? "active" : ""}"
-    li.session-menu-item = link_to "비밀번호 찾기", new_user_password_path, :class => "#{request.path == new_user_password_path || request.path == "/users/password" || request.path == "/users/password/edit" ? "active" : ""}"
+    li.session-menu-item = link_to "ID/PW 찾기", new_user_password_path, :class => "#{request.path == new_user_password_path || request.path == "/users/password" || request.path == "/users/password/edit" ? "active" : ""}"
   - else
     li.session-menu-item = link_to "프로필", profile_users_path, :class => "#{request.path == profile_users_path || request.path == edit_user_registration_path ? "active" : ""}"
     li.session-menu-item = link_to "즐겨찾기", favorites_users_path, :class => "#{request.path == favorites_users_path ? "active" : ""}"

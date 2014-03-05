@@ -1,12 +1,16 @@
 $left-width: 245px;
 .devise-left-menu {
   width: $left-width;
+  height: 100%;
   float: left;
+  background-color: rgba(255,255,255,0.5);
   .session-menus {
-    border-top: 2px solid $color-gray-1;
-    border-bottom: 2px solid $color-gray-1;
-    width: 150px;
-    padding: 35px 0;
+    /*border-top: 2px solid $color-gray-1;*/
+    /*border-bottom: 2px solid $color-gray-1;*/
+    width: 200px;
+    padding-left: 12px;
+    padding-right: 35px;
+    /*padding-top: 35px;*/
     margin-top: 80px;
 
     .session-menu-item {
@@ -16,14 +20,15 @@ $left-width: 245px;
       }
       a {
         text-decoration: none;
-        color: $color-gray-2;
+        color: $color-green;
         display: block;
-        padding: 5px;
-        padding-top: 7px;
-        font-size: 15px;
-        border-radius: 3px;
+        padding: 7px;
+        padding-left: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        /*border-radius: 2px;*/
         &:hover, &.active {
-          background-color: $color-gray-1;
+          background-color: $color-green;
           color: white;
         }
       }
@@ -32,22 +37,31 @@ $left-width: 245px;
 }
 
 .devise-content {
-  margin-top: 80px;
+  margin-top: 40px;
   width: 1200px - $left-width;
   float: left;
 }
 
 .session-page-header {
   margin-bottom: 30px;
+  margin-left: 25px;
   .header-large {
-    color: $color-green;
-    font-size: 30px;
+    color: white;
+    font-size: 40px;
     margin-bottom: 5px;
+
+    small {
+      font-size: 18px;
+    }
   }
-  .header-small {
-    color: $color-gray-7;
-    font-size: 14px;
-  }
+}
+
+.header-small {
+  color: white;
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: center;
+  text-shadow: 2px 2px #555;
 }
 
 .facebook-auth {
@@ -72,6 +86,12 @@ $left-width: 245px;
   font-size: 14px;
   color: $color-gray-2;
   padding-top: 5px;
+
+  &.design2 {
+    font-size: 18px;
+    color: white;
+  }
+
 }
 
 .field-wrapper {
@@ -197,4 +217,15 @@ hr {
     color: $color-red;
     font-size: 14px;
   }
+}
+
+.bg-btn-blue {
+  background:url(/assets/newdesign/bg_btn_blue.png);
+}
+.bg-btn-red {
+  background:url(/assets/newdesign/bg_btn_red.png);
+}
+
+.bg-btn-login {
+background: url(/assets/newdesign/bg_btn_login.png); 
 }

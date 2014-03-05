@@ -69,12 +69,18 @@
 
   <div class="field-wrapper">
     <%= f.label :company_id, "소속", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.select :company_id, Company.all.map {|c| [c.name, c.id]}, { include_blank: false}, {class: 'chosen-select'} %>
+    <%= f.select :company_id, Company.all.map {|c| [c.name, c.id]}, { include_blank: true}, {class: 'chosen-select', "data-placeholder" => "소속 회사"} %>
 
     <script>
       $(function() {
-        $(".chosen-select").chosen({width: '200px'})
+        $(".chosen-select").chosen({
+          width: '200px',
+          no_results_text: "<a href='add_new_company()'>다음의 회사를 추가 : </a>"
+        })
       });
+
+      function add_new_company() {
+      }
     </script>
   </div>
 

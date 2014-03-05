@@ -1,0 +1,9 @@
+<% if @exist -%>
+  $("#email-exist").show();
+  $("#no-email-exist").hide();
+  $("#email-check-email").text("<%= @user.email %>");
+  $("#email-check-name").text("<%= @user.name %>");
+<% else -%>
+  $("#no-email-exist").show();
+  $("#email-exist").hide();
+<% end -%>

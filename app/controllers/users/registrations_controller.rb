@@ -74,6 +74,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     #logger.raise params.inspect
   end
 
+  def check_email
+    @user = User.where("email = ?", params[:email]).first
+    @exist = !@user.nil?
+  end
+
   protected
 
   def configure_permitted_parameters

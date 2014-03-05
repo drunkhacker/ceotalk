@@ -1,24 +1,63 @@
 <hgroup class="session-page-header">
-  <h2 class="header-large">비밀번호 찾기</h2>
-  <h3 class="header-small">CEO MBA에서 가치를 공유해보세요.</h3>
+  <h2 class="header-large">ID/PW 찾기 <small>이메일로 가입하신 경우, 가입 여부를 확인하고 비밀번호를 다시 설정할 수 있습니다.</small></h2>
 </hgroup>
 
-<hr>
+<div style="background-color: rgba(255,255,255,0.5); float: left; width: 430px; max-height: 100%; height:465px; margin-left:80px; padding:30px;">
+  <h4 class="header-small">가입 여부 확인하기</h4>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= form_tag("/users/check_email", { method: :post, remote: true }) do |f| %>
 
-  <div class="field-wrapper clear" style="padding: 30px 0; padding-top: 40px;">
-    <%= f.label :email, "가입한 이메일 주소", :class => "form-label-inline", :style => "width: 200px;" %>
-    <%= f.email_field :email, :autofocus => true, :style => "width: 230px; display: block; float:left;" %>
-    <div style="float: left; margin-left: -100px;"> <%= devise_error_messages! %> </div>
-  </div>
-
-  <hr>
-
-  <div style="position: relative; padding-top: 20px;">
-    <div class="btn-signup" style="position: absolute; right: 10px;">
-      <%= f.submit "확인"%>
+    <div class="field-wrapper clear" style="padding-bottom:10px; padding-top: 40px;">
+      <%= label_tag :email, "이메일", :class => "form-label-inline design2", :style => "width: 60px;" %>
+      <%= email_field_tag :email, "", :style => "width: 260px; height: 30px; display: block; float:left;" %>
+      <div style="float: left; margin-left: -100px;"> <%= devise_error_messages! %> </div>
     </div>
-  </div>
-<% end %>
+
+    <%= submit_tag "확인하기", style: "margin:20px auto; display:block; width: 293px; height:69px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer", class: "bg-btn-blue" %>
+
+    <div id="email-exist" style="display: none;">
+      <p style="color:white; text-shadow: 1px 1px #555; text-align: center; line-height:120%; margin-bottom: 34px;">
+      <span style="font-size: 23px;"><span id="email-check-email" style="color: #ffd200"><%= "drh@snu.ac.kr" %></span> (<span id="email-check-name"><%= "한재화"  %></span>) 님</span>!<br>
+      이미 가입하신 회원입니다.
+      </p>
+
+      <p style="color:white; font-size: 15px; text-shadow:1px 1px #555; text-align: center; line-height: 120%">
+      만약 비밀번호를 분실하셨다면 오른쪽의<br>
+      '비밀번호 다시 설정하기'를 이용해주세요!
+      </p>
+    </div>
+
+    <p id="no-email-exist" style="display: none;color:white; font-size: 15px; text-shadow:1px 1px #555; text-align: center; line-height: 120%">
+    가입하지 않은 메일주소입니다.<br>
+    왼쪽의 <span style="color:#ffd200" >회원가입 메뉴</span>에서 가입해주세요!
+    </p>
+
+
+  <% end %>
+</div>
+
+<div style="background-color: rgba(255,255,255,0.5); float: left; width: 430px; height:465px; margin-left:7px; padding:30px;">
+  <h4 class="header-small">비밀번호 다시 설정하기</h4>
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+
+    <div class="field-wrapper clear" style="padding: 30px 0; padding-top: 40px;">
+      <%= f.label :email, "이메일", :class => "form-label-inline design2", :style => "width: 60px;" %>
+      <%= f.email_field :email, :autofocus => true, :style => "width: 260px; height: 30px; display: block; float:left;" %>
+      <div style="float: left; margin-left: -100px;"> <%= devise_error_messages! %> </div>
+    </div>
+
+    <p style="color:white; font-size: 15px; text-shadow:1px 1px #555; text-align: center; line-height: 120%">
+      아래의 버튼을 누르면 해당 이메일 주소로<br>
+      비밀번호를 다시 설정하실 수 있도록<br>
+      <span style="color:#ffd200">안내해드리는 메일이 발송</span>됩니다.
+    </p>
+
+    <%= f.submit "안내 메일 받기", style: "margin:20px auto; display:block; background:url(/assets/newdesign/bg_btn_red.png); width: 296px; height:65px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer"%>
+
+    <p style="color:white; font-size: 15px; text-shadow:1px 1px #555; text-align: center; line-height: 120%">
+    버튼을 누르신 후 메일함을 확인해주세요!
+    </p>
+  <% end %>
+</div>
+
 

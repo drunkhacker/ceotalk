@@ -9,6 +9,7 @@
   </head>
   <body>
 
+  <div id="wrapper">
     <div id="gnb" class="clear">
       <div id="login-status">
         <% if signed_in? -%>
@@ -19,7 +20,6 @@
           <%= link_to "로그인", new_user_session_path %>
           <%= link_to "회원가입", new_user_registration_path %>
         <% end -%>
-        <%= link_to "사이트소개", "", onclick: "show_info_modal('/info/ceomba_intro'); return false;" %>
       </div>
       <h1 id="site-logo" class="hide-text"> <%= link_to 'Logo', root_path %> </h1>
       <ul class="menu">
@@ -29,9 +29,10 @@
         <li class="menu-item"><%= link_to "C³ Members", professionals_path%></li>
       </ul>
     </div>
-    <hr class="shadow-line">
+
     <% if devise_controller? || request.path == profile_users_path || request.path == favorites_users_path %>
-      <div class="clear">
+      <img style="display: block;position: absolute; left:0; width:1600px;max-width:100%;" src="/assets/newdesign/bg_people.png">
+      <div class="clear" style="position: absolute; height:100%">
         <div class="devise-left-menu">
           <%= render "/devise/left_menus"%>
         </div>
@@ -44,6 +45,7 @@
     <% end %>
 
     <%= render '/footer' %>
+  </div>
 
   </body>
 </html>
