@@ -27,6 +27,48 @@ h3.section-title
 h3.section-title 
   | C
   span style="color: #c30d23" ³
+  |Academy
+  small 
+    | 실전적 참여형 미래 CEO 양성과정
+    br
+    | 미래 CEO가 되기 위해서는 무엇을 배우면 될까요?
+  = link_to 'more', open_questions_path, class: "more"
+
+= image_tag("/assets/class_intro/banner-big.png", usemap: "#map1")
+
+map name="map1"
+  area shape="rect" coords="414,332,813,431" href="#{open_questions_path}"
+
+h3.section-title 
+  | C
+  span style="color: #c30d23" ³
+  |MEMBERS
+  small 
+    | CEO MBA의 전문가와 기업들
+    br
+    | CEO와 전문가와 소통하고 싶어요!
+  =link_to("more", professionals_path, class: "more")
+#experts-corporation.row.clear
+  /- if @featured_expert
+    /a.member.column href="#{professionals_path}/##{@featured_expert.professional.id}"
+      /=image_tag(@featured_expert.featured_photo.url, :class => "bg")
+      /.overlay
+        /h5.member-tagline = if @featured_expert.professional.tagline.length > 16 then @featured_expert.professional.tagline[0...14] + "..." else @featured_expert.professional.tagline end
+        /h5.member-name = @featured_expert.professional.name
+  /- if @featured_company
+    /a.member.column href="#{companies_path}/##{@featured_company.id}"
+      /=image_tag(@featured_company.logo.url, :class => "bg")
+      /.overlay
+        /h5.member-tagline = if @featured_company.tagline.length > 16 then @featured_company.tagline[0...14] + "..." else @featured_company.tagline.length end
+        /h5.member-name = @featured_company.name
+  - ids = [16, 14, 13, 15, 8, 11, 10, 9, 17, 18]
+  - 1.upto(10).each do |i|
+    = link_to image_tag("/assets/dummy_members/#{"%02d" % i}.png"), professionals_path+"/##{ids[i-1]}", style: "display: block; float:left; margin-bottom:10px; margin-right: #{if i == 5 || i == 10 then 0 else 10 end}px; width: 232px; height: 232px;"
+
+
+h3.section-title 
+  | C
+  span style="color: #c30d23" ³
   |Idea
   small 
     | CEO 고민해결을 위한 크라우드 소싱
@@ -61,44 +103,4 @@ h3.section-title
         /h5.title = problem.title
         /p = problem.content
       /.state-tag.small = Problem::PHASE_TO_WORD[problem.phase]
-
-h3.section-title 
-  | C
-  span style="color: #c30d23" ³
-  |MEMBERS
-  small 
-    | CEO MBA의 전문가와 기업들
-    br
-    | CEO와 전문가와 소통하고 싶어요!
-  =link_to("more", professionals_path, class: "more")
-#experts-corporation.row.clear
-  /- if @featured_expert
-    /a.member.column href="#{professionals_path}/##{@featured_expert.professional.id}"
-      /=image_tag(@featured_expert.featured_photo.url, :class => "bg")
-      /.overlay
-        /h5.member-tagline = if @featured_expert.professional.tagline.length > 16 then @featured_expert.professional.tagline[0...14] + "..." else @featured_expert.professional.tagline end
-        /h5.member-name = @featured_expert.professional.name
-  /- if @featured_company
-    /a.member.column href="#{companies_path}/##{@featured_company.id}"
-      /=image_tag(@featured_company.logo.url, :class => "bg")
-      /.overlay
-        /h5.member-tagline = if @featured_company.tagline.length > 16 then @featured_company.tagline[0...14] + "..." else @featured_company.tagline.length end
-        /h5.member-name = @featured_company.name
-  - ids = [16, 14, 13, 15, 8, 11, 10, 9, 17, 18]
-  - 1.upto(10).each do |i|
-    = link_to image_tag("/assets/dummy_members/#{"%02d" % i}.png"), professionals_path+"/##{ids[i-1]}", style: "display: block; float:left; margin-bottom:10px; margin-right: #{if i == 5 || i == 10 then 0 else 10 end}px; width: 232px; height: 232px;"
-
-h3.section-title 
-  | C
-  span style="color: #c30d23" ³
-  |Academy
-  small 
-    | 실전적 참여형 미래 CEO 양성과정
-    br
-    | 미래 CEO가 되기 위해서는 무엇을 배우면 될까요?
-  = link_to 'more', open_questions_path, class: "more"
-
-= image_tag("/assets/class_intro/banner-big.png", usemap: "#map1")
-map name="map1"
-  area shape="rect" coords="414,332,813,431" href="#{open_questions_path}"
 
