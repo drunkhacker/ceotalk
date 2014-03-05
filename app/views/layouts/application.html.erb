@@ -13,7 +13,7 @@
     <div id="gnb" class="clear">
       <div id="login-status">
         <% if signed_in? -%>
-          <%= current_user.name %>님 환영합니다! 
+          <div style="float: left; margin-right: 10px; margin-top: 10px;"><%= current_user.name %>님 환영합니다! </div>
           <%= link_to '마이페이지', profile_users_path %>
           <%= link_to '로그아웃', destroy_user_session_path, :method => :delete %>
         <% else -%>

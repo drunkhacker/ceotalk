@@ -5,7 +5,7 @@
 
 <div style="background-color: rgba(255,255,255,0.5); float: left; width: 430px; max-height: 100%; height:240px; margin-left:80px; padding:30px;">
   <%= image_tag '/assets/newdesign/img_fb_hdr.png', :style => "margin: 0 auto; display: block;"%>
-  <%= submit_tag "페이스북 계정으로 로그인", style: " margin:50px auto; display:block; width: 293px; height:69px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer", class: "bg-btn-blue"%>
+  <%= link_to "페이스북 계정으로 로그인", user_omniauth_authorize_path(:facebook), style: "text-decoration: none; text-align: center; margin:50px auto; display:block; width: 293px; height:69px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer", class: "bg-btn-blue"%>
 </div>
 
 <div style="background-color: rgba(255,255,255,0.5); float: left; width: 430px; max-height: 100%; height:240px; margin-left:5px; padding:30px;">
