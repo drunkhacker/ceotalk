@@ -19,7 +19,7 @@
 <div style="background-color: rgba(255,255,255,0.5); float: left; width: 430px; height:375px; margin-left:5px; padding:30px; padding-top: 10px; margin-top: 5px;">
   <%= image_tag '/assets/newdesign/img_email_hdr.png', :style => "margin: 0 auto; display: block; margin-bottom: 15px;"%>
   
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= f.label :email, "이메일", :class => "form-label-inline design2", :style => "width: 120px;" %>
     <%= f.email_field :email, :autofocus => true, :style => "width: 250px; height: 30px; display: block; float:left; margin-bottom: 7px;" %>
 

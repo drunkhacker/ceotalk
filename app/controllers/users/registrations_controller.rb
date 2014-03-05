@@ -19,7 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     if resource.save
-      params[:categories].values.select {|h| h["selected"] == "1"}.each {|h| resource.interests.build({category_id: h["id"].to_i})}
+      (params[:categories] || {}).values.select {|h| h["selected"] == "1"}.each {|h| resource.interests.build({category_id: h["id"].to_i})}
       resource.save
       yield resource if block_given?
       if resource.active_for_authentication?

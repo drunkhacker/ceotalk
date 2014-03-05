@@ -1,12 +1,12 @@
-div style="text-align: center; line-height: 150%; font-size: 13px; margin-bottom: 150px; margin-top: 80px;"
-  p style="margin-bottom: 50px;"
-    span = @email
+div style="background-color: rgba(255,255,255,0.5); margin: 0 40px; text-align: center; line-height: 150%; font-size: 13px; margin-bottom: 150px; margin-top: 80px; padding: 40px;"
+  p style="margin-bottom: 50px; color: #fff; font-size: 18px; line-height: 140%; text-shadow: 1px 1px #555;"
+    span style="color: #ffd200" = @email
     | 으로 인증메일이 발송되었습니다.
     br
     | 메일함을 확인 뒤 인증해주시기 바랍니다.
 
-  = link_to '인증메일 재전송', new_user_confirmation_path, style: "color: white; font-size: 13px; border-radius: 4px; background-color: #17575E; padding: 5px 25px; text-decoration: none"
+  = link_to '인증메일 재전송', new_user_confirmation_path, style: "color: white; font-size: 18px; border-radius: 4px; background-color: #17575E; padding: 8px 25px; text-decoration: none"
 
-= image_tag('/assets/img-ceomba-intro.png', style: "margin: 0 auto; display: block;")
+/= image_tag('/assets/img-ceomba-intro.png', style: "margin: 0 auto; display: block;")
 
 

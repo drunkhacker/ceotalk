@@ -24,11 +24,13 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     created = user.nil?
     unless user
-      user = User.create(name: auth.extra.raw_info.name, 
+      user = User.new(name: auth.extra.raw_info.name, 
                          provider: auth.provider,
                          uid: auth.uid,
                          email: auth.info.email,
                          password: Devise.friendly_token[0,20] )
+      user.skip_confirmation!
+      user.save
     end
     [user, created]
   end
