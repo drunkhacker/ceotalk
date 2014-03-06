@@ -51,7 +51,7 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
        Rails.logger.debug "facebook, uid = #{model.uid}"
        "http://graph.facebook.com/#{model.uid}/picture?width=150"
      else
-       "http://placekitten.com/150"
+       "/assets/icn-anonymous.png"
      end
    end
 
