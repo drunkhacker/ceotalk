@@ -1,7 +1,7 @@
 .category-wrapper
   .instruction * 전문분야는 세개까지 선택가능합니다.
   - count = Category.count
-  - per_row = 7
+  - per_row = 4
   - row_count = (count + per_row - 1)/per_row
   span
     - user_categories = if @user_categories then @user_categories else @user.categories end
@@ -10,9 +10,9 @@
       = check_box_tag "categories[#{i}][selected]", "1", user_categories.include?(cat), {style: "display: none;", class: "expert-category"}
       = label_tag "categories[#{i}][selected]", cat.name
       = hidden_field_tag "categories[#{i}][id]", cat.id
-      - if i % 7 < 6 && i < Category.count - 1
+      - if i % per_row < per_row - 1 && i < Category.count - 1
         span.divider &#47;
-      - if i % 7 == 6 && i / 7 < row_count - 1
+      - if i % per_row == per_row - 1 && i / per_row < row_count - 1
         div style="height: 15px;"
 
 javascript:

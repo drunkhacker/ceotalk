@@ -1,5 +1,6 @@
 .categories
-  .link-group
+  .link-group style="margin-bottom 10px;"
+    span style="margin-right: 10px;padding: 10px 25px; border-radius:4px; color: white; background-color: #148786; font-size: 15px;" 조회방법 선택
     = link_to '최신순', talks_path(:sort => 'recent', :cat => @current_categories.map {|c| c.id}.join(",")), :class => "button #{if @current_sort == 'recent' then "active" end}"
     span &#47;
     = link_to '댓글순', talks_path(:sort => "comment", :cat => @current_categories.map {|c| c.id}.join(",")), :class => "button #{if @current_sort == 'comment' then 'active' end}"
@@ -7,6 +8,7 @@
     = link_to "좋아요순", talks_path(:sort => "like", :cat => @current_categories.map {|c| c.id}.join(",")), :class => "button #{if @current_sort == 'like' then 'active' end}"
 
   .link-group
+    span style="margin-right: 10px;padding: 10px 25px; border-radius:4px; color: white; background-color: #148786; font-size: 15px;" 관심직무 선택
     - count = Category.count
     - Category.all.each_with_index do |cat, i|
       = link_to cat.name, talks_path(:sort => @current_sort, :cat => (if @current_categories.include? cat then @current_categories - [cat] else @current_categories + [cat] end).map {|c| c.id}.join(",")), :class => "button #{if @current_categories.include? cat then 'active' end} "

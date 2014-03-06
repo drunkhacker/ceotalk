@@ -3,38 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .section-title {
-  text-transform: uppercase;
-  @include size(100% 30px);
-  line-height: 30px;
+  /*text-transform: uppercase;*/
+  padding-left: 85px;
+  @include size(100% 65px);
+  line-height: 70px;
   color: $color-green;
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 40px;
+  /*font-weight: bold;*/
   margin-top: 56px;
-  margin-bottom: 48px;
+  margin-bottom: 10px;
   small {
     margin-left: 26px;
-    font-size: 12px;
-    color: #898989;
+    font-size: 20px;
+    color: #666;
     font-weight: normal;
     display: inline-block;
     line-height: 120%;
   }
 
   .more {
-    @include size(64px 23px);
-    line-height: 23px; //c30d23
+    @include size(149px 36px);
+    line-height: 36px; //c30d23
 
     float: right;
     display: block;
     color: white;
     text-decoration: none;
-    background: url(/assets/bg-more.png) no-repeat;
+    background: url(/assets/newdesign/bg_btn_viewall.png) no-repeat;
     /*background-color: #E7E7E8;*/
     text-transform: uppercase;
 
     text-align: center;
 
-    font-size: 12px;
+    font-size: 16px;
 
     margin-top: 5px;
     margin-bottom: 5px;
@@ -464,17 +465,18 @@
 .categories {
   .link-group {
     padding-bottom: 20px;
+    margin-bottom: 10px;
   }
   /*padding-top: 10px;*/
-  font-size: 13px;
+  font-size: 15px;
 
   .button {
     &:first-child {
       margin-left: 0;
     }
-    color: #828283;
+    color: #333;
     text-decoration: none;
-    padding: 4px;
+    padding: 8px;
     text-align: center;
     margin: 0 10px;
     cursor: pointer;

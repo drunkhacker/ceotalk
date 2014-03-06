@@ -1,54 +1,54 @@
 <hgroup class="session-page-header">
-  <h2 class="header-large">프로필 수정</h2>
-  <h3 class="header-small">CEO MBA에서 가치를 공유해보세요.</h3>
+  <h2 class="header-large">프로필
+    <small>프로필은 나의 얼굴입니다.</small></h2>
 </hgroup>
 
-<hr>
 
-<h3 class="profile-section-header">* 기본정보</h3>
+<div class="profile-wrapper" style="padding-bottom:30px">
+  <h3 class="profile-section-header">
+      <span>기본정보</span>
+  </h3>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field-wrapper">
-    <%= f.label :email, "이메일", :class => "form-label-inline", :style => "width: 130px" %>
-    <span style="font-size: 15px; color: #58585b;"><%= resource.email%></span>
+  <div class="field-wrapper clear">
+    <%= f.label :email, "이메일", :class => "form-label-inline profile-edit" %>
+    <span style="margin-left: 17px;font-size: 16px; color: #fff; line-height:30px"><%= resource.email%></span>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field-wrapper">
-    <%= f.label :password, "새 비밀번호", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.password_field :password, :autocomplete => "off" %>
+  <div class="field-wrapper clear">
+  <%= f.label :password, "새 비밀번호", :class => "form-label-inline profile-edit"%>
+    <%= f.password_field :password, :autocomplete => "off", style: "margin-left: 17px;" %>
   </div>
 
-  <div class="field-wrapper">
-    <%= f.label :password_confirmation, "비밀번호 확인", :class => "form-label-inline", :style => "width: 130px;" %>
+  <div class="field-wrapper clear">
+    <%= f.label :password_confirmation, "비밀번호 확인", :class => "form-label-inline profile-edit", style: "margin-left: 17px;" %>
     <%= f.password_field :password_confirmation %>
   </div>
 
   <div class="field-wrapper">
-    <%= f.label :name, "이름", :class => "form-label-inline", :style => "width: 130px" %>
-    <span style="font-size: 15px; color: #58585b;"><%= resource.name%></span>
+    <%= f.label :name, "이름", :class => "form-label-inline profile-edit" %>
+    <span style="margin-left: 17px; font-size: 16px; color: #fff; line-height: 30px;"><%= resource.name%></span>
   </div>
 
   <div class="field-wrapper clear">
-    <%= f.label :name, "전문분야", :class => "form-label-inline", :style => "width: 130px;" %>
+    <%= f.label :name, "전문분야", :class => "form-label-inline profile-edit" %>
 
-    <div style="float: left; width: 825px;">
+    <div style="float: left">
       <%= render partial: "/professionals/expert_categories", locals: {f: f}%>
     </div>
   </div>
 
-  <hr>
+  <h3 class="profile-section-header"><span>추가정보</span></h3>
 
-  <h3 class="profile-section-header">* 추가정보</h3>
-
-  <div class="field-wrapper">
-    <%= f.label :profile_photo, "사진", :class => "form-label-inline", :style => "width: 130px;" %>
-    <img id="user_profile_photo_preview" src="" style="border:1px solid #ddd; width: 120px; height: 120px;">
+  <div class="field-wrapper clear">
+    <%= f.label :profile_photo, "사진", :class => "form-label-inline profile-edit" %>
+    <img id="user_profile_photo_preview" src="" style="border:1px solid #ddd; width: 120px; height: 120px;margin-left: 17px">
     <%= f.file_field :profile_photo %>
   </div>
 
@@ -67,42 +67,55 @@
     });
   </script>
 
-  <div class="field-wrapper">
-    <%= f.label :company_id, "소속", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.select :company_id, Company.all.map {|c| [c.name, c.id]}, { include_blank: true}, {class: 'chosen-select', "data-placeholder" => "소속 회사"} %>
+  <hr style="height:1px; border:0; background-color:#F9D24C; margin-bottom: 20px;">
 
+  <div class="field-wrapper">
+    <%= f.label :company_id, "소속", :class => "form-label-inline profile-edit" %>
+    <span style="margin-left: 17px">
+      <%= f.select :company_id, Company.all.map {|c| [c.name, c.id]}, { include_blank: true}, {class: 'chosen-select', "data-placeholder" => "소속 회사"} %>
+    </span>
     <script>
       $(function() {
         $(".chosen-select").chosen({
           width: '200px',
-          no_results_text: "<a href='add_new_company()'>다음의 회사를 추가 : </a>"
+          no_results_text: "<a onclick='add_new_company(event);' href='#'>다음의 회사를 추가 : </a>"
         })
       });
 
-      function add_new_company() {
+      function add_new_company(e) {
+        var name = $("#user_company_id_chosen .chosen-search input").val();
+        $("#user_company_id").append("<option value='-1,"+name +"'>" + name + "</option>");
+        $("#user_company_id").trigger("chosen:updated");
+        e.preventDefault();
+        e.stopPropagation();
       }
     </script>
   </div>
 
+  <hr style="height:1px; border:0; background-color:#F9D24C; margin-bottom: 20px;">
+
   <div class="field-wrapper">
-    <%= f.label :position, "직책", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.text_field :position %>
+    <%= f.label :position, "직책", :class => "form-label-inline profile-edit" %>
+    <%= f.text_field :position, style: "margin-left: 17px;" %>
+  </div>
+
+  <hr style="height:1px; border:0; background-color:#F9D24C; margin-bottom: 20px;">
+
+  <div class="field-wrapper">
+    <%= f.label :career, "커리어", :class => "form-label-inline profile-edit" %>
+    <%= f.text_area :career, :style => "height: 100px; margin-left: 17px; width: 300px;" %>
   </div>
 
   <div class="field-wrapper">
-    <%= f.label :contact, "연락처", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.text_area :contact, :style => "height: 100px;" %>
+    <%= f.label :contact, "연락처", :class => "form-label-inline profile-edit"%>
+    <%= f.text_area :contact, :style => "height: 100px; margin-left: 17px; width: 300px;" %>
+    <span style="font-size: 16px; color: white; margin-left: 15px;">블로그, 소셜, 홈페이지등의 연락처</span>
   </div>
-
   <div class="field-wrapper">
-    <%= f.label :career, "커리어", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.text_area :career, :style => "height: 100px;" %>
+    <%= f.label :introduction, "자기소개", :class => "form-label-inline profile-edit" %>
+    <%= f.text_area :introduction, :style => "height: 200px; margin-left: 17px;" %>
   </div>
 
-  <div class="field-wrapper">
-    <%= f.label :introduction, "자기소개", :class => "form-label-inline", :style => "width: 130px;" %>
-    <%= f.text_area :introduction, :style => "height: 200px;" %>
-  </div>
-
-  <div><%= f.submit "Update" %></div>
+  <%= f.submit "프로필 수정하기", style: "margin:0 auto; display:block; width: 293px; height:65px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer; margin-top: 15px;", class: "bg-btn-blue"%>
 <% end %>
+</div>

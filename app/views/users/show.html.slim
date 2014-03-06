@@ -1,65 +1,75 @@
 hgroup class="session-page-header"
-  h2 class="header-large" 프로필
-  h4 class="header-small" CEO MBA에서 가치를 공유해보세요.
+  h2.header-large
+    | 프로필
+    small.header-small
+      | 프로필은 나의 얼굴입니다.
 
-hr
+.profile-wrapper
+  h3.profile-section-header 
+    span 기본정보
+  dl.profile-info.clear
+    dt 이메일
+    dd = @user.email
 
-h3.profile-section-header * 기본정보
-dl.profile-info.clear
-  dt 이메일
-  dd = @user.email
+    .clear
 
+
+    dt 이름
+    dd = @user.name
+
+    .clear
+
+    dt 전문분야
+    dd = @user.category_names " / "
+
+
+.profile-wrapper style="padding-bottom: 30px;"
+  h3.profile-section-header 
+    span 추가정보
+
+  dl.profile-info style="float: left; width: 420px"
+    dt 사진
+    dd = image_tag(@user.profile_photo.url, :class => "photo", :style => "width: 120px;")
+
+    .clear
+
+    dt 소속
+    - if @user.company
+      dd = @user.company_name
+    - else
+      dd &nbsp;
+
+    .clear
+
+    dt 직책
+    dd = @user.position || raw("&nbsp;")
+
+    .clear
+
+    dt 커리어
+    dd style="height: 120px; overflow-y:auto; width: 220px;"
+      - if @user.career && @user.career.length > 0
+        = simple_format @user.career
+      - else
+        span style="color: #aaa;" 커리어 정보가 없습니다.
+
+
+  dl.profile-info style="float: left;"
+    dt style="width: 90px;" 연락처
+    dd style="height: 125px;"
+      - if @user.contact && @user.contact.length > 0
+        = simple_format @user.contact
+      - else
+        span style="color: #aaa;" 연락처 정보가 없습니다.
+
+    .clear
+
+    dt style="width: 90px;" 자기소개
+    dd
+      - if @user.introduction && @user.introduction.length > 0
+        = simple_format @user.introduction
+      - else
+        span style="color: #aaa;" 자기소개가 없습니다.
   .clear
 
-  dt 비밀번호
-  dd
-    | *******
-
-  .clear
-
-  dt 이름
-  dd = @user.name
-
-  .clear
-
-  dt 전문분야
-  dd = @user.category_names " / "
-
-hr
-
-h3.profile-section-header * 추가정보
-
-dl.profile-info.clear
-  dt 사진
-  dd = image_tag(@user.profile_photo.url, :class => "photo", :style => "width: 120px;")
-
-  .clear
-
-  dt 소속
-  dd = @user.company_name
-
-  .clear
-
-  dt 직책
-  dd = @user.position
-
-  .clear
-
-  dt 커리어
-  dd = simple_format @user.career
-
-  .clear
-
-  dt 연락처
-  dd = simple_format @user.contact
-
-  .clear
-
-  dt 자기소개
-  dd = simple_format @user.introduction
-
-hr
-div style="position: relative; padding: 20px 0;"
-  .btn-signup style="position: absolute; right: 10px;"
-    = link_to "수정하기", edit_user_registration_path, :style => "text-decoration: none; font-size: 14px; color: white; display: block; text-align: center; position: absolute; z-index: 20; width: 100%; padding-top: 7px;"
-
+  = link_to "프로필 수정하기",edit_user_registration_path, style: "margin:50px auto; margin-bottom:0; display:block;  width: 293px; height:69px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; text-align: center; text-decoration: none;", class: "bg-btn-blue"

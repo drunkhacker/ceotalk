@@ -1,12 +1,14 @@
-h3.section-title  
+= image_tag("/assets/newdesign/img_banner1.jpg", style: "width: 100%;")
+h3.section-title style="background:url(/assets/newdesign/icn_talk_hdr.png) no-repeat;"
   | C
   span style="color: #c30d23" ³
   |Talk
   small 
-    | CEO와 전문가의 실전적 노하우
-    br
-    | 문제를 해결할 수 있는 노하우를 알고 싶어요!
-  = link_to("more", talks_path, :class => "more")
+    | 짧고 진한 CEO 지식부페! 골라서 드세요!
+  = link_to("전체보기", talks_path, :class => "more")
+hr.hr-gradient
+
+p style="font-size: 15px; color: #2E2E2E; margin-bottom: 40px" 아래의 관심분야를 클릭하시면 맞춤형으로 콘텐츠가 보여집니다.
 = render '/categories'
 #selected-contents.row.clear
   .contents.column
@@ -23,35 +25,36 @@ h3.section-title
 
           h5.title = if content.title.length > 16 then content.title[0...14] + "..." else content.title end
           p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
-          = link_to "more", "#{talks_path}/##{content.id}", :class => "more" 
+          = link_to "전체보기", "#{talks_path}/##{content.id}", :class => "more" 
     - (0...12-@selected_contents.count).each do |i|
       .item
         = image_tag("http://placekitten.com/232/#{130+22+i}")
 
-h3.section-title 
+h3.section-title.icn-academy
   | C
   span style="color: #c30d23" ³
   |Academy
   small 
-    | 실전적 참여형 미래 CEO 양성과정
-    br
-    | 미래 CEO가 되기 위해서는 무엇을 배우면 될까요?
-  = link_to 'more', open_questions_path, class: "more"
+    | 현직 CEO와 소통하고 토론하는 실전교육
+  = link_to '전체보기', open_questions_path, class: "more"
+
+hr.hr-gradient
 
 = image_tag("/assets/class_intro/banner-big.png", usemap: "#map1")
 
 map name="map1"
   area shape="rect" coords="414,332,813,431" href="#{open_questions_path}"
 
-h3.section-title 
+h3.section-title.icn-members
   | C
   span style="color: #c30d23" ³
   |MEMBERS
   small 
-    | CEO MBA의 전문가와 기업들
-    br
-    | CEO와 전문가와 소통하고 싶어요!
-  =link_to("more", professionals_path, class: "more")
+    | 전문가와의 소통, 당신도 곧 전문가로 탄생합니다!
+  =link_to("전체보기", professionals_path, class: "more")
+
+hr.hr-gradient
+
 #experts-corporation.row.clear
   /- if @featured_expert
     /a.member.column href="#{professionals_path}/##{@featured_expert.professional.id}"
@@ -70,15 +73,14 @@ h3.section-title
     = link_to image_tag("/assets/dummy_members/#{"%02d" % i}.png"), professionals_path+"/##{ids[i-1]}", style: "display: block; float:left; margin-bottom:10px; margin-right: #{if i == 5 || i == 10 then 0 else 10 end}px; width: 232px; height: 232px;"
 
 
-h3.section-title 
+h3.section-title.icn-idea
   | C
   span style="color: #c30d23" ³
   |Idea
   small 
-    | CEO 고민해결을 위한 크라우드 소싱
-    br 
-    | 다함께 실전 문제해결을 고민해보고 싶어요!
+    | 당신의 아이디어로, CEO의 고민을 풀어주세요!
   /= link_to "more", problems_path, class: "more"
+hr.hr-gradient
 
 #crowd-sourcing.row.clear style="height:auto; margin-top: -30px;"
   =image_tag('/assets/img-league-preopen.png')

@@ -12,7 +12,12 @@
 
     = render @talk
 
-    = render partial: '/share_actions', locals: {resource: @talk.becomes(Talk), title: @talk.title}
+    div style="background-color: #f1f1f2; padding:20px;"
+      h4 style="font-size: 18px; font-weight:bold; color: #17575E"  영상 정보
+      div style="height: 200px; margin-top: 20px; background-color:white; padding: 5px; font-size: 15px; line-height: 140%; overflow: scroll;"
+        = simple_format @talk.description
+
+    /= render partial: '/share_actions', locals: {resource: @talk.becomes(Talk), title: @talk.title}
     = render partial: '/comments/list', locals: {commentable: @commentable, new_comment: @comment, top_comments: @top_comments, comments: @comments }
   .column.right
     = render partial: "/users/pro_short_side", locals: {professional: @talk.professional }
@@ -26,32 +31,31 @@
 
         dt Comments
         dd = @talk.comments.count
-    .video-info
-      h3.section-header 영상 정보
-      hgroup.title
-        h3 = truncate(@talk.title, :length => 25)
-        h5.small = "Recorded: #{@talk.created_at.strftime "%Y. %B %d"}"
+    /.video-info
+      /h3.section-header 영상 정보
+      /hgroup.title
+        /h3 = truncate(@talk.title, :length => 25)
+        /h5.small = "Recorded: #{@talk.created_at.strftime "%Y. %B %d"}"
+      /.description
+        /= simple_format @talk.description
+      /ul.category-list.clear
+        /- @talk.categories.each do |cat|
+          /li.category = cat.name
+
+    .ceo-class-ad style="padding: 10px; margin-top: 20px;"
+      span style="color: #17575E; font-size: 15px; font-weight: bold;" CEO MBA CLASS
       .description
-        = simple_format @talk.description
-      ul.category-list.clear
-        - @talk.categories.each do |cat|
-          li.category = cat.name
+        = link_to image_tag("/assets/newdesign/img_class_add2.png" , style: "width: 250px"), open_questions_path, style: "margin-left: -10px;"
 
-    .ceo-class-ad style="padding: 10px"
-      h3.section-header CEO MBA CLASS
-      .description
-        = link_to image_tag("/assets/img-class-banner1.png"), open_questions_path
+    /.other-videos
+      /h3.section-header 관련 영상 
 
-    .other-videos
-      h3.section-header 관련 영상 
-
-      ul.videos
-        - @other_talks.each do |talk|
-          li.clear
-            h5.talk-title= truncate(talk.title, :length => 16)
-            .excerpt
-              = image_tag(talk.thumb_url, :class => "thumbnail")
+      /ul.videos
+        /- @other_talks.each do |talk|
+          /li.clear
+            /h5.talk-title= truncate(talk.title, :length => 16)
+            /.excerpt
+              /= image_tag(talk.thumb_url, :class => "thumbnail")
               /= simple_format truncate(talk.description, :length => 150), :class => "description"
-    .tail
 
 

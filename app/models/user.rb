@@ -20,15 +20,15 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  def self.with_omniauth(auth, signed_in_resource = nil) 
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+  def self.with_omniauth(provider, uid, name, email, signed_in_resource = nil) 
+    user = User.where(:provider => provider, :uid => uid).first
     created = user.nil?
     unless user
-      user = User.new(name: auth.extra.raw_info.name, 
-                         provider: auth.provider,
-                         uid: auth.uid,
-                         email: auth.info.email,
-                         password: Devise.friendly_token[0,20] )
+      user = User.new(name: name, 
+                      provider: provider,
+                      uid: uid,
+                      email: email,
+                      password: Devise.friendly_token[0,20] )
       user.skip_confirmation!
       user.save
     end

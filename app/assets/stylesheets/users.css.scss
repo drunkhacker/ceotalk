@@ -18,12 +18,21 @@
   color: $color-gray-2;
   dt {
     float: left;
-    width: 150px;
+    width: 195px;
+    padding-right: 10px;
+    font-size: 20px;
+    color: white;
+    text-align: right;
+    /*font-weight: light;*/
+    text-shadow: 1px 1px 3px #000;
   }
   dd {
     float: left;
-    width: 805px;
+    /*width: 805px;*/
+    padding-left: 17px;
     margin-bottom: 25px;
+    font-size: 16px;
+    color: white;
     p {
       line-height: 150%;
       padding-right: 10px;
@@ -32,10 +41,32 @@
 
 }
 
+.profile-wrapper {
+  margin-left: 25px;
+  background-color: rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
 .profile-section-header {
-  color: #008585;
-  font-size: 13pt;
+  border-top: 1px solid #F9D24C;
+  span { 
+    display: block;
+    @include size(195px 45px);
+    background-color: #F9D24C;
+    text-align: center;
+    line-height: 45px;
+  }
+  color: #252525;
+  font-size: 25px;
   font-weight: bold;
-  padding-top: 25px;
+  /*padding-top: 25px;*/
   padding-bottom: 25px;
+}
+
+.form-label-inline.profile-edit {
+  width: 195px;
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+  text-align: right;
+  padding-right: 10px;
 }

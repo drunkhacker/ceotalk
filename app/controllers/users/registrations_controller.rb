@@ -46,6 +46,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
       account_update_params.delete("password_confirmation")
     end
 
+    a = account_update_params[:company_id].split(",")
+    logger.debug "!!! a = #{a}"
+    if a.length > 1 && a[0].to_i == -1
+      name = a[1..-1].join(",")
+      c = Company.new(name: name)
+      if c.save
+        logger.debug "!!! company saved = #{c.name}"
+        account_update_params[:company_id] = c.id
+      else
+      end
+    end
+
     @user = User.find(current_user.id)
     #logger.debug account_update_params.inspect!
 

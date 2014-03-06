@@ -1,3 +1,6 @@
+// dummy people image at top
+= image_tag('/assets/newdesign/icn_man.png', style: "position: absolute; top: -64px;")
+
 ul.session-menus
   - unless signed_in? 
     li.session-menu-item = link_to "로그인", new_user_session_path, :class => "#{request.path == new_user_session_path ? "active" : ""}"

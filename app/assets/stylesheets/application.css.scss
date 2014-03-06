@@ -86,6 +86,7 @@ body {
 
   .name {
     padding-top: 5px;
+    padding-bottom: 5px;
     color: white !important;
     font-size: 20px;
     small {
@@ -95,7 +96,7 @@ body {
 
   .jobs {
     color: $color-gray-1;
-    font-size: 9pt;
+    font-size: 15px;
   }
 
 }
@@ -171,3 +172,25 @@ body {
   /*-box-shadow: 0 0 10px rgba(0,0,0,.4);*/
 }
   
+
+.hr-gradient {
+  max-width: 1600px; margin-bottom:20px; width: 100%; height:30px; background:url(/assets/newdesign/bg_gradient.png) repeat-x; border :none;
+}
+
+.section-title {
+  &.icn-talk {
+    background:url(/assets/newdesign/icn_talk_hdr.png) no-repeat;
+  }
+
+  &.icn-academy {
+    background:url(/assets/newdesign/icn_academy_hdr.png) no-repeat;
+  }
+
+  &.icn-members {
+    background:url(/assets/newdesign/icn_members_hdr.png) no-repeat;
+  }
+
+  &.icn-idea {
+    background:url(/assets/newdesign/icn_idea_hdr.png) no-repeat;
+  }
+}
