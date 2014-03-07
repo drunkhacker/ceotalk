@@ -48,8 +48,18 @@
 
   <div class="field-wrapper clear">
     <%= f.label :profile_photo, "사진", :class => "form-label-inline profile-edit" %>
-    <img id="user_profile_photo_preview" src="" style="border:1px solid #ddd; width: 120px; height: 120px;margin-left: 17px">
-    <%= f.file_field :profile_photo %>
+    <div style="float: left;">
+      <img id="user_profile_photo_preview" src="" style="border:1px solid #ddd; width: 120px; height: 120px;margin-left: 17px"><br/>
+      <%= f.file_field :profile_photo, style: "margin-left: 17px;" %>
+    </div>
+
+    <div style="float: left;">
+      <%= image_tag('/assets/newdesign/img_photo_guide.png') %><br>
+      <p style="font-size: 15px; color: white; text-align: center; line-height: 120%; margin-top: 10px;">
+        얼굴이 중앙에 위치한 사진이 좋습니다.<br>
+        사진이 가로, 세로로 길어도 얼굴이 중앙에만 있다면 OK!
+      </p>
+    </div>
   </div>
 
   <script>
