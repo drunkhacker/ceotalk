@@ -1,4 +1,4 @@
-= image_tag("/assets/newdesign/img_banner1.jpg", style: "width: 100%;")
+= image_tag("/assets/newdesign/img_banner1.png", style: "width: 100%;")
 h3.section-title.icn-talk
   | C
   span style="color: #c30d23" ³
@@ -13,21 +13,22 @@ p style="font-size: 15px; color: #2E2E2E; margin-bottom: 40px" 아래의 관심�
 #selected-contents.row.clear
   .contents.column
     - @selected_contents.each_with_index do |content, i|
-      .item
+      .item class="#{if i == 3 || i == 6 || i == 11 then "right-zero" else "" end }"
         =image_tag(content.thumb_url)
         =image_tag(if content.type == 'Video' then "/assets/icn-talk.png" else "/assets/icn-column.png" end, :class => "talk-tag")
-        a.overlay href="#{talks_path}/##{content.id}" style="text-decoration: none"
-          .category = content.category_names
-          - if content.professional
-            h6.name = content.professional.name 
-          - else
-            h6.name &nbsp;
+        a href="#{talks_path}/##{content.id}" style="text-decoration: none"
+          .overlay
+            .category = content.category_names
+            - if content.professional
+              h6.name = content.professional.name 
+            - else
+              h6.name &nbsp;
 
-          h5.title = if content.title.length > 16 then content.title[0...14] + "..." else content.title end
-          p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
-          = link_to "전체보기", "#{talks_path}/##{content.id}", :class => "more" 
-    - (0...12-@selected_contents.count).each do |i|
-      .item
+            h5.title = if content.title.length > 16 then content.title[0...14] + "..." else content.title end
+            p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
+            /= link_to "전체보기", "#{talks_path}/##{content.id}", :class => "more" 
+    - (0...12-@selected_contents.count).each_with_index do |i|
+      .item class="#{if i + @selected_contents.count == 3 || i + @selected_contents.count == 6 || i + @selected_contents.count == 11 then "right-zero" else "" end }"
         = image_tag("http://placekitten.com/232/#{130+22+i}")
 
 h3.section-title.icn-academy

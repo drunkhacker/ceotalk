@@ -11,9 +11,9 @@
 
   = form_for [commentable, new_comment.becomes(Comment)], :remote => true do |f| 
     - if signed_in?
-      = f.text_area(:content, :placeholder => "Add a comment")
+      = f.text_area(:content, :placeholder => "Add a comment", :class => "#{local_assigns[:big].nil? ? "" : "big"}")
     - else
-      = f.text_area(:content, :placeholder => "로그인 후 이용하실 수 있습니다.", :disabled => true)
+      = f.text_area(:content, :placeholder => "로그인 후 이용하실 수 있습니다.", :disabled => true, :class => "#{local_assigns[:big].nil? ? "" : "big"}")
     = f.submit "등록", class: "submit-hexagon"
 
 h5.comment-section-title 베스트 답변

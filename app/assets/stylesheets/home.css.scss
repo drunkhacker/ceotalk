@@ -84,15 +84,18 @@
       margin-right: 10px;
       margin-bottom: 10px;
 
-      &:nth-child(4) {
-        margin-right: 0px;
+      &.right-zero {
+        margin-right: 0;
       }
-      &:nth-child(7) {
-        margin-right: 0px;
-      }
-      &:nth-child(12) {
-        margin-right: 0px;
-      }
+      /*&:nth-child(4) {*/
+        /*margin-right: 0px;*/
+      /*}*/
+      /*&:nth-child(7) {*/
+        /*margin-right: 0px;*/
+      /*}*/
+      /*&:nth-child(12) {*/
+        /*margin-right: 0px;*/
+      /*}*/
 
 
       overflow: hidden;
@@ -103,7 +106,7 @@
         .overlay {
           padding-left: 25px;
           /*padding-right: 12px;*/
-          top: calc(100% - 90px);
+          top: 180px;
           .name {
             font-size: 13px;
             margin-bottom: 10px;
@@ -394,9 +397,13 @@
 
   .overlay {
     position: absolute;
-    top: calc(100% - 48px);
+    top: 82px;
+    left: 0;
     transition: top 0.3s ease-out;
     background-color: $color-black-80;
+    // Fxxk IE hack
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#b2000000', endColorstr='#b2000000')\9;
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.7)"; [> IE 8 <]*/
     color: white;
     @include size(100% 100%);
     overflow: hidden;
@@ -462,6 +469,10 @@
 }
 
 //category section
+.category-label {
+  margin-right: 10px;padding: 10px 25px; border-radius:4px; color: white; background-color: #148786; font-size: 15px;
+  behavior: url(/ie/PIE.htc);
+}
 .categories {
   .link-group {
     padding-bottom: 20px;
@@ -485,14 +496,14 @@
     &:hover {
       color: white;
       background-color: $color-gray-1;
-      border-radius: 3px;
     }
 
     &.active {
       color: white;
       background-color: $color-green;
-      border-radius: 3px;
     }
+    border-radius: 3px;
+    behavior: url(/ie/PIE.htc);
   }
 
   margin-bottom: 26px;

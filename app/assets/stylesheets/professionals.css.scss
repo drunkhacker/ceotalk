@@ -22,6 +22,8 @@
         color: white;
         background-color: $color-green;
       }
+
+      behavior: url(/ie/PIE.htc);
     }
   }
   margin-bottom: 60px;
@@ -54,6 +56,8 @@
     position: absolute;
     bottom: 0;
     background-color: $color-black-80;
+    // Fxxk IE hack
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#b2000000', endColorstr='#b2000000')\9;
     color: white;
     padding: 0;
     padding-right: 10px;

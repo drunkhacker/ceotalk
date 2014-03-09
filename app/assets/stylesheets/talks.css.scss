@@ -306,23 +306,23 @@
       }
     }
 
-    &:nth-child(4) { margin-right: 0; }
-    &:nth-child(7) { margin-right: 0; }
-    &:nth-child(12) { margin-right: 0; }
-    &:nth-child(16) { margin-right: 0; }
 
-    &:nth-child(17),
-    &:nth-child(18),
-    &:nth-child(19) {
-      margin-top: -($h + $g);
-    }
+    &.right-zero { margin-right: 0; }
+    /*&:nth-child(4) { margin-right: 0; }*/
+    /*&:nth-child(7) { margin-right: 0; }*/
+    /*&:nth-child(12) { margin-right: 0; }*/
+    /*&:nth-child(16) { margin-right: 0; }*/
 
-    &:nth-child(17) {
-      margin-left: $w + $g;
-    }
-    &:nth-child(18) {
-      margin-left: ($w*2 + $g*2);
-    }
+    &.push-top { margin-top: -($h + $g); }
+    /*&:nth-child(17),*/
+    /*&:nth-child(18),*/
+    /*&:nth-child(19) { margin-top: -($h + $g); }*/
+
+    &.push-left { margin-left: $w + $g; }
+    /*&:nth-child(17) { margin-left: $w + $g; }*/
+
+    &.push-left-2 { margin-left: ($w*2 + $g*2); }
+    /*&:nth-child(18) { margin-left: ($w*2 + $g*2); }*/
   }
 
   .overlay {

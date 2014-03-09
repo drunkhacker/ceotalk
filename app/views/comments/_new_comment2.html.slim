@@ -12,11 +12,12 @@ li id="comment2-#{r}"
           h6.company —
       = form_for [comment, comment2.becomes(Comment)], remote: true do |f|
         = hidden_field_tag 'r', r
-        - if signed_in?
-          = f.text_area(:content, placeholder: "Add a comment")
-        - else
-          = f.text_area(:content, placeholder: "로그인 후 이용하실 수 있습니다.", disabled: "disabled")
-        = f.submit "등록", class: "submit-hexagon"
+        div style="overflow:hidden;"
+          - if signed_in?
+            = f.text_area(:content, placeholder: "Add a comment")
+          - else
+            = f.text_area(:content, placeholder: "로그인 후 이용하실 수 있습니다.", disabled: "disabled")
+          = f.submit "등록", class: "submit-hexagon"
 
     - comment.comments.order("created_at DESC").each do |comment2|
       = render partial: '/comments/comment2', locals: {comment: comment2}

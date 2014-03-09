@@ -3,9 +3,14 @@ li.comment.clear class="id#{r} #{if local_assigns[:best] && best then "best" end
   .comment-author-info
     - if local_assigns[:best] && best
       .ranking = rank
-    = image_tag(comment.user.profile_photo.url, :class => "profile-photo")
-    h5.name = comment.user.name
-    h6.company = comment.user.company_name
+    - unless comment.user.nil?
+      = image_tag(comment.user.profile_photo.url, :class => "profile-photo")
+      h5.name = comment.user.name
+      h6.company = comment.user.company_name
+    - else
+      = image_tag('/assets/icn-anonymous.png', :class => "profile-photo")
+      h5.name &nbsp;
+      h6.company &nbsp;
   .comment-time = comment.created_at.strftime("%y.%m.%d. %H:%M%P")
   .comment-content
     = simple_format comment.content

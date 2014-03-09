@@ -22,8 +22,7 @@
 
           .clear.info
             .title Interests
-            .detail
-              | 경영.기획 / 인사.교육 / 자기계발
+            .detail = @professional.category_names " / "
 
           .clear.info
             .title Contact
@@ -36,6 +35,6 @@
         | —
 
   = render partial: '/share_actions', locals: {resource: @professional, title: @professional.tagline}
-  = render partial: '/comments/list', locals: {commentable: @commentable, new_comment: @comment, top_comments: @top_comments, comments: @comments }
+  = render partial: '/comments/list', locals: {commentable: @commentable, new_comment: @comment, top_comments: @top_comments, comments: @comments, big: true }
 
 

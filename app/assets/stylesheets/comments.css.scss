@@ -13,8 +13,11 @@
     float: left;
     display: block;
     @include calc(width, "100% - 138px");
+    width: 558px\9;
+    &.big {
+      width: 832px\9;
+    }
     height: 70px;
-    /*@include size("" 70px);*/
     border: 0;
     padding: 10px;
     padding-right: 60px;
@@ -128,8 +131,7 @@
     font-size: 14px;
     padding: 10px 0 20px 0;
     line-height: 120%;
-    float: left;
-    @include calc(width, "100% - 292px");
+    overflow: hidden;
   }
 
   .comment-meta {
@@ -166,7 +168,7 @@
       padding: 10px;
       padding-right: 60px;
       margin-top: 10px;
-      @include calc(width, "100% - 216px");
+      width: 100%;
       height: 55px;
     }
 

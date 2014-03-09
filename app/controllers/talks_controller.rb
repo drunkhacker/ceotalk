@@ -42,7 +42,7 @@ class TalksController < ApplicationController
     @top_comments = @talk.comments.where("like_count >= 5").order("like_count DESC").limit(3)
     @comments = @talk.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 
-    @other_talks = @talk.professional.talks.where("id != ?", @talk.id).order("created_at DESC").limit(5)
+    @other_talks = @talk.professional.nil? ? [] : @talk.professional.talks.where("id != ?", @talk.id).order("created_at DESC").limit(5)
 
     respond_with(@talk) do |format|
       format.html { render :layout => (is_facebook ? "opengraph" : !request.xhr?)}

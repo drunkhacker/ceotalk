@@ -1,6 +1,12 @@
 .professional-short-side
-  = image_tag(professional.profile_photo.url, :class => "profile-photo")
-  h3.name 
-    = professional.name
-  h5.jobs = professional.company_name
-  h5.jobs = professional.category_names " / "
+  - unless professional.nil?
+    = image_tag(professional.profile_photo.url, :class => "profile-photo")
+    h3.name 
+      = professional.name
+    h5.jobs = professional.company_name
+    h5.jobs = professional.category_names " / "
+  - else
+    = image_tag("/assets/icn-anonymous.png", :class => "profile-photo")
+    h3.name &nbsp;
+    h5.jobs &nbsp;
+    h5.jobs &nbsp;

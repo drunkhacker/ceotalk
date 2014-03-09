@@ -1,10 +1,10 @@
-<hgroup class="session-page-header">
+<div class="session-page-header">
   <h2 class="header-large">비밀번호 재설정
     <small>계정의 새로운 비밀번호를 입력하세요</small></h2>
-</hgroup>
+</div>
 
 
-<div style="background-color: rgba(255,255,255,0.5); height:240px; margin-left:80px; padding:30px;">
+<div class="white-box" style="background-color: rgba(255,255,255,0.5); height:240px; margin-left:80px; padding:30px;">
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>

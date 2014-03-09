@@ -1,4 +1,4 @@
-= image_tag("/assets/newdesign/img_banner2.jpg", style: "width: 100%;")
+= image_tag("/assets/newdesign/img_banner2.png", style: "width: 100%;")
 h3.section-title.icn-talk 
   | C
   span style="color: #c30d23" ³
@@ -13,7 +13,7 @@ p style="font-size: 15px; color: #2E2E2E; margin-bottom: 40px" 아래의 관심�
 = render '/categories'
 #talks.clear style="margin-bottom: 30px;"
   - @talks.each_with_index do |talk, i|
-    .item class="#{i == 15 || i == 0 ? 'big' : ''}"
+    .item class="#{i == 15 || i == 0 ? 'big' : ''} #{i == 3 || i == 6 || i == 11 || i == 15 ? "right-zero" : ""} #{i == 16 || i == 17 || i == 18 ? "push-top":""} #{i == 16 ? "push-left":""} #{i == 17 ? "push-left-2":""}"
       = image_tag(talk.thumb_url)
       = link_to(talk.becomes(Talk), :class => "overlay modal-popup", :style => "text-decoration: none;") do
         .category = talk.category_names " / "

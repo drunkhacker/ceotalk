@@ -4,6 +4,7 @@ $left-width: 245px;
   height: 100%;
   float: left;
   background-color: rgba(255,255,255,0.5);
+  background: url(/assets/newdesign/bg_white_0.5.png)\9 0 0 repeat;
   .session-menus {
     /*border-top: 2px solid $color-gray-1;*/
     /*border-bottom: 2px solid $color-gray-1;*/
@@ -34,6 +35,10 @@ $left-width: 245px;
       }
     }
   }
+}
+
+.white-box {
+  background: url(/assets/newdesign/bg_white_0.5.png) 0 0 repeat\9;
 }
 
 .devise-content {
