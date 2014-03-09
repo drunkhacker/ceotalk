@@ -31,8 +31,8 @@
     </div>
 
     <% if devise_controller? || request.path == profile_users_path || request.path == favorites_users_path %>
-      <img style="display: block;position: absolute; margin-top: 70px; left:0; width:1600px;max-width:100%;" src="/assets/newdesign/bg_people.png">
-      <div class="clear" style="position: absolute; height:100%; margin-top: 70px;">
+      <div class="clear">
+        <hr class="hr-gradient">
         <div class="devise-left-menu">
           <%= render "/devise/left_menus"%>
         </div>
@@ -47,5 +47,8 @@
     <%= render '/footer' %>
   </div>
 
+  <script>
+    function expire_banner(name) { $.cookie(name, "no"); }
+  </script>
   </body>
 </html>

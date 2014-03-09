@@ -1,8 +1,11 @@
-= image_tag("/assets/newdesign/img_banner2.png", style: "width: 100%;")
+- if @banner
+  div.top-banner
+    = image_tag("/assets/newdesign/img_banner2.jpg")
+    = link_to("이 배너를 다시 보지 않기", "", onclick:"expire_banner('banner2')")
 h3.section-title.icn-talk 
   | C
   span style="color: #c30d23" ³
-  |Talk
+  | &nbsp;Talk
   small 
     | 짧고 진한 CEO 지식부페! 골라서 드세요!
 

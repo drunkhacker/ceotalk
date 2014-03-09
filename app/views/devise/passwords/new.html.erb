@@ -1,9 +1,11 @@
-<div class="session-page-header">
+<div class="session-page-header" style="border-left: 1px solid #17575E;border-right: 1px solid #17575E">
   <h2 class="header-large">ID/PW 찾기 <small>이메일로 가입하신 경우, 가입 여부를 확인하고 비밀번호를 다시 설정할 수 있습니다.</small></h2>
 </div>
 
-<div class="white-box" style="background-color: rgba(255,255,255,0.5); float: left; width: 430px; max-height: 100%; height:465px; margin-left:80px; padding:30px;">
-  <h4 class="header-small">가입 여부 확인하기</h4>
+<div style="float: left;width: 50%;max-height: 100%; height:465px;border-left: 1px solid #17575E;">
+  <div style="background-color: #4568b0; height: 40px; color: white;">
+    <h4 class="header-large" style="font-size: 20px; line-height: 40px; padding-left: 10px;">ID 찾기<small style="font-size: 15px; margin-left: 10px;">가입 여부 확인하기</small></h4>
+  </div>
 
   <%= form_tag("/users/check_email", { method: :post, remote: true }) do |f| %>
 
@@ -11,6 +13,11 @@
       <%= label_tag :email, "이메일", :class => "form-label-inline design2", :style => "width: 60px;" %>
       <%= email_field_tag :email, "", :style => "width: 260px; height: 30px; display: block; float:left;" %>
       <div style="float: left; margin-left: -100px;"> <%= devise_error_messages! %> </div>
+    </div>
+
+    <div style="line-height: 120%; text-align: center; margin-bottom: 53px;">
+      아래의 버튼을 누르면 해당 이메일 주소의<br>
+      <span style="color:#ffd200">가입여부를 즉시</span> 알려드립니다.
     </div>
 
     <%= submit_tag "확인하기", style: "margin:20px auto; display:block; width: 293px; height:69px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer", class: "bg-btn-blue" %>
@@ -36,8 +43,11 @@
   <% end %>
 </div>
 
-<div class="white-box" style="background-color: rgba(255,255,255,0.5); float: left; width: 430px; height:465px; margin-left:7px; padding:30px;">
-  <h4 class="header-small">비밀번호 다시 설정하기</h4>
+<div style="float:left;width: 50%; height:465px;border-left: 1px solid #17575E; border-right: 1px solid #17575E;">
+  <div style="background-color: #df3e4e; height: 40px; color: white;">
+    <h4 class="header-large" style="font-size: 20px; line-height: 40px; padding-left: 10px;">PW 찾기
+    <small style="font-size: 15px; margin-left: 10px;">비밀번호 다시 설정하기</small></h4>
+  </div>
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 
     <div class="field-wrapper clear" style="padding: 30px 0; padding-top: 40px;">
@@ -46,7 +56,7 @@
       <div style="float: left; margin-left: -100px;"> <%= devise_error_messages! %> </div>
     </div>
 
-    <p style="color:white; font-size: 15px; text-shadow:1px 1px #555; text-align: center; line-height: 120%">
+    <p style="color:#231F20; font-size: 15px; text-align: center; line-height: 120%">
       아래의 버튼을 누르면 해당 이메일 주소로<br>
       비밀번호를 다시 설정하실 수 있도록<br>
       <span style="color:#ffd200">안내해드리는 메일이 발송</span>됩니다.
@@ -54,7 +64,7 @@
 
     <%= f.submit "안내 메일 받기", style: "margin:20px auto; display:block;  width: 296px; height:65px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer", class: "bg-btn-red"%>
 
-    <p style="color:white; font-size: 15px; text-shadow:1px 1px #555; text-align: center; line-height: 120%">
+    <p style="color:#231F20; font-size: 15px; text-align: center; line-height: 120%">
     버튼을 누르신 후 메일함을 확인해주세요!
     </p>
   <% end %>

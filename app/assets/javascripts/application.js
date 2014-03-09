@@ -17,3 +17,4 @@
 //= require application
 //= require jquery.reveal
 //= require chosen-jquery
+//= require jquery.cookie

@@ -21,10 +21,10 @@
     width: 195px;
     padding-right: 10px;
     font-size: 20px;
-    color: white;
+    color: $color-black;
     text-align: right;
     /*font-weight: light;*/
-    text-shadow: 1px 1px 3px #000;
+    /*text-shadow: 1px 1px 3px #000;*/
   }
   dd {
     float: left;
@@ -32,7 +32,7 @@
     padding-left: 17px;
     margin-bottom: 25px;
     font-size: 16px;
-    color: white;
+    color: $color-black;
     p {
       line-height: 150%;
       padding-right: 10px;
@@ -42,8 +42,8 @@
 }
 
 .profile-wrapper {
-  margin-left: 25px;
-  background-color: rgba(0,0,0,0.5);
+  padding-left: 25px;
+  /*background-color: rgba(0,0,0,0.5);*/
   background:url(/assets/newdesign/bg_white_0.5.png) 0 0 repeat\9;
   margin-bottom: 20px;
 }
@@ -66,8 +66,8 @@
 .form-label-inline.profile-edit {
   width: 195px;
   font-size: 20px;
-  color: white;
-  text-shadow: 1px 1px 3px #000;
+  color: $color-black;
+  /*text-shadow: 1px 1px 3px #000;*/
   text-align: right;
   padding-right: 10px;
 }

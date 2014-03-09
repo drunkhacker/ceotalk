@@ -11,6 +11,8 @@ class HomeController < ApplicationController
     # experts & Corporation part
     @featured_expert = FeaturedExpert.last
     @featured_company = Company.where(:featured => true).first
+
+    @banner = cookies["banner1"].blank?
   end
 
   def set_sort_categories

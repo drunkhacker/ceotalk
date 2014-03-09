@@ -48,25 +48,28 @@ $left-width: 245px;
 }
 
 .session-page-header {
-  margin-bottom: 30px;
-  margin-left: 25px;
+  padding-bottom: 30px;
+  padding-left: 25px;
+  padding-top: 50px;
+  margin-top: -90px;
   .header-large {
-    color: white;
+    color: $color-black;
     font-size: 40px;
     margin-bottom: 5px;
 
     small {
+      margin-left: 20px;
       font-size: 18px;
     }
   }
 }
 
 .header-small {
-  color: white;
+  color: $color-black;
   font-size: 20px;
   margin: 0 auto;
   text-align: center;
-  text-shadow: 2px 2px #555;
+  /*text-shadow: 2px 2px #555;*/
 }
 
 .facebook-auth {
@@ -94,7 +97,8 @@ $left-width: 245px;
 
   &.design2 {
     font-size: 18px;
-    color: white;
+    color: $color-black;
+    margin-left: 50px;
   }
 
 }
@@ -167,7 +171,7 @@ hr {
   padding: 20px 0;
 
   font-size: 16px;
-  color: white;
+  color: $color-black;
 
 
   label {

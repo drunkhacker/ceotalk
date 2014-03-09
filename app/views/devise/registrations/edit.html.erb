@@ -1,10 +1,10 @@
-<div class="session-page-header">
+<div class="session-page-header" style="border-left: 1px solid #17575E;">
   <h2 class="header-large">프로필
     <small>프로필은 나의 얼굴입니다.</small></h2>
 </div>
 
 
-<div class="profile-wrapper" style="padding-bottom:30px">
+<div class="profile-wrapper" style="padding-bottom:30px; border-left: 1px solid #17575E;">
   <h3 class="profile-section-header">
       <span>기본정보</span>
   </h3>
@@ -14,7 +14,7 @@
 
   <div class="field-wrapper clear">
     <%= f.label :email, "이메일", :class => "form-label-inline profile-edit" %>
-    <span style="margin-left: 17px;font-size: 16px; color: #fff; line-height:30px"><%= resource.email%></span>
+    <span style="margin-left: 17px;font-size: 16px; color: #231F20; line-height:30px"><%= resource.email%></span>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -33,7 +33,7 @@
 
   <div class="field-wrapper">
     <%= f.label :name, "이름", :class => "form-label-inline profile-edit" %>
-    <span style="margin-left: 17px; font-size: 16px; color: #fff; line-height: 30px;"><%= resource.name%></span>
+    <span style="margin-left: 17px; font-size: 16px; color: #231F20; line-height: 30px;"><%= resource.name%></span>
   </div>
 
   <div class="field-wrapper clear">
@@ -55,7 +55,7 @@
 
     <div style="float: left;">
       <%= image_tag('/assets/newdesign/img_photo_guide.png') %><br>
-      <p style="font-size: 15px; color: white; text-align: center; line-height: 120%; margin-top: 10px;">
+      <p style="font-size: 15px; color: #231F20; text-align: center; line-height: 120%; margin-top: 10px;">
         얼굴이 중앙에 위치한 사진이 좋습니다.<br>
         사진이 가로, 세로로 길어도 얼굴이 중앙에만 있다면 OK!
       </p>
@@ -119,7 +119,7 @@
   <div class="field-wrapper">
     <%= f.label :contact, "연락처", :class => "form-label-inline profile-edit"%>
     <%= f.text_area :contact, :style => "height: 100px; margin-left: 17px; width: 300px;" %>
-    <span style="font-size: 16px; color: white; margin-left: 15px;">블로그, 소셜, 홈페이지등의 연락처</span>
+    <span style="font-size: 16px; color: #231F20; margin-left: 15px;">블로그, 소셜, 홈페이지등의 연락처</span>
   </div>
   <div class="field-wrapper">
     <%= f.label :introduction, "자기소개", :class => "form-label-inline profile-edit" %>

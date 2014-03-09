@@ -1,42 +1,46 @@
-<div class="session-page-header">
+<div class="session-page-header" style="border-left: 1px solid #17575E; border-right: 1px solid #17575E;">
   <h2 class="header-large">로그인
-  <small class="header-small">페이스북 <span style="color: #ffd200">또는</span> 이메일 주소를 통해 로그인 하실 수 있습니다.</small></h2>
+  <small class="header-small">페이스북 또는 이메일 주소를 통해 로그인 하실 수 있습니다.</small></h2>
 </div>
 
-<div class="clear">
-<div class="white-box" style="background-color: rgba(255,255,255,0.5); float: left; width: 430px; max-height: 100%; height:240px; margin-left:80px; padding:30px;">
-  <%= image_tag '/assets/newdesign/img_fb_hdr.png', :style => "margin: 0 auto; display: block;"%>
+<div class="clear" style="border-left: 1px solid #17575E;">
+<div style="float: left; width: 50%;border-right: 1px solid #17575E; max-height: 100%; height:290px; padding-bottom: 50px;">
+  <div style="background-color: #4568b0; padding: 5px; height: 40px; margin-bottom: 100px;">
+    <%= image_tag '/assets/newdesign/img_fb_hdr.png', :style => "margin: 0 auto; display: block"%>
+  </div>
   <%= link_to "페이스북 계정으로 로그인", user_omniauth_authorize_path(:facebook), style: "text-decoration: none; text-align: center; margin:50px auto; display:block; width: 293px; height:69px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer", class: "bg-btn-blue"%>
 </div>
 
-<div class="white-box" style="background-color: rgba(255,255,255,0.5); float: left; width: 430px; max-height: 100%; height:240px; margin-left:5px; padding:30px;">
-  <%= image_tag '/assets/newdesign/img_email_hdr.png', :style => "margin: 0 auto; display: block; margin-bottom: 15px;"%>
+<div style="float: left; width: 50%; max-height: 100%; height:290px; padding-bottom: 50px; border-right: 1px solid #17575E">
+  <div style="background-color: #df3e4e; padding: 5px; margin-bottom: 15px; height: 40px; margin-bottom: 50px;">
+    <%= image_tag '/assets/newdesign/img_email_hdr.png', :style => "margin: 0 auto; display: block;"%>
+  </div>
   
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <%= f.label :email, "이메일", :class => "form-label-inline design2", :style => "" %>
-    <%= f.email_field :email, :autofocus => true, :style => "width: 260px; height: 30px; display: block; float:left; margin-bottom: 7px;" %>
+    <%= f.email_field :email, :autofocus => true, :style => "width: 260px; height: 30px; display: block; float:left; margin-bottom: 7px; border: 0; background-color: #EDEDED;" %>
 
     <%= f.label :password, "비밀번호", :class => "form-label-inline design2" %>
-    <%= f.password_field :password, :style => "width: 260px; height: 30px; dislay: block; float: left;" %>
+    <%= f.password_field :password, :style => "width: 260px; height: 30px; dislay: block; float: left; border: 0; background-color: #EDEDED;" %>
 
     <div class="clear"></div>
 
-    <%= f.submit "이메일 계정으로 로그인", style: "margin:0 auto; display:block; width: 296px; height:65px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer; margin-top: 15px;", class: "bg-btn-red"%>
+    <%= f.submit "이메일 계정으로 로그인", style: "margin:0 auto; display:block; width: 296px; height:65px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer; margin-top: 35px;", class: "bg-btn-red"%>
 
   <% end %>
 
 </div>
 </div>
 
-<div class="white-box" style="background-color: rgba(255,255,255,0.5); width: 865px; max-height: 100%; height:131px; margin-left:80px; margin-top:5px; padding:30px;">
+<div style=" border-top: 1px solid #17575E; max-height: 100%; height:131px; padding:30px; border-right: 1px solid #17575E;border-left: 1px solid #17575E">
 
   <div class="clear" style="margin-bottom: 5px; margin-left: 210px;">
-    <div style="float: left; color: white; font-size: 15px; width: 195px; margin-top: 7px;">아직 회원이 아니라면</div>
+    <div style="float: left; color: #231F20; font-size: 15px; width: 195px; margin-top: 7px;">아직 회원이 아니라면</div>
     <%= link_to "회원가입", new_registration_path(resource_name), :class => 'action bg-btn-login', style: "width:123px; height: 36px; color: white; text-decoration: none; display: block; float: left; text-align: center; padding-top: 9px;" %>
   </div>
 
   <div style="margin-left: 210px;">
-    <div style="float: left; color: white; font-size: 15px; width: 195px; margin-top: 7px;">비밀번호를 잊어버렸다면</div>
+    <div style="float: left; color: #231F20; font-size: 15px; width: 195px; margin-top: 7px;">비밀번호를 잊어버렸다면</div>
     <%= link_to "비밀번호찾기", new_password_path(resource_name), :class => 'action bg-btn-login', style: "width:123px; height: 36px; color: white; text-decoration: none; display: block; float: left; text-align: center; padding-top: 9px;" %>
   </div>
 </div>

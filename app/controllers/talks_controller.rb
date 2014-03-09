@@ -21,6 +21,7 @@ class TalksController < ApplicationController
       end
 
     @talks = ar.page(params[:page]).per(19)
+    @banner = cookies["banner2"].blank?
   end
 
   def show

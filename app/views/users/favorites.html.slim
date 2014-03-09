@@ -1,43 +1,44 @@
-hgroup class="session-page-header"
-  h2 class="header-large" 즐겨찾기
-  h4 class="header-small" CEO MBA에서 가치를 공유해보세요.
+div class="session-page-header" style="border-left: 1px solid #17575E;"
+  h2 class="header-large" 
+    |즐겨찾기
+    small 
+      | CEO MBA에서 가치를 공유해보세요.
 
-hr
-
-h3.favorites.section-header C³ Talk
-.favorite-items.clear
-  - @talks.each do |talk|
-    .item
-      = image_tag(talk.thumb_url)
-      a.overlay href="#{talk_path(talk)}"
-        .category = talk.category_names
-        h6.name= talk.professional.name
-        h5.title= truncate(talk.title, length: 30,  omission: "...#{talk.title.last(10)}")
-        p.description = truncate(strip_tags(talk.description), length: 120) 
-  = paginate @talks, left: 1, param_name: :talk_page
-hr.section-divider
-
-
-h3.favorites.section-header C³ Idea
-.favorite-items.clear
-  - @problems.each do |problem|
-    .item
-      = image_tag(problem.thumb_url)
-      a.overlay href="#{problem_path(problem)}"
-        h6.name= problem.professional.name
-        h5.title= truncate(problem.title, length: 30,  omission: "...#{problem.title.last(10)}")
-        p.description = truncate(strip_tags(problem.content), length: 120) 
-
-  = paginate @problems, param_name: :problem_page
-hr.section-divider
+div style="border-left: 1px solid #17575E; padding-left: 20px;"
+  h3.favorites.section-header C³ Talk
+  .favorite-items.clear
+    - @talks.each do |talk|
+      .item
+        = image_tag(talk.thumb_url)
+        a.overlay href="#{talk_path(talk)}"
+          .category = talk.category_names
+          h6.name= talk.professional.name
+          h5.title= truncate(talk.title, length: 30,  omission: "...#{talk.title.last(10)}")
+          p.description = truncate(strip_tags(talk.description), length: 120) 
+    = paginate @talks, left: 1, param_name: :talk_page
+  hr.section-divider
 
 
-h3.favorites.section-header C³ Members
-.favorite-items.clear
-  - members = @members_favorite.map {|f| f.favorable_type.constantize.find(f.favorable_id)}
-  - members.each do |member|
-    .item
-      = member.name
-  = paginate @members_favorite, param_name: :member_page
-hr.section-divider
+  h3.favorites.section-header C³ Idea
+  .favorite-items.clear
+    - @problems.each do |problem|
+      .item
+        = image_tag(problem.thumb_url)
+        a.overlay href="#{problem_path(problem)}"
+          h6.name= problem.professional.name
+          h5.title= truncate(problem.title, length: 30,  omission: "...#{problem.title.last(10)}")
+          p.description = truncate(strip_tags(problem.content), length: 120) 
+
+    = paginate @problems, param_name: :problem_page
+  hr.section-divider
+
+
+  h3.favorites.section-header C³ Members
+  .favorite-items.clear
+    - members = @members_favorite.map {|f| f.favorable_type.constantize.find(f.favorable_id)}
+    - members.each do |member|
+      .item
+        = member.name
+    = paginate @members_favorite, param_name: :member_page
+  hr.section-divider
 

@@ -194,3 +194,28 @@ body {
     background:url(/assets/newdesign/icn_idea_hdr.png) no-repeat;
   }
 }
+
+.top-banner {
+  position: relative;
+  height: 247px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    position: absolute;
+  }
+
+  a {
+    width: 280px;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -140px;
+    background-color: $color-green;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    text-align :center;
+    line-height: 40px;
+  }
+}
