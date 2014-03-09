@@ -24,12 +24,13 @@ p style="font-size: 15px; color: #2E2E2E; margin-bottom: 40px" 아래의 관심�
           .overlay
             .category = content.category_names
             - if content.professional
-              h6.name = content.professional.name 
+              h6.name = "#{ content.professional.name } - #{content.professional.company_name}"
             - else
               h6.name &nbsp;
 
             h5.title = if content.title.length > 16 then content.title[0...14] + "..." else content.title end
-            p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
+            h5.title-hover = content.title
+            /p.description = truncate(strip_tags(content.description), length: if i == 0 then 300 else 120 end) 
             /= link_to "전체보기", "#{talks_path}/##{content.id}", :class => "more" 
     - (0...12-@selected_contents.count).each_with_index do |i|
       .item class="#{if i + @selected_contents.count == 3 || i + @selected_contents.count == 6 || i + @selected_contents.count == 11 then "right-zero" else "" end }"

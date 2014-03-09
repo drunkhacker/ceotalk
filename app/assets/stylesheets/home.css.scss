@@ -113,7 +113,7 @@
             margin-top: 20px;
           }
 
-          .title {
+          .title, .title-hover {
             font-size: 24px;
             margin-bottom: 45px;
           }
@@ -419,11 +419,21 @@
       font-size: 14px;
       font-weight: bold;
       margin-bottom: 20px;
-      white-space: nowrap;
+      /*white-space: nowrap;*/
       /*text-overflow: ellipsis;*/
-      overflow-x: hidden;
+      /*overflow-x: hidden;*/
       padding-top: 2px;
     }
+
+    .title-hover {
+      padding-top: 2px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+
     .description {
       font-size: 12px;
       line-height: 120%;
@@ -451,6 +461,13 @@
   &:hover {
     .overlay {
       top: 0 !important;
+    }
+
+    .title-hover {
+      display: block;
+    }
+    .title {
+      display: none;
     }
 
     .category {
@@ -512,9 +529,9 @@
 .member-tagline {
   margin-top: 12px;
   margin-bottom: 8px;
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   /*text-overflow: ellipsis;*/
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
   font-weight: normal;
   text-align: right;
 }

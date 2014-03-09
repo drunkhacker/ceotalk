@@ -24,8 +24,8 @@ p style="font-size: 15px; color: #2E2E2E; margin-bottom: 40px" 아래의 관심�
           h6.name = talk.professional.name 
         - else
           h6.name &nbsp;
-        h5.title = if talk.title.length > 16 then talk.title[0...14] + "..." else talk.title end
-        p.description = truncate(strip_tags(talk.description), length:  (i == 0 || i == 15)? 300 : 120) 
+        h5.title = if talk.title.length >= 16 then talk.title[0...14] + "..." else talk.title end
+        h5.title-hover = talk.title
         = link_to "more", "#{talks_path}/##{talk.id}", :class => "more" 
 
 = paginate @talks
