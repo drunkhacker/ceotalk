@@ -32,8 +32,9 @@ class TalksController < ApplicationController
 
     @resource = @talk = Talk.find(params[:id])
     @commentable = @talk.becomes(Talk)
-    if !is_facebook && !request.xhr?
+    if !is_facebook
       @talk.increase_view_count!
+      logger.debug "!! view_count = #{@talk.view_count}"
     end
 
     @comment = Comment.new
