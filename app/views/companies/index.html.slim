@@ -10,8 +10,8 @@ hr.hr-gradient
 = render '/professionals/divider'
 
 .professionals-container.clear
-  - @companies.each do |company|
-    = link_to(company, :class => "professional modal-popup") do
+  - @companies.each_with_index do |company, i|
+    = link_to(company, :class => "professional modal-popup #{i== 0 || i == 5 || i == 10 || i == 15 ? "left-zero" : ""}") do
       =image_tag(company.logo.url)
       .overlay
         - if company.tagline && company.tagline.length > 0

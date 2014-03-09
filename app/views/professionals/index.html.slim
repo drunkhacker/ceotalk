@@ -10,8 +10,8 @@ hr.hr-gradient
 = render '/professionals/divider'
 
 .professionals-container.clear
-  - @professionals.each do |user|
-    = link_to user, :class => "professional modal-popup" do
+  - @professionals.each_with_index do |user, i|
+    = link_to user, :class => "professional modal-popup #{i== 0 || i == 5 || i == 10 || i == 15 ? "left-zero" : ""}" do
       =image_tag(user.profile_photo.square300.url)
       .overlay
         - if user.categories.any?

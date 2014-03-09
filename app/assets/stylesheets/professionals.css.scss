@@ -40,6 +40,7 @@
   @include size($w $w);
   margin-left: 10px;
   margin-bottom: 10px;
+  &.left-zero {margin-left: 0\9;}
   &:first-child { margin-left: 0; }
   &:nth-child(6) { margin-left: 0; }
   &:nth-child(11) { margin-left: 0; }
