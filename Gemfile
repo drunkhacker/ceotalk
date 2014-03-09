@@ -60,6 +60,7 @@ gem 'kaminari'
 gem 'thin'
 gem 'mini_magick'
 gem 'whenever', require: false
+gem 'jquery-cookie-rails'
 
 group :development, :test do
   gem 'rspec-rails'
