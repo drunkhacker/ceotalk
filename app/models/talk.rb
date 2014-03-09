@@ -1,4 +1,5 @@
 require 'video_embed'
+require 'viewcountable.rb'
 require 'likeable'
 class Talk < ActiveRecord::Base
 
@@ -15,6 +16,7 @@ class Talk < ActiveRecord::Base
   include ::VideoEmbeddable
   include ::Likeable
   include ::Favorable
+  include ::ViewCountable
 
   def category_names(separator=" / ")
     categories.map {|c| c.name}.join separator
