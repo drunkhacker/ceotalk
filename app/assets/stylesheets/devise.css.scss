@@ -159,6 +159,15 @@ hr {
 }
 
 
+.expert-category {
+  display: none;
+
+  //ie hack
+  display: inline\9;
+  position: absolute;
+  left: -99999px;
+}
+
 .category-wrapper {
   margin: 20px 0;
   .instruction {
@@ -178,6 +187,12 @@ hr {
     margin-left: 10px;
     cursor: pointer;
     padding: 5px 10px;
+  }
+
+  label.checked {
+    background-color: #008585;
+    border-radius: 3px;
+    color: white;
   }
 
   input[type=checkbox]:checked + label { //detect checked checkbox

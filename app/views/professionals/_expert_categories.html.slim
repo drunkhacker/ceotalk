@@ -7,8 +7,8 @@
     - user_categories = if @user_categories then @user_categories else @user.categories end
     - Category.all.each_with_index do |cat, i|
       /= hidden_field_tag "categories[#{i}][selected]", 0, {id: "hidden_categories_#{i}_selected"}
-      = check_box_tag "categories[#{i}][selected]", "1", user_categories.include?(cat), {style: "display: none;", class: "expert-category"}
-      = label_tag "categories[#{i}][selected]", cat.name
+      = check_box_tag "categories[#{i}][selected]", "1", user_categories.include?(cat), {class: "expert-category"}
+      = label_tag "categories[#{i}][selected]", cat.name, {class: "#{user_categories.include?(cat) ? "checked" : ""}"}
       = hidden_field_tag "categories[#{i}][id]", cat.id
       - if i % per_row < per_row - 1 && i < Category.count - 1
         span.divider &#47;
@@ -16,15 +16,25 @@
         div style="height: 15px;"
 
 javascript:
-  $(".expert-category").click(function(e) {
-    console.log("hihi");
-    //check checked box length
-    console.log('$(".expert-category:checked").length = ' + $(".expert-category:checked").length);
-    if ($(".expert-category:checked").length > 3) {
-      //discard this selection
+  $(function() {
+    $(".expert-category").click(function(e) {
       $this = $(this);
-      setTimeout(function() {
-        $this.attr("checked", false);
-      }, 300);
-    }
+      $this.toggleClass("checked");
+      //alert($this.hasClass("checked"));
+      $this.next().toggleClass("checked");
+      //alert($this.next().hasClass("checked"));
+      //check checked box length
+      //console.log('$(".expert-category:checked").length = ' + $(".expert-category:checked").length);
+      if ($(".expert-category:checked").length > 3) {
+        //discard this selection
+        $this = $(this);
+        setTimeout(function() {
+          //alert("hihi");
+          $this.attr("checked", false);
+          $this.removeClass("checked");
+          $this.next().removeClass("checked");
+        }, 300);
+      }
+    });
   });
+
