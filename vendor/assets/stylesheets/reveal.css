@@ -6,7 +6,7 @@
 		position: fixed; 
 		height: 100%;
 		width: 100%;
-		background: #fff;
+		background: url(/assets/newdesign/bg_white_0.8.png) 0 0 repeat\9;
 		background: rgba(255,255,255,.8);
 		z-index: 100;
 		display: none;
