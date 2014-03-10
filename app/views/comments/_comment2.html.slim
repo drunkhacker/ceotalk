@@ -3,6 +3,6 @@ li.comment2.clear
     = image_tag(comment.user.profile_photo.url, :class => "profile-photo")
     h5.name = comment.user.name
     h6.company = comment.user.company_name
-  .comment-time = comment.created_at.strftime("%y.%m.%d. %H:%M%P")
+  .comment-time = comment.created_at.localtime.strftime("%y.%m.%d. %H:%M%P")
   .comment-content
     = simple_format comment.content

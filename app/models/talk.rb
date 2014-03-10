@@ -27,8 +27,11 @@ class Talk < ActiveRecord::Base
   end
 
   def self.notify_updated_talks(t1=nil, t2= nil)
-    t1 = Time.parse("12:00 pm", Time.now.yesterday) if t1.nil?
-    t2 = Time.parse("12:00 pm", Time.now) if t2.nil?
+    t1 = "12:00 pm" if t1.nil?
+    t2 = "12:00 pm" if t2.nil?
+
+    t1 = Time.parse(t1, Time.now.yesterday) 
+    t2 = Time.parse(t2, Time.now)
 
     comments = 
       Comment.where(
@@ -53,6 +56,7 @@ class Talk < ActiveRecord::Base
       # send email
       user = User.find(professional_id)
       user_comments = user.comments.where("created_at >= ? AND created_at < ?", t1, t2)
+      [user, videos_and_comments, posts_and_comments, user_comments]
       CommentMailer.talk_comments_notify_email(user, videos_and_comments, posts_and_comments, user_comments).deliver
     end
   end

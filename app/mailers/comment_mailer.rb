@@ -9,6 +9,6 @@ class CommentMailer < ActionMailer::Base
 
     logger.debug"@user_comments.length = #{@user_comments.length}"
 
-    mail(to: @user.email, subject: "CEO MBA | (#{Time.now.strftime("%y.%m.%d")})#{@user.name}님의 컨텐츠의 새로운 댓글을 알려드립니다.")
+    mail(to: @user.email, subject: "CEO MBA | (#{Time.now.localtime.strftime("%y.%m.%d")})#{@user.name}님의 컨텐츠의 새로운 댓글을 알려드립니다.")
   end
 end

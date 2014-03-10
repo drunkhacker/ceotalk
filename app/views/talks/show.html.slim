@@ -35,7 +35,7 @@
       /h3.section-header 영상 정보
       /hgroup.title
         /h3 = truncate(@talk.title, :length => 25)
-        /h5.small = "Recorded: #{@talk.created_at.strftime "%Y. %B %d"}"
+        /h5.small = "Recorded: #{@talk.created_at.localtime.strftime "%Y. %B %d"}"
       /.description
         /= simple_format @talk.description
       /ul.category-list.clear

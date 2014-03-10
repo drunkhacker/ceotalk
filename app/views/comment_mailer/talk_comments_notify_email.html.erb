@@ -20,7 +20,7 @@
       <div style="margin:0; padding:0; font-size:15px;border-bottom: 1px solid #005f6c; height: 30px; width: 850px;">
         <div style="text-align: center;background-color:#1a1a1a; font-weight:bold;color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:left;">Members</div> 
         <div style="float:left; line-height:30px;margin-left: 10px;font-weight:bold;">전문가 <%= @user.name %>님의 프로필 페이지에 달린 댓글입니다.</div>
-        <%= link_to "바로가기>>", professionals_path(@user), style: "text-decoration: none; font-weight:bold;text-align: center;background-color:#005f6c; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:right;" %>
+        <%= link_to "바로가기>>", professional_url(@user), style: "text-decoration: none; font-weight:bold;text-align: center;background-color:#005f6c; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:right;" %>
       </div>
 
       <div style="clear:both; height:0"></div>
@@ -40,7 +40,7 @@
                   <%= comment.user.position %>
                 <% end -%>
               </span><br>
-              <span style="font-size:12px"><%= comment.created_at.strftime("%y.%m.%d. %I:%M%p") %></span>
+              <span style="font-size:12px"><%= comment.created_at.localtime.strftime("%y.%m.%d. %I:%M%p") %></span>
             </div>
             <div style="width:600px; height: 100%;float: left;"><%= truncate(comment.content, length:100) %></div>
           </div>
@@ -56,7 +56,7 @@
     <div style="margin:0; padding:0;font-size:15px;border-bottom: 1px solid #005f6c; height: 30px; width: 850px;">
       <div style="font-weight:bold;text-align: center;background-color:#1a1a1a; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:left;">영상</div> 
       <div style="font-weight:bold;float:left; line-height:30px;margin-left: 10px;"><%= talk.title %></div>
-      <%= link_to "바로가기>>", talks_path(talk), style: "font-weight:bold;text-decoration: none;text-align: center;background-color:#005f6c; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:right;"%>
+      <%= link_to "바로가기>>", talk_url(talk), style: "font-weight:bold;text-decoration: none;text-align: center;background-color:#005f6c; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:right;"%>
     </div>
 
     <div style="clear:both; height:0"></div>
@@ -76,7 +76,7 @@
                 <%= comment.user.position %>
               <% end -%>
             </span><br>
-            <span style="font-size:12px"><%= comment.created_at.strftime("%y.%m.%d. %I:%M%p") %></span>
+            <span style="font-size:12px"><%= comment.created_at.localtime.strftime("%y.%m.%d. %I:%M%p") %></span>
           </div>
           <div style="width:600px; height: 100%;float: left;"><%= truncate(comment.content, length:100)%></div>
         </div>
@@ -92,7 +92,7 @@
     <div style="margin:0; padding:0;font-size:15px;border-bottom: 1px solid #005f6c; height: 30px; width: 850px;">
       <div style="font-weight:bold;text-align: center;background-color:#1a1a1a; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:left;">칼럼</div> 
       <div style="font-weight:bold;float:left; line-height:30px;margin-left: 10px;"><%= talk.title %></div>
-      <%= link_to "바로가기>>", talks_path(talk), style: "font-weight:bold;text-decoration: none;text-align: center;background-color:#005f6c; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:right;"%>
+      <%= link_to "바로가기>>", talk_url(talk), style: "font-weight:bold;text-decoration: none;text-align: center;background-color:#005f6c; color:white; width:90px; height: 23px;padding:0;padding-top: 7px;float:right;"%>
     </div>
 
     <div style="clear:both; height:0"></div>
@@ -112,7 +112,7 @@
                 <%= comment.user.position %>
               <% end -%>
             </span><br>
-            <span style="font-size:12px"><%= comment.created_at.strftime("%y.%m.%d. %I:%M%p") %></span>
+            <span style="font-size:12px"><%= comment.created_at.localtime.strftime("%y.%m.%d. %I:%M%p") %></span>
           </div>
           <div style="width:600px; height: 100%;float: left;"><%= truncate(comment.content, length:100)%></div>
         </div>
