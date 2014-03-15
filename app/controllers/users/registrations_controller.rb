@@ -65,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     if f
       #set categories
-      new_categories = params[:categories].values.select {|h| h["selected"] == "1"}.map {|h| Category.find(h["id"].to_i)}
+      new_categories = params[:categories].select {|h| h["selected"] == "1"}.map {|h| Category.find(h["id"].to_i)}
       @user.categories = new_categories
       logger.debug "user.categories = #{@user.categories.map{|c| c.name}.join(",")}"
       @user.save

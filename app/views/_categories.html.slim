@@ -10,7 +10,7 @@
   .link-group
     span.category-label 관심직무 선택
     - count = Category.count
-    - Category.all.each_with_index do |cat, i|
+    - Category.all.order("position ASC").each_with_index do |cat, i|
       = link_to cat.name, talks_path(:sort => @current_sort, :cat => (if @current_categories.include? cat then @current_categories - [cat] else @current_categories + [cat] end).map {|c| c.id}.join(",")), :class => "button #{if @current_categories.include? cat then 'active' end} "
       - if i < count - 1
         span &#47;

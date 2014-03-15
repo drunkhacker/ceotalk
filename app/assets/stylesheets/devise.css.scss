@@ -195,7 +195,7 @@ hr {
     color: white;
   }
 
-  input[type=checkbox]:checked + label { //detect checked checkbox
+  input[type=radio]:checked + label { //detect checked checkbox
     background-color: #008585;
     border-radius: 3px;
     color: white;

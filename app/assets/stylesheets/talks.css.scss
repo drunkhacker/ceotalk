@@ -282,12 +282,13 @@
       .overlay { 
         top: ($h*2 + $g) - 80px;
         .name {
-          font-size: 16px;
-          margin-bottom: 12px;
+          font-size: 13px;
+          margin-bottom: 10px;
         }
 
         .title, .title-hover {
-          font-size: 30px;
+          font-size: 24px;
+          line-height: 29px;
         }
       }
 
@@ -332,7 +333,8 @@
     }
 
     .title, .title-hover {
-      font-size: 16px;
+      font-size: 14px;
+      line-height: 19px;
     }
   }
 }

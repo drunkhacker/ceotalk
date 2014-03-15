@@ -61,6 +61,7 @@ gem 'thin'
 gem 'mini_magick'
 gem 'whenever', require: false
 gem 'jquery-cookie-rails'
+gem 'rails_autolink'
 
 group :development, :test do
   gem 'rspec-rails'

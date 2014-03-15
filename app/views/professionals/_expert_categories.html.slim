@@ -5,11 +5,11 @@
   - row_count = (count + per_row - 1)/per_row
   span
     - user_categories = if @user_categories then @user_categories else @user.categories end
-    - Category.all.each_with_index do |cat, i|
+    - Category.all.order("position ASC").each_with_index do |cat, i|
       /= hidden_field_tag "categories[#{i}][selected]", 0, {id: "hidden_categories_#{i}_selected"}
-      = check_box_tag "categories[#{i}][selected]", "1", user_categories.include?(cat), {class: "expert-category"}
-      = label_tag "categories[#{i}][selected]", cat.name, {class: "#{user_categories.include?(cat) ? "checked" : ""}"}
-      = hidden_field_tag "categories[#{i}][id]", cat.id
+      = hidden_field_tag "categories[][id]", cat.id
+      = radio_button_tag "categories[][selected]", "1", user_categories.include?(cat), {class: "expert-category", id:"category_#{i}"}
+      = label_tag "category_#{i}", cat.name, {class: "#{user_categories.include?(cat) ? "checked" : ""}"}
       - if i % per_row < per_row - 1 && i < Category.count - 1
         span.divider &#47;
       - if i % per_row == per_row - 1 && i / per_row < row_count - 1
@@ -17,24 +17,11 @@
 
 javascript:
   $(function() {
-    $(".expert-category").click(function(e) {
+    $("input[type='radio']").click(function(e) {
       $this = $(this);
-      $this.toggleClass("checked");
-      //alert($this.hasClass("checked"));
-      $this.next().toggleClass("checked");
-      //alert($this.next().hasClass("checked"));
-      //check checked box length
-      //console.log('$(".expert-category:checked").length = ' + $(".expert-category:checked").length);
-      if ($(".expert-category:checked").length > 3) {
-        //discard this selection
-        $this = $(this);
-        setTimeout(function() {
-          //alert("hihi");
-          $this.attr("checked", false);
-          $this.removeClass("checked");
-          $this.next().removeClass("checked");
-        }, 300);
-      }
+      $labels = $("label", $this.parent());
+      $labels.removeClass("checked");
+      $this.next().addClass("checked");
     });
   });
 

@@ -14,8 +14,8 @@
 
     div style="background-color: #f1f1f2; padding:20px;"
       h4 style="font-size: 18px; font-weight:bold; color: #17575E"  영상 정보
-      div style="height: 200px; margin-top: 20px; background-color:white; padding: 5px; font-size: 15px; line-height: 140%; overflow: scroll;"
-        = simple_format @talk.description
+      div style="height: 200px; margin-top: 20px; background-color:white; padding: 5px; font-size: 15px; line-height: 140%; overflow-y: scroll; overflow-x :hidden;"
+        = simple_format auto_link @talk.description
 
     /= render partial: '/share_actions', locals: {resource: @talk.becomes(Talk), title: @talk.title}
     = render partial: '/comments/list', locals: {commentable: @commentable, new_comment: @comment, top_comments: @top_comments, comments: @comments }

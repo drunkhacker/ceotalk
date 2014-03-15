@@ -116,6 +116,7 @@
           .title, .title-hover {
             font-size: 24px;
             margin-bottom: 45px;
+            line-height: 29px;
           }
 
           .category {
@@ -135,216 +136,216 @@
   /*border: 1px solid black;*/
 }
 
-#crowd-sourcing {
-  .item {
-    position: relative;
-    display: block;
+/*#crowd-sourcing {*/
+  /*.item {*/
+    /*position: relative;*/
+    /*display: block;*/
 
-    margin-right: 10px;
-    margin-bottom: 10px;
+    /*margin-right: 10px;*/
+    /*margin-bottom: 10px;*/
 
-    /*padding-left: 8px;*/
-    /*padding-top: 8px;*/
+    /*[>padding-left: 8px;<]*/
+    /*[>padding-top: 8px;<]*/
 
-    &:nth-child(3), &:nth-child(5) {
-      margin-right: 0;
-    }
+    /*&:nth-child(3), &:nth-child(5) {*/
+      /*margin-right: 0;*/
+    /*}*/
 
-    background-color: $color-gray-4;
+    /*background-color: $color-gray-4;*/
 
-    $item-height: 134px;
-    $item-width: 226px;
-    $gap : 10px;
+    /*$item-height: 134px;*/
+    /*$item-width: 226px;*/
+    /*$gap : 10px;*/
 
-    @include size($item-width $item-height);
+    /*@include size($item-width $item-height);*/
 
-    /*@mixin state-tag($w, $fg_color, $bg_color) {*/
-      /*color: $fg_color;*/
-      /*@include size(0 0);*/
-      /*border-right: $w solid $bg_color;*/
-      /*border-top: $w solid $bg_color;*/
-      /*border-bottom: $w solid transparent;*/
-      /*border-left: $w solid transparent;*/
-      /*position: absolute;*/
-      /*top: 0; right: 0;*/
-      /*span {*/
-        /*font-size: small;*/
-        /*margin-top: -$w/2;*/
-        /*width: $w;*/
-        /*position: absolute;*/
+    /*[>@mixin state-tag($w, $fg_color, $bg_color) {<]*/
+      /*[>color: $fg_color;<]*/
+      /*[>@include size(0 0);<]*/
+      /*[>border-right: $w solid $bg_color;<]*/
+      /*[>border-top: $w solid $bg_color;<]*/
+      /*[>border-bottom: $w solid transparent;<]*/
+      /*[>border-left: $w solid transparent;<]*/
+      /*[>position: absolute;<]*/
+      /*[>top: 0; right: 0;<]*/
+      /*[>span {<]*/
+        /*[>font-size: small;<]*/
+        /*[>margin-top: -$w/2;<]*/
+        /*[>width: $w;<]*/
+        /*[>position: absolute;<]*/
+      /*[>}<]*/
+    /*[>}<]*/
+
+    /*.q-number {*/
+      /*font-size: 20px;*/
+      /*color: $color-green;*/
+      /*margin-left: 8px;*/
+      /*margin-top: 8px;*/
+      /*.dot {*/
+        /*color: $color-red;*/
+        /*content: ".";*/
       /*}*/
     /*}*/
 
-    .q-number {
-      font-size: 20px;
-      color: $color-green;
-      margin-left: 8px;
-      margin-top: 8px;
-      .dot {
-        color: $color-red;
-        content: ".";
-      }
-    }
+    /*.overlay {*/
+      /*top: 100%;*/
+    /*}*/
 
-    .overlay {
-      top: 100%;
-    }
+    /*.state-tag.small {*/
+      /*[>@include state-tag(20px, white, #444);<]*/
+      /*span {*/
+        /*font-size: 12px;*/
+      /*}*/
+    /*}*/
 
-    .state-tag.small {
-      /*@include state-tag(20px, white, #444);*/
-      span {
-        font-size: 12px;
-      }
-    }
+    /*.thumbnail {*/
+      /*@include size(72px 92px);*/
+      /*margin: 0 8px;*/
+      /*display: block;*/
+      /*float: left;*/
+    /*}*/
 
-    .thumbnail {
-      @include size(72px 92px);
-      margin: 0 8px;
-      display: block;
-      float: left;
-    }
-
-    .description {
-      width: $item-width - 72px - 8px*2;
-      margin-top: 30px;
-      height: $item-height - 90px;
-      overflow: hidden;
-      float: left;
-      font-size: 9pt;
-      line-height: 120%;
-      color: $color-gray-2;
+    /*.description {*/
+      /*width: $item-width - 72px - 8px*2;*/
       /*margin-top: 30px;*/
-      padding-right: 8px;
-    }
+      /*height: $item-height - 90px;*/
+      /*overflow: hidden;*/
+      /*float: left;*/
+      /*font-size: 9pt;*/
+      /*line-height: 120%;*/
+      /*color: $color-gray-2;*/
+      /*[>margin-top: 30px;<]*/
+      /*padding-right: 8px;*/
+    /*}*/
 
-    .state-tag {
-      position: absolute;
-      right: 5px;
-      top: 5px;
-      color: $color-red;
-      font-weight: bold;
-    }
+    /*.state-tag {*/
+      /*position: absolute;*/
+      /*right: 5px;*/
+      /*top: 5px;*/
+      /*color: $color-red;*/
+      /*font-weight: bold;*/
+    /*}*/
 
-    &:first-child {
-      background: transparent;
-      @include size((1200px - $gap*2 - $item-width*2) ($item-height*2 + $gap));
-      padding-right: 10px;
-      /*padding-left: 0;*/
-      /*padding-top: 0;*/
+    /*&:first-child {*/
+      /*background: transparent;*/
+      /*@include size((1200px - $gap*2 - $item-width*2) ($item-height*2 + $gap));*/
+      /*padding-right: 10px;*/
+      /*[>padding-left: 0;<]*/
+      /*[>padding-top: 0;<]*/
 
-      .thumbnail {
-        @include size((728px - 480px - 20px - 10px) 100%);
-        /*background: url(http://placekitten.com/214/284);*/
-        float: left;
-        margin-left: 0;
-        margin-right: 20px;
-        overflow: hidden;
-      }
+      /*.thumbnail {*/
+        /*@include size((728px - 480px - 20px - 10px) 100%);*/
+        /*[>background: url(http://placekitten.com/214/284);<]*/
+        /*float: left;*/
+        /*margin-left: 0;*/
+        /*margin-right: 20px;*/
+        /*overflow: hidden;*/
+      /*}*/
 
-      .q-number {
-        font-size: 30px;
-        margin: 0;
-      }
+      /*.q-number {*/
+        /*font-size: 30px;*/
+        /*margin: 0;*/
+      /*}*/
 
-      .state-tag {
-        /*@include state-tag(30px, white, #444);*/
-        @include size(20px 20px);
-        top: 20px; right: 10px;
-        font-size: 12px;
-        color: #148786;
-        text-align: center;
-        padding-top: 20px;
-        background-repeat: no-repeat;
-        &.pre {
-          background: url(/assets/icn-league-pre-small.png);
-        }
-        &.final {
-          background: url(/assets/icn-league-final-small.png);
-        }
-        &.close {
-          background: url(/assets/icn-league-close-small.png);
-        }
-      }
+      /*.state-tag {*/
+        /*[>@include state-tag(30px, white, #444);<]*/
+        /*@include size(20px 20px);*/
+        /*top: 20px; right: 10px;*/
+        /*font-size: 12px;*/
+        /*color: #148786;*/
+        /*text-align: center;*/
+        /*padding-top: 20px;*/
+        /*background-repeat: no-repeat;*/
+        /*&.pre {*/
+          /*background: url(/assets/icn-league-pre-small.png);*/
+        /*}*/
+        /*&.final {*/
+          /*background: url(/assets/icn-league-final-small.png);*/
+        /*}*/
+        /*&.close {*/
+          /*background: url(/assets/icn-league-close-small.png);*/
+        /*}*/
+      /*}*/
 
-      .excerpt {
-        padding-top: 20px;
-        @include size(480px 100%);
-        float: left;
+      /*.excerpt {*/
+        /*padding-top: 20px;*/
+        /*@include size(480px 100%);*/
+        /*float: left;*/
 
-        .best-answers {
-          margin-top: 15px;
-        }
-        .answer-item {
-          padding: 32px 20px 10px 20px;
-          width: 160px - 10px;
-          margin-left: 10px;
-          background-color: $color-gray-4;
-          float: left;
-          display: block;
-          border-radius: 5px;
-          position: relative;
-          font-size: 14px;
-          .rank {
-            display: block;
-            position: absolute;
-            left: -10px;
-            top: -5px;
-            background: url(/assets/bg-rank.png) 0 0px no-repeat;
-            @include size(34px 30px);
-            line-height: 30px;
-            color: $color-red;
-            font-weight: bold;
-            text-align: center;
-          }
-          .profile {
-            @include size(50px 50px);
-          }
-          .meta {
-            margin-top: 20px;
-            padding: 0 10px;
-            color: $color-gray-7;
-            .count {
-              padding-left: 20px;
-              padding-top: 2px;
-              float: left;
-            }
-            .like-count {
-              background: url(/assets/icn-like-count.png) no-repeat;
-            }
-            .comment-count {
-              background: url(/assets/icn-comment-count.png) 0 1px no-repeat;
-              float: right;
-            }
-          }
-        }
+        /*.best-answers {*/
+          /*margin-top: 15px;*/
+        /*}*/
+        /*.answer-item {*/
+          /*padding: 32px 20px 10px 20px;*/
+          /*width: 160px - 10px;*/
+          /*margin-left: 10px;*/
+          /*background-color: $color-gray-4;*/
+          /*float: left;*/
+          /*display: block;*/
+          /*border-radius: 5px;*/
+          /*position: relative;*/
+          /*font-size: 14px;*/
+          /*.rank {*/
+            /*display: block;*/
+            /*position: absolute;*/
+            /*left: -10px;*/
+            /*top: -5px;*/
+            /*background: url(/assets/bg-rank.png) 0 0px no-repeat;*/
+            /*@include size(34px 30px);*/
+            /*line-height: 30px;*/
+            /*color: $color-red;*/
+            /*font-weight: bold;*/
+            /*text-align: center;*/
+          /*}*/
+          /*.profile {*/
+            /*@include size(50px 50px);*/
+          /*}*/
+          /*.meta {*/
+            /*margin-top: 20px;*/
+            /*padding: 0 10px;*/
+            /*color: $color-gray-7;*/
+            /*.count {*/
+              /*padding-left: 20px;*/
+              /*padding-top: 2px;*/
+              /*float: left;*/
+            /*}*/
+            /*.like-count {*/
+              /*background: url(/assets/icn-like-count.png) no-repeat;*/
+            /*}*/
+            /*.comment-count {*/
+              /*background: url(/assets/icn-comment-count.png) 0 1px no-repeat;*/
+              /*float: right;*/
+            /*}*/
+          /*}*/
+        /*}*/
 
-        .title {
-          font-size: 25px;
-          line-height: 130%;
-          text-align: center;
-          padding: 15px 120px;
-          color: #148786;
-        }
+        /*.title {*/
+          /*font-size: 25px;*/
+          /*line-height: 130%;*/
+          /*text-align: center;*/
+          /*padding: 15px 120px;*/
+          /*color: #148786;*/
+        /*}*/
 
-        .tagline {
-          text-align: center;
-          color: $color-gray-2;
-        }
-      }
+        /*.tagline {*/
+          /*text-align: center;*/
+          /*color: $color-gray-2;*/
+        /*}*/
+      /*}*/
 
-      h6 {
-        color: $color-green;
-        font-size: 14pt;
-        /*font-weight: bold;*/
-      }
-    }
-    float: left;
-    /*border: 1px solid #aaa;*/
+      /*h6 {*/
+        /*color: $color-green;*/
+        /*font-size: 14pt;*/
+        /*[>font-weight: bold;<]*/
+      /*}*/
+    /*}*/
+    /*float: left;*/
+    /*[>border: 1px solid #aaa;<]*/
 
-  }
+  /*}*/
 
-  @include size(100% 240px);
-}
+  /*@include size(100% 240px);*/
+/*}*/
 
 #experts-corporation {
   .member {
@@ -423,6 +424,7 @@
       /*text-overflow: ellipsis;*/
       /*overflow-x: hidden;*/
       padding-top: 2px;
+      line-height: 19px;
     }
 
     .title-hover {
@@ -431,6 +433,7 @@
       font-weight: bold;
       margin-bottom: 20px;
       display: none;
+      line-height: 19px;
     }
 
 
