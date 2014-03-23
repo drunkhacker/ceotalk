@@ -44,4 +44,22 @@ class HomeController < ApplicationController
   def ceomba_intro
     render layout: false
   end
+
+  def search
+    #@talks = Talk.find_by_keyword(params[:term]).page(params[:page]).per(19)
+    @talks = Talk.page(params[:page]).per(19)
+    #@companies = Company.find_by_keyword(params[:term]).page(params[:page]).per(19)
+    @professionals = Professional.page(params[:page]).per(1)
+    #@professionals = Professional.find_by_keyword(params[:term]).page(params[:page]).per(19)
+  end
+
+  def search_page
+    if params[:type] == "Talk"
+      #@talks = Talk.page(params[:page]).per(19)
+      @talks = Talk.find_by_keyword(params[:term]).page(params[:page]).per(19)
+    elsif params[:type] == "Professional"
+      #@professionals = Professional.page(params[:page]).per(10)
+      @professionals = Professional.find_by_keyword(params[:term]).page(params[:page]).per(10)
+    end
+  end
 end

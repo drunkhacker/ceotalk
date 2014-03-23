@@ -3,6 +3,27 @@ class TalksController < ApplicationController
 
   before_filter :set_sort_categories
 
+  def page
+    ar = 
+      if @current_categories.any?
+        Talk.joins(:tags).where("tags.category_id IN (?)", @current_categories.map {|cat| cat.id})
+      else
+        Talk.all
+      end
+
+    ar = 
+      if @current_sort == 'like'
+        ar.order("like_count DESC")
+      elsif @current_sort == 'comment'
+        ar.order("comment_count DESC")
+      else
+        ar.order("created_at DESC")
+      end
+
+    @talks = ar.page(params[:page]).per(19)
+    @is_xhr = true
+  end
+
   def index
     ar = 
       if @current_categories.any?
@@ -22,6 +43,11 @@ class TalksController < ApplicationController
 
     @talks = ar.page(params[:page]).per(19)
     @banner = cookies["banner2"].blank?
+    @is_xhr = !!request.xhr? 
+
+    respond_to do |format|
+      format.html { render :layout => !@is_xhr}
+    end
   end
 
   def show

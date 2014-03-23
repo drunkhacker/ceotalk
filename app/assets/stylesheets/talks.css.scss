@@ -34,7 +34,7 @@
   }
 
   .video {
-    padding-top: 35px;
+    /*padding-top: 35px;*/
     background-color: $color-gray-3;
     @include size(100% 375px);
     iframe {
@@ -363,4 +363,24 @@
   color: #BBBDC0;
   padding-left: 80px;
   font-size: 12px;
+}
+
+.link-url-info {
+  height: 40px;
+  background-color: $color-gray-3;
+  line-height: 40px;
+  font-size: 15px;
+  padding-left: 20px;
+
+  .label {
+    font-weight: bold;
+    color: $color-gray-5;
+    padding-right: 10px;
+  }
+
+  .url {
+    color: $color-gray-5;
+    background-color: white;
+    padding: 3px 5px;
+  }
 }

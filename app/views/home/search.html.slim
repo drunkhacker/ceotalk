@@ -1,0 +1,23 @@
+
+h3.section-title.icn-talk
+  | C
+  span style="color: #c30d23" ³
+  |&nbsp;Talk
+  small 
+    = "총 #{@talks.length}개의 컨텐츠가 검색되었습니다."
+
+.talks-wrapper style="padding-top: 15px;"
+  = render('search_result_talks')
+
+h3.section-title.icn-members
+  | C
+  span style="color: #c30d23" ³
+  |&nbsp;Members
+  small 
+    = "총 #{@professionals.length}명의 전문가가 검색되었습니다."
+
+.professionals-wrapper style="padding-top:15px"
+  = render('search_result_members')
+
+.reveal-modal
+= render '/install_modal_trigger'

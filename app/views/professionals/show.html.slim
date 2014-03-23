@@ -1,6 +1,11 @@
 .content-layer.clear
   .content-header
     h1.title-professional=@professional.tagline
+
+  .link-url-info
+    span.label 링크 URL
+    span.url ondblclick="select_url(this)" = professional_url(@professional)
+
   .professional-intro.clear
     .column.left
       .detail-wrapper

@@ -12,4 +12,8 @@ class Professional < User
   def category_name
     if self.category then self.category.name else nil end
   end
+
+  def self.find_by_keyword(term)
+    Professional.where("MATCH(name, tagline, introduction) AGAINST (?)", term)
+  end
 end

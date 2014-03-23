@@ -510,8 +510,11 @@
     padding: 8px;
     text-align: center;
     margin: 0 10px;
+    border: 0;
     cursor: pointer;
     cursor: hand; 
+    background-color: transparent;
+    font-size: 15px;
     /*text-align: center;*/
     &:hover {
       color: white;

@@ -1,15 +1,4 @@
-h3.section-title.icn-members
-  | C
-  span style="color: #c30d23" ³
-  | &nbsp;Members
-  small 
-    | 전문가와의 소통, 당신도 곧 전문가로 탄생합니다!
-
-hr.hr-gradient
-
-= render '/professionals/divider'
-
-.professionals-container.clear
+#professionals.clear
   - @professionals.each_with_index do |user, i|
     = link_to user, :class => "professional modal-popup #{i== 0 || i == 5 || i == 10 || i == 15 ? "left-zero" : ""}" do
       =image_tag(user.profile_photo.square300.url)
@@ -26,11 +15,5 @@ hr.hr-gradient
         h5.name =user.name 
       = image_tag("/assets/icn-expert-badge.png", style: "display: block; position: absolute; right: 5px; top: 5px; width: 64px; height: 64px;")
 
-= paginate @professionals, params: {name_filter: @name_filter}
+= paginate @professionals, remote: true, params: {controller: "home", action: "search_page", type: "Professional"}
 
-.reveal-modal
-= render '/install_modal_trigger'
-
-/- if @load_modal
-  /javascript:
-    /show_modal("#{request.path}");

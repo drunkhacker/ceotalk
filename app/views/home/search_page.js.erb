@@ -1,0 +1,6 @@
+<% if !!@talks -%>
+  $(".talks-wrapper").html('<%= escape_javascript render(:partial => "/home/search_result_talks.html.slim") %>');
+<% elsif !!@professionals -%>
+  $(".professionals-wrapper").html('<%= escape_javascript render(:partial => "/home/search_result_members.html.slim") %>');
+<% end -%>
+

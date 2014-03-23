@@ -25,3 +25,7 @@ hr.hr-gradient
 
 .reveal-modal
 = render '/install_modal_trigger'
+
+/- if @load_modal
+  /javascript:
+    /show_modal("#{request.path}");

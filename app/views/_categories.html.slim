@@ -1,17 +1,135 @@
 .categories
   .link-group style="margin-bottom 10px;"
     span.category-label 조회방법 선택
-    = link_to '최신순', talks_path(:sort => 'recent', :cat => @current_categories.map {|c| c.id}.join(",")), :class => "button #{if @current_sort == 'recent' then "active" end}"
+    = link_to '최신순', talks_path(:anchor => "s=recent"), :class => "button sort #{if @current_sort == 'recent' then "active" end}"
     span &#47;
-    = link_to '댓글순', talks_path(:sort => "comment", :cat => @current_categories.map {|c| c.id}.join(",")), :class => "button #{if @current_sort == 'comment' then 'active' end}"
+    = link_to '댓글순', talks_path(:anchor => "s=comment"), :class => "button sort #{if @current_sort == 'comment' then 'active' end}"
     span &#47;
-    = link_to "좋아요순", talks_path(:sort => "like", :cat => @current_categories.map {|c| c.id}.join(",")), :class => "button #{if @current_sort == 'like' then 'active' end}"
+    = link_to "좋아요순", talks_path(:anchor => "s=like"), :class => "button sort #{if @current_sort == 'like' then 'active' end}"
 
   .link-group
     span.category-label 관심직무 선택
     - count = Category.count
     - Category.all.order("position ASC").each_with_index do |cat, i|
-      = link_to cat.name, talks_path(:sort => @current_sort, :cat => (if @current_categories.include? cat then @current_categories - [cat] else @current_categories + [cat] end).map {|c| c.id}.join(",")), :class => "button #{if @current_categories.include? cat then 'active' end} "
+      = link_to cat.name, talks_path(:anchor => "c=#{cat.id}"), class: "button category"
+      /= link_to cat.name, talks_path(:sort => @current_sort, :cat => (if @current_categories.include? cat then @current_categories - [cat] else @current_categories + [cat] end).map {|c| c.id}.join(",")), :class => "button #{if @current_categories.include? cat then 'active' end} "
       - if i < count - 1
         span &#47;
+
+javascript:
+  $(".button.sort").click(function(e) {
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    $(".button.sort").removeClass("active");
+    $anchor = $(e.target);
+    $anchor.addClass("active");
+
+    //update hash
+    //console.log(window.locaton.hash);
+    parser = $anchor[0];
+
+    hash = parser.hash.substring(1);
+    a = hash.split("=");
+    key = a[0];
+    val = a[1];
+
+    if (key === "s") {
+      var current_hash = window.location.hash.substring(1);
+      kvs = current_hash.split("&");
+      for (var i=0; i<kvs.length; i++) {
+        var a = kvs[i].split("=");
+        k = a[0]; v = a[1];
+        if (k === key) {
+          kvs[i] = key + "=" + val;
+          break;
+        }
+      }
+
+      if (i == kvs.length) { //not found
+        kvs.push(key + "=" + val);
+      }
+
+      //reconstruct hash
+      window.location.hash = kvs.join("&");
+    }
+
+    process_hash();
+
+    return false;
+  });
+
+  $(".button.category").click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    $(".button.category").removeClass("active");
+    $anchor = $(e.target);
+    $anchor.addClass("active");
+
+    //update hash
+    //console.log(window.locaton.hash);
+    parser = $anchor[0];
+
+    hash = parser.hash.substring(1);
+    a = hash.split("=");
+    key = a[0];
+    val = a[1];
+
+    if (key === "c") {
+      var current_hash = window.location.hash.substring(1);
+      kvs = current_hash.split("&");
+      for (var i=0; i<kvs.length; i++) {
+        var a = kvs[i].split("=");
+        k = a[0]; v = a[1];
+        if (k === key) {
+          kvs[i] = key + "=" + val;
+          break;
+        }
+      }
+
+      if (i == kvs.length) { //not found
+        kvs.push(key + "=" + val);
+      }
+
+      //reconstruct hash
+      window.location.hash = kvs.join("&");
+    }
+
+    process_hash();
+
+    return false;
+  });
+
+  function process_hash() { 
+    var kvs = window.location.hash.substring(1).split("&");
+
+    var c, s;
+    for (var i=0; i<kvs.length; i++) {
+      var a = kvs[i].split("=");
+      var k = a[0]; var v = a[1];
+      if (k === 'c') {
+        c = v;
+      } else if (k === 's') {
+        s = v;
+      }
+    }
+
+    var d = "?";
+    var url = "#{talks_path}";
+    if (c) { 
+      url += d + "cat="+c;
+      d = "&";
+    }
+
+    if (s) {
+      url += d + "sort="+s;
+    }
+
+    //alert(url);
+    $.get(url, function(d) {
+      $(".talks-wrapper").html(d);
+    });
+  }
 

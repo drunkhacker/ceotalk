@@ -60,4 +60,8 @@ class Talk < ActiveRecord::Base
       CommentMailer.talk_comments_notify_email(user, videos_and_comments, posts_and_comments, user_comments).deliver
     end
   end
+
+  def self.find_by_keyword(term)
+    Talk.where("MATCH(title, description) AGAINST (?)", term)
+  end
 end

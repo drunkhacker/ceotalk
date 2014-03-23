@@ -8,4 +8,7 @@ class Company < ActiveRecord::Base
   include ::Likeable
   include ::Favorable
 
+  def self.find_by_keyword(term)
+    Company.where("MATCH(name, tagline, introduction) AGAINST (?)", term)
+  end
 end
