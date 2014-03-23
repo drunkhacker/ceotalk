@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323060118) do
+ActiveRecord::Schema.define(version: 20140323171421) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -81,8 +81,6 @@ ActiveRecord::Schema.define(version: 20140323060118) do
     t.text     "introduction"
     t.integer  "like_count",          default: 0,     null: false
   end
-
-  add_index "companies", ["name", "tagline", "introduction"], name: "companies_indexes", type: :fulltext
 
   create_table "company_categories", force: true do |t|
     t.string   "name"
@@ -250,7 +248,7 @@ ActiveRecord::Schema.define(version: 20140323060118) do
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["name", "tagline", "introduction"], name: "users_indexes", type: :fulltext
+  add_index "users", ["name", "career", "introduction"], name: "users_indexes", type: :fulltext
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", id: false, force: true do |t|
