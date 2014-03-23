@@ -46,11 +46,11 @@ class HomeController < ApplicationController
   end
 
   def search
-    #@talks = Talk.find_by_keyword(params[:term]).page(params[:page]).per(19)
-    @talks = Talk.page(params[:page]).per(19)
+    @talks = Talk.find_by_keyword(params[:term]).page(params[:page]).per(19)
+    #@talks = Talk.page(params[:page]).per(19)
     #@companies = Company.find_by_keyword(params[:term]).page(params[:page]).per(19)
-    @professionals = Professional.page(params[:page]).per(1)
-    #@professionals = Professional.find_by_keyword(params[:term]).page(params[:page]).per(19)
+    #@professionals = Professional.page(params[:page]).per(1)
+    @professionals = Professional.find_by_keyword(params[:term]).page(params[:page]).per(10)
   end
 
   def search_page
