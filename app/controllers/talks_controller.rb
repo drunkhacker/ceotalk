@@ -33,7 +33,7 @@ class TalksController < ApplicationController
       end
 
     ar = 
-      if @current_sort == 'comment'
+      if @current_sort == 'like'
         ar.order("like_count DESC")
       elsif @current_sort == 'comment'
         ar.order("comment_count DESC")
