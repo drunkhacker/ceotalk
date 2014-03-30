@@ -62,6 +62,7 @@ class Talk < ActiveRecord::Base
   end
 
   def self.find_by_keyword(term)
-    Talk.where("MATCH(title, description) AGAINST (?)", term)
+    term = term.split(" ").map {|s| "#{s}*"}.join(" ")
+    Talk.where("MATCH(title, description) AGAINST (? IN BOOLEAN MODE)", term)
   end
 end

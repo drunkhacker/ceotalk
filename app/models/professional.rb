@@ -14,6 +14,7 @@ class Professional < User
   end
 
   def self.find_by_keyword(term)
-    Professional.where("MATCH(name, career, introduction) AGAINST (?)", term)
+    term = term.split(" ").map {|s| "#{s}*"}.join(" ")
+    Professional.where("MATCH(name, career, introduction) AGAINST (? IN BOOLEAN MODE)", term)
   end
 end
