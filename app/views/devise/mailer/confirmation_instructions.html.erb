@@ -10,11 +10,15 @@
 
 <div style="text-align: center; margin:0; padding:0;">
   <p style="margin:0;padding:0;font-size: 18px;margin-top:40px;"> <span style="font-size: 21px; font-weight:bold;"><%= @resource.name%></span>님 환영합니다.  </p>
-  <p style="margin:0;padding:0;font-size: 14px;margin-top:14px;"> 아래의 <span style="font-size: 14px; font-weight:bold;">버튼</span>을 클릭하시면 회원가입 인증이 완료됩니다.</p>
+  <p style="margin:0;padding:0;font-size: 14px;margin-top:14px;"> 아래의 <span style="font-size: 14px; font-weight:bold;">버튼</span>을 클릭하면<br>회원가입 인증이 완료됩니다.</p>
 
   <%= link_to '인증 완료', confirmation_url(@resource, :confirmation_token => @token), style: "color: white; font-size: 14px; padding: 7px 0px; background-color: #005F6C; display: block; width: 150px; height: 16px;text-decoration:none; margin: 50px auto" %>
 
-  <p style="margin:0;padding:0;font-size: 14px;line-height: 160%;"> 만약, 문제나 궁금한 사항이 있으시면 답신 메일로 알려주십시오.<br>바로 조치해 드리겠습니다.<br>CEO MBA 관리자<br>(tel) 02-512-0108<br>(web) <a href="http://www.ceomba.co.kr">www.CEOMBA.co.kr</a><br>(e-mail) ask@ceomba.co.kr</p>
+  <p style="margin:0;padding:0;font-size: 14px;line-height: 160%;"> 
+  회원가입에 오류나 문의사항이 있으면<br>
+  회신메일로 알려주시기 바랍니다.<br>
+  즉시 조치해 드리도록 하겠습니다.<br>
+  CEO MBA 관리자<br>(tel) 02-512-1018<br>(web) <a href="http://www.ceomba.co.kr">www.CEOMBA.co.kr</a><br>(e-mail) ask@ceomba.co.kr</p>
 </div>
 </body>
 </html>

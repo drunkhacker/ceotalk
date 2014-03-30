@@ -1,0 +1,17 @@
+javascript:
+  // Create IE + others compatible event handler
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+  // Listen to message from child window
+  eventer(messageEvent,function(e) {
+    console.log('parent received message!:  ',e.data);
+
+    d = e.data.split("=");
+    if (d[0] == 'h') {
+      $("#board-iframe").css("height", parseInt(d[1]) + "px");
+    }
+  },false);
+  
+iframe id="board-iframe" src="//#{@host}:8080/index.php?mid=#{@mid}#{@document_srl.nil? ? "" : "&document_srl=#{@document_srl}"}" style="width: 100%; padding:0; margin: 0;" frameborder="0"

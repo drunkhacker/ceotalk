@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     @featured_expert = FeaturedExpert.last
     @featured_company = Company.where(:featured => true).first
 
-    @banner = cookies["banner1"].blank?
+    @notices = Notice.order("regdate DESC").limit(3)
   end
 
   def set_sort_categories
@@ -61,5 +61,11 @@ class HomeController < ApplicationController
       #@professionals = Professional.page(params[:page]).per(10)
       @professionals = Professional.find_by_keyword(params[:term]).page(params[:page]).per(10)
     end
+  end
+
+  def notice_board
+    @host = request.host
+    @mid = "board_mYoH76"
+    @document_srl = params[:document_srl]
   end
 end

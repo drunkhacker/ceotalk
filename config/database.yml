@@ -9,6 +9,9 @@ base: &base
 development:
   database: ceotalk_development
   <<: *base
+xe_development:
+  database: drh_ceotalk_board
+  <<: *base
 
 test:
   database: ceotalk_test

@@ -199,23 +199,58 @@ body {
   position: relative;
   height: 247px;
   overflow: hidden;
-  img {
-    width: 100%;
+  .banner {
+    width: 50%;
     position: absolute;
+    left: 0; top: 0;
   }
 
-  a {
-    width: 280px;
-    height: 40px;
+  a.show-all {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -140px;
-    background-color: $color-green;
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    text-align :center;
-    line-height: 40px;
+    bottom: 30px;
+    right: 25px;
+  }
+
+  /*a {*/
+    /*width: 280px;*/
+    /*height: 40px;*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*left: 50%;*/
+    /*margin-left: -140px;*/
+    /*background-color: $color-green;*/
+    /*text-decoration: none;*/
+    /*color: white;*/
+    /*font-size: 16px;*/
+    /*text-align :center;*/
+    /*line-height: 40px;*/
+  /*}*/
+
+
+  .notices {
+    position: absolute;
+    top: 0; left: 50%;
+    background: url(/assets/newdesign/bg_notices.jpg) no-repeat;
+    width: 50%;
+    height: 100%;
+    padding: 80px 30px 10px 35px;
+
+    .notice {
+      margin-bottom: 8px;
+      .date {
+        font-size: 12px;
+        color: #9C9C9C;
+        margin-right: 10px;
+      }
+
+      .title {
+        text-decoration: none;
+        font-size: 16px;
+        color: #101010;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }

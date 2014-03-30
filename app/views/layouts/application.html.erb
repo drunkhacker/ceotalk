@@ -14,14 +14,16 @@
     <div id="gnb" class="clear">
       <div id="login-status">
         <% if signed_in? -%>
-          <div style="float: left; margin-right: 10px; margin-top: 10px;"><%= current_user.name %>님 환영합니다! </div>
-          <%= link_to '로그아웃', destroy_user_session_path, :method => :delete %>
-          <%= link_to '마이페이지', profile_users_path %>
+          <div style="float: left; margin-right: 20px; margin-top: 10px; color: #231F20; font-size: 16px;"><%= current_user.name %>님 환영합니다! </div>
+          <%= link_to '로그아웃', destroy_user_session_path, :method => :delete, :class => "top-menu" %>
+          <%= link_to '마이페이지', profile_users_path, :class => "top-menu" %>
         <% else -%>
-          <%= link_to "회원가입", new_user_registration_path %>
-          <%= link_to "로그인", new_user_session_path %>
+          <%= link_to "회원가입", new_user_registration_path, :class => "top-menu" %>
+          <%= link_to "로그인", new_user_session_path, :class => "top-menu" %>
         <% end -%>
 
+        <%= link_to '사이트 소개', "", onclick: "show_info_modal('/info/ceomba_intro');return false;", :class => "small-menu" %>
+        <%= link_to '공지사항', external_notice_board_path, :class => "small-menu" %>
         <div class="clear"></div>
 
         <div id="search-bar">
