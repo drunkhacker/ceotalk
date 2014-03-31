@@ -10,12 +10,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       #@user.skip_confirmation!
 
       #this user is signed in
-      uri = URI.parse("http://board.ceotalk.dev/index.php?act=procMemberLogin")
+      uri = URI.parse("http://#{request.host}:8080/index.php?act=procMemberLogin")
       res = Net::HTTP.post_form(uri, {"act" => "procMemberLogin", "user_id" => @user.email, "password" => @user.encrypted_password})
-      cookie_hash = CGI::Cookie.parse(res.header["Set-Cookie"])
+	    raw_cookie = res.header["Set-Cookie"]
 
-      cookies["PHPSESSID"] = {value: cookie_hash["PHPSESSID"], domain: ".ceotalk.dev"}
-      cookies["user-agent"] = {value: cookie_hash["user-agent"], domain: ".ceotalk.dev"}
+	    # get php session id
+	    a = raw_cookie.scan(/PHPSESSID=([^;]+);/)
+
+	    if a.any?
+	      session_id = a[0][0]
+	      logger.debug "php session id = #{session_id}"
+	      cookies.delete "PHPSESSID"
+	      cookies["PHPSESSID"] = session_id
+	      #cookies["PHPSESSID"] = {value: session_id, domain: ".#{request.host}"}
+	    end
+
 
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?

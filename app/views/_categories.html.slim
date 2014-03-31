@@ -11,95 +11,113 @@
     span.category-label 관심직무 선택
     - count = Category.count
     - Category.all.order("position ASC").each_with_index do |cat, i|
-      = link_to cat.name, talks_path(:anchor => "c=#{cat.id}"), class: "button category"
+      = link_to cat.name, talks_path(:anchor => "c=#{cat.id}"), class: "button category", id: "category-#{cat.id}"
       /= link_to cat.name, talks_path(:sort => @current_sort, :cat => (if @current_categories.include? cat then @current_categories - [cat] else @current_categories + [cat] end).map {|c| c.id}.join(",")), :class => "button #{if @current_categories.include? cat then 'active' end} "
       - if i < count - 1
         span &#47;
 
 javascript:
-  $(".button.sort").click(function(e) {
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    $(".button.sort").removeClass("active");
-    $anchor = $(e.target);
-    $anchor.addClass("active");
-
-    //update hash
-    //console.log(window.locaton.hash);
-    parser = $anchor[0];
-
-    hash = parser.hash.substring(1);
-    a = hash.split("=");
-    key = a[0];
-    val = a[1];
-
-    if (key === "s") {
-      var current_hash = window.location.hash.substring(1);
-      kvs = current_hash.split("&");
-      for (var i=0; i<kvs.length; i++) {
-        var a = kvs[i].split("=");
-        k = a[0]; v = a[1];
-        if (k === key) {
-          kvs[i] = key + "=" + val;
-          break;
+  if ("#{controller_name}" == "talks") {
+    $(".button.sort").click(function(e) {
+  
+      e.preventDefault();
+      e.stopPropagation();
+  
+      $(".button.sort").removeClass("active");
+      $anchor = $(e.target);
+      $anchor.addClass("active");
+  
+      //update hash
+      //console.log(window.locaton.hash);
+      parser = $anchor[0];
+  
+      hash = parser.hash.substring(1);
+      a = hash.split("=");
+      key = a[0];
+      val = a[1];
+  
+      if (key === "s") {
+        var current_hash = window.location.hash.substring(1);
+        kvs = current_hash.split("&");
+        for (var i=0; i<kvs.length; i++) {
+          var a = kvs[i].split("=");
+          k = a[0]; v = a[1];
+          if (k === key) {
+            kvs[i] = key + "=" + val;
+            break;
+          }
         }
-      }
-
-      if (i == kvs.length) { //not found
-        kvs.push(key + "=" + val);
-      }
-
-      //reconstruct hash
-      window.location.hash = kvs.join("&");
-    }
-
-    process_hash();
-
-    return false;
-  });
-
-  $(".button.category").click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    $(".button.category").removeClass("active");
-    $anchor = $(e.target);
-    $anchor.addClass("active");
-
-    //update hash
-    //console.log(window.locaton.hash);
-    parser = $anchor[0];
-
-    hash = parser.hash.substring(1);
-    a = hash.split("=");
-    key = a[0];
-    val = a[1];
-
-    if (key === "c") {
-      var current_hash = window.location.hash.substring(1);
-      kvs = current_hash.split("&");
-      for (var i=0; i<kvs.length; i++) {
-        var a = kvs[i].split("=");
-        k = a[0]; v = a[1];
-        if (k === key) {
-          kvs[i] = key + "=" + val;
-          break;
+  
+        if (i == kvs.length) { //not found
+          kvs.push(key + "=" + val);
         }
+  
+        //reconstruct hash
+        window.location.hash = kvs.join("&");
       }
-
-      if (i == kvs.length) { //not found
-        kvs.push(key + "=" + val);
+  
+      process_hash();
+  
+      return false;
+    });
+  
+    $(".button.category").click(function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+  
+      $(".button.category").removeClass("active");
+      $anchor = $(e.target);
+      $anchor.addClass("active");
+  
+      //update hash
+      //console.log(window.locaton.hash);
+      parser = $anchor[0];
+  
+      hash = parser.hash.substring(1);
+      a = hash.split("=");
+      key = a[0];
+      val = a[1];
+  
+      if (key === "c") {
+        var current_hash = window.location.hash.substring(1);
+        kvs = current_hash.split("&");
+        for (var i=0; i<kvs.length; i++) {
+          var a = kvs[i].split("=");
+          k = a[0]; v = a[1];
+          if (k === key) {
+            kvs[i] = key + "=" + val;
+            break;
+          }
+        }
+  
+        if (i == kvs.length) { //not found
+          kvs.push(key + "=" + val);
+        }
+  
+        //reconstruct hash
+        window.location.hash = kvs.join("&");
       }
+  
+      process_hash();
+  
+      return false;
+    });
+  }
 
-      //reconstruct hash
-      window.location.hash = kvs.join("&");
+  $(function() {
+    //toggle on preset button using hash
+    var a = window.location.hash.substring(1).split("=");
+    if (a[0] === "s") {
+      if (a[1] === "recent") 
+        $(".button.sort:nth(0)").addClass("active");
+      else if (a[1] === "comment") 
+        $(".button.sort:nth(1)").addClass("active");
+      else if (a[1] === "like") 
+        $(".button.sort:nth(2)").addClass("active");
+    } else if (a[0] === "c") {
+      $("#category-"+parseInt(a[1])).addClass("active");
     }
-
     process_hash();
-
-    return false;
   });
 
   function process_hash() { 

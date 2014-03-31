@@ -65,7 +65,7 @@ class HomeController < ApplicationController
 
   def notice_board
     @host = request.host
-    @mid = "board_mYoH76"
+    @mid = "board_bVUC93"
     @document_srl = params[:document_srl]
   end
 end
