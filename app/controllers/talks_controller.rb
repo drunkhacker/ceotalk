@@ -5,8 +5,8 @@ class TalksController < ApplicationController
 
   def page
     ar = 
-      if @current_categories.any?
-        Talk.joins(:tags).where("tags.category_id IN (?)", @current_categories.map {|cat| cat.id})
+      unless @current_category.nil?
+        Talk.joins(:tags).where("tags.category_id = ?", @current_category.id)
       else
         Talk.all
       end
@@ -26,8 +26,8 @@ class TalksController < ApplicationController
 
   def index
     ar = 
-      if @current_categories.any?
-        Talk.joins(:tags).where("tags.category_id IN (?)", @current_categories.map {|cat| cat.id})
+      unless @current_category.nil?
+        Talk.joins(:tags).where("tags.category_id = ?", @current_category.id)
       else
         Talk.all
       end
@@ -77,7 +77,7 @@ class TalksController < ApplicationController
   end
 
   def set_sort_categories
-    @current_categories = if params[:cat] then params[:cat].split(",").map {|cid| Category.find(cid)} else [] end
+    @current_category = if params[:cat] then Category.find(params[:cat]) end
     @current_sort = params[:sort]
   end
 end

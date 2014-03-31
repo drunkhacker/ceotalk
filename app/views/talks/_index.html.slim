@@ -27,7 +27,7 @@
           h5.title-hover = talk.title
           = link_to "more", "#{talks_path}/##{talk.id}", :class => "more" 
 
-  = paginate @talks, remote: true, params: {controller: "talks", action: "page", cat:@current_categories , sort: @current_sort}
+  = paginate @talks, remote: true, params: {controller: "talks", action: "page", cat: @current_category , sort: @current_sort}
 
 - unless @is_xhr
   .reveal-modal
