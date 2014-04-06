@@ -3,15 +3,19 @@ javascript:
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  var old = 200;
 
   // Listen to message from child window
   eventer(messageEvent,function(e) {
-    console.log('parent received message!:  ',e.data);
+    //console.log('parent received message!:  ',e.data);
 
     d = e.data.split("=");
-    if (d[0] == 'h') {
-      $("#board-iframe").css("height", parseInt(d[1]) + "px");
+    v = parseInt(d[1]);
+    if (d[0] == 'h' && v != old) {
+      $("#board-iframe").css("height", v + "px");
+      old = v;
     }
   },false);
+  document.domain = "ceomba.co.kr";
   
-iframe id="board-iframe" src="//#{@host}:8080/index.php?mid=#{@mid}#{@document_srl.nil? ? "" : "&document_srl=#{@document_srl}"}" style="width: 100%; padding:0; margin: 0;" frameborder="0"
+iframe id="board-iframe" src="//#{@host}:8080/index.php?mid=#{@mid}#{@document_srl.nil? ? "" : "&document_srl=#{@document_srl}"}" style="width: 100%; min-height: 200px; padding:0; margin: 0;" frameborder="0"

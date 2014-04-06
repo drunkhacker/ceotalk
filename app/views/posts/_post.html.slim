@@ -26,7 +26,7 @@ javascript:
       if (!!id) {
         console.log("get id = "+id);
         $.getJSON("/posts/wordpress/" + id, function(response) {
-          $(".post-wrapper .post").html(response.post.post_content);
+          $(".post-wrapper .post").html(response.post.post_content.replace(/\n/g, "<br>"));
         });
       }
     }

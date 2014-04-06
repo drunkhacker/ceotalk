@@ -6,7 +6,7 @@ div.top-banner.clear
         li.notice
           span.date
             = notice.created_at.strftime("%y.%m.%d")
-          = link_to "#{notice.title.truncate(20)}#{notice.comment_count > 0 ? " [#{notice.comment_count}]": ""}", external_notice_board_path(:document_srl => notice.id), :class => "title"
+          = link_to "#{notice.title.truncate(30)}#{notice.comment_count > 0 ? " [#{notice.comment_count}]": ""}", external_notice_board_path(:document_srl => notice.id), :class => "title"
     = link_to image_tag("/assets/newdesign/btn_notice_all.jpg"), external_notice_board_path, class: "show-all"
 
   /= link_to("이 배너를 다시 보지 않기", "", onclick:"expire_banner('banner1')")
