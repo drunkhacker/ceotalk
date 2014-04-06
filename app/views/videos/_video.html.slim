@@ -4,6 +4,8 @@
 div style="background-color: #f1f1f2; padding:20px;"
   h4 style="font-size: 18px; font-weight:bold; color: #17575E" 
     | 영상 정보
-    = link_to image_tag("/assets/btn-fb-share.jpg"), "javascript:share_popup()", style: "float:right; display:block; width: 150px; height: 30px; margin-top: -10px;"  
+    div style="margin-top: -40px;"
+      = render partial: '/share_actions', locals: {resource: @talk.becomes(Talk), title: @talk.title}
+    /= link_to image_tag("/assets/btn-fb-share.jpg"), "javascript:share_popup()", style: "float:right; display:block; width: 150px; height: 30px; margin-top: -10px;"  
   div style="height: 200px; margin-top: 20px; background-color:white; padding: 5px; font-size: 15px; line-height: 140%; overflow-y: scroll; overflow-x :hidden;"
     = simple_format auto_link video.description

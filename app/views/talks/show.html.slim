@@ -4,25 +4,6 @@
   meta property="og:description" content="#{@talk.description}"
   meta property="og:image" content="#{@talk.thumb_url}"
 
-javascript:
-  function share_popup() {
-    var url = "#{talk_url(@talk)}";
-    var title = "#{@talk.title}";
-    url = "http://www.facebook.com/sharer/sharer.php?u={URL}&t={TITLE}"
-      .replace("{URL}", encodeURIComponent(url))
-      .replace("{TITLE}", encodeURIComponent(title));
-
-		var width  = 500;
-    var height = 300;
-
-		window.open(url, "share",
-				"menubar=no,status=no,resizable=yes,menubar=no,width={WIDTH},height={HEIGHT}"
-					.replace("{WIDTH}", width)
-					.replace("{HEIGHT}", height)
-			);
-    return false;
-  }
-
 .content-layer.clear
   .column.left
     .content-header 
@@ -35,8 +16,6 @@ javascript:
 
     = render @talk
 
-
-    /= render partial: '/share_actions', locals: {resource: @talk.becomes(Talk), title: @talk.title}
     = render partial: '/comments/list', locals: {commentable: @commentable, new_comment: @comment, top_comments: @top_comments, comments: @comments }
   .column.right
     = render partial: "/users/pro_short_side", locals: {professional: @talk.professional }

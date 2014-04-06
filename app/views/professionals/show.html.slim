@@ -39,7 +39,8 @@
       .section-content
         | —
 
-  = render partial: '/share_actions', locals: {resource: @professional, title: @professional.tagline}
+  div style="margin-right: 10px;"
+    = render partial: '/share_actions', locals: {resource: @professional, title: @professional.tagline}
   = render partial: '/comments/list', locals: {commentable: @commentable, new_comment: @comment, top_comments: @top_comments, comments: @comments, big: true }
 
 

@@ -1,5 +1,6 @@
 .post-wrapper
   .post
+  = render partial: '/share_actions', locals: {resource: @talk.becomes(Talk), title: @talk.title}
 javascript:
   $(function() {
     var pattern_ceomba_com = /^(?:https?:\/\/)?blog.ceomba.co.kr/;

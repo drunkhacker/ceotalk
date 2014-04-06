@@ -1,8 +1,30 @@
 .share-actions
-  = link_to "like", "javascript: like();", :class => "like #{(current_user && current_user.liked?(resource)) ? "selected" : "" }"
-  = link_to "favorite", "javascript: favorite();", :class => "favorite #{(current_user && current_user.favorite?(resource)) ? "selected" : "" }"
+  = link_to "like", "javascript: like_content();", :class => "like #{(!current_user ? "disabled" : "")} #{(current_user && current_user.liked?(resource)) ? "selected" : "" }"
+  /= link_to "favorite", "javascript: favorite();", :class => "favorite #{(current_user && current_user.favorite?(resource)) ? "selected" : "" }"
   = link_to "share", "javascript: share_popup()", :class => "share"
 
+- if signed_in?
+  javascript:
+    function like_content() {
+      $.post("#{send("like_#{resource.class.name.underscore}_url", resource)}", function(data) {
+        if (data.ok) {
+          if (data.liked) {
+            $(".share-actions a.like").addClass("selected");
+          } else {
+            $(".share-actions a.like").removeClass("selected");
+          }
+        } else {
+          alert(data.error);
+        }
+      });
+      return false;
+    }
+- else
+  javascript:
+    function like_content() {
+      alert("로그인이 필요합니다.");
+      return false;
+    }
 javascript:
   function favorite() {
     $.post("#{send("favorite_#{resource.class.name.underscore}_url", resource)}", function (data) {
@@ -17,20 +39,6 @@ javascript:
       }
     });
 
-    return false;
-  }
-  function like() {
-    $.post("#{send("like_#{resource.class.name.underscore}_url", resource)}", function(data) {
-      if (data.ok) {
-        if (data.liked) {
-          $(".share-actions a.like").addClass("selected");
-        } else {
-          $(".share-actions a.like").removeClass("selected");
-        }
-      } else {
-        alert(data.error);
-      }
-    });
     return false;
   }
   function share_popup() {

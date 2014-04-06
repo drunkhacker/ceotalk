@@ -31,5 +31,6 @@
       .section-content
         | not implemented yet
 
-  = render partial: '/share_actions', locals: {resource: @company, title: @company.tagline}
+  div style="margin-right: 10px;"
+    = render partial: '/share_actions', locals: {resource: @company, title: @company.tagline}
   = render partial: '/comments/list', locals: {commentable: @commentable, new_comment: @comment, top_comments: @top_comments, comments: @comments }
