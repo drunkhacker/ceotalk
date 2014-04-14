@@ -1,5 +1,5 @@
 div.top-banner.clear
-  = image_tag("/assets/newdesign/img_banner3.jpg", class: "banner")
+  = link_to image_tag("/assets/newdesign/img_banner3.jpg", class: "banner"), open_questions_path
   .notices
     ul
       - @notices.each do |notice|
