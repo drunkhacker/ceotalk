@@ -45,15 +45,15 @@
       .description
         = link_to image_tag("/assets/newdesign/img_class_add2.png" , style: "width: 250px"), open_questions_path, style: "margin-left: -10px;"
 
-    /.other-videos
-      /h3.section-header 관련 영상 
+    .other-videos
+      h3.section-header 관련 영상 
 
-      /ul.videos
-        /- @other_talks.each do |talk|
-          /li.clear
-            /h5.talk-title= truncate(talk.title, :length => 16)
-            /.excerpt
-              /= image_tag(talk.thumb_url, :class => "thumbnail")
+      ul.videos
+        - @other_talks.each do |talk|
+          li.clear
+            h5.talk-title= truncate(talk.title, :length => 16)
+            .excerpt
+              = link_to "javascript:show_modal('#{talk_url(talk.becomes(Talk))}')" do
+                = image_tag(talk.thumb_url, :class => "thumbnail")
               /= simple_format truncate(talk.description, :length => 150), :class => "description"
-
 

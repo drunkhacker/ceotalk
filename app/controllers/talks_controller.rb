@@ -69,7 +69,19 @@ class TalksController < ApplicationController
     @top_comments = @talk.comments.where("like_count >= 5").order("like_count DESC").limit(3)
     @comments = @talk.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 
-    @other_talks = @talk.professional.nil? ? [] : @talk.professional.talks.where("id != ?", @talk.id).order("created_at DESC").limit(5)
+    if @talk.professional.nil?
+      @other_talks = []
+    else
+      ar = @talk.professional.talks
+      if @talk.professional.talks.length < 4 # 내꺼는 빼서 세어야 한다.
+        @other_talks = ar.where("id != ?", @talk.id).order("id ASC")
+      else
+        @other_talks = ar.where("id > ?", @talk.id).order("id ASC").limit(3)
+        if @other_talks.length < 3
+          @other_talks += ar.where("id != ?", @talk.id).order("id ASC").limit(3 - @other_talks.length)
+        end
+      end
+    end
 
     respond_with(@talk) do |format|
       format.html { render :layout => (is_facebook ? "opengraph" : !request.xhr?)}
