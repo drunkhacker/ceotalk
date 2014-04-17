@@ -9,33 +9,16 @@
     div style="width: 275px ; float: right; "
       = render partial: '/users/pro_short_side', :locals => {:professional => @question.professional }
     h1.question.title = @question.title
-    h3.category = @question.category
+    h3.category = @question.category_names
 
   .problem-content.clear
-    div style="width: 556px; margin-right: 4px; float: left; background-color: white;"
+    div style="width: 400px; margin-right: 10px; float: left; background-color:white;"
+      = image_tag(@question.thumbnail.url, style:"display:block; width: 100%; height: 300px;")
+    div style="width: 544px; margin-left: 10px; float: left; background-color: white;"
       .question-text
         = simple_format @question.content
-    div style="width: 400px; margin-left: 4px; float: left; background-color:white;"
-      div style="background-color: white; height: 334px; overflow-y: auto; padding: 20px; background:url(/assets/img-dummy-1.png)  50% 50% no-repeat"
 
-  = render partial: '/share_actions', locals: {resource: @question, title: @question.title}
-
-  .column.left
-    = render partial: "/comments/list", locals: {commentable: @question, new_comment: @comment, top_comments: @top_comments, comments: @comments}
-
-  .column.right
-    .other-videos
-      h3.section-header 지난 컨텐츠
-
-      ul.videos
-        /- @other_problems.each do |problem|
-          /li.clear
-            /h5.talk-title= truncate(problem.title, :length => 25)
-            /.excerpt
-              /= image_tag(problem.thumb_url, :class => "thumbnail")
-              /= simple_format truncate(problem.content, :length => 150), :class => "description"
-
-    .tail
-
-
+  div style="padding-right: 30px; background-color:#f1f1f2"
+    = render partial: '/share_actions', locals: {resource: @question, title: @question.title}
+  = render partial: "/comments/list", locals: {commentable: @question, new_comment: @comment, top_comments: @top_comments, comments: @comments}
 

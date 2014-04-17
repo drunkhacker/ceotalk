@@ -1,40 +1,55 @@
-h3.section-title.icn-academy
-  | C
-  span style="color: #c30d23" ³
-  | &nbsp;Academy
-  small 
-    | 현직 CEO와 소통하고 토론하는 실전교육
+- unless @is_xhr
+  h3.section-title.icn-academy
+    | C
+    span style="color: #c30d23" ³
+    | &nbsp;Academy
+    small 
+      | 현직 CEO와 소통하고 토론하는 실전교육
 
-hr.hr-gradient
+  hr.hr-gradient
 /h4.section-sub-title C'QUESTION
 
-/#questions.clear
-  /- @questions.each_with_index do |question, i|
-    /.item class="#{i == 0 ? 'big' : ''}"
-      /= image_tag(question.thumbnail.url)
-      /= link_to(question, :class => "overlay modal-popup", :style => "text-decoration: none;") do
-        //.category = talk.category.name
-        /h5.title = truncate(question.title, length: 20,  omission: "...#{question.title.last(5)}")
-        /p.description = truncate(strip_tags(question.content), length:  (i == 0 || i == 15)? 300 : 120) 
-      /.meta
-        /span.comment-count.count = question.comments.count
-        /span.like-count.count = question.like_count
+#questions.clear
+  - @questions[0...2].each_with_index do |question, i|
+    .item class="#{i == 0 ? 'big' : ''}"
+      = image_tag(question.thumbnail.url)
+      = link_to(question, :class => "overlay modal-popup", :style => "text-decoration: none;") do
+        /.category = talk.category.name
+        h5.title = if question.title.length >= 16 then question.title[0...14] + "..." else question.title end
+        p.description = truncate(strip_tags(question.content), length:  (i == 0 || i == 15)? 300 : 120) 
+      .meta
+        span.comment-count2.count = question.comments.count
+        span.like-count.count = question.like_count
+  .item.big style="margin-right: 0;"
+    h1 style="color: white; margin: 30px; text-align: center" 배너
 
-/= paginate @questions
+  - (@questions[2..-1] || []).each_with_index do |question, i|
+    .item class="#{i == 0 ? 'push-left-2 push-top': i == 5 ? 'right-zero' : ''}"
+      = image_tag(question.thumbnail.url)
+      = link_to(question, :class => "overlay modal-popup", :style => "text-decoration: none;") do
+        /.category = talk.category.name
+        h5.title = if question.title.length >= 16 then question.title[0...14] + "..." else question.title end
+        p.description = truncate(strip_tags(question.content), length:  (i == 0 || i == 15)? 300 : 120) 
+      .meta
+        span.comment-count2.count = question.comments.count
+        span.like-count.count = question.like_count
+
+= paginate @questions
 
 
-h4.section-sub-title style="margin-top: 30px;" CEO MBA CLASS
+/h4.section-sub-title style="margin-top: 30px;" CEO MBA CLASS
 
-= image_tag("/assets/class_intro/ceomba_1.jpg", style: "display: block; margin: 0 auto;")
-= image_tag("/assets/class_intro/ceomba_2.jpg", style: "display: block; margin: 0 auto;")
-= image_tag("/assets/class_intro/ceomba_3.jpg", style: "display: block; margin: 0 auto;")
-= image_tag("/assets/class_intro/ceomba_4.jpg", style: "display: block; margin: 0 auto;")
-= image_tag("/assets/class_intro/ceomba_5.jpg", style: "display: block; margin: 0 auto;")
-= image_tag("/assets/class_intro/ceomba_6.jpg", style: "display: block; margin: 0 auto;", id:"class2", usemap:"#classmap")
+/= image_tag("/assets/class_intro/ceomba_1.jpg", style: "display: block; margin: 0 auto;")
+/= image_tag("/assets/class_intro/ceomba_2.jpg", style: "display: block; margin: 0 auto;")
+/= image_tag("/assets/class_intro/ceomba_3.jpg", style: "display: block; margin: 0 auto;")
+/= image_tag("/assets/class_intro/ceomba_4.jpg", style: "display: block; margin: 0 auto;")
+/= image_tag("/assets/class_intro/ceomba_5.jpg", style: "display: block; margin: 0 auto;")
+/= image_tag("/assets/class_intro/ceomba_6.jpg", style: "display: block; margin: 0 auto;", id:"class2", usemap:"#classmap")
 
-map name="classmap"
-  area shape="rect" coords="461,2136,1022,2243" href="http://bit.ly/1fpFXyX" target="_blank"
+/map name="classmap"
+  /area shape="rect" coords="461,2136,1022,2243" href="http://bit.ly/1fpFXyX" target="_blank"
 
 
-.reveal-modal
-= render '/install_modal_trigger'
+- unless @is_xhr
+  .reveal-modal
+  = render '/install_modal_trigger'
