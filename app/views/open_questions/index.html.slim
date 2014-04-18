@@ -10,21 +10,8 @@
 /h4.section-sub-title C'QUESTION
 
 #questions.clear
-  - @questions[0...2].each_with_index do |question, i|
-    .item class="#{i == 0 ? 'big' : ''}"
-      = image_tag(question.thumbnail.url)
-      = link_to(question, :class => "overlay modal-popup", :style => "text-decoration: none;") do
-        /.category = talk.category.name
-        h5.title = if question.title.length >= 16 then question.title[0...14] + "..." else question.title end
-        p.description = truncate(strip_tags(question.content), length:  (i == 0 || i == 15)? 300 : 120) 
-      .meta
-        span.comment-count2.count = question.comments.count
-        span.like-count.count = question.like_count
-  .item.big style="margin-right: 0;"
-    h1 style="color: white; margin: 30px; text-align: center" 배너
-
-  - (@questions[2..-1] || []).each_with_index do |question, i|
-    .item class="#{i == 0 ? 'push-left-2 push-top': i == 5 ? 'right-zero' : ''}"
+  - @questions.each_with_index do |question, i|
+    .item class="#{i == 0 ? 'big' : i == 3 || i == 6 ? 'right-zero' : ''}"
       = image_tag(question.thumbnail.url)
       = link_to(question, :class => "overlay modal-popup", :style => "text-decoration: none;") do
         /.category = talk.category.name

@@ -1,7 +1,7 @@
 class OpenQuestionsController < ApplicationController
   respond_to :html, :js
   def index
-    @questions = OpenQuestion.order("created_at DESC").page(params[:page]).per(8)
+    @questions = OpenQuestion.order("created_at DESC").page(params[:page]).per(7)
     logger.debug "@questions.length = #{@questions.length}"
   end
 

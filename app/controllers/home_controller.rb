@@ -13,6 +13,7 @@ class HomeController < ApplicationController
     @featured_company = Company.where(:featured => true).first
 
     @notices = Notice.order("regdate DESC").limit(3)
+    @questions = OpenQuestion.order("created_at DESC").page(params[:page]).per(3)
   end
 
   def set_sort_categories
