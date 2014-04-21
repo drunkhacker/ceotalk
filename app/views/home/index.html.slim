@@ -66,7 +66,7 @@ hr.hr-gradient
         span.comment-count2.count = question.comments.count
         span.like-count.count = question.like_count
   .item.big style="margin-right: 0;"
-    h1 style="color: white; margin: 30px; text-align: center" 배너
+    = link_to image_tag(asset_path("newdesign/img_aca_banner.jpg"), style: "margin-top: 0;"), open_questions_path
 
   - (@questions[2..-1] || []).each_with_index do |question, i|
     .item class="#{i == 0 ? 'push-left-2 push-top': i == 5 ? 'right-zero' : ''}"

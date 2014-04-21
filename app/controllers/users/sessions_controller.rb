@@ -10,15 +10,17 @@ class Users::SessionsController < Devise::SessionsController
     res = Net::HTTP.post_form(uri, {"act" => "procMemberLogin", "user_id" => params[:user][:email], "password" => params[:user][:password]})
     raw_cookie = res.header["Set-Cookie"]
 
-    # get php session id
-    a = raw_cookie.scan(/PHPSESSID=([^;]+);/)
+    if raw_cookie
+      # get php session id
+      a = raw_cookie.scan(/PHPSESSID=([^;]+);/)
 
-    if a.any?
-      session_id = a[0][0]
-      logger.debug "php session id = #{session_id}"
-      cookies.delete "PHPSESSID"
-      cookies["PHPSESSID"] = session_id
-      #cookies["PHPSESSID"] = {value: session_id, domain: ".#{request.host}"}
+      if a.any?
+        session_id = a[0][0]
+        logger.debug "php session id = #{session_id}"
+        cookies.delete "PHPSESSID"
+        cookies["PHPSESSID"] = session_id
+        #cookies["PHPSESSID"] = {value: session_id, domain: ".#{request.host}"}
+      end
     end
 
     set_flash_message(:notice, :signed_in) if is_flashing_format?

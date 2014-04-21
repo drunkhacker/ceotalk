@@ -7,7 +7,8 @@
       | 현직 CEO와 소통하고 토론하는 실전교육
 
   hr.hr-gradient
-/h4.section-sub-title C'QUESTION
+
+h4.section-sub-title Open Question
 
 #questions.clear
   - @questions.each_with_index do |question, i|
@@ -24,17 +25,17 @@
 = paginate @questions
 
 
-/h4.section-sub-title style="margin-top: 30px;" CEO MBA CLASS
+h4.section-sub-title style="margin-top: 30px;" CEO MBA CLASS
 
-/= image_tag("/assets/class_intro/ceomba_1.jpg", style: "display: block; margin: 0 auto;")
-/= image_tag("/assets/class_intro/ceomba_2.jpg", style: "display: block; margin: 0 auto;")
-/= image_tag("/assets/class_intro/ceomba_3.jpg", style: "display: block; margin: 0 auto;")
-/= image_tag("/assets/class_intro/ceomba_4.jpg", style: "display: block; margin: 0 auto;")
-/= image_tag("/assets/class_intro/ceomba_5.jpg", style: "display: block; margin: 0 auto;")
-/= image_tag("/assets/class_intro/ceomba_6.jpg", style: "display: block; margin: 0 auto;", id:"class2", usemap:"#classmap")
+= image_tag("/assets/class_intro/ceomba_1.jpg", style: "display: block; margin: 0 auto;")
+= image_tag("/assets/class_intro/ceomba_2.jpg", style: "display: block; margin: 0 auto;")
+= image_tag("/assets/class_intro/ceomba_3.jpg", style: "display: block; margin: 0 auto;")
+= image_tag("/assets/class_intro/ceomba_4.jpg", style: "display: block; margin: 0 auto;")
+= image_tag("/assets/class_intro/ceomba_5.jpg", style: "display: block; margin: 0 auto;")
+= image_tag("/assets/class_intro/ceomba_6.jpg", style: "display: block; margin: 0 auto;", id:"class2", usemap:"#classmap")
 
-/map name="classmap"
-  /area shape="rect" coords="461,2136,1022,2243" href="http://bit.ly/1fpFXyX" target="_blank"
+map name="classmap"
+  area shape="rect" coords="461,2136,1022,2243" href="http://bit.ly/1fpFXyX" target="_blank"
 
 
 - unless @is_xhr
