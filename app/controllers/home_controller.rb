@@ -66,7 +66,7 @@ class HomeController < ApplicationController
 
   def notice_board
     @host = request.host
-    @mid = "board_bVUC93"
+    @mid = ENV["XE_BOARD_MID"]
     @document_srl = params[:document_srl]
   end
 end

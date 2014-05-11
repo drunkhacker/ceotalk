@@ -1,5 +1,7 @@
 ActiveAdmin.register Category do
+  menu label: "전문분야", priority: 3
   sortable tree: true, sorting_attribute: :position
+  config.filters = false
 
   permit_params :name, :parent_id, :position
 

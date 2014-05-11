@@ -48,7 +48,6 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
 
    def default_url
      if model.provider == "facebook" and !model.uid.nil?
-       Rails.logger.debug "facebook, uid = #{model.uid}"
        "http://graph.facebook.com/#{model.uid}/picture?width=150"
      else
        "/assets/icn-anonymous.png"

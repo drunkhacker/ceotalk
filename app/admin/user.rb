@@ -1,6 +1,11 @@
 ActiveAdmin.register User do
+  menu label: "사용자 관리", priority: 2
 
   permit_params :name, :email, :type, :company_id, :featured, :tagline, :introduction, :profile_photo, :password, :password_confirmation, :career, :contact, :position, :interests, category_ids: []
+
+  filter :name
+  filter :email
+  filter :company
 
   form do |f|
     f.inputs do

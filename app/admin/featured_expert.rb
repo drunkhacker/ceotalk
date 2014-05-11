@@ -1,4 +1,5 @@
 ActiveAdmin.register FeaturedExpert do
+  config.filters = false
 
   permit_params :professional_id, :featured_photo, :excerpt
   

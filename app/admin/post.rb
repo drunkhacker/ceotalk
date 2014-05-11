@@ -1,7 +1,35 @@
 ActiveAdmin.register Post do
+  menu :label => "칼럼", priority: 4
   permit_params :url, :professional_id, :title, :description, :thumb_url, :created_at, :featured, category_ids: []
 
+  filter :url
+  filter :title
+  filter :professional
+
+  member_action :toggle_featured, :method => :post do
+    post = Post.find(params[:id])
+    post.update_attribute(:featured, params[:featured] == "true")
+    #Rails.logger.debug "post.featured = #{post.featured}"
+    render :nothing => true
+  end
+
   form do |f|
+
+    f.form_buffers.last << "<p style=\"margin-bottom: 20px;\">".html_safe
+    f.form_buffers.last << 
+      if f.object.new_record?
+        (link_to "칼럼 글 작성하기", "http://blog.ceomba.co.kr/wp-admin/post-new.php", :class => "button", :target => "_blank")
+      else
+        # parse url
+        arr = f.object.url.scan(/p=([0-9]+)/)
+        if arr.empty?
+          ""
+        else
+          link_to "칼럼 수정하기", "http://blog.ceomba.co.kr/wp-admin/post.php?post=#{arr[0][0]}&action=edit", :class => "button", :target => "_blank"
+        end
+      end
+    f.form_buffers.last << "</p>".html_safe
+
     f.inputs do
       f.input :url, :label => "URL"
       f.input :title, :placeholder => "URL을 입력하면 자동생성", :label => "제목"
@@ -26,6 +54,11 @@ ActiveAdmin.register Post do
     column :url do |post|
       link_to post.url, post.url, :target => "_blank"
     end
+
+    column :featured do |talk|
+      check_box_tag "featured_#{talk.id}", 1, talk.featured, :class => "featured-checkbox", :talk_type => "post"
+    end
+
     column :created_at
     default_actions
   end
