@@ -26,7 +26,7 @@ class ProfessionalsController < ApplicationController
     @talks = @professional.talks.order("created_at DESC").limit(2)
     @comment = Comment.new
     @comment2 = Comment.new
-    @top_comments = @professional.comments.where("like_count >= 5").order("like_count DESC").limit(3)
+    @top_comments = @professional.comments.where("like_count >= 3").order("like_count DESC").limit(3)
     @comments = @professional.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 
     respond_with do |format|

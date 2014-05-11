@@ -37,6 +37,11 @@
 
     <div class="clear"></div>
 
+    <% if resource.errors.any? -%>
+      <p style="margin-top: 20px; text-align: center;" >회원가입에 실패했습니다.</p>
+      <%= devise_error_messages! %>
+    <% end -%>
+
     <%= f.submit "이메일 계정으로 회원가입", style: "margin:0 auto; display:block;  width: 293px; height:65px; border: 0; color: white; font-size: 20px; line-height:59px; padding-top:0; cursor:pointer; margin-top: 15px;", class: "bg-btn-red"%>
 
   <% end %>

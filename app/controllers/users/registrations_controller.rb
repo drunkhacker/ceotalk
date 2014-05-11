@@ -31,9 +31,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
         expire_data_after_sign_in!
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
-    else
+    else # failed to save resource
+      Rails.logger.debug resource.errors.inspect
       clean_up_passwords resource
-      @user_categories = params[:categories].values.select {|h| h["selected"] == "1"}.map {|h| Category.find(h["id"].to_i)}
+      @user_categories = (params[:categories] || {}).values.select {|h| h["selected"] == "1"}.map {|h| Category.find(h["id"].to_i)}
       respond_with resource
     end
   end

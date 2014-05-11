@@ -16,4 +16,8 @@ class OpenQuestion < ActiveRecord::Base
   def category_names(separator=" / ")
     categories.map {|c| c.name}.join separator
   end
+
+  def thumb_url
+    self.thumbnail.url
+  end
 end

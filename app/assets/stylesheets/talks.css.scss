@@ -333,6 +333,8 @@
     /*&:nth-child(17) { margin-left: $w + $g; }*/
 
     &.push-left-2 { margin-left: ($w*2 + $g*2); }
+    &.push-left-3 { margin-left: ($w*3 + $g*3); }
+    &.push-left-4 { margin-left: ($w*4 + $g*4); }
     /*&:nth-child(18) { margin-left: ($w*2 + $g*2); }*/
   }
 

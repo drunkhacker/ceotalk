@@ -26,7 +26,7 @@ class CompaniesController < ApplicationController
 
     @comment = Comment.new
     @comment2 = Comment.new
-    @top_comments = @company.comments.where("like_count >= 5").order("like_count DESC").limit(3)
+    @top_comments = @company.comments.where("like_count >= 3").order("like_count DESC").limit(3)
     @comments = @company.comments.order("created_at DESC").page(params[:comment_page]).per(5)
 
     respond_with do |format|
