@@ -1,4 +1,5 @@
 ActiveAdmin.register Presentation do
+  config.filters = false
 
   permit_params :url, :problem_id, :description, :user_id
 

@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/activerecord-hackery/ransack.git
+  revision: 5c6acda18d53ef1ed911dc0f8600f3441a93d38e
+  specs:
+    ransack (1.2.3)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.0.0)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 1b2f5af46531ce0560d10f77e72e229e6a0c4856
   specs:
@@ -126,7 +137,7 @@ GEM
       multipart-post (~> 1.2.0)
     ffi (1.9.3)
     formatador (0.2.4)
-    formtastic (2.3.0.rc2)
+    formtastic (2.3.0.rc3)
       actionpack (>= 3.0)
     fssm (0.2.10)
     guard (2.3.0)
@@ -206,7 +217,7 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     orm_adapter (0.5.0)
-    polyamorous (0.6.4)
+    polyamorous (1.0.0)
       activerecord (>= 3.0)
     polyglot (0.3.3)
     pry (0.9.12.4)
@@ -235,10 +246,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
     rake (10.1.0)
-    ransack (1.1.0)
-      actionpack (>= 3.0)
-      activerecord (>= 3.0)
-      polyamorous (~> 0.6.0)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
@@ -354,6 +361,7 @@ DEPENDENCIES
   rack-livereload
   rails (= 4.0.0)
   rails_autolink
+  ransack!
   rb-fsevent
   rspec-rails
   rubypress

@@ -1,6 +1,7 @@
 ActiveAdmin.register Problem do
   permit_params :url_question, :title, :professional_id, :content, :phase, :phase1_deadline, :phase2_deadline, :thumb_url, :url_final, :sketch_photo,
     :after_comment_1, :after_comment_2, :sketch_content
+  config.filters = false
 
   form do |f|
     f.inputs do

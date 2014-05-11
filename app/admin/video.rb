@@ -1,7 +1,20 @@
 ActiveAdmin.register Video do
+  menu label: "영상", priority: 5
 
   permit_params :url, :description, :professional_id, :thumb_url, :created_at, :title, :featured, category_ids: []
- 
+
+  filter :title
+  filter :url
+  filter :description
+  filter :professional
+
+  member_action :toggle_featured, :method => :post do
+    vid = Video.find(params[:id])
+    vid.update_attribute(:featured, params[:featured] == "true")
+    #Rails.logger.debug "vid.featured = #{vid.featured}"
+    render :nothing => true
+  end
+
   form do |f|
     f.inputs do
       f.input :title, :label => "제목"
@@ -20,13 +33,18 @@ ActiveAdmin.register Video do
     selectable_column
     column :id
     column :title, :sortable => :title do |talk|
-      link_to talk.title, admin_talk_path(talk)
+      link_to talk.title, admin_video_path(talk)
     end
     column :professional, :sortable => :name
     column :url do |talk|
       link_to talk.url, talk.url, :target => "_blank"
     end
     column :category
+
+    column :featured do |talk|
+      check_box_tag "featured_#{talk.id}", 1, talk.featured, :class => "featured-checkbox", :talk_type => "video"
+    end
+
     column :created_at
     default_actions
   end

@@ -231,8 +231,6 @@ ActiveAdmin.setup do |config|
   # hand side with a filter for each attribute of the registered model.
   # You can enable or disable them for all resources here.
   #
-  #TODO : filters = true로 놓으면 ProblemComment 쪽에서 에러가 남.
-  # searchable한 field들을 다 수동으로 지정해줄것. 
-  config.filters = false
+  config.filters = true
 
 end

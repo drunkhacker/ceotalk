@@ -54,6 +54,7 @@ gem 'activeadmin', github: "gregbell/active_admin"
 gem 'chosen-rails'
 gem 'rubypress'
 gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'slim-rails'
 gem 'bourbon'
 gem 'kaminari'

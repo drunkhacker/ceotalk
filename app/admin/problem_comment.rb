@@ -1,5 +1,6 @@
 ActiveAdmin.register ProblemComment do
   permit_params :user_id, :content, :parent_id, :picked, :commentable_id, :commentable_type
+  config.filters = false
   
   form do |f|
     f.inputs do

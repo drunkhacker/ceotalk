@@ -1,5 +1,7 @@
 ActiveAdmin.register AdminUser do
+  menu label: "관리자 계정 관리", priority: 1
   permit_params :email, :password, :password_confirmation
+  config.filters = false
 
   index do
     column :email
